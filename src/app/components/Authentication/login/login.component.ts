@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { LoginDto } from 'src/app/Dtos/user/LoginDto';
 import { TokenDto } from 'src/app/Dtos/user/TokenDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
@@ -10,7 +11,10 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private authService: AuthenticationService) {}
+  constructor(
+    private authService: AuthenticationService,
+    private routeService: Router
+  ) {}
 
   form = new FormGroup({
     username: new FormControl<string>('string'),
@@ -25,7 +29,8 @@ export class LoginComponent {
     this.authService.Login(credentials).subscribe((TokenDto) => {
       console.log(TokenDto);
 
-      // Make Any Logic Like Redirect user to any page
+      // Make Any Logic Like Redirect user to any page like home
+      this.routeService.navigateByUrl('/');
     });
   }
 }
