@@ -39,6 +39,7 @@ import { OrdersDashboardComponent } from './components/Dashboard/Adel/orders-das
 import { OrderDetailsDashboardComponent } from './components/Dashboard/Adel/order-details-dashboard/order-details-dashboard.component';
 import { ReviewsDashboardComponent } from './components/Dashboard/Adel/reviews-dashboard/reviews-dashboard.component';
 import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashbo
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
