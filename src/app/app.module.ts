@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/Authentication/login/login.component';
 import { SignupComponent } from './components/Authentication/signup/signup.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -40,6 +40,7 @@ import { OrderDetailsDashboardComponent } from './components/Dashboard/Adel/orde
 import { ReviewsDashboardComponent } from './components/Dashboard/Adel/reviews-dashboard/reviews-dashboard.component';
 import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthenticationInterceptor } from './Interceptors/authentication.interceptor';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

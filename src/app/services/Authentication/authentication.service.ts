@@ -20,8 +20,8 @@ export class AuthenticationService {
       .pipe(
         tap((TokenDto) => {
           this.isLoggedIn$.next(true);
-          sessionStorage.setItem('token', TokenDto.token);
-          sessionStorage.setItem('role', TokenDto.role);
+          localStorage.setItem('token', TokenDto.token);
+          localStorage.setItem('role', TokenDto.role);
         })
       );
   }
