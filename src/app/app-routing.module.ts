@@ -10,6 +10,15 @@ const routes: Routes = [
 
   // Ali
 
+  // Making an Lazy Loading
+  {
+    path: 'Authentication',
+    loadChildren: () =>
+      import('./components/Authentication/authentication.module').then(
+        (m) => m.AuthenticationModule
+      ),
+  },
+
   // Adel
 
   // Reham Abdelrhman

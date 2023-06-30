@@ -1,1 +1,15 @@
-<p class="alert alert-success">header works!</p>
+<div class="container alert alert-success">
+  <div class="row">
+    <div class="col d-flex justify-content-between">
+      <div *ngIf="!isUserLoggedIn">
+        <a routerLink="/Authentication/login">Login</a>
+      </div>
+      <div *ngIf="!isUserLoggedIn">
+        <a routerLink="/Authentication/signup">Signup</a>
+      </div>
+      <div *ngIf="isUserLoggedIn">
+        <a routerLink="/Authentication/signup">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
