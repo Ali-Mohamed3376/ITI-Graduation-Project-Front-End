@@ -1,0 +1,15 @@
+/* CSS Code for Nav:- */
+
+.navbar .container .collapse .navbar-nav .nav-link {
+  color: rgb(149, 8, 8);
+}
+.navbar .container .collapse .navbar-nav .nav-link:hover {
+  color: #fa0;
+}
+.navbar button[aria-expanded="true"] {
+  border-color: #fa0;
+  box-shadow: none;
+}
+.navbar button[aria-expanded="false"] {
+  box-shadow: none;
+}

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { LoginDto } from 'src/app/Dtos/user/LoginDto';
-import { TokenDto } from 'src/app/Dtos/user/TokenDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 
 @Component({
@@ -11,14 +10,15 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  hide = true;
   constructor(
     private authService: AuthenticationService,
     private routeService: Router
   ) {}
 
   form = new FormGroup({
-    username: new FormControl<string>('string'),
-    password: new FormControl<string>('string'),
+    username: new FormControl<string>(''),
+    password: new FormControl<string>(''),
   });
 
   handelSubmit(e: Event) {

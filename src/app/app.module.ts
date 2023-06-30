@@ -41,6 +41,10 @@ import { ReviewsDashboardComponent } from './components/Dashboard/Adel/reviews-d
 import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationInterceptor } from './Interceptors/authentication.interceptor';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -87,6 +91,10 @@ import { AuthenticationInterceptor } from './Interceptors/authentication.interce
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatIconModule,
+    MatToolbarModule,
   ],
   providers: [
     {
