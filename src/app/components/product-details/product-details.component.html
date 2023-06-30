@@ -1,1 +1,22 @@
-<p>product-details works!</p>
+<div *ngIf="product" class="alert alert-info">
+    <p>Product Name: {{product.name}}</p>
+    <p>Product image: {{product.image}}</p>
+    <p>Product description: {{product.description}}</p>
+    <p>Product model: {{product.model}}</p>
+    <p>Product Brand: {{product.categoryName}}</p>
+    <p>Product price: {{product.price}}</p>
+    <p>Product discount: {{product.discount}}</p>
+    <p>Product priceAfter: {{product.priceAfter}}</p>
+    <p>Product avgRatingRounded: {{product.avgRatingRounded}}</p>
+    
+    <p> reviews:</p>
+    <div *ngFor="let review of product.reviews" class="alert alert-warning">
+        <p>Comment: {{review.comment}}</p>
+        <p>Creation Date: {{review.creationDate}}</p>
+        <p>Rating: {{review.rating}}</p>
+    </div>
+    
+    <p>Product reviewCount: {{product.reviewCount}}</p>
+</div>
+
+

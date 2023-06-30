@@ -1,1 +1,34 @@
-<p>product works!</p>
+<!-- <div *ngFor="let p of products" class="alert alert-warning">
+ <p>Product Name :<a routerLink="/Products/{{p.id}}">{{p.name}}</a> </p>
+ <p>Product image : {{p.image}}</p>
+ <p>Product price : {{p.price}}</p>
+ <p>Product discount : {{p.discount}}</p>
+ <p>Product priceAfter : {{p.priceAfter}}</p>
+ <p>Product avgRatingRounded : {{p.avgRatingRounded}}</p>
+ <p>Product reviewCount : {{p.reviewCount}}</p>
+
+</div> -->
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+      <div *ngFor="let p of products" class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><a routerLink="/Products/{{ p.id }}">{{ p.name }}</a></h5>
+            <p class="card-text"><strong>Product Image:</strong> {{ p.image }}</p>
+            <p class="card-text"><strong>Product Price:</strong> {{ p.price }}</p>
+            <p class="card-text"><strong>Product Discount:</strong> {{ p.discount }}</p>
+            <p class="card-text"><strong>Product Price After Discount:</strong> {{ p.priceAfter }}</p>
+            <p class="card-text"><strong>Product Average Rating:</strong> {{ p.avgRatingRounded }}</p>
+            <p class="card-text"><strong>Product Review Count:</strong> {{ p.reviewCount }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
