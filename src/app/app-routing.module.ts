@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { UsersComponent } from './components/Dashboard/Adel/users/users.component';
 
 const routes: Routes = [
   // Abdo
@@ -18,7 +19,7 @@ const routes: Routes = [
   },
 
   // Adel
-
+  { path: 'dashboard/users', component: UsersComponent },
   // Reham Abdelrhman
 
   // Reham Sayed

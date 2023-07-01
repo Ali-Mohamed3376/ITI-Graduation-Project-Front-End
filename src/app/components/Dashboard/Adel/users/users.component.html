@@ -1,1 +1,27 @@
-<p>users works!</p>
+
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th scope="col">User Full Name</th>
+            <th scope="col">User Email</th>
+            <th scope="col">Role</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr *ngFor="let item of Users">
+                <td>{{ item.fName }} {{item.lName}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.role}}</td>
+                <td>
+                    <button class="btn btn-info" onclick="document.location='#'">Details</button>
+                </td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@category.Id" method="post" id="deleteButton">
+                        <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+                    </form>
+                </td>
+            </tr>
+    </tbody>
+</table>
