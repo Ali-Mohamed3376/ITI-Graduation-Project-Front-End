@@ -39,6 +39,7 @@ import { OrdersDashboardComponent } from './components/Dashboard/Adel/orders-das
 import { OrderDetailsDashboardComponent } from './components/Dashboard/Adel/order-details-dashboard/order-details-dashboard.component';
 import { ReviewsDashboardComponent } from './components/Dashboard/Adel/reviews-dashboard/reviews-dashboard.component';
 import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashboard.component';
+import { MainProfileComponent } from './components/User Profile/main-profile/main-profile.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashbo
     OrderDetailsDashboardComponent,
     ReviewsDashboardComponent,
     DashboardComponent,
+    MainProfileComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
