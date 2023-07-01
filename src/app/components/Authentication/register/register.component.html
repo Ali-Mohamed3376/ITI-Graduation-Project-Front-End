@@ -1,4 +1,4 @@
-<div class="container mt-sm-5 mb-sm-5 w-50 h-75">
+<div class="container mt-sm-5 mb-sm-5 w-50 h-100">
   <form [formGroup]="form">
     <div class="form-group mt-sm-3">
       <label for="first-name" class="fs-5 mb-sm-2">First Name</label>
@@ -8,6 +8,25 @@
         id="first-name"
         formControlName="fname"
       />
+      <div
+        *ngIf="
+          form.get('fname')?.invalid &&
+          (form.get('fname')?.touched || form.get('fname')?.dirty)
+        "
+      >
+        <div
+          *ngIf="form.get('fname')?.hasError('required')"
+          class="text-danger"
+        >
+          First Name is required.
+        </div>
+        <div
+          *ngIf="form.get('fname')?.hasError('maxlength')"
+          class="text-danger"
+        >
+          Max length for First Name is 7 characters.
+        </div>
+      </div>
     </div>
     <div class="form-group mt-sm-3">
       <label for="last-name" class="fs-5 mb-sm-2">Last Name</label>
@@ -17,6 +36,25 @@
         id="last-name"
         formControlName="lname"
       />
+      <div
+        *ngIf="
+          form.get('lname')?.invalid &&
+          (form.get('lname')?.touched || form.get('lname')?.dirty)
+        "
+      >
+        <div
+          *ngIf="form.get('lname')?.hasError('required')"
+          class="text-danger"
+        >
+          Last Name is required.
+        </div>
+        <div
+          *ngIf="form.get('lname')?.hasError('maxlength')"
+          class="text-danger"
+        >
+          Max length for Last Name is 7 characters.
+        </div>
+      </div>
     </div>
     <div class="form-group mt-sm-3">
       <label for="email" class="fs-5 mb-sm-2">Email</label>
@@ -26,6 +64,22 @@
         id="email"
         formControlName="email"
       />
+      <div
+        *ngIf="
+          form.get('email')?.invalid &&
+          (form.get('email')?.touched || form.get('email')?.dirty)
+        "
+      >
+        <div *ngIf="form.get('email')?.hasError('email')" class="text-danger">
+          Please Write Valid Email.
+        </div>
+        <div
+          *ngIf="form.get('email')?.hasError('required')"
+          class="text-danger"
+        >
+          Email is Required.
+        </div>
+      </div>
     </div>
     <div class="form-group mt-sm-3">
       <label for="password" class="fs-5 mb-sm-2">Password</label>
@@ -35,12 +89,26 @@
         id="password"
         formControlName="password"
       />
+      <div
+        *ngIf="
+          form.get('password')?.invalid &&
+          (form.get('password')?.touched || form.get('password')?.dirty)
+        "
+      >
+        <div
+          *ngIf="form.get('password')?.hasError('required')"
+          class="text-danger"
+        >
+          Password Name is required.
+        </div>
+      </div>
     </div>
     <div class="form-group text-center mt-sm-5">
       <button
         (click)="Register()"
         type="submit"
         class="btn btn-primary bt-lg w-50 fs-5 fw-bold"
+        [disabled]="!form.valid"
       >
         Register
       </button>

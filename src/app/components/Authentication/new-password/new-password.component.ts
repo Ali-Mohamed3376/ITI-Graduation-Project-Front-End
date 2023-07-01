@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ResetPasswordDto } from 'src/app/Dtos/user/ResetPasswordDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
@@ -12,6 +12,7 @@ import { EmailService } from 'src/app/services/Authentication/email.service';
 })
 export class NewPasswordComponent implements OnInit {
   email: string = '';
+  respomseError: String = '';
   constructor(
     private emailService: EmailService,
     private authService: AuthenticationService,
@@ -22,8 +23,8 @@ export class NewPasswordComponent implements OnInit {
   }
 
   form = new FormGroup({
-    newPassword: new FormControl<string>(''),
-    confirmNewPassword: new FormControl<string>(''),
+    newPassword: new FormControl<string>('', [Validators.required]),
+    confirmNewPassword: new FormControl<string>('', [Validators.required]),
   });
 
   ResetPassword() {
@@ -33,9 +34,14 @@ export class NewPasswordComponent implements OnInit {
     credentials.confirmNewPassword =
       this.form.controls.confirmNewPassword.value ?? '';
 
-    this.authService.Reset_Password(credentials).subscribe((result: any) => {
-      console.log(result);
-      this.routerService.navigateByUrl('Authentication/login');
-    });
+    this.authService.Reset_Password(credentials).subscribe(
+      (result: any) => {
+        console.log(result);
+        this.routerService.navigateByUrl('Authentication/login');
+      },
+      (e) => {
+        this.respomseError = e.error;
+      }
+    );
   }
 }

@@ -16,6 +16,9 @@
               </div>
             </div>
             <form [formGroup]="form">
+              <div *ngIf="respomseError" class="text-center text-danger fs-2">
+                <p>{{ respomseError }}</p>
+              </div>
               <div class="form-group">
                 <div class="input-group">
                   <input
@@ -55,13 +58,14 @@
                   />
                 </div>
               </div>
+              <button
+                class="btn btn-success btn-lg w-100 mt-3 mb-4 py-3"
+                (click)="verify()"
+                [disabled]="!form.valid"
+              >
+                Verify
+              </button>
             </form>
-            <button
-              class="btn btn-success btn-lg w-100 mt-3 mb-4 py-3"
-              (click)="verify()"
-            >
-              Verify
-            </button>
           </div>
         </div>
       </div>

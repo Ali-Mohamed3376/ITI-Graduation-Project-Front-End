@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterDto } from 'src/app/Dtos/user/RegisterDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
@@ -16,10 +16,16 @@ export class RegisterComponent {
   ) {}
 
   form = new FormGroup({
-    fname: new FormControl<string>(''),
-    lname: new FormControl<string>(''),
-    email: new FormControl<string>(''),
-    password: new FormControl<string>(''),
+    fname: new FormControl<string>('', [
+      Validators.required,
+      Validators.maxLength(7),
+    ]),
+    lname: new FormControl<string>('', [
+      Validators.required,
+      Validators.maxLength(7),
+    ]),
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
+    password: new FormControl<string>('', [Validators.required]),
   });
 
   Register() {
@@ -34,5 +40,6 @@ export class RegisterComponent {
     });
 
     this.routerService.navigateByUrl('/Authentication/ConfirmEmail');
+    console.log(this.form.value);
   }
 }
