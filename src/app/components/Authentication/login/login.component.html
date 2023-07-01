@@ -42,40 +42,42 @@
 </div> -->
 
 <div class="container mt-sm-5">
-  <form [formGroup]="form">
-    <div class="form-floating mb-sm-5">
-      <input
-        type="email"
-        class="form-control"
-        id="floatingInput"
-        placeholder="name@example.com"
-        formControlName="username"
-      />
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating mb-sm-2">
-      <input
-        type="password"
-        class="form-control"
-        id="floatingPassword"
-        placeholder="Password"
-        formControlName="password"
-      />
-      <label for="floatingPassword">Password</label>
-    </div>
-    <div class="mb-sm-5">
-      <a class="text-end fs-5" routerLink="/Authentication/forget_password"
-        >Forget Password?</a
-      >
-    </div>
-    <div class="text-center mb-sm-5">
-      <button
-        class="btn btn-primary w-25 py-2"
-        type="submit"
-        (click)="handelSubmit($event)"
-      >
-        Login
-      </button>
-    </div>
-  </form>
+  <div class="row">
+    <form [formGroup]="form">
+      <div class="form-floating mb-sm-5">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          formControlName="username"
+        />
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating mb-sm-2">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="mb-sm-5">
+        <a class="text-end fs-5" routerLink="/Authentication/forget_password"
+          >Forget Password?</a
+        >
+      </div>
+      <div class="text-center mb-sm-5">
+        <button
+          class="btn btn-primary w-25 py-2"
+          type="submit"
+          (click)="handelSubmit($event)"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
