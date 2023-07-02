@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/Authentication/login/login.component';
-import { SignupComponent } from './components/Authentication/signup/signup.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
@@ -53,7 +52,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    SignupComponent,
     ProductComponent,
     ProductDetailsComponent,
     CartComponent,
