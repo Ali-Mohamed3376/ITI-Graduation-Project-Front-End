@@ -106,10 +106,4 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 })
 export class AppModule {
 
-  constructor()
-  {
-    var token =
-    "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjNhOTQxNGY0LWQ5ZTgtNGZlOC04NWNlLWVjMTE1M2NhMGVhNiIsIlJvbGUiOiJBZG1pbiIsImV4cCI6MTY4OTg5MzgwM30.XIvH0iZO5-Yn8D5rOhVfPQIYnvSEIjaj7x7j6Uzss2M";
-    localStorage.setItem("token",token);
-  }
 }
