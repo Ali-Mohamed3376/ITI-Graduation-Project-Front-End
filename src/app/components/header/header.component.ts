@@ -16,4 +16,10 @@ export class HeaderComponent implements OnInit {
       this.isUserLoggedIn = islogged;
     });
   }
+
+  // log Out
+  LogOut() {
+    localStorage.clear();
+    window.location.reload();
+  }
 }

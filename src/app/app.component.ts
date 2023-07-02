@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthenticationService) {}
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('token')) {
+    if (localStorage.getItem('token')) {
       this.authService.isLoggedIn$.next(true);
     }
   }
