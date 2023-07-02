@@ -1,4 +1,5 @@
-<!-- <div class="container alert alert-success">
+<!-- Nav V01 -->
+<div class="container alert alert-success" *ngIf="!isUser && !isAdmin">
   <div class="row">
     <div class="col d-flex justify-content-between">
       <div *ngIf="!isUserLoggedIn">
@@ -12,52 +13,161 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
-<nav class="navbar navbar-expand-lg nav-menu bg-secondary">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="#"
-      ><!--<img src="../../../assets/logoooo.jpeg" width="60">-->
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<!-- Nav V02 for User -->
+<header *ngIf="isUser">
+  <nav class="navbar navbar-expand-lg nav-menu bg-secondary">
+    <div class="container-fluid">
+      <!-- <a class="navbar-brand" routerLink="#"
+        ><img src="../../../assets/logoooo.jpeg" width="60" />
+      </a> -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-        <li class="nav-item m-3 active">
-          <a
-            class="nav-link rounded"
-            routerLink="/"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >Home</a
-          >
-        </li>
-        <li class="nav-item m-3">
-          <a class="nav-link rounded" routerLink="/" routerLinkActive="active"
-            >None</a
-          >
-        </li>
-        <li class="nav-item m-3">
-          <a class="nav-link rounded" routerLink="/" routerLinkActive="active"
-            >None</a
-          >
-        </li>
-        <li class="nav-item m-3">
-          <a class="nav-link rounded" routerLink="/" routerLinkActive="active"
-            >None</a
-          >
-        </li>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+          <li class="nav-item m-3 active">
+            <a
+              class="nav-link rounded"
+              routerLink="/"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item m-3">
+            <a class="nav-link rounded" routerLink="/" routerLinkActive="active"
+              >None</a
+            >
+          </li>
+          <li class="nav-item m-3">
+            <a class="nav-link rounded" routerLink="/" routerLinkActive="active"
+              >None</a
+            >
+          </li>
+          <li class="nav-item m-3">
+            <a class="nav-link rounded" routerLink="/" routerLinkActive="active"
+              >None</a
+            >
+          </li>
 
+          <li class="nav-item m-3" *ngIf="!isUserLoggedIn">
+            <a
+              id="loginBtn"
+              class="btn btn-primary"
+              routerLink="/Authentication/login"
+              routerLinkActive="active"
+              >Login</a
+            >
+          </li>
+          <li class="nav-item m-3" *ngIf="!isUserLoggedIn">
+            <a
+              class="btn btn-success"
+              routerLink="/Authentication/register"
+              routerLinkActive="active"
+              >Register</a
+            >
+          </li>
+          <li class="nav-item m-3" *ngIf="isUserLoggedIn">
+            <a class="btn btn-danger" (click)="LogOut()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- for Admin -->
+<header *ngIf="isAdmin">
+  <div class="px-3 py-2 text-bg-dark border-bottom">
+    <div class="container">
+      <div
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"
+        >
+          <svg
+            class="bi me-2"
+            width="40"
+            height="32"
+            role="img"
+            aria-label="Bootstrap"
+          >
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+
+        <ul
+          class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small"
+        >
+          <li>
+            <a href="#" class="nav-link text-secondary">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                <use xlink:href="#home"></use>
+              </svg>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                <use xlink:href="#speedometer2"></use>
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                <use xlink:href="#table"></use>
+              </svg>
+              Orders
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                <use xlink:href="#grid"></use>
+              </svg>
+              Products
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                <use xlink:href="#people-circle"></use>
+              </svg>
+              Customers
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="px-3 py-2 border-bottom mb-3">
+    <div class="container d-flex flex-wrap justify-content-center">
+      <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Search..."
+          aria-label="Search"
+        />
+      </form>
+
+      <div class="text-end">
         <li class="nav-item m-3" *ngIf="!isUserLoggedIn">
           <a
             id="loginBtn"
@@ -78,7 +188,7 @@
         <li class="nav-item m-3" *ngIf="isUserLoggedIn">
           <a class="btn btn-danger" (click)="LogOut()">Logout</a>
         </li>
-      </ul>
+      </div>
     </div>
   </div>
-</nav>
+</header>

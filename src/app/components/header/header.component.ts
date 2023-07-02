@@ -8,8 +8,16 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
 })
 export class HeaderComponent implements OnInit {
   isUserLoggedIn = false;
+  isAdmin = false;
+  isUser = false;
 
-  constructor(private authService: AuthenticationService) {}
+  constructor(private authService: AuthenticationService) {
+    if (localStorage.getItem('role') == 'Admin') {
+      this.isAdmin = true;
+    } else if (localStorage.getItem('role') == 'Customer') {
+      this.isUser = true;
+    }
+  }
 
   ngOnInit(): void {
     this.authService.isLoggedIn$.subscribe((islogged) => {

@@ -110,6 +110,7 @@
           class="btn btn-primary w-25 py-2"
           type="submit"
           (click)="handelSubmit($event)"
+          [disabled]="!form.valid"
         >
           Login
         </button>
