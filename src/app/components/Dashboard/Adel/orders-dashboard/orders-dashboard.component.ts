@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { OrderService } from 'src/app/services/Dashboard/order.service';
 @Component({
   selector: 'app-orders-dashboard',
   templateUrl: './orders-dashboard.component.html',
@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class OrdersDashboardComponent {
 
+  Orders : any
+  constructor(private readonly OrderService: OrderService) {
+    this.getOrders()
+  }
+
+  public getOrders() {
+    this.OrderService.GetAllOrders().subscribe({
+      next: (data) => {
+        this.Orders = data
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
+  }
 }

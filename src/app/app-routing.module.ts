@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './components/Dashboard/Adel/users/users.component';
 import { UserDetailsComponent } from './components/Dashboard/Adel/user-details/user-details.component';
+import { OrdersDashboardComponent } from './components/Dashboard/Adel/orders-dashboard/orders-dashboard.component';
 
 const routes: Routes = [
   // Abdo
@@ -22,6 +23,7 @@ const routes: Routes = [
   // Adel
   { path: 'dashboard/users', component: UsersComponent },
   { path: 'dashboard/users/:id', component: UserDetailsComponent },
+  { path: 'dashboard/orders', component: OrdersDashboardComponent },
   // Reham Abdelrhman
 
   // Reham Sayed

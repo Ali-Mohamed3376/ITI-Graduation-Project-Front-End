@@ -1,1 +1,35 @@
-<p>orders-dashboard works!</p>
+<div class="container-fluid p-4">
+    <div class="row">
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">Number</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Products</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of Orders">
+                    <td>#{{item.id}}</td>
+                    <td>{{item.orderDate}}</td>
+                    <td>{{item.userName}}</td>
+                    <td>{{item.orderStatus}}</td>
+                    <td>{{item.productCount}}</td>
+                    <td>{{item.totalPrice}}</td>
+                    <td>
+                        <a class="btn btn-info" [routerLink]="['/dashboard/users', item.id]">Details</a>
+                    </td>
+                    <td>
+                        <!-- <a class="btn btn-danger" (click)=confirmDelete(item.id)>Delete</a> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <div *ngIf="IsDeleted" class="text-danger">Deleted Successfully</div> -->
+    </div>
+</div>

@@ -8,18 +8,16 @@ export class UserService {
 
   constructor(private readonly myClient: HttpClient) { }
 
-  private readonly AllUsersAPI = "https://localhost:7064/api/AdminDashboard/GetAllUsers";
+  private readonly BaseUrl = "https://localhost:7064/api/AdminDashboard/";
   public GetAllUsers() {
-    return this.myClient.get(this.AllUsersAPI);
+    return this.myClient.get(this.BaseUrl + "GetAllUsers");
   }
 
-  private readonly UserDetailsAPI = "https://localhost:7064/api/AdminDashboard/User/";
   public GetUserDetails(userId: string) {
-    return this.myClient.get(this.UserDetailsAPI + userId);
+    return this.myClient.get(this.BaseUrl + "User/" + userId);
   }
 
-  private readonly DeleteUserAPI = "https://localhost:7064/api/AdminDashboard/DeleteUser/";
   public DeleteUser(userId: string) {
-    return this.myClient.delete(this.DeleteUserAPI + userId)
+    return this.myClient.delete(this.BaseUrl + "DeleteUser/" + userId)
   }
 }

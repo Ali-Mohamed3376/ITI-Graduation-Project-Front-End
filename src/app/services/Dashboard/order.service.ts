@@ -9,8 +9,9 @@ export class OrderService {
   
   constructor(private readonly myClient:HttpClient) { }
 
-  private readonly AllOrders = "https://localhost:7064/api/AdminDashboard/GetAllUsers";
-  GetAllOrders(){
-    return this.myClient.get(this.AllOrders);
+  private readonly BaseUrl = "https://localhost:7064/api/Orders/Dashboard/";
+  
+  public GetAllOrders(){
+    return this.myClient.get(this.BaseUrl + "GetAllOrders");
   }
 }
