@@ -14,4 +14,8 @@ export class OrderService {
   public GetAllOrders(){
     return this.myClient.get(this.BaseUrl + "GetAllOrders");
   }
+
+  public GetOrderDetails(OrderId : any){
+    return this.myClient.get(this.BaseUrl + "GetOrderDetails/" + OrderId);
+  }
 }

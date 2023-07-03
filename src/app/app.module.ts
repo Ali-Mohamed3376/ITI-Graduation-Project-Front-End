@@ -114,6 +114,7 @@ import { MatTableModule } from '@angular/material/table';
     OrderDetailsDashboardComponent,
     ReviewsDashboardComponent,
     DashboardComponent,
+    
   ],
   imports: [
     BrowserModule,
