@@ -103,7 +103,13 @@
             <a routerLink="/" class="nav-link text-white"> About </a>
           </li>
           <li>
-            <a routerLink="/" class="nav-link text-white"> Profile </a>
+            <a
+              routerLink="/"
+              class="nav-link text-white"
+              *ngIf="isUserLoggedIn"
+            >
+              Profile
+            </a>
           </li>
           <li>
             <a
