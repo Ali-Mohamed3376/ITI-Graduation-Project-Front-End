@@ -16,10 +16,10 @@ export class ProductComponent implements OnInit {
   noProductsMessage:any;
 
   // Selected filter options
-  selectedBrandId!: number;
-  selectedMinPrice!: number;
-  selectedMaxPrice!: number;
-  selectedRating!: number;
+  selectedBrandId!: any;
+  selectedMinPrice!: any;
+  selectedMaxPrice!: any;
+  selectedRating!: any; 
 
   constructor(private productService: ProductService) { }
 
@@ -92,4 +92,17 @@ this.productService.filterProducts(filterData).subscribe({
   }
 });
 }
+
+resetFilters() {
+  this.selectedBrandId = null; // Reset the selected brand
+  this.selectedMinPrice = null; // Reset the selected min price
+  this.selectedMaxPrice = null; // Reset the selected max price
+  this.selectedRating = null; // Reset the selected rating
+  this.noProductsMessage = "";
+ this.loadProducts();
+}
+
+
+
+
 }
