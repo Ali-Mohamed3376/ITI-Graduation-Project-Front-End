@@ -10,7 +10,6 @@ import { UserService } from 'src/app/services/Dashboard/user.service';
 export class UserDetailsComponent {
   User: any;
   Id: any;
-  IsDeleted = false;
 
   constructor(private readonly route: ActivatedRoute, private readonly UserService: UserService) {
     this.getUser()

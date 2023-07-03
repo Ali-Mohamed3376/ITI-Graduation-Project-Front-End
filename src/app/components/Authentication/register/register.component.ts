@@ -18,7 +18,6 @@ import { NgIf } from '@angular/common';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  standalone: true,
 })
 export class RegisterComponent {
   hide = true;
