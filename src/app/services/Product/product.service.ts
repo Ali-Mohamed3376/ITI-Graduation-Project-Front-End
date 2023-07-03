@@ -39,4 +39,8 @@ export class ProductService {
   filterProducts(filter: any): Observable<ProductChildDto[]> {
     return this.myClient.post<ProductChildDto[]>(this.Filteration_URL, filter);
   }
+
+  Search(filter: any): Observable<ProductChildDto[]> {
+    return this.myClient.post<ProductChildDto[]>(this.Filteration_URL, filter);
+  }
 }

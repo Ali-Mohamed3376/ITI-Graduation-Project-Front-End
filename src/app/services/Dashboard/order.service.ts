@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { OrderEditDto } from 'src/app/Dtos/Dashboard/OrderEditDto';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class OrderService {
 
   public GetOrderDetails(OrderId : any){
     return this.myClient.get(this.BaseUrl + "GetOrderDetails/" + OrderId);
+  }
+
+  public EditOrder(credentials : OrderEditDto){
+    return this.myClient.put(this.BaseUrl + "EditOrder", credentials)
   }
 }

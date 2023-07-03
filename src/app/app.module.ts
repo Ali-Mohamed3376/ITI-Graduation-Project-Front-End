@@ -78,6 +78,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { OrdersComponent } from './components/User Profile/orders/orders.component';
+import { OrderEditDashboardComponent } from './components/Dashboard/Adel/order-edit-dashboard/order-edit-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +117,7 @@ import { OrdersComponent } from './components/User Profile/orders/orders.compone
     OrderDetailsDashboardComponent,
     ReviewsDashboardComponent,
     DashboardComponent,
+    OrderEditDashboardComponent,
     
   ],
   imports: [

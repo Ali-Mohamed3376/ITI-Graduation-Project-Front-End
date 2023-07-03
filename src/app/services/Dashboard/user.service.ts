@@ -26,9 +26,4 @@ export class UserService {
   public DeleteUser(userId: string) {
     return this.myClient.delete(this.BaseUrl + "DeleteUser/" + userId)
   }
-
-  private readonly AddressURL = "https://localhost:7064/api/UserAddresses";
-  public GetUserAddresses(userId: string){
-    return this.myClient.get(this.AddressURL)
-  }
 }

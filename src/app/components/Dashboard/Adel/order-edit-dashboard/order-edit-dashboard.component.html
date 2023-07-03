@@ -1,0 +1,23 @@
+<mat-form-field>
+    <mat-label>Select an option</mat-label>
+    <mat-select [(value)]="selected">
+        <mat-option value="0">Pending</mat-option>
+        <mat-option value="1">Processing</mat-option>
+        <mat-option value="2">Shipped</mat-option>
+        <mat-option value="3">Delivered</mat-option>
+        <mat-option value="4">Cancelled</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<!-- <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" [formControl]="dateControl">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field> -->
+
+<div class="form-group text-center mt-sm-5">
+    <button (click)="EditOrder()" type="submit" class="btn btn-success bt-lg w-50 fs-5 fw-bold">
+        Edit Order
+    </button>
+</div>
