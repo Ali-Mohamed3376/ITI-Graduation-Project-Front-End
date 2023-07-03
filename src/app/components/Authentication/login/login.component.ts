@@ -11,14 +11,20 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
 })
 export class LoginComponent {
   hide = true;
+  respomseError: string = '';
+  showComponent = false;
+
   constructor(
     private authService: AuthenticationService,
     private routeService: Router
   ) {}
 
   form = new FormGroup({
-    username: new FormControl<string>(''),
-    password: new FormControl<string>(''),
+    username: new FormControl<string>('', [
+      Validators.required,
+      Validators.email,
+    ]),
+    password: new FormControl<string>('', Validators.required),
   });
 
   handelSubmit(e: Event) {
@@ -26,11 +32,17 @@ export class LoginComponent {
     credentials.userName = this.form.controls.username.value ?? '';
     credentials.password = this.form.controls.password.value ?? '';
 
-    this.authService.Login(credentials).subscribe((TokenDto) => {
-      console.log(TokenDto);
+    this.authService.Login(credentials).subscribe(
+      (TokenDto) => {
+        console.log(TokenDto);
 
-      // Make Any Logic Like Redirect user to any page like home
-      this.routeService.navigateByUrl('/');
-    });
+        // Make Any Logic Like Redirect user to any page like home
+        this.routeService.navigateByUrl('/');
+      },
+      (e) => {
+        // handle error
+        this.respomseError = e.error;
+      }
+    );
   }
 }

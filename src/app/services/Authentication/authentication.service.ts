@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ConfirmCodeDto } from 'src/app/Dtos/user/ConfirmCodeDto';
 import { LoginDto } from 'src/app/Dtos/user/LoginDto';
+import { RegisterDto } from 'src/app/Dtos/user/RegisterDto';
 import { ResetPasswordDto } from 'src/app/Dtos/user/ResetPasswordDto';
 import { TokenDto } from 'src/app/Dtos/user/TokenDto';
 
@@ -12,6 +13,7 @@ import { TokenDto } from 'src/app/Dtos/user/TokenDto';
 export class AuthenticationService {
   // declear for logged state for subscripers
   public isLoggedIn$ = new BehaviorSubject<boolean>(false);
+  public isAdmin$ = new BehaviorSubject<boolean>(false);
 
   constructor(private client: HttpClient) {}
 
@@ -22,6 +24,9 @@ export class AuthenticationService {
       .pipe(
         tap((TokenDto) => {
           this.isLoggedIn$.next(true);
+          if (TokenDto.role === 'Admin') {
+            this.isAdmin$.next(true);
+          }
           localStorage.setItem('token', TokenDto.token);
           localStorage.setItem('role', TokenDto.role);
         })
@@ -29,7 +34,7 @@ export class AuthenticationService {
   }
 
   // Forget Password
-  public Forget_Password(email: string): any {
+  public Forget_Password(email: string): Observable<any> {
     const formData = new FormData();
     formData.append('email', email);
     return this.client.post(
@@ -39,7 +44,7 @@ export class AuthenticationService {
   }
 
   //Verify code
-  public Verify_Code(credentials: ConfirmCodeDto): any {
+  public Verify_Code(credentials: ConfirmCodeDto): Observable<any> {
     return this.client.post(
       'https://localhost:7064/api/User/Check_Code',
       credentials
@@ -47,9 +52,17 @@ export class AuthenticationService {
   }
 
   // Reset Password
-  public Reset_Password(credentials: ResetPasswordDto): any {
+  public Reset_Password(credentials: ResetPasswordDto): Observable<any> {
     return this.client.post(
       'https://localhost:7064/api/User/Reset_Password',
+      credentials
+    );
+  }
+
+  // Register
+  public Register(credentials: RegisterDto): Observable<any> {
+    return this.client.post(
+      'https://localhost:7064/api/User/Register',
       credentials
     );
   }

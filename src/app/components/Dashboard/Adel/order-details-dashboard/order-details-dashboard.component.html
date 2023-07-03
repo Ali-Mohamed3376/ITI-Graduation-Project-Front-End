@@ -1,1 +1,43 @@
-<p>order-details-dashboard works!</p>
+<div class="container-fluid p-4">
+    <div class="row">
+        <table *ngIf="Order" class="table mt-5">
+            <tbody>
+                <tr>
+                    <th scope="col">#Id</th>
+                    <td>{{Order.id}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">User Name</th>
+                    <td routerLink="/dashboard/users/{{Order.userId}}">{{Order.userName}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Order Date</th>
+                    <td>{{Order.orderDate}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Order Status</th>
+                    <td>{{Order.orderStatus}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Delivery Date</th>
+                    <td>{{Order.deliverdDate}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Products</th>
+                    <td *ngFor="let item of Order.productsInOrder">
+                        <li>{{item.productName}}</li>
+                        <li>{{item.productPrice}}</li>
+                        <li>{{item.productImage}}</li>
+                        <li>{{item.quantity}}</li>
+                        <li>{{item.productModel}}</li>
+                        <li>{{item.productDescription}}</li>
+                        <hr>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-grid gap-2 d-md-block">
+            <a class="btn btn-primary" [routerLink]="['/dashboard/orders']">Back</a>
+        </div>
+    </div>
+</div>
