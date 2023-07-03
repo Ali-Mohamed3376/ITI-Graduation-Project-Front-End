@@ -81,6 +81,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     OrderDetailsDashboardComponent,
     ReviewsDashboardComponent,
     DashboardComponent,
+    
   ],
   imports: [
     BrowserModule,

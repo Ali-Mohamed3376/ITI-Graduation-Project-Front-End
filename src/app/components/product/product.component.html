@@ -9,6 +9,8 @@
 
 </div> -->
 
+
+
 <div class="container mt-50 mb-50">
   <div class="row">
     <div class="col-md-3 mt-2">
@@ -141,17 +143,17 @@
             </div>
             <div class="card-body bg-light text-center">
               <div class="mb-2">
-                <h6 class="font-weight-semibold mb-2">
+                <h4 class="font-weight-semibold mb-2">
                   <a
                     routerLink="/Products/{{ p.id }}"
                     class="text-default mb-2"
                     data-abc="true"
                     >{{ p.name }}</a
                   >
-                </h6>
+                </h4>
               </div>
-              <h3 class="mb-0 font-weight-semibold">${{ p.priceAfter }}</h3>
-              <h3 class="oldPrice">${{ p.price }}</h3>
+              <h4 class="mb-0 font-weight-semibold">${{ p.priceAfter }}</h4>
+              <h4 class="oldPrice">${{ p.price }}</h4>
               <div>
                 <p>
                   Rating :
@@ -196,6 +198,19 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="centered-message" *ngIf="noProductsMessage">
+  <div class="card card-msg">
+    <div class="card-body-msg">
+      <h5 class="card-title-msg">No Products Found</h5>
+      <p class="card-text-msg">{{ noProductsMessage }}</p>
     </div>
   </div>
 </div>

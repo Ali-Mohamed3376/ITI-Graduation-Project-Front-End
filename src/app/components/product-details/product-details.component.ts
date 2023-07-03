@@ -13,11 +13,14 @@ export class ProductDetailsComponent implements OnInit {
   ID = 0;
   product: any;
   relatedProducts: any;
+  ratingOptions = [1, 2, 3, 4, 5];
 
   constructor(myRoute: ActivatedRoute, public ProductDetailsService: ProductService) {
     this.ID = myRoute.snapshot.params["id"];
   }
 
+
+  
   ngOnInit(): void {
     this.ProductDetailsService.GetProductDetailsById(this.ID).subscribe({
       next: (data) => {
@@ -27,10 +30,6 @@ export class ProductDetailsComponent implements OnInit {
       error: (error) => { console.log(error) }
     });
   }
-
-
- 
-
 
 
 
@@ -66,13 +65,10 @@ export class ProductDetailsComponent implements OnInit {
       error: (err) => { console.log(err) }
     });
   }
-
-
  
 
 
-
-  openProductDetails(clickedProduct: any) {
+  openRelatedProductDetails(clickedProduct: any) {
     this.product.id = clickedProduct.id; // Assign the ID of the clicked product
     this.ProductDetailsService.GetProductDetailsById(this.product.id).subscribe({
       next: (data) => {
@@ -86,6 +82,23 @@ export class ProductDetailsComponent implements OnInit {
 
 
 
+  generateStars(avgRating: number): string[] {
+    const stars = [];
+    const roundedRating = Math.floor(avgRating);
+    const hasHalfStar = avgRating - roundedRating >= 0.5;
+
+    for (let i = 0; i < 5; i++) {
+      if (i < roundedRating) {
+        stars.push('full');
+      } else if (i === roundedRating && hasHalfStar) {
+        stars.push('half');
+      } else {
+        stars.push('empty');
+      }
+    }
+
+    return stars;
+  }
 
 
 

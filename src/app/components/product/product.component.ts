@@ -13,6 +13,7 @@ export class ProductComponent implements OnInit {
   products: ProductChildDto[]=[];
   brands: any;
   ratingOptions = [1, 2, 3, 4, 5];
+  noProductsMessage:any;
 
   // Selected filter options
   selectedBrandId!: number;
@@ -65,20 +66,30 @@ export class ProductComponent implements OnInit {
     return stars;
   }
 
-  applyFilters() {
-    var filterData = {
-      categotyId: this.selectedBrandId,
-      productName: "",
-      minPrice: this.selectedMinPrice || 0,
-      maxPrice: this.selectedMaxPrice || 0,
-      rating: this.selectedRating || 0
-    };
 
-    this.productService.filterProducts(filterData).subscribe({
-      
-      next: (data) => { this.products = data; },
-      error: (error) => { console.log(error); }
-    });
+
+applyFilters() {
+  var filterData = {
+    categotyId: this.selectedBrandId,
+    productName: "",
+    minPrice: this.selectedMinPrice || 0,
+    maxPrice: this.selectedMaxPrice || 0,
+    rating: this.selectedRating || 0
+  };
+
+this.productService.filterProducts(filterData).subscribe({
+  next: (data) => {
+    this.products = data;
+
+    if (data && data.length === 0) {
+      this.noProductsMessage = "No products found that match your requirements.";
+    } else {
+      this.noProductsMessage = "";
+    }
+  },
+  error: (error) => {
+    console.log(error);
   }
-} 
- 
+});
+}
+}
