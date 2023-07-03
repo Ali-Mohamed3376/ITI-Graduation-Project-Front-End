@@ -16,12 +16,12 @@
 </div> -->
 
 <!-- Nav V02 for User -->
-<header *ngIf="!isAdmin">
-  <nav class="navbar navbar-expand-lg nav-menu bg-secondary">
+<!-- <header *ngIf="!isAdmin">
+  <nav class="navbar navbar-expand-lg nav-menu bg-warning">
     <div class="container-fluid">
-      <!-- <a class="navbar-brand" routerLink="#"
-        ><img src="../../../assets/logoooo.jpeg" width="60" />
-      </a> -->
+      <a class="navbar-brand" routerLink="#"
+        ><img src="../../../assets/images/logooooo.png" width="60" />
+      </a>
       <button
         class="navbar-toggler"
         type="button"
@@ -85,78 +85,84 @@
       </div>
     </div>
   </nav>
-</header>
+</header> -->
 
 <!-- for Admin -->
-<header *ngIf="isAdmin">
+<header>
   <div class="px-3 py-2 text-bg-dark border-bottom">
     <div class="container">
-      <div
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-      >
-        <a
-          href="/"
-          class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"
-        >
-          <svg
-            class="bi me-2"
-            width="40"
-            height="32"
-            role="img"
-            aria-label="Bootstrap"
-          >
-            <use xlink:href="#bootstrap"></use>
-          </svg>
+      <div class="d-flex align-items-center justify-content-between">
+        <a class="navbar-brand" routerLink="#"
+          ><img src="../../../assets/images/logooooo.png" width="60" />
         </a>
-
-        <ul
-          class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small"
-        >
+        <ul class="nav col-12 col-lg-auto my-3 text-small">
           <li>
-            <a href="#" class="nav-link text-secondary">
-              <svg class="bi d-block mx-auto mb-1" width="24" height="24">
-                <use xlink:href="#home"></use>
-              </svg>
-              Home
-            </a>
+            <a routerLink="/" class="nav-link text-white"> Home </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi d-block mx-auto mb-1" width="24" height="24">
-                <use xlink:href="#speedometer2"></use>
-              </svg>
+            <a routerLink="/" class="nav-link text-white"> About </a>
+          </li>
+          <li>
+            <a routerLink="/" class="nav-link text-white"> Profile </a>
+          </li>
+          <li>
+            <a
+              routerLink="/"
+              class="nav-link text-white"
+              *ngIf="isUserLoggedIn && isAdmin"
+            >
               Dashboard
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi d-block mx-auto mb-1" width="24" height="24">
-                <use xlink:href="#table"></use>
-              </svg>
+            <a
+              routerLink="/"
+              class="nav-link text-white"
+              *ngIf="isUserLoggedIn && isAdmin"
+            >
               Orders
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi d-block mx-auto mb-1" width="24" height="24">
-                <use xlink:href="#grid"></use>
-              </svg>
-              Products
+            <a routerLink="/" class="nav-link text-white"> Products </a>
+          </li>
+          <li>
+            <a
+              routerLink="/"
+              class="nav-link text-white"
+              *ngIf="isUserLoggedIn && isAdmin"
+            >
+              Customers
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi d-block mx-auto mb-1" width="24" height="24">
-                <use xlink:href="#people-circle"></use>
-              </svg>
-              Customers
-            </a>
+            <a routerLink="/" class="nav-link text-white"> Cart </a>
+          </li>
+          <li class="nav-link" *ngIf="!isUserLoggedIn">
+            <a
+              id="loginBtn"
+              class="btn btn-primary"
+              routerLink="/Authentication/login"
+              routerLinkActive="active"
+              >Login</a
+            >
+          </li>
+          <li class="nav-link" *ngIf="!isUserLoggedIn">
+            <a
+              class="btn btn-success"
+              routerLink="/Authentication/register"
+              routerLinkActive="active"
+              >Register</a
+            >
+          </li>
+          <li class="nav-link" *ngIf="isUserLoggedIn">
+            <a class="btn btn-danger" (click)="LogOut()">Logout</a>
           </li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="px-3 py-2 border-bottom mb-3">
+  <!-- <div class="px-3 py-2 border-bottom mb-3">
     <div class="container d-flex flex-wrap justify-content-center">
       <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
         <input
@@ -165,7 +171,7 @@
           placeholder="Search..."
           aria-label="Search"
         />
-      </form>
+      </form> 
 
       <div class="text-end">
         <li class="nav-item m-3" *ngIf="!isUserLoggedIn">
@@ -190,5 +196,28 @@
         </li>
       </div>
     </div>
-  </div>
+  </div> -->
 </header>
+
+<!-- <mat-toolbar color="primary" class="mat-elevation-z2">
+  <a mat-button routerLink="/">Home</a>
+  <a mat-button routerLink="/about">About</a>
+  <a mat-button routerLink="/contact">Contact</a>
+
+  <span class="fill-remaining-space"></span>
+
+  <button mat-button routerLink="/login">Login</button>
+  <button mat-button routerLink="/register">Register</button>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item routerLink="/">Home</a>
+    <mat-divider></mat-divider>
+    <a mat-menu-item routerLink="/about">About</a>
+    <a mat-menu-item routerLink="/contact">Contact</a>
+    <a mat-menu-item routerLink="/login">Login</a>
+    <a mat-menu-item routerLink="/register">Register</a>
+  </mat-menu>
+</mat-toolbar> -->

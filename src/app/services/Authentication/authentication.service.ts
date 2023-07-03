@@ -13,6 +13,7 @@ import { TokenDto } from 'src/app/Dtos/user/TokenDto';
 export class AuthenticationService {
   // declear for logged state for subscripers
   public isLoggedIn$ = new BehaviorSubject<boolean>(false);
+  public isAdmin$ = new BehaviorSubject<boolean>(false);
 
   constructor(private client: HttpClient) {}
 
@@ -23,6 +24,9 @@ export class AuthenticationService {
       .pipe(
         tap((TokenDto) => {
           this.isLoggedIn$.next(true);
+          if (TokenDto.role === 'Admin') {
+            this.isAdmin$.next(true);
+          }
           localStorage.setItem('token', TokenDto.token);
           localStorage.setItem('role', TokenDto.role);
         })
