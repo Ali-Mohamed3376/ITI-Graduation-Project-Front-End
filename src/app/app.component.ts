@@ -15,5 +15,8 @@ export class AppComponent implements OnInit {
     if (localStorage.getItem('token')) {
       this.authService.isLoggedIn$.next(true);
     }
+    if (localStorage.getItem('role') == 'Admin') {
+      this.authService.isAdmin$.next(true);
+    }
   }
 }

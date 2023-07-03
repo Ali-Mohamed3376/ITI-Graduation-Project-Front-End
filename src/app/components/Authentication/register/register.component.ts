@@ -21,12 +21,13 @@ import { NgIf } from '@angular/common';
 })
 export class RegisterComponent {
   hide = true;
+  respomseError = '';
   constructor(
     private authService: AuthenticationService,
     private routerService: Router
   ) {}
 
-  //test
+  /*test
 
   email = new FormControl('', [Validators.required, Validators.email]);
 
@@ -38,16 +39,16 @@ export class RegisterComponent {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
-  //end test
+  */
 
   form = new FormGroup({
     fname: new FormControl<string>('', [
       Validators.required,
-      Validators.maxLength(7),
+      Validators.maxLength(15),
     ]),
     lname: new FormControl<string>('', [
       Validators.required,
-      Validators.maxLength(7),
+      Validators.maxLength(15),
     ]),
     email: new FormControl<string>('', [Validators.required, Validators.email]),
     password: new FormControl<string>('', [Validators.required]),
@@ -60,11 +61,14 @@ export class RegisterComponent {
     credentials.email = this.form.controls.email.value ?? '';
     credentials.password = this.form.controls.password.value ?? '';
 
-    this.authService.Register(credentials).subscribe((result: any) => {
-      console.log(result);
-    });
-
-    this.routerService.navigateByUrl('/Authentication/ConfirmEmail');
-    console.log(this.form.value);
+    this.authService.Register(credentials).subscribe(
+      (result: any) => {
+        console.log(result);
+        this.routerService.navigateByUrl('/Authentication/ConfirmEmail');
+      },
+      (r) => {
+        this.respomseError = r.error;
+      }
+    );
   }
 }
