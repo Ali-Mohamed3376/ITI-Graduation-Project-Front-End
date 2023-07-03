@@ -12,6 +12,10 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { AuthenticationGuardGuard } from './Guards/authentication.guard';
 import { AddUserComponent } from './components/Dashboard/Adel/add-user/add-user.component';
+import { OrderEditDashboardComponent } from './components/Dashboard/Adel/order-edit-dashboard/order-edit-dashboard.component';
+import { CategoriesComponent } from './components/Dashboard/Ahmed/categories/categories.component';
+import { AddCategoryComponent } from './components/Dashboard/Ahmed/add-category/add-category.component';
+import { EditCategoryComponent } from './components/Dashboard/Ahmed/edit-category/edit-category.component';
 
 const routes: Routes = [
   // Abdo
@@ -40,6 +44,10 @@ const routes: Routes = [
   { path: 'dashboard/register/admin', component: AddUserComponent },
   { path: 'dashboard/orders', component: OrdersDashboardComponent },
   { path: 'dashboard/orders/:id', component: OrderDetailsDashboardComponent },
+  { path: 'dashboard/edit/order/:id', component: OrderEditDashboardComponent },
+  { path: 'dashboard/categories', component: CategoriesComponent },
+  { path: 'dashboard/add/category', component: AddCategoryComponent },
+  { path: 'dashboard/categories/:id', component: EditCategoryComponent },
   // Reham Abdelrhman
   { path: 'Home', component: HomeComponent },
   { path: 'Products', component: ProductComponent },
