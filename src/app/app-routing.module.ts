@@ -21,8 +21,6 @@ import { EditAddressesComponent } from './components/User Profile/edit-addresses
 import { MainProfileComponent } from './components/User Profile/main-profile/main-profile.component';
 import { ChangePasswordComponent } from './components/User Profile/change-password/change-password.component';
 import { ProfileComponent } from './components/User Profile/profile/profile.component';
-import { AuthenticationGuardGuard } from './Guards/authentication.guard';
-import { OrdersComponent } from './components/User Profile/orders/orders.component';
 const routes: Routes = [
   // Abdo
   { path: '', component: HomeComponent },
