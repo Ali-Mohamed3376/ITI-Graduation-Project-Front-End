@@ -1,6 +1,11 @@
 <div class="container-fluid p-4">
     <div class="row">
         <table *ngIf="User" class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">User Data</th>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
                     <th scope="col">#Id</th>
@@ -20,8 +25,69 @@
                 </tr>
             </tbody>
         </table>
-        <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-primary" href="/dashboard/users">Back</a>
-        </div>
+    </div>
+    
+    <div class="row">
+        <table *ngIf="User" class="table mt-2">
+            <thead>
+                <tr>
+                    <th scope="col">User Addresses</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of User.userAddresses">
+                <tr>
+                    <th scope="col">#Id</th>
+                    <td>{{item.id}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">City</th>
+                    <td>{{item.city}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Street</th>
+                    <td>{{item.street}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Phone</th>
+                    <td>{{item.phone}}</td>
+                </tr>
+                <tr *ngIf="item.defaultAddress">
+                    <th scope="col"></th>
+                    <td>Default Address</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <table *ngIf="User" class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">User Orders</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of User.orders">
+                <tr>
+                    <th scope="col">#Id</th>
+                    <td routerLink="/dashboard/orders/{{item.id}}">{{item.id}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Order Date</th>
+                    <td>{{item.orderDate}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Order Status</th>
+                    <td>{{item.orderStatus}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Deliverd Date</th>
+                    <td>{{item.deliverdDate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-grid gap-2 d-md-block">
+        <a class="btn btn-primary" routerLink="/dashboard/users">Back</a>
     </div>
 </div>
