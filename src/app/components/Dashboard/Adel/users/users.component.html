@@ -1,6 +1,9 @@
-<div class="container-fluid p-4">
+<div class="container-fluid p-4 mt-5">
+    <div>
+        <a class="btn btn-primary" routerLink="/dashboard/register/admin">Register new Admin</a>
+    </div>
     <div class="row">
-        <table class="table mt-5">
+        <table class="table mt-3">
             <thead>
                 <tr>
                     <th scope="col">User Name</th>
@@ -16,7 +19,7 @@
                     <td>{{item.email}}</td>
                     <td>{{item.role}}</td>
                     <td>
-                        <a class="btn btn-info" [routerLink]="['/dashboard/users', item.id]">Details</a>
+                        <a class="btn btn-info" routerLink="/dashboard/users/{{item.id}}">Details</a>
                     </td>
                     <td>
                         <a class="btn btn-danger" (click)=confirmDelete(item.id)>Delete</a>

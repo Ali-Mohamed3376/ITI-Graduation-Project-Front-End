@@ -20,6 +20,7 @@ export class UserDetailsComponent {
     this.UserService.GetUserDetails(this.Id).subscribe({
       next: (data) => {
         this.User = data
+        console.log(data)
       },
       error: (error) => {
         console.log(error);

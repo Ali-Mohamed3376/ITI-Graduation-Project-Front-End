@@ -11,6 +11,7 @@ import { OrderDetailsDashboardComponent } from './components/Dashboard/Adel/orde
 import { ProductComponent } from './components/product/product.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { AuthenticationGuardGuard } from './Guards/authentication.guard';
+import { AddUserComponent } from './components/Dashboard/Adel/add-user/add-user.component';
 
 const routes: Routes = [
   // Abdo
@@ -36,6 +37,7 @@ const routes: Routes = [
   // Adel
   { path: 'dashboard/users', component: UsersComponent },
   { path: 'dashboard/users/:id', component: UserDetailsComponent },
+  { path: 'dashboard/register/admin', component: AddUserComponent },
   { path: 'dashboard/orders', component: OrdersDashboardComponent },
   { path: 'dashboard/orders/:id', component: OrderDetailsDashboardComponent },
   // Reham Abdelrhman

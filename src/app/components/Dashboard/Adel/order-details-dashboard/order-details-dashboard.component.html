@@ -8,7 +8,7 @@
                 </tr>
                 <tr>
                     <th scope="col">User Name</th>
-                    <td>{{Order.userName}}</td>
+                    <td routerLink="/dashboard/users/{{Order.userId}}">{{Order.userName}}</td>
                 </tr>
                 <tr>
                     <th scope="col">Order Date</th>
@@ -37,7 +37,7 @@
             </tbody>
         </table>
         <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-primary" href="/dashboard/orders">Back</a>
+            <a class="btn btn-primary" [routerLink]="['/dashboard/orders']">Back</a>
         </div>
     </div>
 </div>
