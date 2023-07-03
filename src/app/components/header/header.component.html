@@ -88,6 +88,7 @@
 </header> -->
 
 <!-- for Admin -->
+
 <header>
   <div class="px-3 py-2 text-bg-dark border-bottom">
     <div class="container">
@@ -95,6 +96,20 @@
         <a class="navbar-brand" routerLink="#"
           ><img src="../../../assets/images/logooooo.png" width="60" />
         </a>
+        <form class="search-form" (submit)="onSubmit()">
+          <input
+            type="text"
+            placeholder="Search..."
+            [(ngModel)]="searchTerm"
+            name="searchTerm"
+          />
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+        <mat-form-field appearance="fill">
+          <mat-label>Search countries by name</mat-label>
+          <input matInput [(ngModel)]="searchTerm" />
+          <mat-icon matPrefix>search</mat-icon>
+        </mat-form-field>
         <ul class="nav col-12 col-lg-auto my-3 text-small">
           <li>
             <a routerLink="/" class="nav-link text-white"> Home </a>

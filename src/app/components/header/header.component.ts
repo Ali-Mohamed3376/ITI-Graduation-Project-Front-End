@@ -26,4 +26,13 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     window.location.reload();
   }
+
+  // search bar using Angular
+  searchTermAngular = '';
+  // serch bar
+  searchTerm: string = '';
+  onSubmit() {
+    console.log('Searching By BootStrap', this.searchTerm);
+    console.log('Searching By Angular', this.searchTermAngular);
+  }
 }
