@@ -1,2 +1,17 @@
+<div class="container d-flex justify-content-space-between ">
+<div class="col-lg-3 m-0 p-0">
 <app-profile></app-profile>
-<p>main-profile works!</p>
+</div>
+<div class="col-lg-8"*ngIf="user">
+    <h1 class="align-content-center">Welcome {{user.fname}}!</h1>
+    <form class="d-flex justify-content-space-between">
+        <input class="form-control p-3 m-3" type="text" placeholder="{{user.email}}" aria-label="Disabled input example" disabled>
+        <input #fname class="form-control p-3 m-3" type="text" value="{{user.fname}}" >
+        <input #lname class="form-control p-3 m-3" type="text" value="{{user.lname}}" >
+        <button class="btn btn-primary m-3" (click)="update(fname.value,lname.value)">Update</button>
+        <button class="btn btn-danger m-3"(click)="delete()">Delete Account</button>
+    <button class="btn btn-success m-3"routerLink="/Change-password">Change Password</button>
+    </form>
+
+</div>
+</div>

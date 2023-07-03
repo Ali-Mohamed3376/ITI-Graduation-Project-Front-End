@@ -1,15 +1,20 @@
-<div class="d-flex justify-content-space-between ms-0 mt-0 me-5 pe-5">
-    <aside>
+<div class="container d-flex justify-content-center ">
+<div class="col-lg-3 m-0 p-0">
     <app-profile></app-profile>
-    </aside>
-<div class="container ms-5 ps-5 pe-0">
-    <div class="col-lg-8 col-md-8 col-sm-8 d-flex" id="Fcol">
-        <div>
-            <p>Card 1 </p>
+</div>
+    <div class="col-lg-8" >
+        <div let *ngFor="let o of orders">
+            <div class="card m-3" style="width: 18rem;"routerLink="/Order/Details/{{o.id}}">
+                <img  *ngFor="let p of o.products"src="{{p.image}}" class="card-img-top">
+                <div class="card-body">
+                  <p class="m-3 px-3">{{o.id}}</p>
+                  <p class="m-3 px-3">{{o.orderStatus}}</p>
+                  <p class="m-3 px-3">{{o.deliverdDate}}</p>
+                  <p *ngFor="let p of o.products" class="px-3">{{p.title}}</p>
+                </div>
+              </div>
         </div>
-        <div>
-            <p>Card 2</p>
-        </div>
+        
     </div>
 </div>
-</div>
+
