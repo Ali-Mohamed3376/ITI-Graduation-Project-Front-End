@@ -17,7 +17,7 @@ export class AddUserComponent {
   RegisterError: any;
   IsRegisterd: any;
 
-  constructor(private authService: UserService, private routerService: Router) { }
+  constructor(private userService: UserService, private routerService: Router) { }
 
   form = new FormGroup({
     fname: new FormControl<string>('', [
@@ -39,7 +39,7 @@ export class AddUserComponent {
     credentials.email = this.form.controls.email.value ?? '';
     credentials.password = this.form.controls.password.value ?? '';
 
-    this.authService.AddAdmin(credentials).subscribe({
+    this.userService.AddAdmin(credentials).subscribe({
       next: () => {
         this.routerService.navigateByUrl('/dashboard/users');
       },

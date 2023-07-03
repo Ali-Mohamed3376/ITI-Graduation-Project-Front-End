@@ -1,1 +1,8 @@
-<p>edit-addresses works!</p>
+<div class="col-lg-8"*ngIf="address">
+    <div class="d-flex justify-content-space-between">
+        <input #city class="form-control p-3 m-3" type="text" value="{{address.city}}" >
+        <input #street class="form-control p-3 m-3" type="text" value="{{address.street}}" placeholder="street">
+        <input #phone class="form-control p-3 m-3" type="text" value="{{address.phone}}" placeholder="phone">
+    </div>
+    <button class="btn btn-primary"(click)="update(city.value,street.value,phone.value)">update</button>
+</div>

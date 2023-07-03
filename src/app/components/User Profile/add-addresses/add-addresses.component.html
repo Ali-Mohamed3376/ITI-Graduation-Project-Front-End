@@ -1,1 +1,10 @@
-<p>add-addresses works!</p>
+<div class="col-lg-8"*ngIf="address">
+    <form class="d-flex justify-content-space-between">
+        <input #city class="form-control p-3 m-3" type="text" placeholder="city" value="{{address.city}}">
+        <input #street class="form-control p-3 m-3" type="text" placeholder="street" value="{{address.street}}">
+        <input #phone class="form-control p-3 m-3" type="text" placeholder="phone" value="{{address.phone}}">
+
+
+    </form>
+    <button class="btn btn-primary"(click)="add(city.value,street.value,phone.value)">add</button>
+</div>

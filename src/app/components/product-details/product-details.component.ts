@@ -20,7 +20,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
 
-  
+
   ngOnInit(): void {
     this.ProductDetailsService.GetProductDetailsById(this.ID).subscribe({
       next: (data) => {
@@ -61,7 +61,12 @@ export class ProductDetailsComponent implements OnInit {
 
   fetchRelatedProducts(brand: string) {
     this.ProductDetailsService.GetRelatedProducts(brand).subscribe({
-      next: (RelatedData) => { this.relatedProducts = RelatedData },
+      next: (RelatedData) => {
+
+         this.relatedProducts = RelatedData;
+
+         this.relatedProducts = this.relatedProducts.filter((product:any) => product.id != this.product.id);
+         },
       error: (err) => { console.log(err) }
     });
   }
@@ -73,6 +78,7 @@ export class ProductDetailsComponent implements OnInit {
     this.ProductDetailsService.GetProductDetailsById(this.product.id).subscribe({
       next: (data) => {
         this.product = data;
+        this.fetchRelatedProducts(this.product.categoryName) ;
       },
       error: (error) => { console.log(error) }
     });

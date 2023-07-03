@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { CartProduct,AddProductToCart,EditProductQuantity } from 'src/app/Dtos/Cart/cart';
+import { CartProduct,AddProductToCart,EditProductQuantity, API } from 'src/app/Dtos/Cart/cart';
 import { EditProductComponent } from 'src/app/components/Dashboard/Ahmed/edit-product/edit-product.component';
 
 @Injectable({
