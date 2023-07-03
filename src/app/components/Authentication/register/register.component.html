@@ -1,5 +1,8 @@
 <!-- bootstrap version -->
 <div class="container mt-sm-5 mb-sm-5 w-50 h-100">
+  <div *ngIf="respomseError" class="text-center text-danger fs-2">
+    <p>{{ respomseError }}</p>
+  </div>
   <form [formGroup]="form">
     <div class="form-group mt-sm-3">
       <label for="first-name" class="fs-5 mb-sm-2">First Name</label>
@@ -25,7 +28,7 @@
           *ngIf="form.get('fname')?.hasError('maxlength')"
           class="text-danger"
         >
-          Max length for First Name is 7 characters.
+          Max length for First Name is 15 characters.
         </div>
       </div>
     </div>
@@ -53,7 +56,7 @@
           *ngIf="form.get('lname')?.hasError('maxlength')"
           class="text-danger"
         >
-          Max length for Last Name is 7 characters.
+          Max length for Last Name is 15 characters.
         </div>
       </div>
     </div>
