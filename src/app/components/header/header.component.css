@@ -13,3 +13,19 @@
 .navbar button[aria-expanded="false"] {
   box-shadow: none;
 }
+
+mat-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 600px) {
+  .fill-remaining-space {
+    display: none;
+  }
+}

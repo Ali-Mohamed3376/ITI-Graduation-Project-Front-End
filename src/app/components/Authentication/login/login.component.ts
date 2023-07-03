@@ -12,6 +12,8 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
 export class LoginComponent {
   hide = true;
   respomseError: string = '';
+  showComponent = false;
+
   constructor(
     private authService: AuthenticationService,
     private routeService: Router
