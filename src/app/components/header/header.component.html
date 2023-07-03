@@ -124,11 +124,11 @@
             </a>
           </li>
           <li>
-            <a routerLink="/" class="nav-link text-white"> Products </a>
+            <a routerLink="/Products" class="nav-link text-white"> Products </a>
           </li>
           <li>
             <a
-              routerLink="/"
+              routerLink="/dashboard/users"
               class="nav-link text-white"
               *ngIf="isUserLoggedIn && isAdmin"
             >
@@ -136,7 +136,7 @@
             </a>
           </li>
           <li>
-            <a routerLink="/" class="nav-link text-white"> Cart </a>
+            <a routerLink="/cart" class="nav-link text-white"> Cart </a>
           </li>
           <li class="nav-link" *ngIf="!isUserLoggedIn">
             <a

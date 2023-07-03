@@ -44,11 +44,11 @@ export class RegisterComponent {
   form = new FormGroup({
     fname: new FormControl<string>('', [
       Validators.required,
-      Validators.maxLength(7),
+      Validators.maxLength(15),
     ]),
     lname: new FormControl<string>('', [
       Validators.required,
-      Validators.maxLength(7),
+      Validators.maxLength(15),
     ]),
     email: new FormControl<string>('', [Validators.required, Validators.email]),
     password: new FormControl<string>('', [Validators.required]),

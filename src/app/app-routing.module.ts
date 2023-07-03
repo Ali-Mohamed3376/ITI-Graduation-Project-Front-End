@@ -10,13 +10,17 @@ import { OrdersDashboardComponent } from './components/Dashboard/Adel/orders-das
 import { OrderDetailsDashboardComponent } from './components/Dashboard/Adel/order-details-dashboard/order-details-dashboard.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { AuthenticationGuardGuard } from './Guards/authentication.guard';
 
 const routes: Routes = [
   // Abdo
   { path: '', component: HomeComponent },
-  { path: 'cart', component: CartComponent },
+  {
+    path: 'cart',
+    canActivate: [AuthenticationGuardGuard],
+    component: CartComponent,
+  },
   { path: 'checkout', component: CheckoutComponent },
-
 
   // Ali
 
@@ -35,9 +39,9 @@ const routes: Routes = [
   { path: 'dashboard/orders', component: OrdersDashboardComponent },
   { path: 'dashboard/orders/:id', component: OrderDetailsDashboardComponent },
   // Reham Abdelrhman
-  { path: "Home", component: HomeComponent },
-  { path: "Products", component: ProductComponent },
-  { path: "Products/:id", component: ProductDetailsComponent },
+  { path: 'Home', component: HomeComponent },
+  { path: 'Products', component: ProductComponent },
+  { path: 'Products/:id', component: ProductDetailsComponent },
 
   // Reham Sayed
 
@@ -48,4 +52,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
