@@ -1,5 +1,4 @@
 import { Component} from '@angular/core';
-import { LoginDto } from 'src/app/Dtos/user/LoginDto';
 import { ChangePasswordDto } from 'src/app/Dtos/user/ChangePasswordDto';
 import { UserProfileService } from 'src/app/services/User Profile/user-profile.service';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
