@@ -21,30 +21,50 @@ export class CartComponent implements OnInit {
   {
     this.cartService.getAllProductsInCart().subscribe({
       next:(data)=>{
-        this.cartProducts=data;
+        console.log("next");
+        this.cartProducts=data   ;
         console.log(this.cartProducts);
         for(let product of this.cartProducts)
         {
           this.totalPrice+=product.price*product.quantity;
         }
+        console.log(this.totalPrice);
+        
       },
-      error:(error)=>{console.log(error)}
+      error:(error)=>
+      {
+        console.log("error");
+        console.log(error);
+      }
     });
   }
 
+ CalculateTotalPrice()
+ {
+    this.totalPrice=0;
+    for(let product of this.cartProducts)
+    {
+      this.totalPrice+=product.price*product.quantity;
+    }
+    console.log(this.totalPrice);
+ }
   DeleteFromCart(id: number) 
   {
     this.cartService.DeleteProductFromCart(id).subscribe({
       next:(data)=>
       {
+        console.log("next");
         this.cartProducts = this.cartProducts.filter((product:CartProduct) => product.id !== id);
         console.log(data);
+        this.CalculateTotalPrice();
 
 
       },
       error:(error)=>{
+        console.log("error");
         console.log(error);
-        this.cartProducts = this.cartProducts.filter((product:CartProduct) => product.id !== id);
+        this.cartProducts = this.cartProducts.filter((product:CartProduct) => product.id !== id);      
+        this.CalculateTotalPrice();
 
       }
     });
@@ -59,14 +79,24 @@ export class CartComponent implements OnInit {
     this.cartService.EditProductQuantity(product).subscribe({
       next:(data)=>
       {
+        console.log("next");
         console.log(data);
+        this.CalculateTotalPrice();
+
       },
-      error:(error)=>{console.log(error)}
+      error:(error)=>{
+        console.log("error");
+        console.log(error);
+        this.CalculateTotalPrice();
+      }
+
     });
   }
 
   
-
+//abdo
+//test again
+//test github desktop
   
 }
 

@@ -1,5 +1,11 @@
 
 //import * as cuid from "cuid";
+export interface API{
+    message:string,
+    statusCode:number,
+    data:any,
+    Success:boolean
+}
 export interface CartProduct{
     id:number,
     name:string,

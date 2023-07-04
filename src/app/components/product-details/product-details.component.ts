@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { API, AddProductToCart } from 'src/app/Dtos/Cart/cart';
+import { CartService } from 'src/app/services/Cart/cart.service';
 import { ProductService } from 'src/app/services/Product/product.service';
 
 @Component({
@@ -14,8 +16,9 @@ export class ProductDetailsComponent implements OnInit {
   product: any;
   relatedProducts: any;
   ratingOptions = [1, 2, 3, 4, 5];
+  ProductQuantity:number=1;
 
-  constructor(myRoute: ActivatedRoute, public ProductDetailsService: ProductService) {
+  constructor(myRoute: ActivatedRoute, public ProductDetailsService: ProductService , public cartService:CartService) {
     this.ID = myRoute.snapshot.params["id"];
   }
 
@@ -106,6 +109,37 @@ export class ProductDetailsComponent implements OnInit {
     return stars;
   }
 
+
+  AddProductToUserCart()
+  {
+    console.log(this.ProductQuantity);
+    let productToAddToCart = new AddProductToCart();
+    productToAddToCart.quantity=this.ProductQuantity;
+    productToAddToCart.productId=this.product.id;
+
+    this.cartService.AddProductToCart(productToAddToCart).subscribe(
+      {
+        next:(data)=>{
+          console.log("next");
+          console.log(data);
+          var message = data as any // data come here as object we cannot call data.message
+
+          alert(message.message);
+
+
+        },
+        error:(error)=>{
+          console.log("error");
+          console.log(error);
+          alert("Failed to Add to cart");
+
+
+        }
+
+      }
+    );
+
+  }
 
 
 
