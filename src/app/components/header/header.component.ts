@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductChildDto } from 'src/app/Dtos/Product/ProductChildDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { ProductService } from 'src/app/services/Product/product.service';
@@ -16,7 +18,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    private productServic: ProductService
+    private productServic: ProductService,
+    private routerService: Router
   ) {}
 
   ngOnInit(): void {
@@ -33,20 +36,13 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     window.location.reload();
   }
+  form = new FormGroup({
+    searchTerm: new FormControl<string>('', [Validators.required]),
+  });
 
   // serch bar
-  searchTerm: string = '';
-  onSubmit() {
-    this.productServic.Search(this.searchTerm).subscribe({
-      next: (data) => {
-        if (data && data.length === 0) {
-          this.noProductsMessage =
-            'No products found that match your requirements.';
-        } else {
-          this.noProductsMessage = '';
-        }
-      },
-      error: (error) => {},
-    });
+  onSearch() {
+    var filter = this.form.controls.searchTerm.value ?? '';
+    this.routerService.navigateByUrl(`/Products?q=${filter}`);
   }
 }

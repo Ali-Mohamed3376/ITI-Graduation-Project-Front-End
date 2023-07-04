@@ -96,14 +96,17 @@
         <a class="navbar-brand" routerLink="#"
           ><img src="../../../assets/images/logooooo.png" width="60" />
         </a>
-        <form class="search-form" (submit)="onSubmit()">
-          <input
-            type="text"
-            placeholder="Search..."
-            [(ngModel)]="searchTerm"
-            name="searchTerm"
-          />
-          <button class="btn btn-primary" type="submit">Search</button>
+        <form [formGroup]="form">
+          <div class="mb-sm-2 col-sm-12">
+            <input
+              type="text"
+              placeholder="Search by product name..."
+              formControlName="searchTerm"
+            />
+          </div>
+          <div class="col-sm-12">
+            <button class="btn btn-primary" (click)="onSearch()">Search</button>
+          </div>
         </form>
         <ul class="nav col-12 col-lg-auto my-3 text-small">
           <li>

@@ -118,7 +118,6 @@ import { OrderEditDashboardComponent } from './components/Dashboard/Adel/order-e
     ReviewsDashboardComponent,
     DashboardComponent,
     OrderEditDashboardComponent,
-    
   ],
   imports: [
     BrowserModule,
