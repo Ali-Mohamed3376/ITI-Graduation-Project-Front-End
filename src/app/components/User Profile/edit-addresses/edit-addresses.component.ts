@@ -18,16 +18,16 @@ export class EditAddressesComponent {
   })
   }
   
-  update(city:any, street:any, phone:any) {
+  update(id:any,city:any, street:any, phone:any) {
     let updatedA = {city,street,phone};
     this.service.EditUserAddress(updatedA).subscribe(
       {
         next:()=>{
-          this.address=updatedA;
+          this.address[id]=updatedA;
+          console.log(updatedA);
         },
         error:(err)=>{console.log(err)}
       }
     ); 
-    window.location.reload(); 
   }
 }

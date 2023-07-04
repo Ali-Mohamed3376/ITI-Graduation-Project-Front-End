@@ -31,9 +31,9 @@ export class UserProfileService {
   {
     return this.myClient.get<string[]>('https://localhost:7064/api/UserProfile/orders');
   }
-  public getOrderDetails(id:any)
+  public getOrderDetails(id:any):Observable<string[]>
   {
-    return this.myClient.get('https://localhost:7064/api/UserProfile/orderDetails/'+id);
+    return this.myClient.get<string[]>('https://localhost:7064/api/UserProfile/orderDetails/'+id);
   }
 
   public getUserAddress():Observable<string[]>
