@@ -18,6 +18,7 @@ ngOnInit(): void {
       next:(data)=>{
         console.log("hi");
         this.details=data;
+        console.log(data);
       },
       error:(err)=>{console.log(err)}
     }

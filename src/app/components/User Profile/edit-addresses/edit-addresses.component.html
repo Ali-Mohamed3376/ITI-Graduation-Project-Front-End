@@ -4,5 +4,5 @@
         <input #street class="form-control p-3 m-3" type="text" value="{{address.street}}" placeholder="street">
         <input #phone class="form-control p-3 m-3" type="text" value="{{address.phone}}" placeholder="phone">
     </div>
-    <button class="btn btn-primary"(click)="update(city.value,street.value,phone.value)">update</button>
+    <button class="btn btn-primary"(click)="update(address.id,city.value,street.value,phone.value)">update</button>
 </div>

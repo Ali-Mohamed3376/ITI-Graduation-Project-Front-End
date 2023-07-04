@@ -18,9 +18,6 @@ form=new FormGroup({
 })
 change(){
 var credentials=new ChangePasswordDto();
-console.log(this.form.controls.oldPassword.value)
-console.log(this.form.controls.newPassword.value)
-
 credentials.OldPassword=this.form.controls.oldPassword.value??'';
 credentials.NewPassword=this.form.controls.newPassword.value??'';
 console.log(credentials)
@@ -31,6 +28,7 @@ this.service.changePassword(credentials).subscribe((result : any) => {
   console.log(e.error)
 
 });
+
 }
 }
 
