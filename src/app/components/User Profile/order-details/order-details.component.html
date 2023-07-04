@@ -1,6 +1,13 @@
-<div *ngFor="let f of details">
-<p>Title:{{f.title}}</p>
-<a routerLink="/Products/{{f. product_Id}}">image{{f.image}}</a>
-<p>quantity:{{f.quantity}}</p>
-<p>price:{{f.price}}</p>
+<div *ngIf="details">
+    <div *ngFor="let p of details.orderProducts">
+        <p>{{p.title}}</p>
+        <p>{{p.quantity}}</p>
+        <p>{{p.price}}</p>
+
+    </div>
+   <div *ngIf="details.orderAddress">
+        <p>{{details.orderAddress.city}}</p>
+
+    </div>
+    <p>{{totalp}}</p>
 </div>
