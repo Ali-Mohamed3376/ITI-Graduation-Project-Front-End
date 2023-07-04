@@ -1,5 +1,6 @@
+import { OrderStatusEnum } from "./OrderStatusEnum";
+
 export class OrderEditDto{
         id = 0;
-        orderStatus = -1;
-        deliverdDate: Date = new Date();
+        orderStatus : OrderStatusEnum = 0;
 }

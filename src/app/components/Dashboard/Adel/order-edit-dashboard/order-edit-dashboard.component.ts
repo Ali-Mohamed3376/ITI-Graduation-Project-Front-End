@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderEditDto } from 'src/app/Dtos/Dashboard/OrderEditDto';
+import { OrderStatusEnum } from 'src/app/Dtos/Dashboard/OrderStatusEnum';
 import { OrderService } from 'src/app/services/Dashboard/order.service';
 
 @Component({
@@ -10,12 +11,9 @@ import { OrderService } from 'src/app/services/Dashboard/order.service';
   styleUrls: ['./order-edit-dashboard.component.css'],
 })
 export class OrderEditDashboardComponent implements OnInit {
-  selected = 0;
   Id: any;
-  Order: any;
-  EditError: any;
-  // dateControl: FormControl = new FormControl();
-  // defaultDate: Date = new Date();
+  enumValues = Object.keys(OrderStatusEnum);
+  selectedValue :any;
 
   constructor(
     private readonly orderService: OrderService,
@@ -24,35 +22,22 @@ export class OrderEditDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.dateControl.setValue(this.defaultDate);
-
     this.Id = this.route.snapshot.params['id'];
-    this.orderService.GetOrderDetails(this.Id).subscribe({
-      next: (data) => {
-        this.Order = data;
-        this.selected = this.Order.orderStatus;
-        // this.dateControl.setValue(new Date(this.Order.deliverdDate));
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    console.log(this.enumValues);
   }
 
   EditOrder() {
     var credentials = new OrderEditDto();
     credentials.id = this.Id;
-    credentials.orderStatus = this.selected
-    credentials.deliverdDate = new Date(Date.now());
+    credentials.orderStatus = this.selectedValue
 
     console.log(credentials);
 
     this.orderService.EditOrder(credentials).subscribe({
       next: () => {
-        // this.routerService.navigateByUrl('/dashboard/orders/' + this.Id);
+        this.routerService.navigateByUrl('/dashboard/orders/' + this.Id);
       },
       error: (error) => {
-        this.EditError = error;
         console.log(error);
       },
     });
