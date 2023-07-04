@@ -8,9 +8,17 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { VerifyCodeComponent } from './verify-code/verify-code.component';
 import { RegisterComponent } from './register/register.component';
 import { ConfirmationAfterRegisterComponent } from './confirmation-after-register/confirmation-after-register.component';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 @NgModule({
-  declarations: [NewPasswordComponent, ForgetPasswordComponent, VerifyCodeComponent, RegisterComponent, ConfirmationAfterRegisterComponent],
+  declarations: [
+    NewPasswordComponent,
+    ForgetPasswordComponent,
+    VerifyCodeComponent,
+    RegisterComponent,
+    ConfirmationAfterRegisterComponent,
+    SpinnerComponent,
+  ],
   imports: [CommonModule, AuthenticationRoutingModule, ReactiveFormsModule],
 })
 export class AuthenticationModule {}

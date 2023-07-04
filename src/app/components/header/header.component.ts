@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductChildDto } from 'src/app/Dtos/Product/ProductChildDto';
@@ -36,6 +36,9 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     window.location.reload();
   }
+
+  /*
+
   form = new FormGroup({
     searchTerm: new FormControl<string>('', [Validators.required]),
   });
@@ -44,5 +47,11 @@ export class HeaderComponent implements OnInit {
   onSearch() {
     var filter = this.form.controls.searchTerm.value ?? '';
     this.routerService.navigateByUrl(`/Products?q=${filter}`);
+  }
+  */
+  // test search by InterKey
+  onEnterKey(e: any) {
+    console.log(e);
+    this.routerService.navigateByUrl(`/Products?q=${e}`);
   }
 }
