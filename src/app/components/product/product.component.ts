@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
   selectedMinPrice!: any;
   selectedMaxPrice!: any;
   selectedRating!: any;
-  productName: string = 'default';
+  productName: string = '';
 
   constructor(
     private productService: ProductService,
@@ -33,7 +33,6 @@ export class ProductComponent implements OnInit {
     this.routeLink.queryParams.subscribe((params) => {
       if (params['q'] || params['q'] == '') {
         this.productName = params['q'];
-        console.log(this.productName + ' inside');
       }
       this.applyFilters();
     });
