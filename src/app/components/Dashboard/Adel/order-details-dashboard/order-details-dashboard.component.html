@@ -16,14 +16,17 @@
                                 <p class="card-text"><strong>User Name:</strong> {{Order.userName}}</p>
                                 <p class="card-text"><strong>Address:</strong> {{Order.city}} / {{Order.street}}</p>
                                 <p class="card-text"><strong>Phone:</strong> {{Order.phone}}</p>
+                                <p class="card-text"><strong>Products:</strong> {{Order.productCount}}</p>
+                                <p class="card-text"><strong>Total Price:</strong> {{Order.totalPrice}}</p>
                             </td>
                             <td class="w-40">
                                 <p class="card-text"><strong>Date:</strong> {{Order.formattedCreationDate}}</p>
                                 <p class="card-text"><strong>Status:</strong> {{Order.orderStatus}}</p>
                                 <p class="card-text"><strong>Delivered Date:</strong>
                                     {{Order.formattedDeliveredDate}}</p>
-                                <a class="btn btn-primary purple" routerLink="/dashboard/edit/order/{{Order.id}}">Edit
-                                    Status</a>
+                                <!-- <a class="btn btn-primary logocolor" routerLink="/dashboard/edit/order/{{Order.id}}">Edit Status</a> -->
+                                <a class="btn btn-primary logocolor" (click)="openPopup()">Edit Status</a>
+
                             </td>
                         </tr>
                     </tbody>
@@ -42,7 +45,7 @@
                         <p class="card-text">Price: {{item.quantity}} * {{item.productPrice - (item.productPrice *
                             (item.discount/100))}} = {{item.quantity * (item.productPrice - (item.productPrice *
                             (item.discount/100)))}}</p>
-                        <a class="btn btn-primary blue" routerLink="/dashboard/products/{{item.productId}}">Product
+                        <a class="btn btn-primary lightcolor" routerLink="/dashboard/products/{{item.productId}}">Product
                             Details</a>
                     </div>
                 </div>
@@ -51,6 +54,6 @@
     </div>
 
     <div class="d-grid gap-2 d-md-block">
-        <a class="btn btn-primary" routerLink="/dashboard/orders">Go To Orders</a>
+        <a class="btn btn-primary logocolor" routerLink="/dashboard/orders">Go To Orders</a>
     </div>
 </div>
