@@ -114,8 +114,8 @@ this.productService.GetFilteredProductsInPagination(filterData,page,this.countPe
     this.totalCount=data.totalCount,
     this.page=page
     this.filterWork=true;
-
-        if (data && data.length === 0) {
+console.log(data)
+        if ( data.totalCount === 0) {
           this.noProductsMessage =
             'No products found that match your requirements.';
         } else {
