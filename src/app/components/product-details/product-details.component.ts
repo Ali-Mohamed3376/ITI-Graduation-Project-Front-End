@@ -125,6 +125,8 @@ export class ProductDetailsComponent implements OnInit {
           var message = data as any // data come here as object we cannot call data.message
 
           alert(message.message);
+          this.cartService.getCartProductsCounter();
+
 
 
         },
@@ -132,6 +134,8 @@ export class ProductDetailsComponent implements OnInit {
           console.log("error");
           console.log(error);
           alert("Failed to Add to cart");
+          this.cartService.getCartProductsCounter();
+
 
 
         }

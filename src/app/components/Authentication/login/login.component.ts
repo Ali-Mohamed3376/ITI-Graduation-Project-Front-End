@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginDto } from 'src/app/Dtos/user/LoginDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
+import { CartService } from 'src/app/services/Cart/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthenticationService,
-    private routeService: Router
+    private routeService: Router,
+    private cartService:CartService
   ) {}
 
   form = new FormGroup({
@@ -35,6 +37,8 @@ export class LoginComponent {
     this.authService.Login(credentials).subscribe(
       (TokenDto) => {
         console.log(TokenDto);
+        this.cartService.getCartProductsCounter();
+
 
         // Make Any Logic Like Redirect user to any page like home
         this.routeService.navigateByUrl('/');

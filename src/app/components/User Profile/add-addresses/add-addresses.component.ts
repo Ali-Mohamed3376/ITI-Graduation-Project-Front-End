@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserProfileService } from 'src/app/services/User Profile/user-profile.service';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-addresses',
   templateUrl: './add-addresses.component.html',
@@ -8,7 +9,7 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
 })
 export class AddAddressesComponent {
   address:any;
-  constructor(public service:UserProfileService, public auth:AuthenticationService){
+  constructor(public service:UserProfileService, public auth:AuthenticationService,private router: Router){
    this.service.getUserAddress().subscribe({
      next:(data)=>{
        console.log(data)
@@ -20,5 +21,7 @@ export class AddAddressesComponent {
   add(city:any,street:any,phone:any){
     let newad={city,street,phone};
      this.service.addAddress(newad).subscribe();
+     this.router.navigateByUrl('/Address');
+    
    }
 }

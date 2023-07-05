@@ -11,6 +11,7 @@ export class CartService {
 
   constructor(private myClient:HttpClient){}
   private baseUrl ="";
+  public cartCounter$=new BehaviorSubject<number>(0);
   
   getAllProductsInCart()
   {
@@ -29,6 +30,16 @@ export class CartService {
   DeleteProductFromCart(id:number)
   {
     return this.myClient.delete(`https://localhost:7064/api/UserProductsCart/DeleteProduct/${id}`);
+  }
+
+  getCartProductsCounter()
+  {
+      let counter = this.myClient.get<number>("https://localhost:7064/api/UserProductsCart/counter");
+      counter.subscribe((data)=>{
+          console.log(data);
+          this.cartCounter$.next(data);
+      })
+      
   }
   
 

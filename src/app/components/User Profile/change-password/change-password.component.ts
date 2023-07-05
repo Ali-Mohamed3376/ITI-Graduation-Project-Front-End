@@ -1,9 +1,9 @@
 import { Component} from '@angular/core';
-import { LoginDto } from 'src/app/Dtos/user/LoginDto';
 import { ChangePasswordDto } from 'src/app/Dtos/user/ChangePasswordDto';
 import { UserProfileService } from 'src/app/services/User Profile/user-profile.service';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { LoginDto } from 'src/app/Dtos/user/LoginDto';
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -11,6 +11,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ChangePasswordComponent {
 constructor(public service:UserProfileService,public auth:AuthenticationService){}
+pass=new LoginDto();
+checkk=this.pass.password;
 form=new FormGroup({
   oldPassword:new FormControl<string>(''),
   newPassword:new FormControl<string>(''),
@@ -30,6 +32,14 @@ this.service.changePassword(credentials).subscribe((result : any) => {
 });
 
 }
+check(){
+  var pass=new LoginDto();
+  if (this.form.controls.oldPassword.value!=pass.password){
+    this.checkk='false';
+  }
+
+}
+
 }
 
 

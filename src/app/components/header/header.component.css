@@ -23,6 +23,30 @@ mat-toolbar {
 .fill-remaining-space {
   flex: 1 1 auto;
 }
+/* abdo cart */
+ul li a.cart {
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+
+}
+
+ul li a.cart:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+ul li a.cart .cart-basket {
+  font-size: .6rem;
+  position: absolute;
+  top: -12px;
+  right: -5px;
+  width: 15px;
+  height: 15px;
+  color: #fff;
+  background-color: #418deb;
+  border-radius: 50%;
+}
 
 @media (max-width: 600px) {
   .fill-remaining-space {

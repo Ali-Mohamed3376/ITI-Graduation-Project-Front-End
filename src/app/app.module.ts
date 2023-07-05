@@ -79,6 +79,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { OrdersComponent } from './components/User Profile/orders/orders.component';
 import { OrderEditDashboardComponent } from './components/Dashboard/Adel/order-edit-dashboard/order-edit-dashboard.component';
+import { LoadingInterceptor } from './Interceptors/loading.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -163,11 +165,17 @@ import { OrderEditDashboardComponent } from './components/Dashboard/Adel/order-e
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    NgxSpinnerModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
       multi: true,
     },
   ],

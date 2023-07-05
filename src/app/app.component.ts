@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './services/Authentication/authentication.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,10 @@ import { AuthenticationService } from './services/Authentication/authentication.
 export class AppComponent implements OnInit {
   title = 'Final-Project-Demo';
 
-  constructor(private authService: AuthenticationService) {}
+  constructor(
+    private authService: AuthenticationService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('token')) {

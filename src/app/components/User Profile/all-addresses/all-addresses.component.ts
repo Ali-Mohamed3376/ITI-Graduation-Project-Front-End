@@ -27,4 +27,15 @@ export class AllAddressesComponent {
     }
     window.location.reload();
   }
+  default(id:any){
+    this.service.setAddressDefault(id).subscribe(
+      {
+        next:(data)=>{console.log(data)},
+        error:(err)=>{console.log(err)}
+
+      }
+
+    );
+  }
+  
 }
