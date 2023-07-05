@@ -11,9 +11,14 @@ import { ProductChildDto } from 'src/app/Dtos/Product/ProductChildDto';
 })
 export class ProductComponent implements OnInit {
   products: ProductChildDto[]=[];
+  filteredProducts:any;
+  totalCount=0;
+  page=1;
+  countPerPage=10;
   brands: any;
   ratingOptions = [1, 2, 3, 4, 5];
   noProductsMessage:any;
+  filterWork:boolean=false
 
   // Selected filter options
   selectedBrandId!: any;
@@ -24,20 +29,23 @@ export class ProductComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.loadProducts();
+    this.loadProductsInPagination(1);
     this.loadBrands();
   }
 
-  loadProducts() {
-    this.productService.GetAllProducts().subscribe({
-      next: (data) => {
-        this.products = data;
+  loadProductsInPagination(page:number){
+    this.productService.GetAllProductsInPagination(page,this.countPerPage).subscribe({
+      next:(data)=>{
+        this.totalCount=data.totalCount,
+        this.products=data.products,
+        this.page=page
       },
-      error: (error) => {
+      error:(error)=>{
         console.log(error);
       }
     });
   }
+
 
   loadBrands() {
     this.productService.GetAllBrands().subscribe({
@@ -68,7 +76,10 @@ export class ProductComponent implements OnInit {
 
 
 
-applyFilters() {
+
+
+
+applyFilters(page:number) {
   var filterData = {
     categotyId: this.selectedBrandId,
     productName: "",
@@ -77,9 +88,12 @@ applyFilters() {
     rating: this.selectedRating || 0
   };
 
-this.productService.filterProducts(filterData).subscribe({
+this.productService.GetFilteredProductsInPagination(filterData,page,this.countPerPage).subscribe({
   next: (data) => {
-    this.products = data;
+    this.products = data.filteredProducts;
+    this.totalCount=data.totalCount,
+    this.page=page
+    this.filterWork=true;
 
     if (data && data.length === 0) {
       this.noProductsMessage = "No products found that match your requirements.";
@@ -99,10 +113,6 @@ resetFilters() {
   this.selectedMaxPrice = null; // Reset the selected max price
   this.selectedRating = null; // Reset the selected rating
   this.noProductsMessage = "";
- this.loadProducts();
+ this.loadProductsInPagination(1);
 }
-
-
-
-
 }
