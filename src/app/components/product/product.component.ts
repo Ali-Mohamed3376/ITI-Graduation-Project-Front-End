@@ -3,6 +3,8 @@ import { ProductService } from 'src/app/services/Product/product.service';
 import { FormsModule } from '@angular/forms';
 import { ProductChildDto } from 'src/app/Dtos/Product/ProductChildDto';
 import { ActivatedRoute } from '@angular/router';
+import { WishListService } from 'src/app/services/WishList/wish-list.service';
+import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 
 @Component({
   selector: 'app-product',
@@ -21,13 +23,19 @@ export class ProductComponent implements OnInit {
   selectedMaxPrice!: any;
   selectedRating!: any;
   productName: string = '';
+  isLoggedIn:boolean=false;
 
   constructor(
     private productService: ProductService,
-    private routeLink: ActivatedRoute
+    private routeLink: ActivatedRoute,
+    private wishlistService:WishListService,
+    private authenticationService:AuthenticationService
   ) {}
 
   ngOnInit(): void {
+    this.authenticationService.isLoggedIn$.subscribe((data)=>{
+      this.isLoggedIn=data;
+    })
     this.loadProducts();
     this.loadBrands();
     this.routeLink.queryParams.subscribe((params) => {
@@ -112,4 +120,32 @@ export class ProductComponent implements OnInit {
     this.noProductsMessage = '';
     this.applyFilters();
   }
+
+
+  AddOrRemoveFromwishList(productId:number)
+  {
+    this.wishlistService.AddOrDeleteWishList(productId).subscribe({
+      next:(data)=>{
+        console.log("next");
+        console.log(data);
+        this.wishlistService.GetWishListCount();
+      },
+      error:(error)=>{
+        console.log("error");
+        console.log(error);
+
+      }
+    })
+  }
+
+
+
+
+
+
 }
+
+
+
+
+

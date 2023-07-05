@@ -5,6 +5,7 @@ import { ProductChildDto } from 'src/app/Dtos/Product/ProductChildDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { CartService } from 'src/app/services/Cart/cart.service';
 import { ProductService } from 'src/app/services/Product/product.service';
+import { WishListService } from 'src/app/services/WishList/wish-list.service';
 
 @Component({
   selector: 'app-header',
@@ -17,12 +18,15 @@ export class HeaderComponent implements OnInit {
   products: ProductChildDto[] = [];
   noProductsMessage: any;
   cartCouter:number=0;
+  whishListCouter:number=0;
+
 
   constructor(
     private authService: AuthenticationService,
     private productServic: ProductService,
     private routerService: Router,
-    private cartService:CartService
+    private cartService:CartService,
+    private whishListService:WishListService
   ) {}
 
   ngOnInit(): void {
@@ -32,10 +36,24 @@ export class HeaderComponent implements OnInit {
     this.authService.isAdmin$.subscribe((isAdminTrue) => {
       this.isAdmin = isAdminTrue;
     });
+    if(this.isUserLoggedIn)
+    {
+      this.cartService.getCartProductsCounter();
+
+    }
     this.cartService.cartCounter$.subscribe((data)=>{
-      console.log(data);
+      console.log("Cart count: "+data);
       this.cartCouter=data;
     });
+    if(this.isUserLoggedIn)
+    {
+      this.whishListService.GetWishListCount();
+    }
+    this.whishListService.wishListCounter$.subscribe((data)=>{
+      console.log("wishList count: "+data);
+      this.whishListCouter=data;
+
+    })
     
     
 
