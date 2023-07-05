@@ -25,6 +25,7 @@ import { EditAddressesComponent } from './components/User Profile/edit-addresses
 import { MainProfileComponent } from './components/User Profile/main-profile/main-profile.component';
 import { ChangePasswordComponent } from './components/User Profile/change-password/change-password.component';
 import { ProfileComponent } from './components/User Profile/profile/profile.component';
+import { ReviewsDashboardComponent } from './components/Dashboard/Adel/reviews-dashboard/reviews-dashboard.component';
 const routes: Routes = [
   // Abdo
   { path: '', component: HomeComponent },
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: 'dashboard/categories', component: CategoriesComponent },
   { path: 'dashboard/add/category', component: AddCategoryComponent },
   { path: 'dashboard/categories/:id', component: EditCategoryComponent },
+  { path: 'dashboard/reviews', component: ReviewsDashboardComponent },
   // Reham Abdelrhman
   { path: 'Home', component: HomeComponent },
   { path: 'Products', component: ProductComponent },
