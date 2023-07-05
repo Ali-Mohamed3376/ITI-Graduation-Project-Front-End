@@ -168,7 +168,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatTableModule,
     NgxSpinnerModule,
     NgxPaginationModule
-  ],
+    ],
+    
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

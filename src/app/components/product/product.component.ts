@@ -38,12 +38,12 @@ export class ProductComponent implements OnInit {
     this.routeLink.queryParams.subscribe((params) => {
       if (params['q'] || params['q'] == '') {
         this.productName = params['q'];
+        this.applyFilters(1, this.productName);
       }
-      this.applyFilters(1);
     });
   }
 
-  loadProductsInPagination(page:number){
+  loadProductsInPagination(page:any){
     this.productService.GetAllProductsInPagination(page,this.countPerPage).subscribe({
       next:(data)=>{
         this.totalCount=data.totalCount,
@@ -91,7 +91,7 @@ export class ProductComponent implements OnInit {
 
 
 
-applyFilters(page:number) {
+applyFilters(page:any, productName:string= '') {
   var filterData = {
     categotyId: this.selectedBrandId,
     productName: this.productName,
