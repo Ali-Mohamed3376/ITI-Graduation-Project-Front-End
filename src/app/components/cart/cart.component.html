@@ -71,7 +71,7 @@
                     <div class="form-outline">
                       <label class="form-label" for="form1">Quantity</label>
                       
-                      <select [(ngModel)]="product.quantity" (change)="UpdateProductQuantity(product.id, product.quantity);"   id="form1"  name="quantity" value="{{product.quantity}}"   class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                      <select [(ngModel)]="product.quantity"  (change)="UpdateProductQuantity(product.id, product.quantity);"   id="form1"  name="quantity" value="{{product.quantity}}"   class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                         <option selected value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
