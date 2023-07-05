@@ -2,3 +2,28 @@
     margin:0;
     padding: 0;
 }
+.container{
+    width:80%;
+}
+.zoom {
+    
+    transition: transform .2s; 
+   
+    margin: 0 auto;
+  }
+  
+  .zoom:hover {
+    transform: scale(1.2);
+  }
+  .bg-blue{
+    background-color:#00d7ff;
+  }
+  .bg-purple{
+    background-color: #ff0ccc;
+  }
+  .blue{
+    color:#00d7ff;
+  }
+  .purple{
+    color:#ff0ccc;
+  }

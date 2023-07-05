@@ -33,6 +33,7 @@
           >
             <div class="carousel-inner">
               <div class="carousel-item active">
+                <div *ngIf="product.price != product.priceAfter" class="sale">{{ product.discount }}% OFF</div>
                 <img src="{{ product.image }}" alt="" class="img-fluid" />
               </div>
             </div>
@@ -43,16 +44,12 @@
       <div class="col-md-7">
         <div class="single-product-details mt-5 mt-lg-0">
           <h2>{{ product.name }}</h2>
-
           <hr />
-
           <h4 class="product-price">${{ product.priceAfter }}</h4>
-          <h4 class="oldPrice">${{ product.price }}</h4>
-
+          <h5 *ngIf="product.price != product.priceAfter" class="oldPrice">${{product.price }}</h5>
           <p class="product-description my-4">
             <strong>Description : </strong>{{ product.description }}
           </p>
-
           <div class="products-meta mt-4">
             <div class="product-category">
               <span class="font-weight-bold text-capitalize product-meta-title">
@@ -226,7 +223,7 @@
       </div>
     </div>
   </div>
-
+<!-- ***************************************************************** -->
   
 <section class="products RelatedProducts section">
     <div class="container">
@@ -242,7 +239,7 @@
                 <div class="col-3 mt-2"   *ngFor="let p of relatedProducts">
                   <div class="card">
                     <div class="card-body">
-                      <div class="sale">{{ p.discount }}% OFF</div>
+                      <div *ngIf="p.price != p.priceAfter" class="sale">{{ p.discount }}% OFF</div>
                       <div class="card-img-actions">
                         <img
                           src="{{ p.image }}"
@@ -266,7 +263,7 @@
                         </h5>
                       </div>
                       <h4 class="mb-0 font-weight-semibold">${{ p.priceAfter }}</h4>
-                      <h5 class="oldPrice">${{ p.price }}</h5>
+                      <h5 *ngIf="p.price != p.priceAfter" class="oldPrice">${{ p.price }}</h5>
                       <div>
                         <p>
                           Rating :
