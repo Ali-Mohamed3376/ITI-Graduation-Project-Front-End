@@ -90,21 +90,14 @@
 <!-- for Admin -->
 
 <header>
-  <div class="px-3 py-2 text-bg-dark border-bottom">
+  <div class="px-3 py-2 border-bottom border-dark ">
     <div class="container">
       <div class="d-flex align-items-center justify-content-between">
-        <a class="navbar-brand" routerLink="#"
-          ><img src="../../../assets/images/logooooo.png" width="60" />
+        <a class="navbar-brand" id="logo" routerLink="#"><img src="../../../assets/images/Capture.PNG" width="250px" />
         </a>
         <form class="col-4 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input
-            type="text"
-            class="form-control form-control-dark"
-            placeholder="Search..."
-            aria-label="Search"
-            #searchQuery
-            (keyup.enter)="onEnterKey(searchQuery.value)"
-          />
+          <input type="text" class="form-control form-control-dark" placeholder="Search..." aria-label="Search"
+            #searchQuery (keyup.enter)="onEnterKey(searchQuery.value)" />
         </form>
         <!-- <form [formGroup]="form">
           <div class="mb-sm-2 col-sm-12">
@@ -120,21 +113,17 @@
         </form> -->
         <ul class="nav col-12 col-lg-auto my-3 text-small">
           <li>
-            <a routerLink="/" class="nav-link text-white"> Home </a>
+            <a routerLink="/" class="nav-link text-black"> Home </a>
           </li>
           <li>
-            <a routerLink="/" class="nav-link text-white"> About </a>
+            <a routerLink="/" class="nav-link text-black"> About </a>
           </li>
           <li>
-            <a
-              routerLink="/Sidebar"
-              class="nav-link text-white"
-              *ngIf="isUserLoggedIn"
-            >
+            <a routerLink="/Sidebar" class="nav-link text-black" *ngIf="isUserLoggedIn">
               Profile
             </a>
           </li>
-          <li *ngIf="isUserLoggedIn">      
+          <li *ngIf="isUserLoggedIn">
             <a routerLink="cart" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
               <i class="fas fa fa-shopping-cart fa-lg"></i>
               <span class="cart-basket d-flex align-items-center justify-content-center">
@@ -143,54 +132,32 @@
             </a>
           </li>
           <li>
-            <a
-              routerLink="/"
-              class="nav-link text-white"
-              *ngIf="isUserLoggedIn && isAdmin"
-            >
+            <a routerLink="/" class="nav-link text-black" *ngIf="isUserLoggedIn && isAdmin">
               Dashboard
             </a>
           </li>
           <li>
-            <a
-              routerLink="/"
-              class="nav-link text-white"
-              *ngIf="isUserLoggedIn && isAdmin"
-            >
+            <a routerLink="/" class="nav-link text-black" *ngIf="isUserLoggedIn && isAdmin">
               Orders
             </a>
           </li>
           <li>
-            <a routerLink="/Products" class="nav-link text-white"> Products </a>
+            <a routerLink="/Products" class="nav-link text-black"> Products </a>
           </li>
           <li>
-            <a
-              routerLink="/dashboard/users"
-              class="nav-link text-white"
-              *ngIf="isUserLoggedIn && isAdmin"
-            >
+            <a routerLink="/dashboard/users" class="nav-link text-black" *ngIf="isUserLoggedIn && isAdmin">
               Customers
             </a>
           </li>
           <li>
-            <a routerLink="/cart" class="nav-link text-white"> Cart </a>
+            <a routerLink="/cart" class="nav-link text-black"> Cart </a>
           </li>
           <li class="nav-link" *ngIf="!isUserLoggedIn">
-            <a
-              id="loginBtn"
-              class="btn btn-primary"
-              routerLink="/Authentication/login"
-              routerLinkActive="active"
-              >Login</a
-            >
+            <a id="loginBtn" class="btn btn-primary" routerLink="/Authentication/login"
+              routerLinkActive="active">Login</a>
           </li>
           <li class="nav-link" *ngIf="!isUserLoggedIn">
-            <a
-              class="btn btn-success"
-              routerLink="/Authentication/register"
-              routerLinkActive="active"
-              >Register</a
-            >
+            <a class="btn btn-success" routerLink="/Authentication/register" routerLinkActive="active">Register</a>
           </li>
           <li class="nav-link" *ngIf="isUserLoggedIn">
             <a class="btn btn-danger" (click)="LogOut()">Logout</a>

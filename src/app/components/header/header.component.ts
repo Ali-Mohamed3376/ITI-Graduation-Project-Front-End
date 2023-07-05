@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
       this.isAdmin = isAdminTrue;
     });
     this.cartService.cartCounter$.subscribe((data)=>{
-      console.log(data);
+      // console.log(data);
       this.cartCouter=data;
     });
     
