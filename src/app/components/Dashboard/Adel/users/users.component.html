@@ -3,35 +3,13 @@
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <button class="btn btn-primary shadow-md mr-2" routerLink="/dashboard/register/admin">Add New User</button>
             <div class="dropdown">
-                <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                    <span class="w-5 h-5 flex items-center justify-center">
-                        <i class="fa-solid fa-plus fa-xl"></i>
-                    </span>
-                </button>
-                <div class="dropdown-menu w-40">
-                    <ul class="dropdown-content">
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <i class="fa-solid fa-plus fa-xl"></i>
             </div>
             <div class="hidden md:block mx-auto text-slate-500"></div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                    <input type="text" class="form-control w-56 box pr-10 shadow p-3 mb-5 bg-white rounded" placeholder="Search...">
+                    <input type="text" class="form-control w-56 box pr-10 shadow p-3 bg-white rounded"
+                        placeholder="Search...">
                     <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
                 </div>
             </div>
@@ -48,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="intro-x" *ngFor="let item of Users; let i = index" >
+                    <tr class="intro-x" *ngFor="let item of Users; let i = index">
                         <td class="w-40">
                             <div class="flex">
                                 <div class="w-10 h-10 image-fit zoom-in">

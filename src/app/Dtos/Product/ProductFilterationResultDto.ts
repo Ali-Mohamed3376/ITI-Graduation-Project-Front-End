@@ -1,4 +1,4 @@
-export interface ProductChildDto {
+export interface ProductFilterationResultDto {
     id: number;
     name: string;
     price: number;
@@ -8,14 +8,4 @@ export interface ProductChildDto {
     avgRating: number;
     avgRatingRounded: number;
     reviewCount: number;
-} 
-
-
-
-
-
-
-
-
-
-
+}
