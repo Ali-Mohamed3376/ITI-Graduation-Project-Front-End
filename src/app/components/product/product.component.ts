@@ -12,10 +12,15 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  products: ProductChildDto[] = [];
+  products: ProductChildDto[]=[];
+  filteredProducts:any;
+  totalCount=0;
+  page=1;
+  countPerPage=10;
   brands: any;
   ratingOptions = [1, 2, 3, 4, 5];
-  noProductsMessage: any;
+  noProductsMessage:any;
+  filterWork:boolean=false
 
   // Selected filter options
   selectedBrandId!: any;
@@ -36,26 +41,29 @@ export class ProductComponent implements OnInit {
     this.authenticationService.isLoggedIn$.subscribe((data)=>{
       this.isLoggedIn=data;
     })
-    this.loadProducts();
+    this.loadProductsInPagination(1);
     this.loadBrands();
     this.routeLink.queryParams.subscribe((params) => {
       if (params['q'] || params['q'] == '') {
         this.productName = params['q'];
+        this.applyFilters(1, this.productName);
       }
-      this.applyFilters();
     });
   }
 
-  loadProducts() {
-    this.productService.GetAllProducts().subscribe({
-      next: (data) => {
-        this.products = data;
+  loadProductsInPagination(page:any){
+    this.productService.GetAllProductsInPagination(page,this.countPerPage).subscribe({
+      next:(data)=>{
+        this.totalCount=data.totalCount,
+        this.products=data.products,
+        this.page=page
       },
-      error: (error) => {
+      error:(error)=>{
         console.log(error);
       },
     });
   }
+
 
   loadBrands() {
     this.productService.GetAllBrands().subscribe({
@@ -86,18 +94,26 @@ export class ProductComponent implements OnInit {
     return stars;
   }
 
-  applyFilters() {
-    var filterData = {
-      categotyId: this.selectedBrandId,
-      productName: this.productName,
-      minPrice: this.selectedMinPrice || 0,
-      maxPrice: this.selectedMaxPrice || 0,
-      rating: this.selectedRating || 0,
-    };
 
-    this.productService.filterProducts(filterData).subscribe({
-      next: (data) => {
-        this.products = data;
+
+
+
+
+applyFilters(page:any, productName:string= '') {
+  var filterData = {
+    categotyId: this.selectedBrandId,
+    productName: this.productName,
+    minPrice: this.selectedMinPrice || 0,
+    maxPrice: this.selectedMaxPrice || 0,
+    rating: this.selectedRating || 0
+  };
+
+this.productService.GetFilteredProductsInPagination(filterData,page,this.countPerPage).subscribe({
+  next: (data) => {
+    this.products = data.filteredProducts;
+    this.totalCount=data.totalCount,
+    this.page=page
+    this.filterWork=true;
 
         if (data && data.length === 0) {
           this.noProductsMessage =
@@ -112,17 +128,16 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  resetFilters() {
-    this.selectedBrandId = null; // Reset the selected brand
-    this.selectedMinPrice = null; // Reset the selected min price
-    this.selectedMaxPrice = null; // Reset the selected max price
-    this.selectedRating = null; // Reset the selected rating
-    this.noProductsMessage = '';
-    this.applyFilters();
-  }
+resetFilters() {
+  this.selectedBrandId = null; // Reset the selected brand
+  this.selectedMinPrice = null; // Reset the selected min price
+  this.selectedMaxPrice = null; // Reset the selected max price
+  this.selectedRating = null; // Reset the selected rating
+  this.noProductsMessage = "";
+ this.loadProductsInPagination(1);
+}
 
-
-  AddOrRemoveFromwishList(productId:number)
+AddOrRemoveFromwishList(productId:number)
   {
     this.wishlistService.AddOrDeleteWishList(productId).subscribe({
       next:(data)=>{
@@ -137,15 +152,4 @@ export class ProductComponent implements OnInit {
       }
     })
   }
-
-
-
-
-
-
 }
-
-
-
-
-
