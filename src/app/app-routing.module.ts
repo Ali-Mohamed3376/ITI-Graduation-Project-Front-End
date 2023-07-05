@@ -26,6 +26,7 @@ import { MainProfileComponent } from './components/User Profile/main-profile/mai
 import { ChangePasswordComponent } from './components/User Profile/change-password/change-password.component';
 import { ProfileComponent } from './components/User Profile/profile/profile.component';
 import { ReviewsDashboardComponent } from './components/Dashboard/Adel/reviews-dashboard/reviews-dashboard.component';
+import { WishlistComponent } from './components/User Profile/wishlist/wishlist.component';
 const routes: Routes = [
   // Abdo
   { path: '', component: HomeComponent },
@@ -35,7 +36,7 @@ const routes: Routes = [
     component: CartComponent,
   },
   { path: 'checkout', component: CheckoutComponent },
-
+  { path: 'wishList', component: WishlistComponent },
   // Ali
 
 

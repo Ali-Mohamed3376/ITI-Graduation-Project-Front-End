@@ -10,6 +10,11 @@ export class WishListService {
 
   constructor(private myClient:HttpClient) { }
 
+  GetUserWishListProducts()
+  {
+    return this.myClient.get("https://localhost:7064/api/WishList");
+  }
+
   AddOrDeleteWishList(productId:number)
   {
     return this.myClient.get("https://localhost:7064/api/WishList/Add/"+productId);
