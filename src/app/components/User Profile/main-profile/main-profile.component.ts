@@ -36,8 +36,8 @@ delete(){
   let msg = `Do yow want to delete your account?`;
   if(confirm(msg) == true) {
     this.service.deleteUser().subscribe();
-    this.routeService.navigateByUrl('');
     localStorage.clear();
+    this.routeService.navigateByUrl('');
   }
 }
 }
