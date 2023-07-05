@@ -1,4 +1,4 @@
-<div *ngIf="details">
+<!--<div *ngIf="details">
     <div *ngFor="let p of details.orderProducts">
         <p>{{p.title}}</p>
         <p>{{p.quantity}}</p>
@@ -10,4 +10,17 @@
 
     </div>
     <p>{{totalp}}</p>
-</div>
+</div>-->
+<div class="card" style="width: 18rem;" *ngIf="details">
+    <img src="/src/assets/images/logooooo.png" >
+    <div class="card-body" *ngFor="let p of details.orderProducts">
+        <p>Product Name: {{p.title}}</p>
+        <p>Quantity : {{p.quantity}}</p>
+        <p>Price : ${{p.price}}</p>
+    </div>
+    <div *ngIf="details.orderAddress">
+        <p>Address: {{details.orderAddress.street}},{{details.orderAddress.city}}</p>
+        <p>Phone:{{details.orderAdress.phone}}</p>
+    </div>
+  </div>
+  <p> Total price : ${{totalp}}</p>
