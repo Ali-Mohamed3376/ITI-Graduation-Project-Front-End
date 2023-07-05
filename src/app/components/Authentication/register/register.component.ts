@@ -44,6 +44,7 @@ export class RegisterComponent {
       },
       (r) => {
         this.respomseError = r.error;
+        console.log();
       }
     );
   }
