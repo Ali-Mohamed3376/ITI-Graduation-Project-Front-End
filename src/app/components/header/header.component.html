@@ -124,6 +124,14 @@
               Profile
             </a>
           </li>
+          <li *ngIf="isUserLoggedIn">      
+            <a routerLink="cart" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+              <i class="fas fa fa-shopping-cart fa-lg"></i>
+              <span class="cart-basket d-flex align-items-center justify-content-center">
+                {{cartCouter}}
+              </span>
+            </a>
+          </li>
           <li>
             <a
               routerLink="/"

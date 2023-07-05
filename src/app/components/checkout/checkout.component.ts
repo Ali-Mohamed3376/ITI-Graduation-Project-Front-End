@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartProduct } from 'src/app/Dtos/Cart/cart';
 import { orderAddress } from 'src/app/Dtos/OrderCheckout/OrderCheckout';
+import { CartService } from 'src/app/services/Cart/cart.service';
 import { OrderService } from 'src/app/services/Order/order.service';
 
 @Component({
@@ -15,7 +16,12 @@ export class CheckoutComponent implements OnInit {
   userAddresses:orderAddress[]=[];
   choosenAddressId:number=0;
   totalPrice:number=0;
-  constructor(private router:Router,private orderService:OrderService){}
+  constructor(
+    private router:Router,
+    private orderService:OrderService,
+    private cartService:CartService
+
+    ){}
   ngOnInit(): void {
    this.getAllProductsInCart();
   //  if (  !(this.cartProducts.length>0))  //( not working?? )check cart has products or not 
@@ -62,11 +68,15 @@ export class CheckoutComponent implements OnInit {
         next:(data)=>{
           console.log(data);
           console.log("next");
+          this.cartService.getCartProductsCounter();
+
         },
         error:(error)=>{  // why he enter the error path?
           console.log(error);
           console.log("error");
           alert("order Added Successfull ... redirect to cart page");
+          this.cartService.getCartProductsCounter();
+
           this.router.navigate(["/cart"]);
 
         }

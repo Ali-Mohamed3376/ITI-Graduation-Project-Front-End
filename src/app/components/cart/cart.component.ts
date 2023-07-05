@@ -57,6 +57,8 @@ export class CartComponent implements OnInit {
         this.cartProducts = this.cartProducts.filter((product:CartProduct) => product.id !== id);
         console.log(data);
         this.CalculateTotalPrice();
+        this.cartService.getCartProductsCounter();
+
 
 
       },
@@ -65,6 +67,8 @@ export class CartComponent implements OnInit {
         console.log(error);
         this.cartProducts = this.cartProducts.filter((product:CartProduct) => product.id !== id);      
         this.CalculateTotalPrice();
+        this.cartService.getCartProductsCounter();
+
 
       }
     });
@@ -82,12 +86,16 @@ export class CartComponent implements OnInit {
         console.log("next");
         console.log(data);
         this.CalculateTotalPrice();
+        this.cartService.getCartProductsCounter();
+
 
       },
       error:(error)=>{
         console.log("error");
         console.log(error);
         this.CalculateTotalPrice();
+        this.cartService.getCartProductsCounter();
+
       }
 
     });
