@@ -39,7 +39,7 @@ export class ProductComponent implements OnInit {
       if (params['q'] || params['q'] == '') {
         this.productName = params['q'];
       }
-      this.applyFilters();
+      this.applyFilters(1);
     });
   }
 
