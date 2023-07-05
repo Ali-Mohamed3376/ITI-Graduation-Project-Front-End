@@ -15,7 +15,6 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { OrdersComponent } from './components/User Profile/orders/orders.component';
 import { OrderDetailsComponent } from './components/User Profile/order-details/order-details.component';
 import { ReviewComponent } from './components/User Profile/review/review.component';
 import { AllAddressesComponent } from './components/User Profile/all-addresses/all-addresses.component';
@@ -23,6 +22,7 @@ import { EditAddressesComponent } from './components/User Profile/edit-addresses
 import { AddAddressesComponent } from './components/User Profile/add-addresses/add-addresses.component';
 import { ChangePasswordComponent } from './components/User Profile/change-password/change-password.component';
 import { ProfileComponent } from './components/User Profile/profile/profile.component';
+import { MainProfileComponent } from './components/User Profile/main-profile/main-profile.component';
 import { SidebarComponent } from './components/Dashboard/Ahmed/sidebar/sidebar.component';
 import { ProductsComponent } from './components/Dashboard/Ahmed/products/products.component';
 import { EditProductComponent } from './components/Dashboard/Ahmed/edit-product/edit-product.component';
@@ -78,6 +78,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { OrdersComponent } from './components/User Profile/orders/orders.component';
+import { OrderEditDashboardComponent } from './components/Dashboard/Adel/order-edit-dashboard/order-edit-dashboard.component';
+import { LoadingInterceptor } from './Interceptors/loading.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -100,6 +104,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AddAddressesComponent,
     ChangePasswordComponent,
     ProfileComponent,
+    MainProfileComponent,
     SidebarComponent,
     ProductsComponent,
     EditProductComponent,
@@ -115,7 +120,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     OrderDetailsDashboardComponent,
     ReviewsDashboardComponent,
     DashboardComponent,
-    
+    OrderEditDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -161,12 +166,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    NgxSpinnerModule,
     NgxPaginationModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
       multi: true,
     },
   ],

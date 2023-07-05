@@ -1,1 +1,32 @@
-<p>categories works!</p>
+<div class="container-fluid p-4 mt-5">
+    <div>
+        <a class="btn btn-primary" routerLink="/dashboard/add/category">Add new Category</a>
+    </div>
+    <div class="row">
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">#Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Number Of Products</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of Categories">
+                    <td>{{ item.id }}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.noOfProducts}}</td>
+                    <td>
+                        <a class="btn btn-info" routerLink="/dashboard/categories/{{item.id}}">Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" (click)=confirmDelete(item.id)>Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="IsDeleted" class="text-danger">Deleted Successfully</div>
+    </div>
+</div>

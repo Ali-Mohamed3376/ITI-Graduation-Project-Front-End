@@ -14,11 +14,11 @@ export class OrderDetailsDashboardComponent {
   Id: any;
 
   constructor(private readonly route: ActivatedRoute, private readonly OrderService: OrderService) {
-    this.getUser()
+    this.getOrder()
     
   }
 
-  public getUser() {
+  public getOrder() {
     this.Id = this.route.snapshot.params['id'];
     this.OrderService.GetOrderDetails(this.Id).subscribe({
       next: (data) => {

@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/Product/product.service';
 import { FormsModule } from '@angular/forms';
 import { ProductChildDto } from 'src/app/Dtos/Product/ProductChildDto';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
   products: ProductChildDto[]=[];
@@ -24,13 +24,23 @@ export class ProductComponent implements OnInit {
   selectedBrandId!: any;
   selectedMinPrice!: any;
   selectedMaxPrice!: any;
-  selectedRating!: any; 
+  selectedRating!: any;
+  productName: string = '';
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private routeLink: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.loadProductsInPagination(1);
     this.loadBrands();
+    this.routeLink.queryParams.subscribe((params) => {
+      if (params['q'] || params['q'] == '') {
+        this.productName = params['q'];
+      }
+      this.applyFilters();
+    });
   }
 
   loadProductsInPagination(page:number){
@@ -42,7 +52,7 @@ export class ProductComponent implements OnInit {
       },
       error:(error)=>{
         console.log(error);
-      }
+      },
     });
   }
 
@@ -52,7 +62,9 @@ export class ProductComponent implements OnInit {
       next: (data) => {
         this.brands = data;
       },
-      error: (error) => { console.log(error) }
+      error: (error) => {
+        console.log(error);
+      },
     });
   }
 
@@ -82,7 +94,7 @@ export class ProductComponent implements OnInit {
 applyFilters(page:number) {
   var filterData = {
     categotyId: this.selectedBrandId,
-    productName: "",
+    productName: this.productName,
     minPrice: this.selectedMinPrice || 0,
     maxPrice: this.selectedMaxPrice || 0,
     rating: this.selectedRating || 0
@@ -95,17 +107,18 @@ this.productService.GetFilteredProductsInPagination(filterData,page,this.countPe
     this.page=page
     this.filterWork=true;
 
-    if (data && data.length === 0) {
-      this.noProductsMessage = "No products found that match your requirements.";
-    } else {
-      this.noProductsMessage = "";
-    }
-  },
-  error: (error) => {
-    console.log(error);
+        if (data && data.length === 0) {
+          this.noProductsMessage =
+            'No products found that match your requirements.';
+        } else {
+          this.noProductsMessage = '';
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
-});
-}
 
 resetFilters() {
   this.selectedBrandId = null; // Reset the selected brand

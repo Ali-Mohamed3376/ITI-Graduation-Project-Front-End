@@ -1,39 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
-/* @import "~@fortawesome/fontawesome-free/css/all.css"; */
 
-
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .star-rating {
-    fill: gold;
-  }
+  fill: gold;
+}
 
-
-
-
-
-  
-  .sale{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color:red;
-    color: #fff;
-    width: 60px;
-    height: 25px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    font-size: 12px;
-  }
-  .oldPrice{
-    text-decoration: line-through;
-    opacity: 0.5;
-  }
-
-
+.sale {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: #fff;
+  width: 60px;
+  height: 25px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.oldPrice {
+  text-decoration: line-through;
+  opacity: 0.5;
+}

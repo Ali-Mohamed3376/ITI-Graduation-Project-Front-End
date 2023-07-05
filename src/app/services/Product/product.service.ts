@@ -36,6 +36,10 @@ export class ProductService {
     return this.myClient.post<ProductChildDto[]>(this.Filteration_URL, filter);
   }
 
+  Search(filter: any): Observable<ProductChildDto[]> {
+    return this.myClient.post<ProductChildDto[]>(this.Filteration_URL, filter);
+  }
+
   GetAllProductsInPagination(page:number,countPerPage:number): Observable<ProductPaginationDto> {
     return this.myClient.get<ProductPaginationDto>(`https://localhost:7064/api/Products/${page}/${countPerPage}`);
   }

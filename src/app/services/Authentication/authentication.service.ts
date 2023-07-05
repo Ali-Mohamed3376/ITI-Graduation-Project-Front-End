@@ -60,10 +60,18 @@ export class AuthenticationService {
   }
 
   // Register
-  public Register(credentials: RegisterDto): Observable<any> {
-    return this.client.post(
-      'https://localhost:7064/api/User/Register',
-      credentials
-    );
+  public Register(credentials: RegisterDto): Observable<TokenDto> {
+    return this.client
+      .post<TokenDto>('https://localhost:7064/api/User/Register', credentials)
+      .pipe(
+        tap((TokenDto) => {
+          this.isLoggedIn$.next(true);
+          if (TokenDto.role === 'Admin') {
+            this.isAdmin$.next(true);
+          }
+          localStorage.setItem('token', TokenDto.token);
+          localStorage.setItem('role', TokenDto.role);
+        })
+      );
   }
 }

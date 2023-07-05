@@ -1,6 +1,6 @@
-<div class="container-fluid p-4">
+<div *ngIf="Order" class="container-fluid p-4">
     <div class="row">
-        <table *ngIf="Order" class="table mt-5">
+        <table class="table mt-5">
             <tbody>
                 <tr>
                     <th scope="col">#Id</th>
@@ -37,7 +37,10 @@
             </tbody>
         </table>
         <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-primary" [routerLink]="['/dashboard/orders']">Back</a>
+            <a class="btn btn-primary" routerLink="/dashboard/orders">Back</a>
+        </div>
+        <div class="d-grid gap-2 d-md-block">
+            <a class="btn btn-primary" routerLink="/dashboard/edit/order/{{Order.id}}">Edit Status</a>
         </div>
     </div>
 </div>
