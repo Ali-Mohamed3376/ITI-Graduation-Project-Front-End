@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center ">
+<!---<div class="container d-flex justify-content-center ">
 <div class="col-lg-3 m-0 p-0">
     <app-profile></app-profile>
 </div>
@@ -10,11 +10,33 @@
                   <p class="m-3 px-3">{{o.id}}</p>
                   <p class="m-3 px-3">{{o.orderStatus}}</p>
                   <p class="m-3 px-3">{{o.deliverdDate}}</p>
+                  <p class="m-3 px-3">{{o.address_Id}}</p>
                   <p *ngFor="let p of o.products" class="px-3">{{p.title}}</p>
                 </div>
               </div>
         </div>
         
     </div>
+</div>-->
+<div class="container d-flex justify-content-center ">
+    <div class="col-lg-3 m-0 p-0">
+        <app-profile></app-profile>
+    </div>
+<div class="container col-lg-6 d-flex">
+    <div class="row ">
+    <div class="col-4">
+<div let *ngFor="let o of orders">
+<div class="card" style="width: 18rem;"routerLink="/Order/Details/{{o.id}}">
+    <img src="/src/assets/images/logooooo.png">
+    <div class="card-body">
+      <h6 class="card-title">Order Id: {{o.id}}</h6>
+      <p>Order Status: {{o.orderStatus}}</p>
+      <p>Delivery Status: {{o.deliverdDate}}</p>
+      <p *ngFor="let p of o.products">Product Name (Model): {{p.title}}</p>
+    </div>
 </div>
-
+</div>   
+  </div>
+  </div>
+</div>
+</div>

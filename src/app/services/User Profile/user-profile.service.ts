@@ -53,5 +53,12 @@ export class UserProfileService {
   {
     return this.myClient.delete<string[]>('https://localhost:7064/api/UserAddresses/delete/'+id);
   }
-
+  public setAddressDefault(id:any)
+  {
+    return this.myClient.put('https://localhost:7064/api/UserAddresses/SetDefault/'+id,id);
+  }
+  public GetAddressById(id:any):Observable<string[]>
+  {
+    return this.myClient.get<string[]>('https://localhost:7064/api/UserAddresses/address/'+id)
+  }
 }

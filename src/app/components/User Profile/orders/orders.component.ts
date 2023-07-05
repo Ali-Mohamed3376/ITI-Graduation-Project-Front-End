@@ -8,7 +8,15 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
 })
 export class OrdersComponent{
   orders:any;
+  address:any;
   constructor(public service:UserProfileService, public auth:AuthenticationService){
+    this.service.getUserAddress().subscribe({
+      next:(data)=>{
+        console.log(data)
+        this.address=data;
+      },
+            error:(err)=>{console.log(err)}
+  })
     this.service.getOrders().subscribe({
       next:(data)=>{
         console.log(data)
@@ -18,4 +26,5 @@ export class OrdersComponent{
   })
   }
 
+  
 }

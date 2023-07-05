@@ -96,7 +96,17 @@
         <a class="navbar-brand" routerLink="#"
           ><img src="../../../assets/images/logooooo.png" width="60" />
         </a>
-        <form [formGroup]="form">
+        <form class="col-4 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input
+            type="text"
+            class="form-control form-control-dark"
+            placeholder="Search..."
+            aria-label="Search"
+            #searchQuery
+            (keyup.enter)="onEnterKey(searchQuery.value)"
+          />
+        </form>
+        <!-- <form [formGroup]="form">
           <div class="mb-sm-2 col-sm-12">
             <input
               type="text"
@@ -107,7 +117,7 @@
           <div class="col-sm-12">
             <button class="btn btn-primary" (click)="onSearch()">Search</button>
           </div>
-        </form>
+        </form> -->
         <ul class="nav col-12 col-lg-auto my-3 text-small">
           <li>
             <a routerLink="/" class="nav-link text-white"> Home </a>
@@ -117,7 +127,7 @@
           </li>
           <li>
             <a
-              routerLink="/"
+              routerLink="/Sidebar"
               class="nav-link text-white"
               *ngIf="isUserLoggedIn"
             >

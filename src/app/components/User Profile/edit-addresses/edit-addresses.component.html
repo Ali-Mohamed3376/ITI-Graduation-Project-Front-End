@@ -1,8 +1,20 @@
 <div class="col-lg-8"*ngIf="address">
-    <div class="d-flex justify-content-space-between">
-        <input #city class="form-control p-3 m-3" type="text" value="{{address.city}}" >
-        <input #street class="form-control p-3 m-3" type="text" value="{{address.street}}" placeholder="street">
-        <input #phone class="form-control p-3 m-3" type="text" value="{{address.phone}}" placeholder="phone">
-    </div>
-    <button class="btn btn-primary"(click)="update(address.id,city.value,street.value,phone.value)">update</button>
+    <form class="d-flex justify-content-space-between">
+        <input #city class="form-control p-3 m-3" type="text" placeholder="city" value="{{address.city}}">
+        <input #street class="form-control p-3 m-3" type="text" placeholder="street" value="{{address.street}}">
+        <input #phone class="form-control p-3 m-3" type="text" placeholder="phone" value="{{address.phone}}">
+
+
+    </form>
+    <button class="btn btn-primary"(click)="update(address.id,city.value,street.value,phone.value)">Update</button>
 </div>
+<!-----------<div class="col-lg-8"*ngIf="address">
+    <div class="d-flex justify-content-space-between">
+        <form >
+        <input #city class="form-control p-3 m-3" type="text" value="{{address.city}}">
+        <input #street class="form-control p-3 m-3" type="text" value="{{address.street}}">
+        <input #phone class="form-control p-3 m-3" type="text" value="{{address.phone}}">
+    </form>
+    <button (click)="update(address.id,city.value,street.value,phone.value)">Update</button>
+    </div>
+</div>---------->

@@ -68,7 +68,7 @@ const routes: Routes = [
   { path: 'Profile',canActivate:[AuthenticationGuardGuard], component: MainProfileComponent },
   { path: 'Sidebar', component: ProfileComponent },
   { path: 'Address',canActivate:[AuthenticationGuardGuard], component: AllAddressesComponent },
-  { path: 'Address/update',canActivate:[AuthenticationGuardGuard], component: EditAddressesComponent },
+  { path: 'Address/update/:id',canActivate:[AuthenticationGuardGuard], component: EditAddressesComponent },
   { path: 'Address/Add',canActivate:[AuthenticationGuardGuard], component: AddAddressesComponent },
   { path: 'Review', component: ReviewComponent },
   { path: 'Change-password',canActivate:[AuthenticationGuardGuard], component: ChangePasswordComponent },
