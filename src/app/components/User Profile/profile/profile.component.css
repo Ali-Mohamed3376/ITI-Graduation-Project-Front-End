@@ -24,6 +24,6 @@ span{
   
   .zoom:hover {
     color:#ff0ccc;
-
+    cursor: grab;
     transform: scale(1.2);
   }
