@@ -15,6 +15,53 @@
 </div>
 </div> -->
 
+<div class="slider">
+  <div id="main-slider" class="carousel slide">
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-bs-target="#main-slider"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#main-slider"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#main-slider"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active carousel-one">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>ORDER NOW !!</h5>
+          <p>From browsing to checkout in just a few clicks.</p>
+        </div>
+      </div>
+      <div class="carousel-item carousel-two">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item carousel-three">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ************************************************************************************** -->
 <section class="products Top-products section">
   <div class="container">
     <div class="row justify-content-center">
@@ -29,7 +76,7 @@
         <div class="col-3 mt-2" *ngFor="let p of topProducts">
           <div class="card">
             <div class="card-body">
-              <div class="sale">{{ p.discount }}% OFF</div>
+              <div *ngIf="p.price != p.priceAfter" class="sale">{{ p.discount }}% OFF</div>
               <div class="card-img-actions">
                 <img
                   src="{{ p.image }}"
@@ -52,9 +99,11 @@
                 </h5>
               </div>
               <h4 class="mb-0 font-weight-semibold">${{ p.priceAfter }}</h4>
-              <h5 class="oldPrice">${{ p.price }}</h5>
+              <h5 *ngIf="p.price != p.priceAfter" class="oldPrice">${{ p.price }}</h5>
               <div>
                 <p>
+           
+
                   Rating :
                   <svg
                     *ngFor="let star of generateStars(p.avgRatingRounded)"
@@ -100,7 +149,7 @@
     </div>
   </div>
 </section>
-
+<!-- ************************************************************************** -->
 <section class="products Special-products section">
   <div class="container">
     <div class="row justify-content-center">
