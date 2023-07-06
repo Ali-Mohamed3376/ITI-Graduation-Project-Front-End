@@ -8,7 +8,6 @@ import { UserService } from 'src/app/services/Dashboard/user.service';
 })
 export class UsersComponent {
   Users: any;
-  page: number = 1;
 
   constructor(private UserSrv: UserService) { }
 
@@ -26,11 +25,6 @@ export class UsersComponent {
         console.log(error)
       }
     })
-  }
-
-  onTableDataChange(event: any) {
-    this.page = event;
-    this.fetchuser();
   }
 
   del(id: string) {

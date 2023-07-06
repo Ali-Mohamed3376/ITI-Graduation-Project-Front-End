@@ -1,32 +1,57 @@
-<div class="container-fluid p-4 mt-5">
-    <div>
-        <a class="btn btn-primary" routerLink="/dashboard/add/category">Add new Category</a>
-    </div>
-    <div class="row">
-        <table class="table mt-3">
-            <thead>
-                <tr>
-                    <th scope="col">#Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Number Of Products</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of Categories">
-                    <td>{{ item.id }}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.noOfProducts}}</td>
-                    <td>
-                        <a class="btn btn-info" routerLink="/dashboard/categories/{{item.id}}">Edit</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" (click)=confirmDelete(item.id)>Delete</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div *ngIf="IsDeleted" class="text-danger">Deleted Successfully</div>
+<div class="container-fluid my-3">
+    <div class="grid grid-cols-12 gap-6 mt-5 ">
+        <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+            <a class="btn btn-primary shadow-md mr-2 lightcolor" (click)="openAddPopup()">Add New Category</a>
+            <div class="hidden md:block mx-auto text-slate-500"></div>
+            <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
+                <div class="w-56 relative text-slate-500">
+                    <input type="text" class="form-control w-56 box pr-10 shadow p-3 bg-white rounded"
+                        placeholder="Search...">
+                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
+                </div>
+            </div>
+        </div>
+        <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+            <table class="table table-report -mt-2">
+                <thead>
+                    <tr>
+                        <th class="whitespace-nowrap">No.</th>
+                        <th class="whitespace-nowrap">Category Name</th>
+                        <th class="whitespace-nowrap">No of Products</th>
+                        <th class="text-center whitespace-nowrap">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="intro-x" *ngFor="let item of Categories; let i = index">
+                        <td class="w-40">
+                            {{i + 1}}
+                        </td>
+                        <td>
+                            <a class="font-medium whitespace-nowrap">{{item.name}}</a>
+                        </td>
+                        <td>
+                            <a class="text-slate-500 flex items-center mr-3">
+                                {{item.noOfProducts}}
+                            </a>
+                        </td>
+                        <td class="table-report__action w-56">
+                            <div class="flexxx justify-center items-center">
+                                <a class="flex items-center mr-3 logocolortxt pointer"
+                                (click)="openEditPopup(item.id)">
+                                    <i class="fa-solid fa-pen-to-square fa-xl mr-1 logocolortxt pointer"
+                                    (click)="openEditPopup(item.id)"></i> Edit
+                                </a>
+
+                                <button>
+                                    <a class="flex items-center text-danger" (click)="del(item.id)">
+                                        <i class="fa-solid fa-trash-can fa-xl mr-1" (click)="del(item.id)"></i> Delete
+                                    </a>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

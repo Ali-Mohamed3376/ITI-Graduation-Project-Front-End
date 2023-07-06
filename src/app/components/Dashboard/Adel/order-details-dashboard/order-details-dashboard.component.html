@@ -24,9 +24,7 @@
                                 <p class="card-text"><strong>Status:</strong> {{Order.orderStatus}}</p>
                                 <p class="card-text"><strong>Delivered Date:</strong>
                                     {{Order.formattedDeliveredDate}}</p>
-                                <!-- <a class="btn btn-primary logocolor" routerLink="/dashboard/edit/order/{{Order.id}}">Edit Status</a> -->
                                 <a class="btn btn-primary logocolor" (click)="openPopup()">Edit Status</a>
-
                             </td>
                         </tr>
                     </tbody>

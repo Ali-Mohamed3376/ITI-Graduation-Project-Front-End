@@ -83,6 +83,7 @@ import { OrderEditDashboardComponent } from './components/Dashboard/Adel/order-e
 import { LoadingInterceptor } from './Interceptors/loading.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { WishlistComponent } from './components/User Profile/wishlist/wishlist.component';
+import { EditImagePopUpComponent } from './components/Dashboard/Ahmed/edit-image-pop-up/edit-image-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -124,6 +125,7 @@ import { WishlistComponent } from './components/User Profile/wishlist/wishlist.c
     OrderEditDashboardComponent,
     WishlistComponent,
     ContactUsComponent,
+    EditImagePopUpComponent,
     AboutUsComponent,
   ],
   imports: [
