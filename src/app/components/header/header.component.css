@@ -76,6 +76,6 @@ ul li a.cart .cart-basket {
   margin-top: 1px;
 }
 
-.hover-white :hover{
+.hoverWhite:hover{
   color: #fff !important;
 }
