@@ -1,9 +1,9 @@
-<div class="container d-flex justify-content-space-between ">
-<div class="col-lg-4 m-0 p-0 bg-color">
-<app-profile></app-profile>
-</div>
-<div class="col-lg-8"*ngIf="user">
-   <!--- <thead><h1 class="text-center blue">Welcome {{user.fname}}!</h1></thead>
+<div class="container d-flex justify-content-space-between">
+  <div class="col-lg-4 m-0 p-0 bg-color">
+    <app-profile></app-profile>
+  </div>
+  <div class="col-lg-8" *ngIf="user">
+    <!--- <thead><h1 class="text-center blue">Welcome {{user.fname}}!</h1></thead>
 
     <table class="col-lg-6">
         <tr class="bg-blue">
@@ -21,32 +21,57 @@
             </td>
         </tr>
     </table>-->
- <h1 class="text-center purple">Welcome {{user.fname}}!</h1>
- <div *ngIf="respomseError" class="text-center text-danger fs-2">
-    <p>{{ respomseError }}</p>
-  </div>
- <form [formGroup]="form">
-    <div class="text-center mb-sm-5">
-        <input   class="form-control p-3 mt-5 text-center" type="text" placeholder="{{user.email}}"  readonly>
+    <h1 class="text-center purple">Welcome {{ user.fname }}!</h1>
+    <div *ngIf="respomseError" class="text-center text-danger fs-2">
+      <p>{{ respomseError }}</p>
     </div>
-    <div class="text-center mb-sm-5">
-        <input formControlName="fname" class="form-control p-3 mt-5 text-center" type="text" value="{{user.fname}}" >
-    </div>
-    <div class="text-center mb-sm-5">
-        <input formControlName="lname" class="form-control p-3 mt-5 text-center" type="text" value="{{user.lname}}" >
-    </div>
-     
-     <button class="btn btn-primary m-3" (click)="update()"  [disabled]="!form.valid">Update</button>
-     <button class="btn btn-danger m-3"(click)="delete()">Delete Account</button>
-     <button class="btn btn-success m-3"routerLink="/Change-password">Change Password</button>
+    <form [formGroup]="form">
+      <div class="text-center mb-sm-5">
+        <input
+          class="form-control p-3 mt-5 text-center"
+          type="text"
+          placeholder="{{ user.email }}"
+          readonly
+        />
+      </div>
+      <div class="text-center mb-sm-5">
+        <input
+          formControlName="fname"
+          class="form-control p-3 mt-5 text-center"
+          type="text"
+          value="{{ user.fname }}"
+        />
+      </div>
+      <div class="text-center mb-sm-5">
+        <input
+          formControlName="lname"
+          class="form-control p-3 mt-5 text-center"
+          type="text"
+          value="{{ user.lname }}"
+        />
+      </div>
+
+      <button
+        class="btn btn-primary m-3"
+        (click)="update()"
+        [disabled]="!form.valid"
+      >
+        Update
+      </button>
+      <button class="btn btn-danger m-3" (click)="delete()">
+        Delete Account
+      </button>
+      <button class="btn btn-success m-3" routerLink="/Change-password">
+        Change Password
+      </button>
     </form>
 
-<!--     
+    <!--     
 <form class="d-flex justify-content-space-between">
     
 </form> -->
 
-<!---
+    <!---
 
     <div class="row d-flex justify-content-center">
         <div class="col-2">
@@ -62,6 +87,5 @@
 </div>
 
 -->
-
+  </div>
 </div>
-

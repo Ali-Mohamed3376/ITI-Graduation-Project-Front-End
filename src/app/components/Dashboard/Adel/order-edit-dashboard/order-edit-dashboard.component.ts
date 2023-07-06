@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { OrderEditDto } from 'src/app/Dtos/Dashboard/OrderEditDto';
-import { OrderStatusEnum } from 'src/app/Dtos/Dashboard/OrderStatusEnum';
 import { OrderService } from 'src/app/services/Dashboard/order.service';
 
 @Component({
@@ -10,32 +8,23 @@ import { OrderService } from 'src/app/services/Dashboard/order.service';
   templateUrl: './order-edit-dashboard.component.html',
   styleUrls: ['./order-edit-dashboard.component.css'],
 })
-export class OrderEditDashboardComponent implements OnInit {
-  Id: any;
-  enumValues = Object.keys(OrderStatusEnum);
+export class OrderEditDashboardComponent {
   selectedValue :any;
 
   constructor(
     private readonly orderService: OrderService,
-    private readonly route: ActivatedRoute,
-    private routerService: Router
+    private dialogRef: MatDialogRef<OrderEditDashboardComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { Id : any }
   ) {}
-
-  ngOnInit(): void {
-    this.Id = this.route.snapshot.params['id'];
-    console.log(this.enumValues);
-  }
 
   EditOrder() {
     var credentials = new OrderEditDto();
-    credentials.id = this.Id;
+    credentials.id = this.data.Id;
     credentials.orderStatus = this.selectedValue
-
-    console.log(credentials);
 
     this.orderService.EditOrder(credentials).subscribe({
       next: () => {
-        this.routerService.navigateByUrl('/dashboard/orders/' + this.Id);
+        this.dialogRef.close();
       },
       error: (error) => {
         console.log(error);

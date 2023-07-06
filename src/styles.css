@@ -4,6 +4,7 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -28,7 +29,38 @@ body {
   text-transform: uppercase;
   font-size: 12px;
 }
+
 .oldPrice {
   text-decoration: line-through;
   opacity: 0.5;
+}
+
+.popupComponent {
+  width: 500px;
+  height: 250px;
+  border-radius: 35px;
+}
+
+.lightcolor {
+  background-color: #0e7490 !important;
+  border-color: #0e7490 !important;
+}
+
+.logocolor{
+  background-color: #164e63 !important;
+  border-color: #164e63 !important;
+}
+
+.logocolortxt{
+  color: #164e63 !important;
+}
+
+.mdc-tab--active .mdc-tab__text-label {
+  color: #164e63 !important;
+  font-weight: bold !important;
+  font-size: 1.4rem !important;
+}
+
+.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline{
+  border-color: #164e63 !important;
 }

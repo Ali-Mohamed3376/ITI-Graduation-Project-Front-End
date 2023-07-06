@@ -1,11 +1,27 @@
-.footer {
-  height: 80px;
-  /* This will position the footer at the bottom */
-  position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  /* display: flex; */
-  /* justify-content: end; */
-  /* align-items: end; */
+/* footer section*/
+
+.footer_section {
+  font-family: "Poppins", sans-serif;
+  padding: 25px 20px;
+}
+
+.footer_section p {
+  color: #fff;
+  margin: 0;
+  text-align: center;
+}
+
+.footer_section a,
+.info_section h5 {
+  color: #fff;
+}
+
+/* end footer section*/
+
+.z-3 {
+  z-index: 99999 !important;
+}
+
+.btn:hover {
+  background-color: #FFF !important;
 }

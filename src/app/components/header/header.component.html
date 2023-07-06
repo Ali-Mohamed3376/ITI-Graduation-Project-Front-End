@@ -90,10 +90,11 @@
 <!-- for Admin -->
 <!--------------------rehams comment
 <header>
-  <div class="px-3 py-2 border-bottom border-dark ">
+  <div class="px-3 py-2 border-bottom border-dark">
     <div class="container">
       <div class="d-flex align-items-center justify-content-between">
-        <a class="navbar-brand" id="logo" routerLink="#"><img src="../../../assets/images/Capture.PNG" width="250px" />
+        <a class="navbar-brand" id="logo" routerLink="#"
+          ><img src="../../../assets/images/Capture.PNG" width="250px" />
         </a>
         <form class="col-4 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
           <input type="text" class="form-control form-control-dark" placeholder="Search..." aria-label="Search"
@@ -116,28 +117,51 @@
             <a routerLink="/" class="nav-link text-black"> Home </a>
           </li>
           <li>
-            <a routerLink="/" class="nav-link text-black"> About </a>
+            <a routerLink="/about-us" class="nav-link text-black"> About Us</a>
           </li>
           <li>
-            <a routerLink="/Sidebar" class="nav-link text-black" *ngIf="isUserLoggedIn">
+            <a routerLink="/contact-us" class="nav-link text-black">
+              Contact Us</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/Sidebar"
+              class="nav-link text-black"
+              *ngIf="isUserLoggedIn"
+            >
               Profile
             </a>
           </li>
           <li *ngIf="isUserLoggedIn">
-            <a routerLink="cart" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+            <a
+              routerLink="cart"
+              class="cart position-relative d-inline-flex"
+              aria-label="View your shopping cart"
+            >
               <i class="fas fa fa-shopping-cart fa-lg"></i>
-              <span class="cart-basket d-flex align-items-center justify-content-center">
-                {{cartCouter}}
+              <span
+                class="cart-basket d-flex align-items-center justify-content-center"
+              >
+                {{ cartCouter }}
               </span>
             </a>
           </li>
           <li>
-            <a routerLink="/" class="nav-link text-black" *ngIf="isUserLoggedIn && isAdmin">
+            <a
+              routerLink="/"
+              class="nav-link text-black"
+              *ngIf="isUserLoggedIn && isAdmin"
+            >
               Dashboard
             </a>
           </li>
           <li>
-            <a routerLink="/dashboard/orders" class="nav-link text-black" *ngIf="isUserLoggedIn && isAdmin">
+            <a
+              routerLink="/dashboard/orders"
+              class="nav-link text-black"
+              *ngIf="isUserLoggedIn && isAdmin"
+            >
               Orders
             </a>
           </li>
@@ -145,24 +169,44 @@
             <a routerLink="/Products" class="nav-link text-black"> Products </a>
           </li>
           <li>
-            <a routerLink="/dashboard/users" class="nav-link text-black" *ngIf="isUserLoggedIn && isAdmin">
+            <a
+              routerLink="/dashboard/users"
+              class="nav-link text-black"
+              *ngIf="isUserLoggedIn && isAdmin"
+            >
               Users
             </a>
           </li>
-          <li *ngIf="isUserLoggedIn">      
-            <a routerLink="" class="cart position-relative d-inline-flex" aria-label="View your wishList cart">
-              <i class="fa-regular fa-heart "></i>
-              <span class="cart-basket d-flex align-items-center justify-content-center">
-                {{whishListCouter}}
+          <li *ngIf="isUserLoggedIn">
+            <a
+              routerLink="/wishList"
+              class="cart position-relative d-inline-flex"
+              aria-label="View your wishList cart"
+            >
+              <i class="fa-regular fa-heart fa-beat fa-lg"></i>
+              <span
+                class="cart-basket d-flex align-items-center justify-content-center"
+              >
+                {{ whishListCouter }}
               </span>
             </a>
           </li>
           <li class="nav-link" *ngIf="!isUserLoggedIn">
-            <a id="loginBtn" class="btn btn-primary" routerLink="/Authentication/login"
-              routerLinkActive="active">Login</a>
+            <a
+              id="loginBtn"
+              class="btn btn-primary"
+              routerLink="/Authentication/login"
+              routerLinkActive="active"
+              >Login</a
+            >
           </li>
           <li class="nav-link" *ngIf="!isUserLoggedIn">
-            <a class="btn btn-success" routerLink="/Authentication/register" routerLinkActive="active">Register</a>
+            <a
+              class="btn btn-success"
+              routerLink="/Authentication/register"
+              routerLinkActive="active"
+              >Register</a
+            >
           </li>
           <li class="nav-link" *ngIf="isUserLoggedIn">
             <a class="btn btn-danger" (click)="LogOut()">Logout</a>

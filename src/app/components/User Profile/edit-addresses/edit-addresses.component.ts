@@ -1,25 +1,26 @@
-import { Component,OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from 'src/app/services/User Profile/user-profile.service';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-edit-addresses',
   templateUrl: './edit-addresses.component.html',
-  styleUrls: ['./edit-addresses.component.css']
+  styleUrls: ['./edit-addresses.component.css'],
 })
 export class EditAddressesComponent {
   address:any;
   id:any;
-  constructor(public service:UserProfileService, public auth:AuthenticationService,myRoute:ActivatedRoute,private router: Router){
+  constructor(public service:UserProfileService, public auth:AuthenticationService,myRoute:ActivatedRoute){
     this.service.getUserAddress().subscribe({
-      next:(data)=>{
-        console.log(data)
-        this.address=data;
+      next: (data) => {
+        console.log(data);
+        this.address = data;
       },
-            error:(err)=>{console.log(err)}
-  })
-  this.id = myRoute.snapshot.params["id"];
+      error: (err) => {
+        console.log(err);
+      },
+    });
+    this.id = myRoute.snapshot.params['id'];
   }
   ngOnInit(): void {
     this.service.GetAddressById (this.id).subscribe(
