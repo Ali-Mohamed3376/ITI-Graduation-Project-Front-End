@@ -112,7 +112,12 @@
             <a routerLink="/" class="nav-link text-black"> Home </a>
           </li>
           <li>
-            <a routerLink="/" class="nav-link text-black"> About </a>
+            <a routerLink="/about-us" class="nav-link text-black"> About Us</a>
+          </li>
+          <li>
+            <a routerLink="/contact-us" class="nav-link text-black">
+              Contact Us</a
+            >
           </li>
           <li>
             <a
@@ -167,11 +172,17 @@
               Users
             </a>
           </li>
-          <li *ngIf="isUserLoggedIn">      
-            <a routerLink="/wishList" class="cart position-relative d-inline-flex" aria-label="View your wishList cart">
-              <i class="fa-regular fa-heart fa-beat fa-lg "></i>
-              <span class="cart-basket d-flex align-items-center justify-content-center">
-                {{whishListCouter}}
+          <li *ngIf="isUserLoggedIn">
+            <a
+              routerLink="/wishList"
+              class="cart position-relative d-inline-flex"
+              aria-label="View your wishList cart"
+            >
+              <i class="fa-regular fa-heart fa-beat fa-lg"></i>
+              <span
+                class="cart-basket d-flex align-items-center justify-content-center"
+              >
+                {{ whishListCouter }}
               </span>
             </a>
           </li>
