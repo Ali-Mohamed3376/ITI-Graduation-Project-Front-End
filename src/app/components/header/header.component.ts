@@ -6,6 +6,7 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
 import { CartService } from 'src/app/services/Cart/cart.service';
 import { ProductService } from 'src/app/services/Product/product.service';
 import { WishListService } from 'src/app/services/WishList/wish-list.service';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-header',
@@ -17,16 +18,15 @@ export class HeaderComponent implements OnInit {
   isAdmin = false;
   products: ProductChildDto[] = [];
   noProductsMessage: any;
-  cartCouter:number=0;
-  whishListCouter:number=0;
-
+  cartCouter: number = 0;
+  whishListCouter: number = 0;
 
   constructor(
     private authService: AuthenticationService,
     private productServic: ProductService,
     private routerService: Router,
-    private cartService:CartService,
-    private whishListService:WishListService
+    private cartService: CartService,
+    private whishListService: WishListService
   ) {}
 
   ngOnInit(): void {
@@ -36,48 +36,31 @@ export class HeaderComponent implements OnInit {
     this.authService.isAdmin$.subscribe((isAdminTrue) => {
       this.isAdmin = isAdminTrue;
     });
-    if(this.isUserLoggedIn)
-    {
+    if (this.isUserLoggedIn) {
       this.cartService.getCartProductsCounter();
-
     }
-    this.cartService.cartCounter$.subscribe((data)=>{
-      console.log("Cart count: "+data);
-      this.cartCouter=data;
+    this.cartService.cartCounter$.subscribe((data) => {
+      console.log('Cart count: ' + data);
+      this.cartCouter = data;
     });
-    if(this.isUserLoggedIn)
-    {
+    if (this.isUserLoggedIn) {
       this.whishListService.GetWishListCount();
     }
-    this.whishListService.wishListCounter$.subscribe((data)=>{
-      console.log("wishList count: "+data);
-      this.whishListCouter=data;
-
-    })
-    
-    
-
+    this.whishListService.wishListCounter$.subscribe((data) => {
+      console.log('wishList count: ' + data);
+      this.whishListCouter = data;
+    });
   }
 
   // log Out
   LogOut() {
     localStorage.clear();
-    window.location.reload();
+    this.authService.isLoggedIn$.next(false);
+    this.routerService.navigateByUrl('/');
+    // window.location.reload();
   }
 
-  /*
-
-  form = new FormGroup({
-    searchTerm: new FormControl<string>('', [Validators.required]),
-  });
-
-  // serch bar
-  onSearch() {
-    var filter = this.form.controls.searchTerm.value ?? '';
-    this.routerService.navigateByUrl(`/Products?q=${filter}`);
-  }
-  */
-  // test search by InterKey
+  // search field
   onEnterKey(e: any) {
     console.log(e);
     this.routerService.navigateByUrl(`/Products?q=${e}`);
