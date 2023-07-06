@@ -1,10 +1,83 @@
 <div class="col-lg-8"*ngIf="address">
-    <form class="d-flex justify-content-space-between">
-        <input #city class="form-control p-3 m-3" type="text" placeholder="city" value="{{address.city}}">
-        <input #street class="form-control p-3 m-3" type="text" placeholder="street" value="{{address.street}}">
-        <input #phone class="form-control p-3 m-3" type="text" placeholder="phone" value="{{address.phone}}">
+    <form [formGroup]="form" class="d-flex justify-content-space-between">
+        <div>
+            <input formControlName="city"  class="form-control p-3 m-3" type="text" placeholder="city" >
+            <div
+              *ngIf="
+              form.get('city')?.invalid &&
+              (form.get('city')?.touched || form.get('city')?.dirty)
+            "
+            >
+            <div
+              *ngIf="form.get('city')?.hasError('required')"
+              class="text-danger"
+            >
+              City is required.
+            </div>
+            <div
+              *ngIf="form.get('city')?.hasError('maxlength')"
+              class="text-danger"
+            >
+              Max length for City is 20 characters.
+            </div>
+            </div>
+        </div>
+
+
+        <div>
+            <input formControlName="street"  class="form-control p-3 m-3" type="text" placeholder="street" >
+            <div
+            *ngIf="
+              form.get('street')?.invalid &&
+              (form.get('street')?.touched || form.get('street')?.dirty)
+            "
+          >
+            <div
+              *ngIf="form.get('street')?.hasError('required')"
+              class="text-danger"
+            >
+                street is required.
+            </div>
+            <div
+              *ngIf="form.get('street')?.hasError('maxlength')"
+              class="text-danger"
+            >
+              Max length for street is 100 characters.
+            </div>
+            </div>
+        </div>
+
+
+        <div>
+            <input formControlName="phone"  class="form-control p-3 m-3" type="text" placeholder="phone" >
+            <div
+          *ngIf="
+            form.get('phone')?.invalid &&
+            (form.get('phone')?.touched || form.get('phone')?.dirty)
+          "
+        >
+          <div
+            *ngIf="form.get('phone')?.hasError('required')"
+            class="text-danger"
+          >
+             phone is required.
+          </div>
+          <div
+            *ngIf="form.get('phone')?.hasError('maxlength')"
+            class="text-danger"
+          >
+            Max length for phone is 20 numbers.
+          </div>
+          <div
+            *ngIf="form.get('phone')?.hasError('pattern')"
+            class="text-danger"
+          >
+            enter valid phone number
+          </div>
+            </div>
+        </div>
 
 
     </form>
-    <button class="btn btn-primary"(click)="add(city.value,street.value,phone.value)">add</button>
+    <button (click)="add()" class="btn btn-primary" [disabled]="!form.valid">add</button>
 </div>

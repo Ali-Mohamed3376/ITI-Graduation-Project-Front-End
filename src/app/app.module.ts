@@ -82,6 +82,7 @@ import { OrdersComponent } from './components/User Profile/orders/orders.compone
 import { OrderEditDashboardComponent } from './components/Dashboard/Adel/order-edit-dashboard/order-edit-dashboard.component';
 import { LoadingInterceptor } from './Interceptors/loading.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { WishlistComponent } from './components/User Profile/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReviewsDashboardComponent,
     DashboardComponent,
     OrderEditDashboardComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,
