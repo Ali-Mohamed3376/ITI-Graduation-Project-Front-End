@@ -57,3 +57,10 @@ ul li a.cart .cart-basket {
     display: none;
   }
 }
+.general-color{
+  color: #164e63;
+}
+.general-background{
+  background-color: #164e63;
+
+}

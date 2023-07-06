@@ -12,7 +12,6 @@ export class AddAddressesComponent {
   constructor(public service:UserProfileService, public auth:AuthenticationService,private router: Router){
    this.service.getUserAddress().subscribe({
      next:(data)=>{
-       console.log(data)
        this.address=data;
      },
            error:(err)=>{console.log(err)}
@@ -22,6 +21,5 @@ export class AddAddressesComponent {
     let newad={city,street,phone};
      this.service.addAddress(newad).subscribe();
      this.router.navigateByUrl('/Address');
-    
    }
 }

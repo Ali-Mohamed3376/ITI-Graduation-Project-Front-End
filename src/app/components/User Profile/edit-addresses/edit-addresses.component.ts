@@ -2,6 +2,7 @@ import { Component,OnInit} from '@angular/core';
 import { UserProfileService } from 'src/app/services/User Profile/user-profile.service';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-edit-addresses',
   templateUrl: './edit-addresses.component.html',
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EditAddressesComponent {
   address:any;
   id:any;
-  constructor(public service:UserProfileService, public auth:AuthenticationService,myRoute:ActivatedRoute){
+  constructor(public service:UserProfileService, public auth:AuthenticationService,myRoute:ActivatedRoute,private router: Router){
     this.service.getUserAddress().subscribe({
       next:(data)=>{
         console.log(data)
@@ -37,8 +38,8 @@ export class EditAddressesComponent {
   let updatedData={id,city,street,phone}
   this.service.EditUserAddress(updatedData).subscribe({
     next:()=>{
-      console.log(updatedData);
       this.address[this.id]=updatedData;
+      this.router.navigateByUrl('/Address');
     },
     error:(err)=>{console.log(err)}
   })
