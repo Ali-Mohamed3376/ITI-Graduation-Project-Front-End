@@ -1,28 +1,32 @@
-*{
-    margin: 0;
-    padding: 0;
-    background-color: white;
+* {
+  margin: 0;
+  padding: 0;
+  background-color: white;
 }
-.container{
-    width: 100%;
-    
+.container {
+  width: 100%;
 }
-.bg-colour{
-    background-color: rgb(21, 82, 70);
-   
+
+.general-colour {
+  color: #164e63;
 }
-button:hover{
-    color: white;
+.general-background {
+  background-color: #164e63;
 }
-.bg-blue{
-    background-color:#00d7ff;
-  }
-  .bg-purple{
-    background-color: #ff0ccc;
-  }
-  .blue{
-    color:#00d7ff;
-  }
-  .purple{
-    color:#ff0ccc;
-  }
+button {
+  background-color: #083a4c;
+  color: aliceblue;
+  padding: 2%;
+}
+.adjust {
+  margin-left: 10%;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+input {
+  width: 50%;
+  margin-left: 25%;
+}
+.border {
+  border-radius: 5%;
+}
