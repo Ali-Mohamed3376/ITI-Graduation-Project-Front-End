@@ -1,7 +1,7 @@
-<div class="container-fluid px-4">
+<div class="container-fluid px-4 my-3">
     <div class="grid grid-cols-12 gap-6 mt-5 ">
         <div *ngIf="User">
-            <h2>{{User.fName}} {{User.lName}}</h2>
+            <h2 class="text-uppercase">{{User.fName}} {{User.lName}}</h2>
             <span>{{User.email}} ({{User.role}})</span>
         </div>
         <mat-tab-group class="py-3">
@@ -51,7 +51,7 @@
                                 <td>{{item.orderDate}}</td>
                                 <td>{{item.orderStatus}}</td>
                                 <td>{{item.deliverdDate}}</td>
-                                <td><a class="btn btn-primary" routerLink="/dashboard/orders/{{item.id}}">Details</a>
+                                <td><a class="btn btn-primary lightcolor" routerLink="/dashboard/orders/{{item.id}}">Details</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -61,7 +61,7 @@
         </mat-tab-group>
 
         <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-primary" routerLink="/dashboard/users">Go To Users</a>
+            <a class="btn btn-primary logocolor" routerLink="/dashboard/users"><i class="fas fa-arrow-left" style="color: #FFFFFF;"></i> Go To Users</a>
         </div>
     </div>
 </div>

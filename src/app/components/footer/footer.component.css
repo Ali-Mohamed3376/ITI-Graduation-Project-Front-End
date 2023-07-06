@@ -17,3 +17,11 @@
 }
 
 /* end footer section*/
+
+.z-3 {
+  z-index: 99999 !important;
+}
+
+.btn:hover {
+  background-color: #FFF !important;
+}

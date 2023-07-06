@@ -40,3 +40,27 @@ body {
   height: 250px;
   border-radius: 35px;
 }
+
+.lightcolor {
+  background-color: #0e7490 !important;
+  border-color: #0e7490 !important;
+}
+
+.logocolor{
+  background-color: #164e63 !important;
+  border-color: #164e63 !important;
+}
+
+.logocolortxt{
+  color: #164e63 !important;
+}
+
+.mdc-tab--active .mdc-tab__text-label {
+  color: #164e63 !important;
+  font-weight: bold !important;
+  font-size: 1.4rem !important;
+}
+
+.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline{
+  border-color: #164e63 !important;
+}
