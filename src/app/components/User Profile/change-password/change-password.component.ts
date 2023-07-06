@@ -48,7 +48,7 @@ export class ChangePasswordComponent {
         },
         (e) => {
           console.log(e.error);
-          this.respomseError = 'User' + e.error.title;
+          this.respomseError = 'User ' + e.error.title;
         }
       );
     } else {
