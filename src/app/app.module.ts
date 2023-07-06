@@ -123,6 +123,8 @@ import { WishlistComponent } from './components/User Profile/wishlist/wishlist.c
     DashboardComponent,
     OrderEditDashboardComponent,
     WishlistComponent,
+    ContactUsComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
@@ -169,9 +171,9 @@ import { WishlistComponent } from './components/User Profile/wishlist/wishlist.c
     MatSortModule,
     MatTableModule,
     NgxSpinnerModule,
-    NgxPaginationModule
-    ],
-    
+    NgxPaginationModule,
+  ],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

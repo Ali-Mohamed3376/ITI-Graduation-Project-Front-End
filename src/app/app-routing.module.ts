@@ -27,6 +27,8 @@ import { ChangePasswordComponent } from './components/User Profile/change-passwo
 import { ProfileComponent } from './components/User Profile/profile/profile.component';
 import { ReviewsDashboardComponent } from './components/Dashboard/Adel/reviews-dashboard/reviews-dashboard.component';
 import { WishlistComponent } from './components/User Profile/wishlist/wishlist.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 const routes: Routes = [
   // Abdo
   { path: '', component: HomeComponent },
@@ -37,8 +39,9 @@ const routes: Routes = [
   },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'wishList', component: WishlistComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'contact-us', component: ContactUsComponent },
   // Ali
-
 
   // Making an Lazy Loading
   {
@@ -66,16 +69,39 @@ const routes: Routes = [
   { path: 'Products/:id', component: ProductDetailsComponent },
 
   // Reham Sayed
-  { path: 'Orders',canActivate:[AuthenticationGuardGuard], component:OrdersComponent },
+  {
+    path: 'Orders',
+    canActivate: [AuthenticationGuardGuard],
+    component: OrdersComponent,
+  },
   { path: 'Order/Details/:id', component: OrderDetailsComponent },
-  { path: 'Profile',canActivate:[AuthenticationGuardGuard], component: MainProfileComponent },
+  {
+    path: 'Profile',
+    canActivate: [AuthenticationGuardGuard],
+    component: MainProfileComponent,
+  },
   { path: 'Sidebar', component: ProfileComponent },
-  { path: 'Address',canActivate:[AuthenticationGuardGuard], component: AllAddressesComponent },
-  { path: 'Address/update/:id',canActivate:[AuthenticationGuardGuard], component: EditAddressesComponent },
-  { path: 'Address/Add',canActivate:[AuthenticationGuardGuard], component: AddAddressesComponent },
+  {
+    path: 'Address',
+    canActivate: [AuthenticationGuardGuard],
+    component: AllAddressesComponent,
+  },
+  {
+    path: 'Address/update/:id',
+    canActivate: [AuthenticationGuardGuard],
+    component: EditAddressesComponent,
+  },
+  {
+    path: 'Address/Add',
+    canActivate: [AuthenticationGuardGuard],
+    component: AddAddressesComponent,
+  },
   { path: 'Review', component: ReviewComponent },
-  { path: 'Change-password',canActivate:[AuthenticationGuardGuard], component: ChangePasswordComponent },
-
+  {
+    path: 'Change-password',
+    canActivate: [AuthenticationGuardGuard],
+    component: ChangePasswordComponent,
+  },
 
   // Ahmed Hamdi
 ];
