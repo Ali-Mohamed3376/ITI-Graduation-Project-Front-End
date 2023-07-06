@@ -147,4 +147,26 @@ export class ProductDetailsComponent implements OnInit {
 
 
 
+
+
+
+  // Component code
+getReviewStars(rating: number): number[] {
+  const fullStars = Math.floor(rating); // Number of full stars
+  const hasHalfStar = rating - fullStars >= 0.5; // Check if there is a half star
+  const totalStars = fullStars + (hasHalfStar ? 1 : 0); // Total number of stars
+
+  return Array(totalStars).fill(0).map((_, index) => {
+    if (index < fullStars) {
+      return 1; // Full star
+    } else if (index === fullStars && hasHalfStar) {
+      return 0.5; // Half star
+    } else {
+      return 0; // Empty star
+    }
+  });
+}
+
+
+
 }
