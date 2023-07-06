@@ -28,7 +28,17 @@ export class AllAddressesComponent {
     }
     window.location.reload();
   }
-
+  update(id:any,city:any,street:any,phone:any){
+    this.service.GetAddressById(this.id).subscribe();
+    let updatedData={id,city,street,phone}
+    this.service.EditUserAddress(updatedData).subscribe({
+      next:()=>{
+        this.address[this.id]=updatedData;
+        // this.router.navigateByUrl('/Address');
+      },
+      error:(err)=>{console.log(err)}
+    })
+   } 
   default(id:any){
     this.service.setAddressDefault(id).subscribe(
       {
