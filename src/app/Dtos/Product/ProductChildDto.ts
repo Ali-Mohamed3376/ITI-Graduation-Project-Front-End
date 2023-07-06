@@ -8,4 +8,14 @@ export interface ProductChildDto {
     avgRating: number;
     avgRatingRounded: number;
     reviewCount: number;
-}
+} 
+
+
+
+
+
+
+
+
+
+

@@ -8,29 +8,30 @@ import { UserService } from 'src/app/services/Dashboard/user.service';
 })
 export class UsersComponent {
   Users: any;
-  IsDeleted = false;
 
-  constructor(private readonly UserService: UserService) {
-    this.GetAllUsers()
+  constructor(private UserSrv: UserService) { }
+
+  ngOnInit(): void {
+    this.fetchuser();
   }
 
-  public GetAllUsers() {
-    this.UserService.GetAllUsers().subscribe({
+
+  fetchuser(): void {
+    this.UserSrv.GetAllUsers().subscribe({
       next: (data) => {
-        this.Users = data
+        this.Users = data;
       },
-      error: (error) => {
-        console.log(error);
+      error(error) {
+        console.log(error)
       }
     })
   }
 
-  public confirmDelete(id: any) {
+  del(id: string) {
     if (confirm("Are you sure you want to delete this User?")) {
-      this.UserService.DeleteUser(id).subscribe({
+      this.UserSrv.DeleteUser(id).subscribe({
         next: () => {
-          this.IsDeleted = true
-          this.GetAllUsers()
+        this.fetchuser();
         },
         error: (error) => {
           console.log(error);
@@ -38,4 +39,5 @@ export class UsersComponent {
       })
     }
   }
+
 }

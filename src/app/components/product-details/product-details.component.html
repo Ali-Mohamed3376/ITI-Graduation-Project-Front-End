@@ -1,27 +1,4 @@
-<!-- <div *ngIf="product" class="alert alert-info">
-    <p>Product Name: {{product.name}}</p>
-    <p>Product image: {{product.image}}</p>
-    <p>Product description: {{product.description}}</p>
-    <p>Product model: {{product.model}}</p>
-    <p>Product Brand: {{product.categoryName}}</p>
-    <p>Product price: {{product.price}}</p>
-    <p>Product discount: {{product.discount}}</p>
-    <p>Product priceAfter: {{product.priceAfter}}</p>
-    <p>Product avgRatingRounded: {{product.avgRatingRounded}}</p>
-    
-    <p> reviews:</p>
-    <div *ngFor="let review of product.reviews" class="alert alert-warning">
-        <p>Comment: {{review.comment}}</p>
-        <p>Creation Date: {{review.creationDate}}</p>
-        <p>Rating: {{review.rating}}</p>
-    </div>
-    
-    <p>Product reviewCount: {{product.reviewCount}}</p>
-</div>
-
- -->
-
-<section class="single-product m-5">
+<section class="single-product m-5" *ngIf="product">
   <div class="container">
     <div class="row">
       <div class="col-md-5">
@@ -33,6 +10,7 @@
           >
             <div class="carousel-inner">
               <div class="carousel-item active">
+                <div *ngIf="product.price != product.priceAfter" class="sale">{{ product.discount }}% OFF</div>
                 <img src="{{ product.image }}" alt="" class="img-fluid" />
               </div>
             </div>
@@ -43,16 +21,12 @@
       <div class="col-md-7">
         <div class="single-product-details mt-5 mt-lg-0">
           <h2>{{ product.name }}</h2>
-
           <hr />
-
           <h4 class="product-price">${{ product.priceAfter }}</h4>
-          <h4 class="oldPrice">${{ product.price }}</h4>
-
+          <h5 *ngIf="product.price != product.priceAfter" class="oldPrice">${{product.price }}</h5>
           <p class="product-description my-4">
             <strong>Description : </strong>{{ product.description }}
           </p>
-
           <div class="products-meta mt-4">
             <div class="product-category">
               <span class="font-weight-bold text-capitalize product-meta-title">
@@ -65,20 +39,25 @@
             </div>
             <form class="cart" action="#" method="post">
               <div class="quantity d-flex align-items-center">
-                <input
-                  type="number"
-                  id="#"
-                  class="input-text qty text form-control w-25 mr-3"
-                  step="1"
-                  min="1"
-                  max="10"
-                  name="quantity"
-                  value="1"
-                  title="Qty"
-                  size="4"
-                />
-                <a href="#" class="btn btn-main btn-small">Add to cart</a>
-                <svg
+                <div class="form-outline">
+                  <label class="form-label" for="form1">Quantity</label>
+                  
+                  <select [(ngModel)]="ProductQuantity"     id="form1"  name="quantity"  class="input-text qty text form-control w-25 mr-3"   class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                </div>
+
+                <button href="#" class="btn btn-primary btn-small m-3" (click)="AddProductToUserCart()">
+                  Add to cart <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="1em"
                   viewBox="0 0 576 512"
@@ -86,7 +65,8 @@
                   <path
                     d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
                   />
-                </svg>
+                </svg></button>
+                
               </div>
             </form>
           </div>
@@ -165,146 +145,129 @@
           </div>
 
           <div
-            class="tab-pane fade"
+            class="tab-pane fade "
             id="nav-contact"
             role="tabpanel"
             aria-labelledby="nav-contact-tab"
           >
-            <div class="row">
-              <div class="col-lg-7">
-                <div class="media review-block mb-4">
-                  <div *ngFor="let review of product.reviews" class="card mb-3">
-                    <div class="card-header bg-dark text-white">
-                      <h5 class="card-title">Review</h5>
-                    </div>
-                    <div class="card-body">
-                      <p class="card-text">
-                        <strong>UserName:</strong> {{ review.fName }} {{ review.lName }}
-                      </p>
-                      <p class="card-text">
-                        <strong>Comment:</strong> {{ review.comment }}
-                      </p>
-                      <p class="card-text">
-                        <strong>Creation Date:</strong>
-                        {{ review.formattedCreationDate }}
-                      </p>
-                      <p class="card-text">
-                        <strong>Rating:</strong> {{ review.rating }}
-                      </p>
-                      <div class="progress">
-                        <div
-                          class="progress-bar bg-warning"
-                          role="progressbar"
-                          [style.width]="review.rating * 20 + '%'"
-                        ></div>
-                      </div>
-                    </div>
+          <!--  -->
+          <div class="container text-center">
+            <div class="row mb-3 mb-md-0">
+              <div class="card col-md-4 col-sm-12 m-1" *ngFor="let review of product.reviews" >
+                <div class="card-body py-4 mt-1">
+                  <div class="d-flex justify-content-center mb-4">
+                    <img src="https://th.bing.com/th/id/R.e04324c4c16de8ecfae1959194e89b5b?rik=WMWd0BXqfVYyow&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_227643.png&ehk=P4zMEPJ5NQ9erjCrTStGhLW2S5hhsHxFY31p3xvWzEE%3d&risl=&pid=ImgRaw&r=0"
+                      class="rounded-circle shadow-1-strong" width="100" height="100" />
                   </div>
+                  <h5 class="font-weight-bold">{{ review.fName }} {{ review.lName }}</h5>
+                  <h6 class="font-weight-bold my-3">{{ review.formattedCreationDate }}</h6>
+                  <ul class="list-unstyled d-flex justify-content-center">
+                    <li *ngFor="let star of getReviewStars(review.rating)">
+                      <i class="fas fa-star fa-sm text-warning"></i>
+                    </li>
+                  </ul>
+                  <p class="mb-2">
+                    <i class="fas fa-quote-left pe-2"></i>{{ review.comment }}
+                  </p>
                 </div>
               </div>
             </div>
+          
+            <!--  -->
+          </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  
-<section class="products RelatedProducts section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="title text-center m-5">
-                    <h2>You may like This !!</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="row">
-                <div class="col-3 mt-2"   *ngFor="let p of relatedProducts">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="sale">{{ p.discount }}% OFF</div>
-                      <div class="card-img-actions">
-                        <img
-                          src="{{ p.image }}"
-                          class="card-img img-fluid"
-                          width="50"
-                          height="200"
-                          alt=""
-                        />
-                      </div>
+  </section>
+<!-- *********************************Related Products******************************** -->
+<section class="products RelatedProducts section" *ngIf="relatedProducts">
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-lg-6">
+              <div class="title text-center m-5">
+                  <h2>You may like This !!</h2>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="row">
+              <div class="col-3 mt-2"   *ngFor="let p of relatedProducts" >
+                <div class="card">
+                  <div class="card-body">
+                    <div *ngIf="p.price != p.priceAfter" class="sale">{{ p.discount }}% OFF</div>
+                    <div class="card-img-actions">
+                      <img
+                        src="{{ p.image }}"
+                        class="card-img img-fluid"
+                        width="50"
+                        height="200"
+                        alt=""
+                      />
                     </div>
-                    <div class="card-body bg-light text-center">
-                      <div class="mb-2">
-                        <h5 class="font-weight-semibold mb-2">
-                          <a
-                          (click)="openRelatedProductDetails(p)"
-                            routerLink="/Products/{{ p.id }}"
-                            class="text-default mb-2"
-                            data-abc="true" >
-                             {{ p.name }} 
-                          </a>
-                        </h5>
-                      </div>
-                      <h4 class="mb-0 font-weight-semibold">${{ p.priceAfter }}</h4>
-                      <h5 class="oldPrice">${{ p.price }}</h5>
-                      <div>
-                        <p>
-                          Rating :
-                          <svg
-                            *ngFor="let star of generateStars(p.avgRatingRounded)"
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="1em"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              class="star-rating"
-                              *ngIf="star === 'full'"
-                              d="M12 2 L15.09 8.18 L22 9 L16.5 13.39 L18.36 20 L12 17.77 L5.64 20 L7.5 13.39 L2 9 L8.91 8.18 L12 2"
-                            ></path>
-                            <path
-                              class="star-rating"
-                              *ngIf="star === 'half'"
-                              d="M11.5 2 L14.59 8.18 L22 9 L16.5 13.39 L18.36 20 L12 17.77 L5.64 20 L7.5 13.39 L2 9 L8.91 8.18 L11.5 2Z"
-                            ></path>
-                            <path
-                              *ngIf="star === 'empty'"
-                              d="M12 2 L15.09 8.18 L22 9 L16.5 13.39 L18.36 20 L12 17.77 L5.64 20 L7.5 13.39 L2 9 L8.91 8.18 L12 2"
-                              class="empty-star"
-                            ></path>
-                          </svg>
-                        </p>
-                      </div>
-                      <div class="text-muted mb-3">{{ p.reviewCount }} reviews</div>
-                      <button type="button" class="btn bg-cart">
+                  </div>
+                  <div class="card-body bg-light text-center">
+                    <div class="mb-2">
+                      <h5 class="font-weight-semibold mb-2">
+                        <a
+                        (click)="openRelatedProductDetails(p)"
+                          routerLink="/Products/{{ p.id }}"
+                          class="text-default mb-2"
+                          data-abc="true" >
+                           {{ p.name }} 
+                        </a>
+                      </h5>
+                    </div>
+                    <h4 class="mb-0 font-weight-semibold">${{ p.priceAfter }}</h4>
+                    <h5 *ngIf="p.price != p.priceAfter" class="oldPrice">${{ p.price }}</h5>
+                    <div>
+                      <p>
+                        Rating :
                         <svg
+                          *ngFor="let star of generateStars(p.avgRatingRounded)"
                           xmlns="http://www.w3.org/2000/svg"
                           height="1em"
-                          viewBox="0 0 576 512"
+                          viewBox="0 0 24 24"
                         >
                           <path
-                            d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
-                          />
+                            class="star-rating"
+                            *ngIf="star === 'full'"
+                            d="M12 2 L15.09 8.18 L22 9 L16.5 13.39 L18.36 20 L12 17.77 L5.64 20 L7.5 13.39 L2 9 L8.91 8.18 L12 2"
+                          ></path>
+                          <path
+                            class="star-rating"
+                            *ngIf="star === 'half'"
+                            d="M11.5 2 L14.59 8.18 L22 9 L16.5 13.39 L18.36 20 L12 17.77 L5.64 20 L7.5 13.39 L2 9 L8.91 8.18 L11.5 2Z"
+                          ></path>
+                          <path
+                            *ngIf="star === 'empty'"
+                            d="M12 2 L15.09 8.18 L22 9 L16.5 13.39 L18.36 20 L12 17.77 L5.64 20 L7.5 13.39 L2 9 L8.91 8.18 L12 2"
+                            class="empty-star"
+                          ></path>
                         </svg>
-                        Add to cart
-                      </button>
+                      </p>
                     </div>
+                    <div class="text-muted mb-3">{{ p.reviewCount }} reviews</div>
+                    <button type="button" class="btn bg-cart">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="1em"
+                        viewBox="0 0 576 512"
+                      >
+                        <path
+                          d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                        />
+                      </svg>
+                      Add to cart
+                    </button>
                   </div>
                 </div>
               </div>
-        </div>
-    </div>
-  </section>
-  
+            </div>
+      </div>
+  </div>
+</section>
 
-    <!-- <div *ngFor="let product of relatedProducts" class="alert alert-warning" (click)="openProductDetails(product)">
-        <p>Product Name: <a routerLink="/Products/{{ product.id }}">{{ product.name }}</a></p>
-        <p>Product image: {{ product.image }}</p>
-        <p>Product Brand: {{ product.categoryName }}</p>
-        <p>Product price: {{ product.price }}</p>
-        <p>Product discount: {{ product.discount }}</p>
-        <p>Product priceAfter: {{ product.priceAfter }}</p>
-        <p>Product avgRatingRounded: {{ product.avgRatingRounded }}</p>
-    </div> -->
-<!-- </section> -->
+
+<!-- ************************test************************* -->

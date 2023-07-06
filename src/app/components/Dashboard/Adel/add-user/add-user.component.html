@@ -61,7 +61,7 @@
         <div *ngIf="!IsRegisterd && RegisterError" class="text-danger">{{RegisterError.error[0].description}}</div>
 
         <div class="form-group text-center mt-sm-5">
-            <button (click)="Register()" type="submit" class="btn btn-success bt-lg w-50 fs-5 fw-bold"
+            <button (click)="Register()" type="submit" id="submit" class="btn bt-lg w-50 fs-5 fw-bold logocolor"
                 [disabled]="!form.valid">
                 Register
             </button>

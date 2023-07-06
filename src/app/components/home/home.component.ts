@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/Cart/cart.service';
 import { HomeService } from 'src/app/services/Home/home.service'; 
 
 @Component({
@@ -10,7 +11,11 @@ export class HomeComponent implements OnInit{
 
 specialProducts:any;
 topProducts:any;
-constructor(private HomeService:HomeService){}
+constructor(
+  private HomeService:HomeService,
+  private cartService:CartService
+  )
+  {}
   
 
 
@@ -22,7 +27,10 @@ ngOnInit(): void {
     this.HomeService.GetTopProducts().subscribe({
       next:(data)=>{this.topProducts=data;},
       error:(error)=>{console.log(error);}
-    })
+    });
+    this.cartService.getCartProductsCounter();
+    
+      
   }
 
 
@@ -46,6 +54,7 @@ ngOnInit(): void {
 
     return stars;
   }
+
 
 
 

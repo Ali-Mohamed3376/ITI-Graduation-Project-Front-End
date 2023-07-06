@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductChildDto } from 'src/app/Dtos/Product/ProductChildDto';
+import { ProductFilterationPaginationResultDto } from 'src/app/Dtos/Product/ProductFilterationPaginationResultDto';
+import ProductPaginationDto from 'src/app/Dtos/Product/ProductPaginationDto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
   constructor(private readonly myClient: HttpClient) {}
-  private readonly Base_URl = 'https://localhost:7064/api/Home/AllProducts';
 
   private readonly ProductDetails_URL = 'https://localhost:7064/api/Products/';
 
@@ -19,10 +20,6 @@ export class ProductService {
 
   private readonly Filteration_URL =
     'https://localhost:7064/api/Products/Filter';
-
-  GetAllProducts(): Observable<ProductChildDto[]> {
-    return this.myClient.get<ProductChildDto[]>(this.Base_URl);
-  }
 
   GetProductDetailsById(id: any) {
     return this.myClient.get(this.ProductDetails_URL + id);
@@ -40,4 +37,27 @@ export class ProductService {
     return this.myClient.post<ProductChildDto[]>(this.Filteration_URL, filter);
   }
 
+  Search(filter: any): Observable<ProductChildDto[]> {
+    return this.myClient.post<ProductChildDto[]>(this.Filteration_URL, filter);
+  }
+
+  GetAllProductsInPagination(
+    page: number,
+    countPerPage: number
+  ): Observable<ProductPaginationDto> {
+    return this.myClient.get<ProductPaginationDto>(
+      `https://localhost:7064/api/Products/${page}/${countPerPage}`
+    );
+  }
+
+  GetFilteredProductsInPagination(
+    filter: any,
+    page: number,
+    countPerPage: number
+  ): Observable<ProductFilterationPaginationResultDto> {
+    return this.myClient.post<ProductFilterationPaginationResultDto>(
+      `https://localhost:7064/api/Products/PaginationFilter/${page}/${countPerPage}`,
+      filter
+    );
+  }
 }

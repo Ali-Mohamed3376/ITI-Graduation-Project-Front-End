@@ -1,4 +1,28 @@
 *{
     margin: 0;
     padding: 0;
+    background-color: white;
 }
+.container{
+    width: 100%;
+    
+}
+.bg-colour{
+    background-color: rgb(21, 82, 70);
+   
+}
+button:hover{
+    color: white;
+}
+.bg-blue{
+    background-color:#00d7ff;
+  }
+  .bg-purple{
+    background-color: #ff0ccc;
+  }
+  .blue{
+    color:#00d7ff;
+  }
+  .purple{
+    color:#ff0ccc;
+  }

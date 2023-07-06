@@ -77,8 +77,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { OrdersComponent } from './components/User Profile/orders/orders.component';
 import { OrderEditDashboardComponent } from './components/Dashboard/Adel/order-edit-dashboard/order-edit-dashboard.component';
+import { LoadingInterceptor } from './Interceptors/loading.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { WishlistComponent } from './components/User Profile/wishlist/wishlist.component';
 import { EditImagePopUpComponent } from './components/Dashboard/Ahmed/edit-image-pop-up/edit-image-pop-up.component';
 
 @NgModule({
@@ -119,8 +123,10 @@ import { EditImagePopUpComponent } from './components/Dashboard/Ahmed/edit-image
     ReviewsDashboardComponent,
     DashboardComponent,
     OrderEditDashboardComponent,
+    WishlistComponent,
+    ContactUsComponent,
     EditImagePopUpComponent,
-    
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
@@ -166,11 +172,19 @@ import { EditImagePopUpComponent } from './components/Dashboard/Ahmed/edit-image
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    NgxSpinnerModule,
+    NgxPaginationModule,
   ],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
       multi: true,
     },
   ],

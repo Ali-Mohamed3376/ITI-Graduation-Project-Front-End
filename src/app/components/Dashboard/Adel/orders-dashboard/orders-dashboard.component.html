@@ -1,35 +1,73 @@
-<div class="container-fluid p-4">
-    <div class="row">
-        <table class="table mt-5">
-            <thead>
-                <tr>
-                    <th scope="col">Number</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">User Name</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Products</th>
-                    <th scope="col">Total Price</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of Orders">
-                    <td>#{{item.id}}</td>
-                    <td>{{item.orderDate}}</td>
-                    <td routerLink="/dashboard/users/{{item.userId}}">{{item.userName}}</td>
-                    <td>{{item.orderStatus}}</td>
-                    <td>{{item.productCount}}</td>
-                    <td>{{item.totalPrice}}</td>
-                    <td>
-                        <a class="btn btn-info" [routerLink]="['/dashboard/orders', item.id]">Details</a>
-                    </td>
-                    <td>
-                        <!-- <a class="btn btn-danger" (click)=confirmDelete(item.id)>Delete</a> -->
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- <div *ngIf="IsDeleted" class="text-danger">Deleted Successfully</div> -->
+<div class="container-fluid my-3">
+    <div class="grid grid-cols-12 gap-6 mt-5 ">
+        <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+            <div class="dropdown">
+            </div>
+            <div class="hidden md:block mx-auto text-slate-500"></div>
+            <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
+                <div class="w-56 relative text-slate-500">
+                    <input type="text" class="form-control w-56 box pr-10 shadow p-3 bg-white rounded"
+                        placeholder="Search...">
+                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
+                </div>
+            </div>
+        </div>
+        <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+            <table class="table table-report -mt-2">
+                <thead>
+                    <tr>
+                        <th class="whitespace-nowrap">No.</th>
+                        <th class="whitespace-nowrap">Order Date</th>
+                        <th class="whitespace-nowrap">User Name</th>
+                        <th class="whitespace-nowrap">Status</th>
+                        <th class="whitespace-nowrap">Products</th>
+                        <th class="whitespace-nowrap">Total Price</th>
+                        <th class="text-center whitespace-nowrap">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="intro-x" *ngFor="let item of Orders; let i = index">
+                        <td class="w-40">
+                            <div class="flex">
+                                <div class="w-10 h-10 image-fit zoom-in">
+                                    {{i + 1}}
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="" class="font-medium whitespace-nowrap">{{item.formattedCreationDate}}</a>
+                        </td>
+                        <td>
+                            <a class="text-slate-500 flex items-center mr-3" href="javascript:;">
+                                {{item.userName}}
+                            </a>
+                        </td>
+                        <td>
+                            <a class="text-slate-500 flex items-center mr-3" href="javascript:;">
+                                {{item.orderStatus}}
+                            </a>
+                        </td>
+                        <td>
+                            <a class="text-slate-500 flex items-center mr-3" href="javascript:;">
+                                {{item.productCount}}
+                            </a>
+                        </td>
+                        <td>
+                            <a class="text-slate-500 flex items-center mr-3" href="javascript:;">
+                                {{item.totalPrice}}
+                            </a>
+                        </td>
+                        <td class="table-report__action w-56">
+                            <div class="flexxx justify-center items-center">
+                                <a class="flex items-center mr-3 logocolortxt" routerLink="/dashboard/orders/{{item.id}}">
+                                    <i class="fa-solid fa-pen-to-square fa-xl mr-1 logocolortxt"
+                                        routerLink="/dashboard/orders/{{item.id}}"></i> Details
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

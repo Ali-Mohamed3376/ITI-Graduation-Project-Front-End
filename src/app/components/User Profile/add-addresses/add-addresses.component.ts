@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { UserProfileService } from 'src/app/services/User Profile/user-profile.service';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-add-addresses',
   templateUrl: './add-addresses.component.html',
@@ -8,17 +10,38 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
 })
 export class AddAddressesComponent {
   address:any;
-  constructor(public service:UserProfileService, public auth:AuthenticationService){
+  form=new FormGroup({
+    city: new FormControl<string>('', [
+      Validators.required,
+      Validators.maxLength(20),
+    ]),
+    street: new FormControl<string>('', [
+      Validators.required,
+      Validators.maxLength(100),
+    ]),
+    phone: new FormControl<string>('', [
+      Validators.required,
+      Validators.maxLength(20),
+      Validators.pattern(/^01\d{9}$/)
+
+    ]),
+  })
+  constructor(public service:UserProfileService, public auth:AuthenticationService,private router: Router){
    this.service.getUserAddress().subscribe({
      next:(data)=>{
-       console.log(data)
        this.address=data;
      },
            error:(err)=>{console.log(err)}
  })
   }
-  add(city:any,street:any,phone:any){
+  add(){
+
+    var city = this.form.controls.city.value??''; 
+    var street = this.form.controls.street.value??''; 
+    var phone = this.form.controls.phone.value??''; 
+
     let newad={city,street,phone};
      this.service.addAddress(newad).subscribe();
+     this.router.navigateByUrl('/Address');
    }
 }

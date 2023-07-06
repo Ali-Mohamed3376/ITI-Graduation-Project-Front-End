@@ -1,37 +1,58 @@
-import { Component} from '@angular/core';
-import { LoginDto } from 'src/app/Dtos/user/LoginDto';
+import { Component } from '@angular/core';
 import { ChangePasswordDto } from 'src/app/Dtos/user/ChangePasswordDto';
 import { UserProfileService } from 'src/app/services/User Profile/user-profile.service';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  FormBuilder,
+  AbstractControlOptions,
+} from '@angular/forms';
+import { LoginDto } from 'src/app/Dtos/user/LoginDto';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.css']
+  styleUrls: ['./change-password.component.css'],
 })
 export class ChangePasswordComponent {
-constructor(public service:UserProfileService,public auth:AuthenticationService){}
-form=new FormGroup({
-  oldPassword:new FormControl<string>(''),
-  newPassword:new FormControl<string>(''),
+  respomseError = '';
+  constructor(
+    public service: UserProfileService,
+    public auth: AuthenticationService,
+    private routerService: Router
+  ) {}
 
-})
-change(){
-var credentials=new ChangePasswordDto();
-console.log(this.form.controls.oldPassword.value)
-console.log(this.form.controls.newPassword.value)
+  pass = new LoginDto();
+  checkk = this.pass.password;
+  form = new FormGroup({
+    oldPassword: new FormControl<string>(''),
+    newPassword: new FormControl<string>('', [Validators.required]),
+    confirmnewPassword: new FormControl<string>('', [Validators.required]),
+  });
 
-credentials.OldPassword=this.form.controls.oldPassword.value??'';
-credentials.NewPassword=this.form.controls.newPassword.value??'';
-console.log(credentials)
-this.service.changePassword(credentials).subscribe((result : any) => {
-  console.log(result)
-},
-(e : any) =>{
-  console.log(e.error)
-
-});
+  // change password fun
+  change() {
+    var credentials = new ChangePasswordDto();
+    credentials.OldPassword = this.form.controls.oldPassword.value ?? '';
+    credentials.NewPassword = this.form.controls.newPassword.value ?? '';
+    credentials.ConfirmNewPassword =
+      this.form.controls.confirmnewPassword.value ?? '';
+    console.log(credentials);
+    if (credentials.NewPassword === credentials.ConfirmNewPassword) {
+      this.service.changePassword(credentials).subscribe(
+        (result) => {
+          console.log(result);
+          this.routerService.navigateByUrl('Sidebar');
+        },
+        (e) => {
+          console.log(e.error);
+          this.respomseError = 'User ' + e.error.title;
+        }
+      );
+    } else {
+      this.respomseError = 'Password Not Matched!!';
+    }
+  }
 }
-}
-
-

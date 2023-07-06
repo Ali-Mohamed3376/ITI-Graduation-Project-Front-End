@@ -88,48 +88,69 @@
 </header> -->
 
 <!-- for Admin -->
-
+<!--------------------rehams comment
 <header>
-  <div class="px-3 py-2 text-bg-dark border-bottom">
+  <div class="px-3 py-2 border-bottom border-dark">
     <div class="container">
       <div class="d-flex align-items-center justify-content-between">
-        <a class="navbar-brand" routerLink="#"
-          ><img src="../../../assets/images/logooooo.png" width="60" />
+        <a class="navbar-brand" id="logo" routerLink="#"
+          ><img src="../../../assets/images/Capture.PNG" width="250px" />
         </a>
-        <form class="search-form" (submit)="onSubmit()">
-          <input
-            type="text"
-            placeholder="Search..."
-            [(ngModel)]="searchTerm"
-            name="searchTerm"
-          />
-          <button class="btn btn-primary" type="submit">Search</button>
+        <form class="col-4 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="text" class="form-control form-control-dark" placeholder="Search..." aria-label="Search"
+            #searchQuery (keyup.enter)="onEnterKey(searchQuery.value)" />
         </form>
-        <mat-form-field appearance="fill">
-          <mat-label>Search countries by name</mat-label>
-          <input matInput [(ngModel)]="searchTerm" />
-          <mat-icon matPrefix>search</mat-icon>
-        </mat-form-field>
+        COMMENT <form [formGroup]="form">
+          <div class="mb-sm-2 col-sm-12">
+            <input
+              type="text"
+              placeholder="Search by product name..."
+              formControlName="searchTerm"
+            />
+          </div>
+          <div class="col-sm-12">
+            <button class="btn btn-primary" (click)="onSearch()">Search</button>
+          </div>
+        </form> COMMENT
         <ul class="nav col-12 col-lg-auto my-3 text-small">
           <li>
-            <a routerLink="/" class="nav-link text-white"> Home </a>
+            <a routerLink="/" class="nav-link text-black"> Home </a>
           </li>
           <li>
-            <a routerLink="/" class="nav-link text-white"> About </a>
+            <a routerLink="/about-us" class="nav-link text-black"> About Us</a>
+          </li>
+          <li>
+            <a routerLink="/contact-us" class="nav-link text-black">
+              Contact Us</a
+            >
           </li>
           <li>
             <a
-              routerLink="/"
-              class="nav-link text-white"
+              routerLink="/Sidebar"
+              class="nav-link text-black"
               *ngIf="isUserLoggedIn"
             >
               Profile
             </a>
           </li>
+          <li *ngIf="isUserLoggedIn">
+            <a
+              routerLink="cart"
+              class="cart position-relative d-inline-flex"
+              aria-label="View your shopping cart"
+            >
+              <i class="fas fa fa-shopping-cart fa-lg"></i>
+              <span
+                class="cart-basket d-flex align-items-center justify-content-center"
+              >
+                {{ cartCouter }}
+              </span>
+            </a>
+          </li>
           <li>
             <a
               routerLink="/"
-              class="nav-link text-white"
+              class="nav-link text-black"
               *ngIf="isUserLoggedIn && isAdmin"
             >
               Dashboard
@@ -137,27 +158,38 @@
           </li>
           <li>
             <a
-              routerLink="/"
-              class="nav-link text-white"
+              routerLink="/dashboard/orders"
+              class="nav-link text-black"
               *ngIf="isUserLoggedIn && isAdmin"
             >
               Orders
             </a>
           </li>
           <li>
-            <a routerLink="/Products" class="nav-link text-white"> Products </a>
+            <a routerLink="/Products" class="nav-link text-black"> Products </a>
           </li>
           <li>
             <a
               routerLink="/dashboard/users"
-              class="nav-link text-white"
+              class="nav-link text-black"
               *ngIf="isUserLoggedIn && isAdmin"
             >
-              Customers
+              Users
             </a>
           </li>
-          <li>
-            <a routerLink="/cart" class="nav-link text-white"> Cart </a>
+          <li *ngIf="isUserLoggedIn">
+            <a
+              routerLink="/wishList"
+              class="cart position-relative d-inline-flex"
+              aria-label="View your wishList cart"
+            >
+              <i class="fa-regular fa-heart fa-beat fa-lg"></i>
+              <span
+                class="cart-basket d-flex align-items-center justify-content-center"
+              >
+                {{ whishListCouter }}
+              </span>
+            </a>
           </li>
           <li class="nav-link" *ngIf="!isUserLoggedIn">
             <a
@@ -182,7 +214,7 @@
         </ul>
       </div>
     </div>
-  </div>
+  </div> end of rehams comment------------>
   <!-- <div class="px-3 py-2 border-bottom mb-3">
     <div class="container d-flex flex-wrap justify-content-center">
       <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
@@ -217,8 +249,8 @@
         </li>
       </div>
     </div>
-  </div> -->
-</header>
+  </div> 
+</header>  end of rehams comment----->
 
 <!-- <mat-toolbar color="primary" class="mat-elevation-z2">
   <a mat-button routerLink="/">Home</a>
@@ -242,3 +274,112 @@
     <a mat-menu-item routerLink="/register">Register</a>
   </mat-menu>
 </mat-toolbar> -->
+<nav class="col-lg-12 col-sm-12 object-fit-fill-sm  navbar navbar-expand-lg ">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="col-lg-12 d-flex justify-content-center navbar-nav pe-lg-5 me-lg ">
+        <li class="nav-item px-4 me-lg-5 pe-lg-5">
+          <a class="navbar-brand" id="logo" routerLink="#"><img src="../../../assets/images/Capture.PNG" width="250px"></a>
+        </li>
+        <form class="col-4 col-lg-auto  " role="search">
+          <input type="text" class="form-control form-control-dark" placeholder="Search..." aria-label="Search"
+            #searchQuery (keyup.enter)="onEnterKey(searchQuery.value)" />
+        </form>
+        <li class="nav-item px-4">
+          <a routerLink="/" class="nav-link text-black"> Home </a>
+        </li>
+        <li class="nav-item px-4">
+          <a routerLink="/about-us" class="nav-link text-black"> About Us </a>
+        </li>
+        <li class="nav-item px-4">
+          <a routerLink="/contact-us" class="nav-link text-black"> Contact Us </a>
+        </li>
+        <li class="nav-item px-4">
+          <a routerLink="/Sidebar" class="nav-link text-black" *ngIf="isUserLoggedIn">
+            Profile
+          </a>        </li>
+          <li class="nav-item px-4" *ngIf="isUserLoggedIn">
+            <a routerLink="cart" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+              <i class="fas fa fa-shopping-cart fa-lg"></i>
+              <span class="cart-basket d-flex align-items-center justify-content-center">
+                {{cartCouter}}
+              </span>
+            </a>
+          </li>
+          <li *ngIf="isUserLoggedIn">      
+            <a routerLink="" class="cart position-relative d-inline-flex" aria-label="View your wishList cart">
+              <i class="fa-regular fa-heart "></i>
+              <span class="cart-basket d-flex align-items-center justify-content-center">
+                {{whishListCouter}}
+              </span>
+            </a>
+          </li>
+          <li class="nav-link" *ngIf="!isUserLoggedIn">
+            <a id="loginBtn" class="btn btn-primary" routerLink="/Authentication/login"
+              routerLinkActive="active">Login</a>
+          </li>
+          <li class="nav-link" *ngIf="!isUserLoggedIn">
+            <a class="btn btn-success" routerLink="/Authentication/register" routerLinkActive="active">Register</a>
+          </li>
+          <li class="nav-link" *ngIf="isUserLoggedIn">
+            <a class="btn general-background outline text-white" (click)="LogOut()">Logout</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+<!-----------------------------------------------------------small screen------------------------------------------------------------------------------------->
+      <div class="collapse" id="navbarToggleExternalContent">
+              <div class="p-4">
+                <ul class="col-lg-12 d-flex justify-content-center navbar-nav">
+                  
+                  <form class="col-4 col-lg-auto  " role="search">
+                    <input type="text" class="form-control form-control-dark" placeholder="Search..." aria-label="Search"
+                      #searchQuery (keyup.enter)="onEnterKey(searchQuery.value)" />
+                  </form>
+                  <li class="nav-item px-4">
+                    <a routerLink="/" class="nav-link text-black"> Home </a>
+                  </li>
+                  <li class="nav-item px-4">
+                    <a routerLink="/" class="nav-link text-black"> About </a>
+                  </li>
+                  <li class="nav-item px-4">
+                    <a routerLink="/Sidebar" class="nav-link text-black" *ngIf="isUserLoggedIn">
+                      Profile
+                    </a>        </li>
+                    <li class="nav-item px-4" *ngIf="isUserLoggedIn">
+                      <a routerLink="cart" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+                        <i class="fas fa fa-shopping-cart fa-lg"></i>
+                        <span class="cart-basket d-flex align-items-center justify-content-center">
+                          {{cartCouter}}
+                        </span>
+                      </a>
+                    </li>
+                    <li *ngIf="isUserLoggedIn">      
+                      <a routerLink="" class="cart position-relative d-inline-flex" aria-label="View your wishList cart">
+                        <i class="fa-regular fa-heart "></i>
+                        <span class="cart-basket d-flex align-items-center justify-content-center">
+                          {{whishListCouter}}
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-link" *ngIf="!isUserLoggedIn">
+                      <a id="loginBtn" class="btn btn-primary" routerLink="/Authentication/login"
+                        routerLinkActive="active">Login</a>
+                    </li>
+                    <li class="nav-link" *ngIf="!isUserLoggedIn">
+                      <a class="btn btn-success" routerLink="/Authentication/register" routerLinkActive="active">Register</a>
+                    </li>
+                    <li class="nav-link" *ngIf="isUserLoggedIn">
+                      <a class="btn general-background" (click)="LogOut()">Logout</a>
+                    </li>
+                </ul>
+              </div>
+            </div>
+            <nav class="navbar">
+              <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              </div>
+            </nav>
+</nav>

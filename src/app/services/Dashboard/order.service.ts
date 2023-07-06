@@ -21,6 +21,6 @@ export class OrderService {
   }
 
   public EditOrder(credentials : OrderEditDto){
-    return this.myClient.put(this.BaseUrl + "EditOrder", credentials)
+    return this.myClient.put("https://localhost:7064/api/Orders/Dashboard/EditOrder", credentials);
   }
 }

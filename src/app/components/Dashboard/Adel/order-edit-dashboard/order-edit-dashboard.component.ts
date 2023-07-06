@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { OrderEditDto } from 'src/app/Dtos/Dashboard/OrderEditDto';
 import { OrderService } from 'src/app/services/Dashboard/order.service';
 
@@ -9,50 +8,25 @@ import { OrderService } from 'src/app/services/Dashboard/order.service';
   templateUrl: './order-edit-dashboard.component.html',
   styleUrls: ['./order-edit-dashboard.component.css'],
 })
-export class OrderEditDashboardComponent implements OnInit {
-  selected = 0;
-  Id: any;
-  Order: any;
-  EditError: any;
-  // dateControl: FormControl = new FormControl();
-  // defaultDate: Date = new Date();
+export class OrderEditDashboardComponent {
+  selectedValue :any;
 
   constructor(
     private readonly orderService: OrderService,
-    private readonly route: ActivatedRoute,
-    private routerService: Router
+    private dialogRef: MatDialogRef<OrderEditDashboardComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { Id : any }
   ) {}
-
-  ngOnInit(): void {
-    // this.dateControl.setValue(this.defaultDate);
-
-    this.Id = this.route.snapshot.params['id'];
-    this.orderService.GetOrderDetails(this.Id).subscribe({
-      next: (data) => {
-        this.Order = data;
-        this.selected = this.Order.orderStatus;
-        // this.dateControl.setValue(new Date(this.Order.deliverdDate));
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
 
   EditOrder() {
     var credentials = new OrderEditDto();
-    credentials.id = this.Id;
-    credentials.orderStatus = this.selected
-    credentials.deliverdDate = new Date(Date.now());
-
-    console.log(credentials);
+    credentials.id = this.data.Id;
+    credentials.orderStatus = this.selectedValue
 
     this.orderService.EditOrder(credentials).subscribe({
       next: () => {
-        // this.routerService.navigateByUrl('/dashboard/orders/' + this.Id);
+        this.dialogRef.close();
       },
       error: (error) => {
-        this.EditError = error;
         console.log(error);
       },
     });
