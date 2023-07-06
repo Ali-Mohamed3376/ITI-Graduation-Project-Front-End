@@ -16,6 +16,10 @@ export class CategoryService {
   public GetAllCategories(){
     return this.myClient.get(this.BaseUrl + "GetAllCategories");
   }
+
+  public GetById(categoryId : any){
+    return this.myClient.get("https://localhost:7064/api/Categories/" + categoryId)
+  }
   
   public AddCategory(credentials: CategoryAddDto): Observable<any> {
     return this.myClient.post(this.BaseUrl + "AddCategory", credentials);
