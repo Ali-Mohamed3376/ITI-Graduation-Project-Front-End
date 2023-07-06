@@ -30,10 +30,6 @@ export class EditCategoryComponent {
     })
   }
 
-  // form = new FormGroup({
-  //   CategoryName: new FormControl<string>(''),
-  // });
-
   EditCategory() {
     var credentials = new CategoryEditDto();
     credentials.name = this.Name
