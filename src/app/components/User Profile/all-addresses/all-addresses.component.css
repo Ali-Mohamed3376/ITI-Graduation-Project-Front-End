@@ -12,13 +12,21 @@ button{
     margin: 2%;
 }
 .back{
-    width:50%;
+    width:80%;
     color:  #164e63;;
     background-color:white;
     align-items: center;
     margin-left: 25%;
     margin-top: 5%;
+    width: 50%;
+    padding-left:5%;
+    padding-right:5%;
+
 }
+
 .general-back{
     background-color: #0e7490;
+}
+form{
+    width: 100%;
 }

@@ -6,6 +6,20 @@
       <h1 class="text-center">Addresses</h1>
       
       <div *ngFor="let a of address" class="back">
+       <!---- <div class="col-lg-8"*ngIf="address">-->
+          <form >
+            <label>City</label>
+             <input #city class="form-control p-3 m-3" type="text" placeholder="city" value="{{a.city}}">
+             <label>Street</label>
+             <input #street class="form-control p-3 m-3" type="text" placeholder="street" value="{{a.street}}">
+             <label>Phone</label>
+             <input #phone class="form-control p-3 m-3" type="text" placeholder="phone" value="{{a.phone}}">
+          </form>
+          <div class="row">
+            <button class="btn btn-danger p-2" (click)="delete(a.id)">Delete</button>
+            <button class="btn btn-primary"(click)="update(a.id,city.value,street.value,phone.value)">Update</button>
+          </div>
+     <!-- </div>
         
         <div class="row text-center">
            <div class="col-4 text-center">
@@ -29,7 +43,7 @@
       <div class="col">
         <button class="btn bg-white" routerLink="/Address/Add">Add</button>
     </div>
-      <!--  <ul *ngFor="let a of address">
+       <ul *ngFor="let a of address">
             <li class="m-5">{{a.city}}</li>
             <li class="m-5">{{a.street}}</li> 
             <li class="m-5">{{a.phone}}</li>

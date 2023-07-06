@@ -40,7 +40,7 @@ export class EditAddressesComponent {
   this.service.EditUserAddress(updatedData).subscribe({
     next:()=>{
       this.address[this.id]=updatedData;
-      this.router.navigateByUrl('/Address');
+      // this.router.navigateByUrl('/Address');
     },
     error:(err)=>{console.log(err)}
   })
