@@ -63,3 +63,19 @@ ul li a.cart .cart-basket {
   background-color: #164e63;
 
 }
+
+.arrow-icon {
+  margin-left: 8px;
+}
+
+.arrow{
+  margin-right: 0px !important;
+}
+
+.angular-btn{
+  margin-top: 1px;
+}
+
+.hover-white :hover{
+  color: #fff !important;
+}
