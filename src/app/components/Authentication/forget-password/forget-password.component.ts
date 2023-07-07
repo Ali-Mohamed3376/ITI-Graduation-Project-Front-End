@@ -26,12 +26,13 @@ export class ForgetPasswordComponent {
     this.emailService.setEmail(email);
     this.authService.Forget_Password(email).subscribe(
       (result: any) => {
-        console.log(result);
+        // console.log(result);
         this.routerService.navigateByUrl('/Authentication/verify-code');
       },
       (e) => {
         // handle error
         this.respomseError = e.error;
+        // console.log(e.error);
       }
     );
   }
