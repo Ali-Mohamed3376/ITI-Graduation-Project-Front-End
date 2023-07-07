@@ -1,5 +1,4 @@
 import { Component ,OnInit} from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { forkJoin } from 'rxjs';
 import { productOperation} from 'src/app/services/Dashboard/productOperation.service';
@@ -7,27 +6,25 @@ import{CategoryService} from 'src/app/services/Dashboard/category.service'
 import{AddProductDto} from 'src/app/Dtos/Dashboard/AddProductDto';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit{
 ImageUrls:string[]=[];
 categories:any;
 selectedCategory:number=0;
-constructor(private productService:productOperation,private snackBar : MatSnackBar,private categoriesService:CategoryService,private router:Router){}
 
-// form = new  FormGroup({
-//   productName : new FormControl<string>(''),
-//   price : new FormControl<number>(0),
-//   description : new FormControl<string>(''),
-//   image : new FormControl<any>(''),
-//   model : new FormControl<string>(''),
-//   discount : new FormControl<number>(0),
-//   categories : new FormControl<any>(''),
-// })
+constructor(private productService:productOperation,private snackBar : MatSnackBar,
+  private categoriesService:CategoryService,private router:Router,private _snackBar: MatSnackBar){}
+  
 product: AddProductDto=new AddProductDto();
+res="add successfully";
 addProduct(productForm:NgForm):void{
   if(productForm.invalid)return;
   this.product.Name=this.product.Name.trim(),
@@ -42,10 +39,18 @@ addProduct(productForm:NgForm):void{
     {
       next:(data)=>{console.log(data);this.router.navigate(["dashboard/products"])},
       error:(err)=>{console.log(err)},
-      complete:()=>{console.log("product adding success")}
+      complete:()=>{console.log("product adding success")
+    }
     }
   )
+  this.snackBar.open('Product added successfully', 'OK', {
+    duration: 4000, // duration in milliseconds
+    // verticalPosition:'top'
+  });
+  
 }
+
+
 ngOnInit(): void {
     this.categoriesService.GetAllCategories().subscribe({
       next:(data)=>{this.categories=data},
@@ -70,24 +75,13 @@ uploadPhotos(e:Event){
     } )  
   }
 }
-// uploadPhotos(e:Event)
-// {
-//   const input= e.target as HTMLInputElement  
-  
-//    this.imageService.Upload(input).subscribe({
-//     next:(data)=>{
-//       console.log(data);
-//     },
-//     error:(error)=>{
-//       console.log(error)
-//     }
-//    });
-//   };
- 
+
 // this.snackBar.open(error.error.message,"Close",{
 //   duration:4000,
 //   verticalposition:"top",
-
+// snackBarRef.afterDismissed().subscribe(() => {
+//   console.log('The snackbar was dismissed');
+// });
 
 // openImagePopup():void{
 //   const dialogRef=this.dialog.open(ImagePopupComponent,{

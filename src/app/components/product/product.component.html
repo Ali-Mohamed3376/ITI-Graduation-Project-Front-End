@@ -1,17 +1,17 @@
-<div class="container mt-50 mb-50">
+<div class="container my-5">
   <div class="row">
     <div class="col-md-3 mt-2">
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title" class="text-center">Filteration</h5>
+          <h5 class="card-title" class="text-center CustomText">Filteration</h5>
         </div>
         <div class="card-body">
           <form (ngSubmit)="applyFilters(1)" #filterForm="ngForm">
-            <article class="filter-group">
+            <article class="filter-group mt-2">
               <header class="card-header">
                 <a
                   href="#"
-                  class="title"
+                  class="title FilterElements"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapse_aside_brands"
                   >Brands</a
@@ -33,11 +33,11 @@
               </div>
             </article>
 
-            <article class="filter-group">
+            <article class="filter-group mt-2">
               <header class="card-header">
                 <a
                   href="#"
-                  class="title"
+                  class="title FilterElements"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapse_aside2"
                   >Price</a
@@ -73,11 +73,11 @@
               </div>
             </article>
 
-            <article class="filter-group">
+            <article class="filter-group mt-2">
               <header class="card-header">
                 <a
                   href="#"
-                  class="title"
+                  class="title FilterElements"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapse_aside_rating"
                   >Rating
@@ -104,9 +104,33 @@
               </div>
             </article>
 
-            <button class="btn btn-light w-100" type="submit">Apply</button>
+            <!-- <button class="btn btn-light w-100 " type="submit">Apply</button>
             <button
               class="btn btn-light w-100"
+              type="button"
+              (click)="resetFilters()"
+            >
+              Reset
+            </button> -->
+            <button
+              [ngClass]="{
+                'custom-button': true,
+                'w-100': true,
+                rounded: true,
+                'mb-2': true,
+                'mt-2': true
+              }"
+              type="submit"
+            >
+              Apply
+            </button>
+            <button
+              [ngClass]="{
+                'custom-button': true,
+                'w-100': true,
+                rounded: true,
+                'mb-2': true
+              }"
               type="button"
               (click)="resetFilters()"
             >
@@ -117,6 +141,7 @@
       </div>
     </div>
     <!--  *********************************************************************************** -->
+
     <div class="col-md-9">
       <div class="row">
         <div
@@ -132,35 +157,41 @@
                   }
           "
         >
-          <div class="card">
-            <div class="card-body" style="max-height: 200px;">
+          <div class="card mb-3">
+            <div class="card-body p-0 pb-3" style="max-height: 200px">
               <div *ngIf="p.price != p.priceAfter" class="sale">
                 {{ p.discount }}% OFF
               </div>
               <div class="card-img-actions">
                 <img
                   src="{{ p.image }}"
-                  class="card-img"
+                  class="card-img rounded-0"
                   height="200px"
                   alt=""
                 />
               </div>
             </div>
             <div class="card-body text-center bg-light">
-              <div class="mb-2">
+
+              <div class="mb-2 h-25">
                 <h4 class="font-weight-semibold mb-2 text-white">
                   <a
                     routerLink="/Products/{{ p.id }}"
-                    class="text-default mb-2"
+                    class="text-default mb-2 nameColor"
                     data-abc="true"
-                    >{{ p.name }}</a
                   >
+                    {{ p.name }}
+                  </a>
                 </h4>
               </div>
-              <h4 class="mb-0 font-weight-semibold">${{ p.priceAfter }}</h4>
-              <h5 *ngIf="p.price != p.priceAfter" class="oldPrice">
-                ${{ p.price }}
-              </h5>
+              <div class="h-25">
+                <h4 class="mb-0 font-weight-semibold text-success">
+                  ${{ p.priceAfter }}
+                </h4>
+                <h5 *ngIf="p.price != p.priceAfter" class="oldPrice">
+                  ${{ p.price }}
+                </h5>
+              </div>
               <div>
                 <p>
                   Rating :
@@ -188,12 +219,12 @@
                   </svg>
                 </p>
               </div>
-              <div class="text-muted mb-3">{{ p.reviewCount }} reviews</div>
+              <div class="text-muted mb-1">{{ p.reviewCount }} reviews</div>
               <button
                 *ngIf="isLoggedIn"
                 (click)="AddOrRemoveFromwishList(p.id)"
                 type="button"
-                class="btn bg-cart"
+                class="btn bg-cart py-0"
               >
                 <i class="fa-regular fa-heart"></i>
                 wishlist
@@ -205,9 +236,6 @@
     </div>
   </div>
 </div>
-
-
-
 <!-- *********************Message card************************ -->
 
 <div class="centered-message" *ngIf="noProductsMessage">
