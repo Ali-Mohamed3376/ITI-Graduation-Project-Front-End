@@ -33,17 +33,18 @@
         </div>
     </div>
 
-    <div class="card-group my-3" *ngIf="Order">
-        <div class=" row">
-            <div class="col-3 mt-3" *ngFor="let item of Order.productsInOrder">
+    <div class="card-group my-3 d-grid" *ngIf="Order">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 mt-3" *ngFor="let item of Order.productsInOrder">
                 <div class="card">
-                    <img class="card-img-top mt-2" src="{{item.productImage}}" height="200px" alt="Card image cap">
+                    <img class="card-img-top" src="{{item.productImage}}" height="200px" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{item.productName}}</h5>
                         <p class="card-text">Price: {{item.quantity}} * {{item.productPrice - (item.productPrice *
                             (item.discount/100))}} = {{item.quantity * (item.productPrice - (item.productPrice *
                             (item.discount/100)))}}</p>
-                        <a class="btn btn-primary lightcolor" routerLink="/dashboard/products/{{item.productId}}">Product
+                        <a class="btn btn-primary lightcolor"
+                            routerLink="/dashboard/products/{{item.productId}}">Product
                             Details</a>
                     </div>
                 </div>
@@ -52,6 +53,7 @@
     </div>
 
     <div class="d-grid gap-2 d-md-block">
-        <a class="btn btn-primary logocolor" routerLink="/dashboard/orders"><i class="fas fa-arrow-left" style="color: #FFFFFF;"></i> Go To Orders</a>
+        <a class="btn btn-primary logocolor" routerLink="/dashboard/orders"><i class="fas fa-arrow-left"
+                style="color: #FFFFFF;"></i> Go To Orders</a>
     </div>
 </div>

@@ -42,14 +42,12 @@ export class HeaderComponent implements OnInit {
       this.cartService.getCartProductsCounter();
     }
     this.cartService.cartCounter$.subscribe((data) => {
-      console.log('Cart count: ' + data);
       this.cartCouter = data;
     });
     if (this.isUserLoggedIn) {
       this.whishListService.GetWishListCount();
     }
     this.whishListService.wishListCounter$.subscribe((data) => {
-      console.log('wishList count: ' + data);
       this.whishListCouter = data;
     });
   }
@@ -59,12 +57,10 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     this.authService.isLoggedIn$.next(false);
     this.routerService.navigateByUrl('/');
-    // window.location.reload();
   }
 
   // search field
   onEnterKey(e: any) {
-    console.log(e);
     this.routerService.navigateByUrl(`/Products?q=${e}`);
   }
 }

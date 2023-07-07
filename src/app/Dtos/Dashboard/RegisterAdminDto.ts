@@ -3,5 +3,5 @@ export class RegisterAdminDto {
   lname: string = '';
   email: string = '';
   password: string = '';
-  role: string = "Admin";
+  role: string = '';
 }

@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
   filteredProducts: ProductFilterationPaginationResultDto[] = [];
   totalCount = 0;
   page = 1;
-  countPerPage = 10;
+  countPerPage = 9;
   brands: any;
   ratingOptions = [1, 2, 3, 4, 5];
   noProductsMessage: any;
