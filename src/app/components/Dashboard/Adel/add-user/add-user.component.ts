@@ -16,6 +16,7 @@ import { UserService } from 'src/app/services/Dashboard/user.service';
 export class AddUserComponent {
   RegisterError: any;
   IsRegisterd: any;
+  role:any
 
   constructor(private userService: UserService, private routerService: Router) { }
 
@@ -30,6 +31,7 @@ export class AddUserComponent {
     ]),
     email: new FormControl<string>('', [Validators.required, Validators.email]),
     password: new FormControl<string>('', [Validators.required]),
+    role: new FormControl<string>('', [Validators.required]),
   });
 
   Register() {
@@ -38,7 +40,9 @@ export class AddUserComponent {
     credentials.lname = this.form.controls.lname.value ?? '';
     credentials.email = this.form.controls.email.value ?? '';
     credentials.password = this.form.controls.password.value ?? '';
+    credentials.role = this.form.controls.role.value ?? '';
 
+    console.log(credentials)
     this.userService.AddAdmin(credentials).subscribe({
       next: () => {
         this.routerService.navigateByUrl('/dashboard/users');

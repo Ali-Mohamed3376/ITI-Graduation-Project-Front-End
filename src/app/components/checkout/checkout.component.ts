@@ -73,10 +73,10 @@ export class CheckoutComponent implements OnInit {
         error:(error)=>{  // why he enter the error path?
           console.log(error);
           console.log("error");
-          alert("order Added Successfull ... redirect to cart page");
+          alert("order Added Successfull ... redirect to Home Page");
           this.cartService.getCartProductsCounter();
 
-          this.router.navigate(["/cart"]);
+          this.router.navigate(["/"]);
 
         }
       });     

@@ -5,13 +5,15 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ContactUs } from 'src/app/Dtos/ContactUs/ContactUs';
+import { ContactUsService } from 'src/app/services/ContactUs/contact-us.service';
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css'],
 })
 export class ContactUsComponent {
-  constructor() {}
+  constructor( private contactUs:ContactUsService) {}
 
   form = new FormGroup({
     name: new FormControl<string>('', Validators.required),
@@ -21,5 +23,16 @@ export class ContactUsComponent {
 
   onSubmit() {
     console.log(this.form);
+    var contactUsDto= new ContactUs();
+    contactUsDto.name=this.form.value.name as string;
+    contactUsDto.email=this.form.value.email as string;
+    contactUsDto.message=this.form.value.message as string;
+    this.contactUs.sendMessage(contactUsDto).subscribe(
+      {
+        next:(data)=>{
+            console.log(data);
+        }
+      }
+    )
   }
 }

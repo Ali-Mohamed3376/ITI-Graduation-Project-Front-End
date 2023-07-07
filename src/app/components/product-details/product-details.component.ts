@@ -25,11 +25,12 @@ export class ProductDetailsComponent implements OnInit {
   }
 
 
-
   ngOnInit(): void {
     this.ProductDetailsService.GetProductDetailsById(this.ID).subscribe({
       next: (data) => {
+        console.log(data)
         this.product = data;
+        console.log(this.product.categoryName)
         this.fetchRelatedProducts(this.product.categoryName);
       },
       error: (error) => { console.log(error) }
@@ -74,16 +75,15 @@ export class ProductDetailsComponent implements OnInit {
   fetchRelatedProducts(brand: string) {
     this.ProductDetailsService.GetRelatedProducts(brand).subscribe({
       next: (RelatedData) => {
-
          this.relatedProducts = RelatedData;
 
          this.relatedProducts = this.relatedProducts.filter((product:any) => product.id != this.product.id);
+        console.log(this.relatedProducts)
+
          },
       error: (err) => { console.log(err) }
     });
   }
- 
-
 
   openRelatedProductDetails(clickedProduct: any) {
     this.product.id = clickedProduct.id; // Assign the ID of the clicked product
@@ -95,10 +95,7 @@ export class ProductDetailsComponent implements OnInit {
       error: (error) => { console.log(error) }
     });
   }
-
-
-
-
+ 
 
   generateStars(avgRating: number): string[] {
     const stars = [];
@@ -180,6 +177,22 @@ getReviewStars(rating: number): number[] {
     }
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
