@@ -1,6 +1,9 @@
 import { Component,OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { CartService } from 'src/app/services/Cart/cart.service';
-import { HomeService } from 'src/app/services/Home/home.service'; 
+import { HomeService } from 'src/app/services/Home/home.service';
+import { WishListService } from 'src/app/services/WishList/wish-list.service';
+
 
 @Component({
   selector: 'app-home',
@@ -8,7 +11,7 @@ import { HomeService } from 'src/app/services/Home/home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-
+  isLoggedIn: boolean = false;
 specialProducts:any;
 topProducts:any;
 NewProducts:any;
@@ -34,7 +37,10 @@ carouselOptions = {
 };
 constructor(
   private HomeService:HomeService,
-  private cartService:CartService
+  private cartService:CartService,
+  private wishlistService: WishListService,
+  private authenticationService: AuthenticationService
+
   )
   {}
   
@@ -56,7 +62,9 @@ ngOnInit(): void {
       next:(data)=>{this.NewProducts=data;console.log(this.NewProducts)},
       error:(error)=>{console.log(error);}
     });
-      
+    this.authenticationService.isLoggedIn$.subscribe((data) => {
+      this.isLoggedIn = data;
+    });
   }
 
 
@@ -82,7 +90,19 @@ ngOnInit(): void {
   }
 
 
-
+  AddOrRemoveFromwishList(productId: number) {
+    this.wishlistService.AddOrDeleteWishList(productId).subscribe({
+      next: (data) => {
+        console.log('next');
+        console.log(data);
+        this.wishlistService.GetWishListCount();
+      },
+      error: (error) => {
+        console.log('error');
+        console.log(error);
+      },
+    });
+  }
 
 
 
