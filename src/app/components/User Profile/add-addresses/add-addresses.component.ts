@@ -10,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AddAddressesComponent {
   address:any;
+  defaultt="true";
   form=new FormGroup({
     city: new FormControl<string>('', [
       Validators.required,
@@ -44,4 +45,17 @@ export class AddAddressesComponent {
      this.service.addAddress(newad).subscribe();
      this.router.navigateByUrl('/Address');
    }
+   default(id: any) {
+    this.service.setAddressDefault(id).subscribe({
+      //defaultAddress:this.form.controls.defaultAddress.value;
+      next: (data) => {
+        if (this.address.defaultAddress.value == 'true') {
+          this.defaultt="default"
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }

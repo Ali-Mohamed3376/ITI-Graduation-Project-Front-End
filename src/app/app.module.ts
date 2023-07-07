@@ -165,6 +165,7 @@ import { MainDashboardComponent } from './components/Dashboard/Adel/main-dashboa
     MatTabsModule,
     MatTreeModule,
     MatButtonToggleModule,
+    MatDialogModule,
     MatBadgeModule,
     MatChipsModule,
     MatProgressSpinnerModule,
