@@ -10,9 +10,6 @@
             <div class="title text-center m-5">
               <h2>wishList</h2>
             </div>
-            <div *ngIf="products.length == 0" class="alert alert-danger">
-              <h3>Wishlist is Empty</h3>
-            </div>
           </div>
         </div>
         <div class="col-md-9">
@@ -91,5 +88,8 @@
         </div>
       </div>
     </section>
+    <div *ngIf="products.length == 0" class="alert alert-danger">
+      <h3>Wishlist is Empty</h3>
+    </div>
   </div>
 </div>
