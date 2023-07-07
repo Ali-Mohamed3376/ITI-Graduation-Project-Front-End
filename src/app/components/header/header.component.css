@@ -1,5 +1,9 @@
 /* CSS Code for Nav:- */
 
+.header{
+  z-index: 9999999999999999;
+}
+
 #logo {
   margin-right: 20px;
 }
