@@ -4,6 +4,7 @@ import { API, AddProductToCart } from 'src/app/Dtos/Cart/cart';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { CartService } from 'src/app/services/Cart/cart.service';
 import { ProductService } from 'src/app/services/Product/product.service';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-product-details',
@@ -23,7 +24,6 @@ export class ProductDetailsComponent implements OnInit {
   constructor(myRoute: ActivatedRoute, public ProductDetailsService: ProductService , public cartService:CartService,private AuthService:AuthenticationService,private router:Router) {
     this.ID = myRoute.snapshot.params["id"];
   }
-
 
 
   ngOnInit(): void {
@@ -84,8 +84,6 @@ export class ProductDetailsComponent implements OnInit {
       error: (err) => { console.log(err) }
     });
   }
- 
-
 
   openRelatedProductDetails(clickedProduct: any) {
     this.product.id = clickedProduct.id; // Assign the ID of the clicked product
@@ -97,10 +95,7 @@ export class ProductDetailsComponent implements OnInit {
       error: (error) => { console.log(error) }
     });
   }
-
-
-
-
+ 
 
   generateStars(avgRating: number): string[] {
     const stars = [];
@@ -182,6 +177,22 @@ getReviewStars(rating: number): number[] {
     }
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

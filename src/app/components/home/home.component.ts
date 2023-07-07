@@ -11,6 +11,27 @@ export class HomeComponent implements OnInit{
 
 specialProducts:any;
 topProducts:any;
+NewProducts:any;
+carouselOptions = {
+  items: 4, // Number of items to show in the carousel
+  loop: true, // Enable infinite loop
+  margin: 10, // Space between items
+  nav: true, // Show navigation buttons
+  dots: false, // Hide pagination dots
+  autoplay: true, // Enable autoplay
+  autoplayTimeout: 3000, // Autoplay interval in milliseconds
+  responsive: {
+    0: {
+      items: 1 // Number of items to show on small screens
+    },
+    768: {
+      items: 3 // Number of items to show on medium screens
+    },
+    992: {
+      items: 4 // Number of items to show on large screens
+    }
+  }
+};
 constructor(
   private HomeService:HomeService,
   private cartService:CartService
@@ -29,7 +50,12 @@ ngOnInit(): void {
       error:(error)=>{console.log(error);}
     });
     this.cartService.getCartProductsCounter();
+
     
+    this.HomeService.GetNewProducts().subscribe({
+      next:(data)=>{this.NewProducts=data;console.log(this.NewProducts)},
+      error:(error)=>{console.log(error);}
+    });
       
   }
 
@@ -65,6 +91,7 @@ ngOnInit(): void {
 
 
 
+  
 
 
 

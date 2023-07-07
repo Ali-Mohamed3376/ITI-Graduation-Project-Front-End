@@ -65,3 +65,17 @@ body {
 .mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline{
   border-color: #164e63 !important;
 }
+
+
+.card-wrapper {
+  display: flex;
+}
+
+.card {
+  flex: 1;
+}
+
+
+.customColor{
+  color:#164e63
+}
