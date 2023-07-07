@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -175,6 +176,7 @@ import { EditImagePopUpComponent } from './components/Dashboard/Ahmed/edit-image
     MatTableModule,
     NgxSpinnerModule,
     NgxPaginationModule,
+    SlickCarouselModule
   ],
 
   providers: [

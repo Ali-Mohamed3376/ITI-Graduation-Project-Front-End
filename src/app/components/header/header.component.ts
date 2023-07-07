@@ -58,6 +58,8 @@ export class HeaderComponent implements OnInit {
   LogOut() {
     localStorage.clear();
     this.authService.isLoggedIn$.next(false);
+    this.whishListCouter=0;
+    this.cartCouter=0;
     this.routerService.navigateByUrl('/');
     // window.location.reload();
   }

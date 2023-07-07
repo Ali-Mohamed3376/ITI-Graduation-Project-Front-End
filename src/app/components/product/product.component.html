@@ -1,16 +1,3 @@
-<!-- <div *ngFor="let p of products" class="alert alert-warning">
- <p>Product Name :<a routerLink="/Products/{{p.id}}">{{p.name}}</a> </p>
- <p>Product image : <img src={{p.image}} ></p>
- <p>Product price : {{p.price}}</p>
- <p>Product discount : {{p.discount}}</p>
- <p>Product priceAfter : {{p.priceAfter}}</p>
- <p>Product avgRatingRounded : {{p.avgRatingRounded}}</p>
- <p>Product reviewCount : {{p.reviewCount}}</p>
-
-</div> -->
-
-
-
 <div class="container mt-50 mb-50">
   <div class="row">
     <div class="col-md-3 mt-2">
@@ -107,7 +94,7 @@
                       type="radio"
                       name="ratingOption"
                       [value]="ratingOption"
-                      [(ngModel)]="selectedRating" 
+                      [(ngModel)]="selectedRating"
                     />
                     <span class="form-check-label"
                       >{{ ratingOption }} stars</span
@@ -117,33 +104,51 @@
               </div>
             </article>
 
-            <button class="btn btn-light w-100 " type="submit">Apply</button>
-            <button class="btn btn-light w-100 " type="button" (click)="resetFilters()">Reset</button>
-
+            <button class="btn btn-light w-100" type="submit">Apply</button>
+            <button
+              class="btn btn-light w-100"
+              type="button"
+              (click)="resetFilters()"
+            >
+              Reset
+            </button>
           </form>
         </div>
       </div>
     </div>
-<!--  *********************************************************************************** -->
+    <!--  *********************************************************************************** -->
     <div class="col-md-9">
       <div class="row">
-        <div class="col-md-4 mt-2" *ngFor="let p of products | paginate: { id: 'product-pagination', itemsPerPage: countPerPage, currentPage: page, totalItems: totalCount }">
+        <div
+          class="col-md-4 mt-2 card-wrapper"
+          *ngFor="
+            let p of products
+              | paginate
+                : {
+                    id: 'product-pagination',
+                    itemsPerPage: countPerPage,
+                    currentPage: page,
+                    totalItems: totalCount
+                  }
+          "
+        >
           <div class="card">
-            <div class="card-body">
-              <div *ngIf="p.price != p.priceAfter" class="sale">{{ p.discount }}% OFF</div>
+            <div class="card-body" style="max-height: 200px;">
+              <div *ngIf="p.price != p.priceAfter" class="sale">
+                {{ p.discount }}% OFF
+              </div>
               <div class="card-img-actions">
                 <img
                   src="{{ p.image }}"
-                  class="card-img img-fluid"
-                  width="96"
-                  height="350"
+                  class="card-img"
+                  height="200px"
                   alt=""
                 />
               </div>
             </div>
-            <div class="card-body bg-light text-center">
+            <div class="card-body text-center bg-light">
               <div class="mb-2">
-                <h4 class="font-weight-semibold mb-2">
+                <h4 class="font-weight-semibold mb-2 text-white">
                   <a
                     routerLink="/Products/{{ p.id }}"
                     class="text-default mb-2"
@@ -153,7 +158,9 @@
                 </h4>
               </div>
               <h4 class="mb-0 font-weight-semibold">${{ p.priceAfter }}</h4>
-              <h5 *ngIf="p.price != p.priceAfter" class="oldPrice">${{ p.price }}</h5>
+              <h5 *ngIf="p.price != p.priceAfter" class="oldPrice">
+                ${{ p.price }}
+              </h5>
               <div>
                 <p>
                   Rating :
@@ -182,8 +189,13 @@
                 </p>
               </div>
               <div class="text-muted mb-3">{{ p.reviewCount }} reviews</div>
-              <button *ngIf="isLoggedIn" (click)="AddOrRemoveFromwishList(p.id)" type="button" class="btn bg-cart">
-                <i class="fa-regular fa-heart "></i>
+              <button
+                *ngIf="isLoggedIn"
+                (click)="AddOrRemoveFromwishList(p.id)"
+                type="button"
+                class="btn bg-cart"
+              >
+                <i class="fa-regular fa-heart"></i>
                 wishlist
               </button>
             </div>
@@ -196,7 +208,7 @@
 
 
 
-
+<!-- *********************Message card************************ -->
 
 <div class="centered-message" *ngIf="noProductsMessage">
   <div class="card card-msg">
@@ -207,45 +219,15 @@
   </div>
 </div>
 
-
-
-
-
-
-   
-      
-
-<pagination-controls *ngIf="!filterWork" (pageChange)="loadProductsInPagination($event)" id="product-pagination" class="text-center"></pagination-controls>
-<pagination-controls *ngIf="filterWork" (pageChange)="applyFilters($event)" id="product-pagination" class="text-center"></pagination-controls>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<pagination-controls
+  *ngIf="!filterWork"
+  (pageChange)="loadProductsInPagination($event)"
+  id="product-pagination"
+  class="text-center"
+></pagination-controls>
+<pagination-controls
+  *ngIf="filterWork"
+  (pageChange)="applyFilters($event)"
+  id="product-pagination"
+  class="text-center"
+></pagination-controls>

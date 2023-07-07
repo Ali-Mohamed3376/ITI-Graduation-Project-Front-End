@@ -6,6 +6,7 @@ import { productOperation} from 'src/app/services/Dashboard/productOperation.ser
 import{CategoryService} from 'src/app/services/Dashboard/category.service'
 import{AddProductDto} from 'src/app/Dtos/Dashboard/AddProductDto';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -15,7 +16,7 @@ export class AddProductComponent implements OnInit{
 ImageUrls:string[]=[];
 categories:any;
 selectedCategory:number=0;
-constructor(private productService:productOperation,private snackBar : MatSnackBar,private categoriesService:CategoryService){}
+constructor(private productService:productOperation,private snackBar : MatSnackBar,private categoriesService:CategoryService,private router:Router){}
 
 // form = new  FormGroup({
 //   productName : new FormControl<string>(''),
@@ -39,7 +40,7 @@ addProduct(productForm:NgForm):void{
   this.product.CategoryID=this.selectedCategory;
   this.productService.AddProduct(this.product).subscribe(
     {
-      next:(data)=>{console.log(data)},
+      next:(data)=>{console.log(data);this.router.navigate(["dashboard/products"])},
       error:(err)=>{console.log(err)},
       complete:()=>{console.log("product adding success")}
     }

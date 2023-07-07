@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { CategoryEditDto } from 'src/app/Dtos/Dashboard/CategoryEditDto';
 import { CategoryService } from 'src/app/services/Dashboard/category.service';
 
@@ -16,7 +17,8 @@ export class EditCategoryComponent {
   constructor(
     private categoryService: CategoryService, 
     private dialogRef: MatDialogRef<EditCategoryComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { Id : any }
+    @Inject(MAT_DIALOG_DATA) public data: { Id : any },
+    private route : Router
     ){
       this.fetchCategory(data.Id)
   }
@@ -37,6 +39,7 @@ export class EditCategoryComponent {
 
     this.categoryService.EditCategory(credentials).subscribe({
       next: () => {
+        this.route.navigateByUrl("/dashboard/categories")
         this.dialogRef.close();
       },
       error: (error) => {

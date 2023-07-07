@@ -28,7 +28,7 @@ export class ReviewsDashboardComponent {
 
   }
 
-  public confirmDelete(productId: any, userId :string) {
+  public del(productId: any, userId :string) {
     if (confirm("Are you sure you want to delete this User?")) {
       this.credentials.ProductId = productId
       this.credentials.UserId = userId

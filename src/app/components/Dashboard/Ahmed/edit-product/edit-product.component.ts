@@ -147,7 +147,7 @@ export class EditProductComponent implements OnInit{
       (data) => {
         console.log(data)
         this.oldProperty.name = data.name;
-        this.oldProperty.ImagesURLs = data.image.map((image: any) => image);
+        this.oldProperty.ImagesURLs = data.images.map((image: any) => image);
         console.log(this.oldProperty.ImagesURLs);
         this.oldProperty.id = data.id;      
         this.oldProperty.categories = data.categories;     
@@ -210,6 +210,7 @@ export class EditProductComponent implements OnInit{
     this.productOperation.EditProduct(updatedProperty).subscribe(
       () => {
         console.log('Property updated successfully');
+        this.router.navigate(["/dashboard/products"])
         // this.router.navigate(['HostDashboardComponent'], { queryParams: { showHostProperty: true } });
         // Show snackbar message
         // this.snackBar.open('Property Updated successfully', 'Close', {

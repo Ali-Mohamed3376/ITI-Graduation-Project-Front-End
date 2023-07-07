@@ -1,0 +1,13 @@
+.checkoutButton {
+  width: 100%;
+  color: #000;
+  border: 1px solid #2e6e85;
+}
+
+.checkoutButton:hover {
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: #2e6e85;
+  letter-spacing: 1px;
+  transition: 1s;
+}

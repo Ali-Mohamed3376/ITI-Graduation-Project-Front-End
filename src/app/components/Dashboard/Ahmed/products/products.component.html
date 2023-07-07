@@ -20,7 +20,11 @@
                     <td>{{ item.id }}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.price}}</td>
-                    <td>{{item.image}}</td>
+                    <td >
+                        <img style="height: 50px; width:50px" src="{{item.image}}" alt="">
+                    </td>
+                    
+                    
                     <td>
                         <a class="btn btn-info" routerLink="/dashboard/products/{{item.id}}">Edit</a>
                     </td>
