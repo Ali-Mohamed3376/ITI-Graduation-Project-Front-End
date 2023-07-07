@@ -1,9 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-/* *{
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
-} */
+@import "~bootstrap/dist/css/bootstrap.min.css";
 html,
 body {
   height: 100%;
@@ -51,12 +47,12 @@ body {
   border-color: #0e7490 !important;
 }
 
-.logocolor{
+.logocolor {
   background-color: #164e63 !important;
   border-color: #164e63 !important;
 }
 
-.logocolortxt{
+.logocolortxt {
   color: #164e63 !important;
 }
 
@@ -66,10 +62,9 @@ body {
   font-size: 1.4rem !important;
 }
 
-.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline{
+.mat-mdc-tab:not(.mat-mdc-tab-disabled) .mdc-tab-indicator__content--underline {
   border-color: #164e63 !important;
 }
-
 
 .card-wrapper {
   display: flex;
@@ -81,22 +76,5 @@ body {
 
 
 .customColor{
-  color:#164e63;
-}
-
-
-.nameColor {
-  color: #164e63;
-  text-decoration: none; /* Remove default underline */
-}
-
-.nameColor:hover {
-  text-decoration: underline; /* Add underline on hover */
-}
-.BackGroundCustom{
-  background-color: #164e63;
-}
-
-.textColor {
-  color: #164e63;
+  color:#164e63
 }

@@ -5,10 +5,10 @@
   <div class="col-lg-8" *ngIf="products">
     <section class="products Top-products section">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-3">
-            <div class="title text-center m-5">
-              <h2>wishList</h2>
+        <div class="row wishListTitle justify-content-center mt-5 mb-5 rounded">
+          <div class="col-lg-3 text-center">
+            <div class="title py-3">
+              <h2>WishList</h2>
             </div>
           </div>
         </div>
@@ -88,8 +88,15 @@
         </div>
       </div>
     </section>
-    <div *ngIf="products.length == 0" class="alert alert-danger">
-      <h3>Wishlist is Empty</h3>
+    <div class="text-center alert alert-success" *ngIf="products.length == 0">
+      <div>
+        <h3 class="text-danger">Your Wishlist is Empty</h3>
+      </div>
+      <div class="mb-4">
+        <h2>
+          <a routerLink="/Products" class="btn goShopping">Go Shopping</a>
+        </h2>
+      </div>
     </div>
   </div>
 </div>

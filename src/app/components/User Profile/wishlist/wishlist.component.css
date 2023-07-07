@@ -1,4 +1,19 @@
-.wishlist{
-    color: red;
+.wishlist {
+  color: red;
 }
 
+.wishListTitle {
+  background-color: #2e6e85;
+  color: white;
+}
+
+.goShopping {
+  color: #000;
+  border: 1px solid #2e6e85;
+}
+
+.goShopping:hover {
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: #2e6e85;
+}

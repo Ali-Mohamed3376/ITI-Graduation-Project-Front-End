@@ -33,6 +33,7 @@ import { SidebarComponent } from './components/Dashboard/Ahmed/sidebar/sidebar.c
 import { ProductsComponent } from './components/Dashboard/Ahmed/products/products.component';
 import { EditProductComponent } from './components/Dashboard/Ahmed/edit-product/edit-product.component';
 import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashboard.component';
+import { AdminAuthenticationGuard } from './Guards/admin-authentication.guard';
 const routes: Routes = [
   // Abdo
   { path: '', component: HomeComponent },
@@ -41,12 +42,16 @@ const routes: Routes = [
     canActivate: [AuthenticationGuardGuard],
     component: CartComponent,
   },
-  { path: 'checkout',
+  {
+    path: 'checkout',
     canActivate: [AuthenticationGuardGuard],
-   component: CheckoutComponent },
-  { path: 'wishList',
-  canActivate: [AuthenticationGuardGuard],
-  component: WishlistComponent },
+    component: CheckoutComponent
+  },
+  {
+    path: 'wishList',
+    canActivate: [AuthenticationGuardGuard],
+    component: WishlistComponent
+  },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
   // Ali
@@ -61,17 +66,17 @@ const routes: Routes = [
   },
 
   // Adel
-  { path: 'dashboard/users', component: UsersComponent },
-  { path: 'dashboard/users/:id', component: UserDetailsComponent },
-  { path: 'dashboard/register/admin', component: AddUserComponent },
-  { path: 'dashboard/orders', component: OrdersDashboardComponent },
-  { path: 'dashboard/orders/:id', component: OrderDetailsDashboardComponent },
-  { path: 'dashboard/edit/order/:id', component: OrderEditDashboardComponent },
-  { path: 'dashboard/categories', component: CategoriesComponent },
-  { path: 'dashboard/add/category', component: AddCategoryComponent },
-  { path: 'dashboard/categories/:id', component: EditCategoryComponent },
-  { path: 'dashboard/reviews', component: ReviewsDashboardComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard/users', canActivate: [AdminAuthenticationGuard], component: UsersComponent },
+  { path: 'dashboard/users/:id', canActivate: [AdminAuthenticationGuard], component: UserDetailsComponent },
+  { path: 'dashboard/register/admin', canActivate: [AdminAuthenticationGuard], component: AddUserComponent },
+  { path: 'dashboard/orders', canActivate: [AdminAuthenticationGuard], component: OrdersDashboardComponent },
+  { path: 'dashboard/orders/:id', canActivate: [AdminAuthenticationGuard], component: OrderDetailsDashboardComponent },
+  { path: 'dashboard/edit/order/:id', canActivate: [AdminAuthenticationGuard], component: OrderEditDashboardComponent },
+  { path: 'dashboard/categories', canActivate: [AdminAuthenticationGuard], component: CategoriesComponent },
+  { path: 'dashboard/add/category', canActivate: [AdminAuthenticationGuard], component: AddCategoryComponent },
+  { path: 'dashboard/categories/:id', canActivate: [AdminAuthenticationGuard], component: EditCategoryComponent },
+  { path: 'dashboard/reviews', canActivate: [AdminAuthenticationGuard], component: ReviewsDashboardComponent },
+  { path: 'dashboard', canActivate: [AdminAuthenticationGuard], component: DashboardComponent },
   // Reham Abdelrhman
   { path: 'Home', component: HomeComponent },
   { path: 'Products', component: ProductComponent },
@@ -113,11 +118,11 @@ const routes: Routes = [
   },
 
   // Ahmed Hamdi
-  {path:'dashboard/addProduct',component:AddProductComponent},
-  {path:'dashboard/products',component:ProductsComponent},
-  {path:'dashboard/products/:id',component:EditProductComponent},
-  {path:'dashboard',component:SidebarComponent}
-  
+  { path: 'dashboard/addProduct', canActivate: [AdminAuthenticationGuard], component: AddProductComponent },
+  { path: 'dashboard/products', canActivate: [AdminAuthenticationGuard], component: ProductsComponent },
+  { path: 'dashboard/products/:id', canActivate: [AdminAuthenticationGuard], component: EditProductComponent },
+  { path: 'dashboard', canActivate: [AdminAuthenticationGuard], component: SidebarComponent }
+
 
 ];
 
@@ -125,4 +130,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

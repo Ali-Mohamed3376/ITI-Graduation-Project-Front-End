@@ -79,3 +79,12 @@ ul li a.cart .cart-basket {
 .hoverWhite:hover{
   color: #fff !important;
 }
+
+.nav-link.btn.btn-success.hoverWhite.active:active {
+  color: #FFF;
+}
+
+.zindex{
+  z-index: 9999999999999999999999999999;
+  position: absolute;
+}
