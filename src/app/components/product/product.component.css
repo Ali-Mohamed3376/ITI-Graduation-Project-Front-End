@@ -64,3 +64,11 @@
   padding: 10px;
   /* Add any other custom styles you desire */
 }
+
+
+@media(min-width:500px)
+{
+  .tryfix{
+    height: 25%;
+  }
+}
