@@ -1,7 +1,7 @@
 <form  (ngSubmit)="AddnewOrder()">
 <!-- addresses -->
 <h2>choose address</h2>
-<table class="table">
+<!-- <table class="table">
     <thead>
       <tr>
         <th scope="col">city</th>
@@ -13,6 +13,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let address of userAddresses">
+        <tr appHoverClass *ngFor="let address of userAddresses">
         <td>{{address.city}}</td>
         <td>{{address.street}}</td>
         <td>{{address.phone}}</td>
@@ -20,9 +21,36 @@
       </tr>
 
     </tbody>
+  </table> -->
+
+  <table class="table table-hover table-primary">
+    <thead>
+      <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr appHoverClass appClickClass>
+        <td>Row 1, Column 1</td>
+        <td>Row 1, Column 2</td>
+        <td>Row 1, Column 3</td>
+      </tr>
+      <tr appHoverClass appClickClass>
+        <td>Row 2, Column 1</td>
+        <td>Row 2, Column 2</td>
+        <td>Row 2, Column 3</td>
+      </tr>
+      <tr appHoverClass appClickClass>
+        <td>Row 3, Column 1</td>
+        <td>Row 3, Column 2</td>
+        <td>Row 3, Column 3</td>
+      </tr>
+    </tbody>
   </table>
   
-
+//
 <section class="h-100 gradient-custom">
     <div class="container py-5">
       <div class="row d-flex justify-content-center my-4">

@@ -4,7 +4,6 @@ import { CartProduct } from 'src/app/Dtos/Cart/cart';
 import { orderAddress } from 'src/app/Dtos/OrderCheckout/OrderCheckout';
 import { CartService } from 'src/app/services/Cart/cart.service';
 import { OrderService } from 'src/app/services/Order/order.service';
-
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -95,5 +94,4 @@ export class CheckoutComponent implements OnInit {
     
 
   }
-
 }
