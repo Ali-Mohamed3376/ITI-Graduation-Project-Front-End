@@ -85,6 +85,8 @@ import { LoadingInterceptor } from './Interceptors/loading.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { WishlistComponent } from './components/User Profile/wishlist/wishlist.component';
 import { EditImagePopUpComponent } from './components/Dashboard/Ahmed/edit-image-pop-up/edit-image-pop-up.component';
+import { SideBarComponent } from './components/Dashboard/Adel/side-bar/side-bar.component';
+import { MainDashboardComponent } from './components/Dashboard/Adel/main-dashboard/main-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -128,6 +130,8 @@ import { EditImagePopUpComponent } from './components/Dashboard/Ahmed/edit-image
     ContactUsComponent,
     EditImagePopUpComponent,
     AboutUsComponent,
+    SideBarComponent,
+    MainDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -176,7 +180,8 @@ import { EditImagePopUpComponent } from './components/Dashboard/Ahmed/edit-image
     MatTableModule,
     NgxSpinnerModule,
     NgxPaginationModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    NgxPaginationModule 
   ],
 
   providers: [

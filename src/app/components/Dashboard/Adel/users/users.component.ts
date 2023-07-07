@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/Dashboard/user.service';
+import { PaginationInstance } from 'ngx-pagination'; // <-- import the interface
 
 @Component({
   selector: 'app-users',
@@ -15,6 +16,11 @@ export class UsersComponent {
     this.fetchuser();
   }
 
+  config: PaginationInstance = {
+    id: 'productsPagination',
+    itemsPerPage: 4,
+    currentPage: 1
+  };
 
   fetchuser(): void {
     this.UserSrv.GetAllUsers().subscribe({

@@ -34,6 +34,7 @@ import { ProductsComponent } from './components/Dashboard/Ahmed/products/product
 import { EditProductComponent } from './components/Dashboard/Ahmed/edit-product/edit-product.component';
 import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashboard.component';
 import { AdminAuthenticationGuard } from './Guards/admin-authentication.guard';
+import { MainDashboardComponent } from './components/Dashboard/Adel/main-dashboard/main-dashboard.component';
 const routes: Routes = [
   // Abdo
   { path: '', component: HomeComponent },
@@ -66,17 +67,24 @@ const routes: Routes = [
   },
 
   // Adel
-  { path: 'dashboard/users', canActivate: [AdminAuthenticationGuard], component: UsersComponent },
-  { path: 'dashboard/users/:id', canActivate: [AdminAuthenticationGuard], component: UserDetailsComponent },
-  { path: 'dashboard/register/admin', canActivate: [AdminAuthenticationGuard], component: AddUserComponent },
-  { path: 'dashboard/orders', canActivate: [AdminAuthenticationGuard], component: OrdersDashboardComponent },
-  { path: 'dashboard/orders/:id', canActivate: [AdminAuthenticationGuard], component: OrderDetailsDashboardComponent },
-  { path: 'dashboard/edit/order/:id', canActivate: [AdminAuthenticationGuard], component: OrderEditDashboardComponent },
-  { path: 'dashboard/categories', canActivate: [AdminAuthenticationGuard], component: CategoriesComponent },
-  { path: 'dashboard/add/category', canActivate: [AdminAuthenticationGuard], component: AddCategoryComponent },
-  { path: 'dashboard/categories/:id', canActivate: [AdminAuthenticationGuard], component: EditCategoryComponent },
-  { path: 'dashboard/reviews', canActivate: [AdminAuthenticationGuard], component: ReviewsDashboardComponent },
-  { path: 'dashboard', canActivate: [AdminAuthenticationGuard], component: DashboardComponent },
+  {
+    path: 'dashboard', canActivate: [AdminAuthenticationGuard], component: MainDashboardComponent, children: [
+      { path: 'users', canActivate: [AdminAuthenticationGuard], component: UsersComponent },
+      { path: 'users/:id', canActivate: [AdminAuthenticationGuard], component: UserDetailsComponent },
+      { path: 'register/admin', canActivate: [AdminAuthenticationGuard], component: AddUserComponent },
+      { path: 'orders', canActivate: [AdminAuthenticationGuard], component: OrdersDashboardComponent },
+      { path: 'orders/:id', canActivate: [AdminAuthenticationGuard], component: OrderDetailsDashboardComponent },
+      { path: 'edit/order/:id', canActivate: [AdminAuthenticationGuard], component: OrderEditDashboardComponent },
+      { path: 'categories', canActivate: [AdminAuthenticationGuard], component: CategoriesComponent },
+      { path: 'add/category', canActivate: [AdminAuthenticationGuard], component: AddCategoryComponent },
+      { path: 'categories/:id', canActivate: [AdminAuthenticationGuard], component: EditCategoryComponent },
+      { path: 'reviews', canActivate: [AdminAuthenticationGuard], component: ReviewsDashboardComponent },
+      { path: 'home', canActivate: [AdminAuthenticationGuard], component: DashboardComponent },
+      { path: 'addProduct', canActivate: [AdminAuthenticationGuard], component: AddProductComponent },
+      { path: 'products', canActivate: [AdminAuthenticationGuard], component: ProductsComponent },
+      { path: 'products/:id', canActivate: [AdminAuthenticationGuard], component: EditProductComponent },
+    ]
+  },
   // Reham Abdelrhman
   { path: 'Home', component: HomeComponent },
   { path: 'Products', component: ProductComponent },
@@ -118,9 +126,6 @@ const routes: Routes = [
   },
 
   // Ahmed Hamdi
-  { path: 'dashboard/addProduct', canActivate: [AdminAuthenticationGuard], component: AddProductComponent },
-  { path: 'dashboard/products', canActivate: [AdminAuthenticationGuard], component: ProductsComponent },
-  { path: 'dashboard/products/:id', canActivate: [AdminAuthenticationGuard], component: EditProductComponent },
   { path: 'dashboard', canActivate: [AdminAuthenticationGuard], component: SidebarComponent }
 
 
