@@ -21,3 +21,27 @@
 .carousel-three {
   background-image: url("https://img.freepik.com/free-photo/crop-man-with-laptop-sofa_23-2147769493.jpg?w=1060&t=st=1688488508~exp=1688489108~hmac=6c5e531ab4201ca563d5ec69d4220c6becf12fab01888eff000646c69f382ea8");
 }
+
+
+.card-wrapper {
+  display: flex;
+}
+
+.card {
+  flex: 1;
+}
+
+.badge-new {
+  position: absolute;
+  top: 10px;
+  left: 250px;
+  font-size: 12px;
+  padding: 4px 8px;
+  background-color: #00aaff;
+  color: #fff;
+}
+
+
+
+/* test */
+
