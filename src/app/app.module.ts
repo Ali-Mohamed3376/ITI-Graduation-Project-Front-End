@@ -160,6 +160,7 @@ import { EditImagePopUpComponent } from './components/Dashboard/Ahmed/edit-image
     MatTabsModule,
     MatTreeModule,
     MatButtonToggleModule,
+    MatDialogModule,
     MatBadgeModule,
     MatChipsModule,
     MatProgressSpinnerModule,

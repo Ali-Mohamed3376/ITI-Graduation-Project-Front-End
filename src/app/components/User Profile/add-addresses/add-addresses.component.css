@@ -1,0 +1,16 @@
+.general-background{
+    border-radius: 20%;
+    background-color: #164e63;
+
+}
+.adjust{
+    width: 50%;
+    margin-left: 23%;
+    margin-top: 20%;
+}
+button {
+    background-color: aliceblue;
+    padding: 2%;
+    width: 20%;
+    margin: 2%;
+  }

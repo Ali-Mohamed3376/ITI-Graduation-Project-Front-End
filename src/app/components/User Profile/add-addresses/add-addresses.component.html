@@ -1,5 +1,9 @@
-<div class="col-lg-8"*ngIf="address">
-    <form [formGroup]="form" class="d-flex justify-content-space-between">
+<div class="container d-flex justify-content-space-between m-0 p-0">
+  <div class="col-lg-4 m-0">
+    <app-profile></app-profile>
+  </div>
+<div class="col-lg-8 general-background"*ngIf="address" >
+    <form [formGroup]="form" class="d-flex justify-content-space-between flex-column adjust">
         <div>
             <input formControlName="city"  class="form-control p-3 m-3" type="text" placeholder="city" >
             <div
@@ -76,8 +80,7 @@
           </div>
             </div>
         </div>
-
+        <button (click)="add()" class="btn" [disabled]="!form.valid">add</button>
 
     </form>
-    <button (click)="add()" class="btn btn-primary" [disabled]="!form.valid">add</button>
 </div>
