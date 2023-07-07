@@ -16,13 +16,13 @@ constructor(private myService:productOperation)
 public getProducts()
 {
   this.myService.AllProducts().subscribe({
-    next:(data)=>{this.products=data; console.log(data)},
+    next:(data)=>{this.products=data},
     error:(err)=>{console.log(err)}
   })
 }
 
-public confirmDelete(id: any) {
-  if (confirm("Are you sure you want to delete this User?")) {
+public del(id: any) {
+  if (confirm("Are you sure you want to delete this Product?")) {
     this.myService.DeleteProduct(id).subscribe({
       next: () => {
         this.IsDeleted = true

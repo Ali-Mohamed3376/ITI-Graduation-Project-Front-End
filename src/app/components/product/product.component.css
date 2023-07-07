@@ -10,10 +10,11 @@
   
   .card-msg {
     width: 300px;
-    background-color: #f8f9fa;
+    background-color: #164e63;
     border: none;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
   }
   
   .card-body-msg {
@@ -39,4 +40,27 @@
   .card {
     flex: 1;
   }
+  .card-header{
+    background-color: #164e63;
+  }
+
   
+  .CustomText{
+    color: white;
+  }
+  .FilterElements{
+    
+    color: white;
+    text-decoration: none; /* Remove default underline */
+    text-align: center;
+}
+.FilterElements:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+.custom-button {
+  background-color: #164e63;
+  color: white;
+  border: none;
+  padding: 10px;
+  /* Add any other custom styles you desire */
+}

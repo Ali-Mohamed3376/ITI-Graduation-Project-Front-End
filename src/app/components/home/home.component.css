@@ -41,7 +41,14 @@
   color: #fff;
 }
 
-
-
-/* test */
-
+.NewArrival {
+  
+    font-size: 36px;
+    color: #164e63;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+  }
+  /* test */
+ 
