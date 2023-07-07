@@ -35,7 +35,7 @@
                   </p>
                   <button
                     type="button"
-                    class="btn btn-primary btn-sm me-1 mb-2 deleteCartFrom"
+                    class="btn btn-outline-danger btn-sm me-1 mb-2 deleteCartFrom"
                     data-mdb-toggle="tooltip"
                     title="Remove item"
                     (click)="DeleteFromCart(product.id)"
@@ -81,7 +81,7 @@
                   <!-- Quantity -->
 
                   <!-- Price -->
-                  <p class="text-start text-danger text-md-center">
+                  <p class="text-start text-md-center" style="color: #2e6e85">
                     <strong>{{ product.price | currency }}</strong>
                   </p>
                   <!-- Price -->
@@ -131,14 +131,17 @@
                 >
               </li>
             </ul>
-            <div class="text-center">
-              <a
-                routerLink="/checkout"
-                type="button"
-                class="btn btn-primary btn-lg btn-block"
-              >
+            <!-- <div class="text-center">
+              <a routerLink="/checkout" class="checkoutButton btn-lg">
                 Checkout
               </a>
+            </div> -->
+            <div class="mb-4 col-12">
+              <h2>
+                <a routerLink="/Products" class="checkoutButton btn"
+                  >Checkout</a
+                >
+              </h2>
             </div>
           </div>
         </div>
