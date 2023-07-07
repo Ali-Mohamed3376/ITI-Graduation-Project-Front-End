@@ -45,7 +45,7 @@ ngOnInit(): void {
       error:(error)=>{console.log(error);}
     }),
     this.HomeService.GetTopProducts().subscribe({
-      next:(data)=>{this.topProducts=data;},
+      next:(data)=>{this.topProducts=data;console.log(this.topProducts[0])},
       error:(error)=>{console.log(error);}
     });
     this.cartService.getCartProductsCounter();

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
 import { CategoryAddDto } from 'src/app/Dtos/Dashboard/CategoryAddDto';
 import { CategoryService } from 'src/app/services/Dashboard/category.service';
 
@@ -10,7 +10,10 @@ import { CategoryService } from 'src/app/services/Dashboard/category.service';
   styleUrls: ['./add-category.component.css']
 })
 export class AddCategoryComponent {
-  constructor(private categoryService: CategoryService, private routerService: Router) {
+  constructor(
+    private categoryService: CategoryService, 
+    private dialogRef: MatDialogRef<AddCategoryComponent>,
+    ) {
 
   }
 
@@ -24,11 +27,12 @@ export class AddCategoryComponent {
 
     this.categoryService.AddCategory(credentials).subscribe({
       next: () => {
-        this.routerService.navigateByUrl('/dashboard/categories');
+        this.dialogRef.close();
       },
       error: (error) => {
         console.log(error)
       }
     });
   }
+
 }

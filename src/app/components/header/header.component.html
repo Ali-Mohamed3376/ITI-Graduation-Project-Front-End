@@ -1,297 +1,148 @@
-<!-- Nav V01 -->
-<!-- <div class="container alert alert-success" *ngIf="!isUser && !isAdmin">
-  <div class="row">
-    <div class="col d-flex justify-content-between">
-      <div *ngIf="!isUserLoggedIn">
-        <a routerLink="/Authentication/login">Login</a>
-      </div>
-      <div *ngIf="!isUserLoggedIn">
-        <a routerLink="/Authentication/signup">Signup</a>
-      </div>
-      <div *ngIf="isUserLoggedIn">
-        <a class="btn btn-danger" (click)="LogOut()">Logout</a>
-      </div>
-    </div>
-  </div>
-</div> -->
+<!---------------------------------------------------------- New Nav  ------------------------------------------------------------------------------------->
 
-<!-- Nav V02 for User -->
-<!-- <header *ngIf="!isAdmin">
-  <nav class="navbar navbar-expand-lg nav-menu bg-warning">
-    <div class="container-fluid">
-      <a class="navbar-brand" routerLink="#"
-        ><img src="../../../assets/images/logooooo.png" width="60" />
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-          <li class="nav-item m-3 active">
-            <a
-              class="nav-link rounded"
-              routerLink="/"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Home</a
-            >
-          </li>
-          <li class="nav-item m-3">
-            <a class="nav-link rounded" routerLink="/" routerLinkActive="active"
-              >None</a
-            >
-          </li>
-          <li class="nav-item m-3">
-            <a class="nav-link rounded" routerLink="/" routerLinkActive="active"
-              >None</a
-            >
-          </li>
-          <li class="nav-item m-3">
-            <a class="nav-link rounded" routerLink="/" routerLinkActive="active"
-              >None</a
-            >
-          </li>
-
-          <li class="nav-item m-3" *ngIf="!isUserLoggedIn">
-            <a
-              id="loginBtn"
-              class="btn btn-primary"
-              routerLink="/Authentication/login"
-              routerLinkActive="active"
-              >Login</a
-            >
-          </li>
-          <li class="nav-item m-3" *ngIf="!isUserLoggedIn">
-            <a
-              class="btn btn-success"
-              routerLink="/Authentication/register"
-              routerLinkActive="active"
-              >Register</a
-            >
-          </li>
-          <li class="nav-item m-3" *ngIf="isUserLoggedIn">
-            <a class="btn btn-danger" (click)="LogOut()">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header> -->
-
-<!-- for Admin -->
-
-<header>
-  <div class="px-3 py-2 border-bottom border-dark">
-    <div class="container">
-      <div class="d-flex align-items-center justify-content-between">
-        <a class="navbar-brand" id="logo" routerLink="#"
-          ><img src="../../../assets/images/Capture.PNG" width="250px" />
-        </a>
-        <form class="col-4 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input
-            type="text"
-            class="form-control form-control-dark"
-            placeholder="Search..."
-            aria-label="Search"
-            #searchQuery
-            (keyup.enter)="onEnterKey(searchQuery.value)"
-          />
-        </form>
-
-        <ul class="nav col-12 col-lg-auto my-3 text-small">
-          <li>
-            <a routerLink="/" class="nav-link text-black"> Home </a>
-          </li>
-          <li>
-            <a routerLink="/about-us" class="nav-link text-black"> About Us</a>
-          </li>
-          <li>
-            <a routerLink="/contact-us" class="nav-link text-black">
-              Contact Us</a
-            >
-          </li>
-          <li>
-            <a
-              routerLink="/Sidebar"
-              class="nav-link text-black"
-              *ngIf="isUserLoggedIn"
-            >
-              Profile
-            </a>
-          </li>
-          <li *ngIf="isUserLoggedIn">
-            <a
-              routerLink="cart"
-              class="cart position-relative d-inline-flex"
-              aria-label="View your shopping cart"
-            >
-              <i class="fas fa fa-shopping-cart fa-lg"></i>
-              <span
-                class="cart-basket d-flex align-items-center justify-content-center"
-              >
-                {{ cartCouter }}
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              routerLink="/"
-              class="nav-link text-black"
-              *ngIf="isUserLoggedIn && isAdmin"
-            >
-              Dashboard
-            </a>
-          </li>
-          <li>
-            <a
-              routerLink="/dashboard/orders"
-              class="nav-link text-black"
-              *ngIf="isUserLoggedIn && isAdmin"
-            >
-              Orders
-            </a>
-          </li>
-          <li>
-            <a routerLink="/Products" class="nav-link text-black"> Products </a>
-          </li>
-          <li>
-            <a
-              routerLink="/dashboard/users"
-              class="nav-link text-black"
-              *ngIf="isUserLoggedIn && isAdmin"
-            >
-              Users
-            </a>
-          </li>
-          <li *ngIf="isUserLoggedIn">
-            <a
-              routerLink="/wishList"
-              class="cart position-relative d-inline-flex"
-              aria-label="View your wishList cart"
-            >
-              <i class="fa-regular fa-heart fa-beat fa-lg"></i>
-              <span
-                class="cart-basket d-flex align-items-center justify-content-center"
-              >
-                {{ whishListCouter }}
-              </span>
-            </a>
-          </li>
-          <li class="nav-link" *ngIf="!isUserLoggedIn">
-            <a
-              id="loginBtn"
-              class="btn btn-primary"
-              routerLink="/Authentication/login"
-              routerLinkActive="active"
-              >Login</a
-            >
-          </li>
-          <li class="nav-link" *ngIf="!isUserLoggedIn">
-            <a
-              class="btn btn-success"
-              routerLink="/Authentication/register"
-              routerLinkActive="active"
-              >Register</a
-            >
-          </li>
-          <li class="nav-link" *ngIf="isUserLoggedIn">
-            <a class="btn btn-danger" (click)="LogOut()">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- <div class="px-3 py-2 border-bottom mb-3">
-    <div class="container d-flex flex-wrap justify-content-center">
-      <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around fixed-top"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">
+      <img src="../../../assets/images/Logo.png" width="220px" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-around"
+      id="navbarSupportedContent"
+    >
+      <form class="d-flex col-sm-12 col-md-12 col-lg-4" role="search">
         <input
-          type="search"
+          type="text"
           class="form-control"
           placeholder="Search..."
           aria-label="Search"
+          #searchQuery
+          (keyup.enter)="onEnterKey(searchQuery.value)"
         />
-      </form> 
+      </form>
 
-      <div class="text-end">
-        <li class="nav-item m-3" *ngIf="!isUserLoggedIn">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link text-black"> Home </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/about-us" class="nav-link text-black"> About Us</a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/contact-us" class="nav-link text-black">
+            Contact Us</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            routerLink="/Products"
+            class="nav-link text-black"
+            *ngIf="!isAdmin"
+          >
+            Products</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            routerLink="/Sidebar"
+            class="nav-link text-black"
+            *ngIf="isUserLoggedIn"
+          >
+            Profile
+          </a>
+        </li>
+
+        <li>
+          <button
+            class="d-flex flex-row-reverse angular-btn"
+            *ngIf="isUserLoggedIn && isAdmin"
+            mat-button
+            [matMenuTriggerFor]="menu"
+          >
+            <span>Dashboard</span>
+            <mat-icon class="arrow-icon arrow">arrow_drop_down</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="dashboard">Home</button>
+            <button mat-menu-item routerLink="dashboard/categories">
+              Categories
+            </button>
+            <button mat-menu-item routerLink="dashboard/Products">
+              Products
+            </button>
+            <button mat-menu-item routerLink="dashboard/users">Users</button>
+            <button mat-menu-item routerLink="dashboard/orders">Orders</button>
+            <button mat-menu-item routerLink="dashboard/reviews">
+              Reviews
+            </button>
+          </mat-menu>
+        </li>
+
+        <li class="nav-item me-3 mb-2 mt-2">
+          <a
+            routerLink="cart"
+            class="cart position-relative d-inline-flex"
+            aria-label="View your shopping cart"
+          >
+            <i class="fas fa fa-shopping-cart fa-lg"></i>
+            <span
+              class="cart-basket d-flex align-items-center justify-content-center"
+            >
+              {{ cartCouter }}
+            </span>
+          </a>
+        </li>
+        <li class="nav-item mt-2 me-4">
+          <a
+            routerLink="/wishList"
+            class="cart position-relative d-inline-flex"
+            aria-label="View your wishList cart"
+          >
+            <i class="fa-regular fa-heart fa-beat fa-lg"></i>
+            <span
+              class="cart-basket d-flex align-items-center justify-content-center"
+            >
+              {{ whishListCouter }}
+            </span>
+          </a>
+        </li>
+        <li class="nav-item me-1" *ngIf="!isUserLoggedIn">
           <a
             id="loginBtn"
-            class="btn btn-primary"
+            class="nav-link btn btn-primary hoverWhite"
             routerLink="/Authentication/login"
             routerLinkActive="active"
             >Login</a
           >
         </li>
-        <li class="nav-item m-3" *ngIf="!isUserLoggedIn">
+        <li class="nav-item" *ngIf="!isUserLoggedIn">
           <a
-            class="btn btn-success"
+            class="nav-link btn btn-success hoverWhite"
             routerLink="/Authentication/register"
             routerLinkActive="active"
             >Register</a
           >
         </li>
-        <li class="nav-item m-3" *ngIf="isUserLoggedIn">
-          <a class="btn btn-danger" (click)="LogOut()">Logout</a>
+        <li class="nav-item" *ngIf="isUserLoggedIn">
+          <a class="nav-link btn btn-danger hoverWhite" (click)="LogOut()"
+            >Logout</a
+          >
         </li>
-      </div>
+      </ul>
     </div>
-  </div> -->
-</header>
-
-<!-- <mat-toolbar color="primary" class="mat-elevation-z2">
-  <a mat-button routerLink="/">Home</a>
-  <a mat-button routerLink="/about">About</a>
-  <a mat-button routerLink="/contact">Contact</a>
-
-  <span class="fill-remaining-space"></span>
-
-  <button mat-button routerLink="/login">Login</button>
-  <button mat-button routerLink="/register">Register</button>
-
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <a mat-menu-item routerLink="/">Home</a>
-    <mat-divider></mat-divider>
-    <a mat-menu-item routerLink="/about">About</a>
-    <a mat-menu-item routerLink="/contact">Contact</a>
-    <a mat-menu-item routerLink="/login">Login</a>
-    <a mat-menu-item routerLink="/register">Register</a>
-  </mat-menu>
-</mat-toolbar> -->
-
-<!-- <div style="width: 50%; margin: auto" class="mt-3">
-  <mat-expansion-panel
-    style="
-      border-style: outset;
-      border-radius: 20px;
-      border-color: rgb(197, 26, 61);
-    "
-  >
-    <mat-expansion-panel-header>
-      <input matInput placeholder="Ex. Pizza" value="Sushi" />
-    </mat-expansion-panel-header>
-
-    <div>
-      <button
-        mat-icon-button
-        color="warn"
-        aria-label=""
-        class="mt-4"
-        (click)="search()"
-      >
-        <mat-icon>search</mat-icon>
-      </button>
-    </div>
-  </mat-expansion-panel>
-</div> -->
+  </div>
+</nav>
+<!---------------------------------------------------------- New Nav  ------------------------------------------------------------------------------------->

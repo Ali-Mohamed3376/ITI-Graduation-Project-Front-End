@@ -2,7 +2,7 @@
   <div class="col-lg-4 m-0 p-0 bg-color">
     <app-profile></app-profile>
   </div>
-  <div class="col-lg-8" *ngIf="user">
+  <div class="col-lg-8 general-background border" *ngIf="user">
     <!--- <thead><h1 class="text-center blue">Welcome {{user.fname}}!</h1></thead>
 
     <table class="col-lg-6">
@@ -21,12 +21,17 @@
             </td>
         </tr>
     </table>-->
-    <h1 class="text-center purple">Welcome {{ user.fname }}!</h1>
-    <div *ngIf="respomseError" class="text-center text-danger fs-2">
+    <h1 class="mt-5 text-center general-background text-white">
+      Welcome {{ user.fname }}!
+    </h1>
+    <div
+      *ngIf="respomseError"
+      class="text-center text-danger fs-2 general-background"
+    >
       <p>{{ respomseError }}</p>
     </div>
-    <form [formGroup]="form">
-      <div class="text-center mb-sm-5">
+    <form [formGroup]="form" class="general-background">
+      <div class="text-center mb-sm-5 general-background">
         <input
           class="form-control p-3 mt-5 text-center"
           type="text"
@@ -34,7 +39,7 @@
           readonly
         />
       </div>
-      <div class="text-center mb-sm-5">
+      <div class="text-center mb-sm-5 general-background">
         <input
           formControlName="fname"
           class="form-control p-3 mt-5 text-center"
@@ -42,7 +47,7 @@
           value="{{ user.fname }}"
         />
       </div>
-      <div class="text-center mb-sm-5">
+      <div class="text-center mb-sm-5 general-background">
         <input
           formControlName="lname"
           class="form-control p-3 mt-5 text-center"
@@ -50,20 +55,21 @@
           value="{{ user.lname }}"
         />
       </div>
-
-      <button
-        class="btn btn-primary m-3"
-        (click)="update()"
-        [disabled]="!form.valid"
-      >
-        Update
-      </button>
-      <button class="btn btn-danger m-3" (click)="delete()">
-        Delete Account
-      </button>
-      <button class="btn btn-success m-3" routerLink="/Change-password">
-        Change Password
-      </button>
+      <div class="ms-5 general-background justify-content-center">
+        <button
+          class="btn btn-primary me-3 adjust"
+          (click)="update()"
+          [disabled]="!form.valid"
+        >
+          Update
+        </button>
+        <button class="btn btn-danger m-3 me-3 ms-3" (click)="delete()">
+          Delete Account
+        </button>
+        <button class="btn m-3 me-3 btn-success" routerLink="/Change-password">
+          Change Password
+        </button>
+      </div>
     </form>
 
     <!--     

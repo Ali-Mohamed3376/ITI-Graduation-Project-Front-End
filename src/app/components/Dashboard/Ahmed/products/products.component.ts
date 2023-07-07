@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { productOperation } from 'src/app/services/Dashboard/productOperation.service';
 
 @Component({
   selector: 'app-products',
@@ -6,5 +7,31 @@ import { Component } from '@angular/core';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
+products:any;
+IsDeleted: any;
+constructor(private myService:productOperation)
+{
+ this.getProducts();
+}
+public getProducts()
+{
+  this.myService.AllProducts().subscribe({
+    next:(data)=>{this.products=data; console.log(data)},
+    error:(err)=>{console.log(err)}
+  })
+}
 
+public confirmDelete(id: any) {
+  if (confirm("Are you sure you want to delete this User?")) {
+    this.myService.DeleteProduct(id).subscribe({
+      next: () => {
+        this.IsDeleted = true
+        this.getProducts()
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
+  }
+}
 }

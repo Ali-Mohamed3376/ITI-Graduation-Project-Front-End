@@ -8,14 +8,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-addresses.component.css'],
 })
 export class EditAddressesComponent {
-  address: any;
-  id: any;
-  constructor(
-    public service: UserProfileService,
-    public auth: AuthenticationService,
-    myRoute: ActivatedRoute,
-    private routerService: Router
-  ) {
+  address:any;
+  id:any;
+  constructor(public service:UserProfileService, public auth:AuthenticationService,myRoute:ActivatedRoute){
     this.service.getUserAddress().subscribe({
       next: (data) => {
         console.log(data);
@@ -28,28 +23,27 @@ export class EditAddressesComponent {
     this.id = myRoute.snapshot.params['id'];
   }
   ngOnInit(): void {
-    this.service.GetAddressById(this.id).subscribe({
-      next: (data) => {
-        this.address = data;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
+    this.service.GetAddressById (this.id).subscribe(
+      {
+        next:(data)=>{
+            
+          this.address = data;
 
-  update(id: any, city: any, street: any, phone: any) {
-    this.service.GetAddressById(this.id).subscribe();
-    let updatedData = { id, city, street, phone };
-    this.service.EditUserAddress(updatedData).subscribe({
-      next: () => {
-        console.log(updatedData);
-        this.address[this.id] = updatedData;
-        this.routerService.navigateByUrl('/Address');
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
+        },
+        error:(err)=>{console.log(err)}
+      }
+    )
+}
+ update(id:any,city:any,street:any,phone:any){
+  this.service.GetAddressById(this.id).subscribe();
+  let updatedData={id,city,street,phone}
+  this.service.EditUserAddress(updatedData).subscribe({
+    next:()=>{
+      this.address[this.id]=updatedData;
+      // this.router.navigateByUrl('/Address');
+    },
+    error:(err)=>{console.log(err)}
+  })
+ } 
+  
 }

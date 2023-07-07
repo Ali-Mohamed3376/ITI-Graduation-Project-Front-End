@@ -56,3 +56,26 @@ ul li a.cart .cart-basket {
     display: none;
   }
 }
+.general-color{
+  color: #164e63;
+}
+.general-background{
+  background-color: #164e63;
+
+}
+
+.arrow-icon {
+  margin-left: 8px;
+}
+
+.arrow{
+  margin-right: 0px !important;
+}
+
+.angular-btn{
+  margin-top: 1px;
+}
+
+.hoverWhite:hover{
+  color: #fff !important;
+}
