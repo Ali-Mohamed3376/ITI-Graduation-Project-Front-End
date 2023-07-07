@@ -46,8 +46,7 @@
             <div class="row ms-3">
         <div class="col-lg-5 col-md-4 col-sm-6" *ngFor="let item of details.orderProducts">
             <div class="card">
-                <p>{{item.image}}</p>
-                <img class="card-img-top mt-2" src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/3.webp" height="200px" alt="Card image cap">
+                <img class="card-img-top mt-2" src="{{item.image}}" height="200px" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{item.title}}</h5>
                     <p class="card-text">Quantity : {{item.quantity}}</p>
