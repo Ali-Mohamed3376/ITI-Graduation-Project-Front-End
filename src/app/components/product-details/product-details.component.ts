@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { API, AddProductToCart } from 'src/app/Dtos/Cart/cart';
+import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { CartService } from 'src/app/services/Cart/cart.service';
 import { ProductService } from 'src/app/services/Product/product.service';
 
@@ -17,8 +18,9 @@ export class ProductDetailsComponent implements OnInit {
   relatedProducts: any;
   ratingOptions = [1, 2, 3, 4, 5];
   ProductQuantity:number=1;
+  isLogged:boolean=false;
 
-  constructor(myRoute: ActivatedRoute, public ProductDetailsService: ProductService , public cartService:CartService) {
+  constructor(myRoute: ActivatedRoute, public ProductDetailsService: ProductService , public cartService:CartService,private AuthService:AuthenticationService,private router:Router) {
     this.ID = myRoute.snapshot.params["id"];
   }
 
@@ -32,6 +34,13 @@ export class ProductDetailsComponent implements OnInit {
       },
       error: (error) => { console.log(error) }
     });
+    this.AuthService.isLoggedIn$.subscribe(
+    {
+      next:(data)=>{
+        this.isLogged=data;
+      }
+    }
+    )
   }
 
 
@@ -110,8 +119,13 @@ export class ProductDetailsComponent implements OnInit {
   }
 
 
-  AddProductToUserCart()
+   AddProductToUserCart()
   {
+    if(!this.isLogged)
+    {
+       this.router.navigate(["Authentication/login"]) ;
+      return;
+    }
     console.log(this.ProductQuantity);
     let productToAddToCart = new AddProductToCart();
     productToAddToCart.quantity=this.ProductQuantity;
@@ -131,7 +145,7 @@ export class ProductDetailsComponent implements OnInit {
 
         },
         error:(error)=>{
-          console.log("error");
+          console.log("error cart");
           console.log(error);
           alert("Failed to Add to cart");
           this.cartService.getCartProductsCounter();

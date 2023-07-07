@@ -1,5 +1,13 @@
 /* footer section*/
 
+/* .Bigfooter {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  /* adjust height as needed */
+/* height: 50px; 
+} */
+
 .footer_section {
   font-family: "Poppins", sans-serif;
   padding: 25px 20px;
@@ -23,5 +31,14 @@
 }
 
 .btn:hover {
-  background-color: #FFF !important;
+  background-color: #fff !important;
+}
+
+.upperfooter a {
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.upperfooter a:hover {
+  text-decoration: underline;
 }

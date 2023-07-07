@@ -1,1 +1,253 @@
-<p>add-product works!</p>
+<!-- <p>add-product works!</p>
+
+ <div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <div class="mb-6 pt-4">
+            <label
+                class="formbold-form-label formbold-form-labe2"
+                style="text-align:center">
+                Upload Images
+            </label>
+            <div class="formbold-mb-5 formbold-file-input">
+                <input type="text"[(ngModel)]="product.Name"placeholder="Name"><br>
+                <input type="number"name="price"[(ngModel)]="product.Price"placeholder="price"><br>
+                <input type="text"name="Description"[(ngModel)]="product.Description"placeholder="discription"><br>
+                <div *ngFor="let image of ImageUrls">
+                    <img [src]="image">
+                <input type="text"name="Discount"[(ngModel)]="product.Discount"placeholder="discount">
+                </div>
+                <input type="file"name="file"id="file"multiple accept="image/*"max="5"(change)="uploadPhotos($event)"/>
+                <button type="submit">addProduct</button>
+                <label for="file">
+                    <div id>
+                        <span class="formbold-drop-file">Drop files here</span>
+                        <span class="formbold-or">or</span>
+                        <span class="formbold-browse">Browse</span>
+                    </div>
+                </label>
+
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+            <div class="formbold-mb-5 formbold-file-input">
+              <mat-label>name</mat-label>
+              <mat-form-field>
+                <input type="text"[(ngModel)]="product.Name"placeholder="Name"><br>
+              </mat-form-field>
+              <mat-form-field>    
+                            <input type="number"name="price"[(ngModel)]="product.Price"placeholder="price"><br>
+              </mat-form-field>
+              <mat-form-field>
+                <input type="text"name="Description"[(ngModel)]="product.Description"placeholder="discription"><br>
+              </mat-form-field>
+                                      
+                <mat-select name="category" [(ngModel)]="selectedCategory">
+                    <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+                  </mat-select><br>
+                  <mat-error *ngIf="!selectedCategory">category is required</mat-error>
+                <div *ngFor="let image of ImageUrls">
+                    <img [src]="image">
+                    <mat-form-field>
+                      <input type="text"name="Discount"[(ngModel)]="product.Discount"placeholder="discount">
+                    </mat-form-field>
+                </div>
+                <mat-form-field>
+                  <input type="file"name="file"id="file" multiple accept="image/*"max="5"(change)="uploadPhotos($event)"/>
+                </mat-form-field>
+                <button type="submit">addProduct</button>
+                </div>
+</form>  -->
+
+<!-- <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+  <div class="formbold-mb-5 formbold-file-input">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput type="text" [(ngModel)]="product.Name" name="name" placeholder="Name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input matInput type="number" [(ngModel)]="product.Price" name="price" placeholder="Price" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput type="text" [(ngModel)]="product.Description" name="description" placeholder="Description" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select [(ngModel)]="selectedCategory" name="category" placeholder="Category" required>
+        <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="productForm.controls['category'].invalid">Category is required</mat-error>
+    </mat-form-field>
+    <div *ngFor="let image of ImageUrls">
+      <img [src]="image">
+      <mat-form-field>
+        <input matInput type="text" [(ngModel)]="product.Discount" name="discount" placeholder="Discount">
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <input type="file" name="file" id="file" multiple accept="image/*" max="5" (change)="uploadPhotos($event)">
+    </mat-form-field>
+    <button type="submit">Add Product</button>
+  </div>
+</form> -->
+
+<!-- <div class="container mt-sm-5 mb-sm-5 w-50 h-100">
+
+  <form [formGroup]="form">
+    <div class="form-group mt-sm-3">
+      <label for="productName" class="fs-5 mb-sm-2">Product Name</label>
+      <input type="text" class="form-control p-2" id="productName" formControlName="productName" />
+
+    </div>
+    <div class="form-group mt-sm-3">
+      <label for="price" class="fs-5 mb-sm-2">Price</label>
+      <input type="text" class="form-control p-2" id="price" formControlName="price" />
+
+    </div>
+    <div class="form-group mt-sm-3">
+      <label for="description" class="fs-5 mb-sm-2">Description</label>
+      <input type="text" class="form-control p-2" id="description" formControlName="description" />
+
+    </div>
+    <div class="form-group mt-sm-3">
+      <label for="password" class="fs-5 mb-sm-2">Image</label>
+      <input type="file" class="form-control p-2" id="image" formControlName="image" />
+
+    </div>
+    <div class="form-group mt-sm-3">
+      <label for="model" class="fs-5 mb-sm-2">Model</label>
+      <input type="text" class="form-control p-2" id="model" formControlName="model" />
+
+    </div>
+    <div class="form-group mt-sm-3">
+      <label for="discount" class="fs-5 mb-sm-2">Discount</label>
+      <input type="number" class="form-control p-2" id="discount" formControlName="discount" />
+
+    </div>
+    <div class="form-group mt-sm-3">
+      <label for="categories" class="fs-5 mb-sm-2">Categories</label>
+      <input type="text" class="form-control p-2" id="categories" formControlName="categories" /> -->
+
+<!-- <select formControlName="categories">
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+
+    </div>
+    <div class="form-group text-center mt-sm-5">
+      <button (click)="AddProduct()" type="submit" class="btn btn-success bt-lg w-50 fs-5 fw-bold">
+        Add
+      </button>
+    </div>
+  </form>
+</div> -->
+
+
+<div class="container">
+  <div class="title">ADD Product</div>
+  <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+    <!--productForm name field-->
+    <div class="row mt-4">
+      <mat-form-field appearance="outline" class="col-12">
+        <mat-label>productForm Name:</mat-label>
+        <input matInput [(ngModel)]="product.Name" name="productFormName" required #productFormName="ngModel" [maxlength]="2"/>
+        <mat-error *ngIf="!product.Name">productForm Name is required</mat-error>
+      </mat-form-field>
+    </div>
+
+    <!--Image Upload-->
+    <div class="formbold-main-wrapper">
+      <div class="formbold-form-wrapper">
+        <div class="mb-6 pt-4">
+          <label class="formbold-form-label formbold-form-label-2" style="text-align: center">
+            Upload productForm Images
+          </label>
+
+          <div class="formbold-mb-5 formbold-file-input">
+            <input type="file" name="file" id="file" multiple accept="image/*" max="5"
+              (change)="uploadPhotos($event)" />
+            <label for="file">
+              <div id>
+                <span class="formbold-drop-file"> Drop files here </span>
+                <span class="formbold-or"> Or </span>
+                <span class="formbold-browse"> Browse </span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Image View-->
+    <!-- <div class="image-grid">
+      <div class="image-card" *ngFor="let imageUrl of ImageUrls">
+        <img [src]="imageUrl" />
+      </div>
+    </div> -->
+    <!-- <div class="row mt-4">
+      <button
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="openImagePopup()"
+      >
+        View Images
+      </button>
+    </div> -->
+
+    <div class="row my-4">
+
+
+
+
+      <!--Address field-->
+      <mat-form-field class="col-12 col-md-6 col-lg-4" appearance="outline">
+        <mat-label>Description:</mat-label>
+        <input matInput [(ngModel)]="product.Description" name="Description" required type="text" />
+        <mat-error *ngIf="productForm.controls['Description']?.errors">Description is required</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row my-4">
+      <!--Category field-->
+      <mat-form-field class="col-12 col-md-6 col-lg-6" appearance="outline">
+        <mat-label>Category:</mat-label>
+        <mat-select [(ngModel)]="selectedCategory" name="category" required>
+          <mat-option value="">Select Category</mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="!selectedCategory">Category is required</mat-error>
+      </mat-form-field>
+
+      <div class="row my-4">
+        <mat-form-field class="col-6 col-md-4" appearance="outline">
+          <mat-label>Modele:</mat-label>
+          <input matInput [(ngModel)]="product.Model" name="Modele" type="text" required min="1" />
+          <mat-error *ngIf="productForm.controls['Model']?.errors">Modele has a minimum of 1</mat-error>
+        </mat-form-field>
+
+        <!--Discount count field-->
+        <mat-form-field class="col-6 col-md-4" appearance="outline">
+          <mat-label>Discount:</mat-label>
+          <input matInput [(ngModel)]="product.Discount" name="Discount" type="number" required [min]="0" [max]="100" />
+          <mat-error *ngIf="productForm.controls['Discount']?.errors">Discount Count has a minimum of 1</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="col-6 col-md-4" appearance="outline">
+          <mat-label>Price:</mat-label>
+          <input matInput [(ngModel)]="product.Price" name="price" type="number" required min="1" />
+          <mat-error *ngIf="productForm.controls['price']?.errors">Bed Count has a minimum of 1</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+
+    <!--add productForm Button-->
+    <div class="row mt-3">
+      <button mat-raised-button color="warn" type="submit">Add productForm</button>
+    </div>
+  </form>
+</div>

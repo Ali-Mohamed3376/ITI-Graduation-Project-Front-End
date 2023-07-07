@@ -60,6 +60,10 @@ export class ProductComponent implements OnInit {
           (this.totalCount = data.totalCount),
             (this.products = data.products),
             (this.page = page);
+            for(let product of this.products)
+            {
+              console.log(product)
+            }
         },
         error: (error) => {
           console.log(error);

@@ -16,7 +16,6 @@ import { OrderEditDashboardComponent } from './components/Dashboard/Adel/order-e
 import { CategoriesComponent } from './components/Dashboard/Ahmed/categories/categories.component';
 import { AddCategoryComponent } from './components/Dashboard/Ahmed/add-category/add-category.component';
 import { EditCategoryComponent } from './components/Dashboard/Ahmed/edit-category/edit-category.component';
-
 import { OrderDetailsComponent } from './components/User Profile/order-details/order-details.component';
 import { ReviewComponent } from './components/User Profile/review/review.component';
 import { AddAddressesComponent } from './components/User Profile/add-addresses/add-addresses.component';
@@ -29,6 +28,10 @@ import { ReviewsDashboardComponent } from './components/Dashboard/Adel/reviews-d
 import { WishlistComponent } from './components/User Profile/wishlist/wishlist.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { AddProductComponent } from './components/Dashboard/Ahmed/add-product/add-product.component';
+import { SidebarComponent } from './components/Dashboard/Ahmed/sidebar/sidebar.component';
+import { ProductsComponent } from './components/Dashboard/Ahmed/products/products.component';
+import { EditProductComponent } from './components/Dashboard/Ahmed/edit-product/edit-product.component';
 import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashboard.component';
 const routes: Routes = [
   // Abdo
@@ -38,8 +41,12 @@ const routes: Routes = [
     canActivate: [AuthenticationGuardGuard],
     component: CartComponent,
   },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'wishList', component: WishlistComponent },
+  { path: 'checkout',
+    canActivate: [AuthenticationGuardGuard],
+   component: CheckoutComponent },
+  { path: 'wishList',
+  canActivate: [AuthenticationGuardGuard],
+  component: WishlistComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
   // Ali
@@ -106,6 +113,12 @@ const routes: Routes = [
   },
 
   // Ahmed Hamdi
+  {path:'dashboard/addProduct',component:AddProductComponent},
+  {path:'dashboard/products',component:ProductsComponent},
+  {path:'dashboard/products/:id',component:EditProductComponent},
+  {path:'dashboard',component:SidebarComponent}
+  
+
 ];
 
 @NgModule({
