@@ -12,6 +12,8 @@ export class HomeService {
 
   private readonly SpecialOffers_URl="https://localhost:7064/api/Home/SpecialOffers";
 private readonly TopProducts_URL="https://localhost:7064/api/Home/TopProducts";
+private readonly NewProducts_URL="https://localhost:7064/api/Home/NewProducts";
+
 
 
 GetSpecialOffers(){
@@ -25,7 +27,9 @@ GetTopProducts(){
   return this.myClient.get(this.TopProducts_URL);
 }
 
-
+GetNewProducts(){
+return this.myClient.get(this.NewProducts_URL);
+}
 }
 
 

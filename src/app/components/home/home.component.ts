@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit{
 
 specialProducts:any;
 topProducts:any;
+NewProducts:any;
 carouselOptions = {
   items: 4, // Number of items to show in the carousel
   loop: true, // Enable infinite loop
@@ -49,7 +50,12 @@ ngOnInit(): void {
       error:(error)=>{console.log(error);}
     });
     this.cartService.getCartProductsCounter();
+
     
+    this.HomeService.GetNewProducts().subscribe({
+      next:(data)=>{this.NewProducts=data;console.log(this.NewProducts)},
+      error:(error)=>{console.log(error);}
+    });
       
   }
 

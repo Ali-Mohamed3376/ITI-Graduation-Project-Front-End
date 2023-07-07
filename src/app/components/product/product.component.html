@@ -133,23 +133,22 @@
           "
         >
           <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="max-height: 200px;">
               <div *ngIf="p.price != p.priceAfter" class="sale">
                 {{ p.discount }}% OFF
               </div>
               <div class="card-img-actions">
                 <img
                   src="{{ p.image }}"
-                  class="card-img img-fluid"
-                  width="96"
-                  height="350"
+                  class="card-img"
+                  height="200px"
                   alt=""
                 />
               </div>
             </div>
-            <div class="card-body bg-light text-center">
+            <div class="card-body text-center bg-light">
               <div class="mb-2">
-                <h4 class="font-weight-semibold mb-2">
+                <h4 class="font-weight-semibold mb-2 text-white">
                   <a
                     routerLink="/Products/{{ p.id }}"
                     class="text-default mb-2"

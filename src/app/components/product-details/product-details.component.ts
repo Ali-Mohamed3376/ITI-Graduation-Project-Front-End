@@ -26,7 +26,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
 
-
   ngOnInit(): void {
     this.ProductDetailsService.GetProductDetailsById(this.ID).subscribe({
       next: (data) => {
@@ -83,8 +82,6 @@ export class ProductDetailsComponent implements OnInit {
       error: (err) => { console.log(err) }
     });
   }
- 
-
 
   openRelatedProductDetails(clickedProduct: any) {
     this.product.id = clickedProduct.id; // Assign the ID of the clicked product
@@ -96,10 +93,7 @@ export class ProductDetailsComponent implements OnInit {
       error: (error) => { console.log(error) }
     });
   }
-
-
-
-
+ 
 
   generateStars(avgRating: number): string[] {
     const stars = [];

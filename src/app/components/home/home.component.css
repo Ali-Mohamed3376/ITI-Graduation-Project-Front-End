@@ -30,3 +30,18 @@
 .card {
   flex: 1;
 }
+
+.badge-new {
+  position: absolute;
+  top: 10px;
+  left: 250px;
+  font-size: 12px;
+  padding: 4px 8px;
+  background-color: #00aaff;
+  color: #fff;
+}
+
+
+
+/* test */
+
