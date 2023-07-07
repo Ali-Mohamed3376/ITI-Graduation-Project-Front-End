@@ -210,6 +210,7 @@ export class EditProductComponent implements OnInit{
     this.productOperation.EditProduct(updatedProperty).subscribe(
       () => {
         console.log('Property updated successfully');
+        this.router.navigate(["/dashboard/products"])
         // this.router.navigate(['HostDashboardComponent'], { queryParams: { showHostProperty: true } });
         // Show snackbar message
         // this.snackBar.open('Property Updated successfully', 'Close', {
