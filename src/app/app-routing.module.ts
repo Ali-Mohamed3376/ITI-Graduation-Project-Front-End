@@ -29,6 +29,7 @@ import { ReviewsDashboardComponent } from './components/Dashboard/Adel/reviews-d
 import { WishlistComponent } from './components/User Profile/wishlist/wishlist.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashboard.component';
 const routes: Routes = [
   // Abdo
   { path: '', component: HomeComponent },
@@ -63,6 +64,7 @@ const routes: Routes = [
   { path: 'dashboard/add/category', component: AddCategoryComponent },
   { path: 'dashboard/categories/:id', component: EditCategoryComponent },
   { path: 'dashboard/reviews', component: ReviewsDashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
   // Reham Abdelrhman
   { path: 'Home', component: HomeComponent },
   { path: 'Products', component: ProductComponent },
