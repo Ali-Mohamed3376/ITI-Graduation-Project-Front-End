@@ -77,3 +77,39 @@ body {
 .customColor {
   color: #164e63;
 }
+
+/* ngx-pagination styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination li {
+  list-style: none;
+  margin-right: 10px;
+}
+
+.pagination li a {
+  color: #333;
+  font-size: 16px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.pagination li.active a {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+.pagination li.disabled a {
+  color: #ccc;
+}
+
+.pagination li:first-child a,
+.pagination li:last-child a {
+  border-radius: 50%;
+  padding: 5px 8px;
+}
