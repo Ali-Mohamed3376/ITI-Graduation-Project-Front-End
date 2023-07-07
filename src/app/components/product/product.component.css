@@ -32,4 +32,11 @@
   }
   
   
+  .card-wrapper {
+    display: flex;
+  }
+  
+  .card {
+    flex: 1;
+  }
   

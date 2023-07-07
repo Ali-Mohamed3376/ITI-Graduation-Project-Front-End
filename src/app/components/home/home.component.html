@@ -48,8 +48,8 @@
     </div>
     <div class="row">
       <div class="row">
-        <div class="col-3 mt-2" *ngFor="let p of topProducts">
-          <div class="card">
+        <div class="col-3 mt-2 card-wrapper" *ngFor="let p of topProducts">
+          <div class="card ">
             <div class="card-body">
               <div *ngIf="p.price != p.priceAfter" class="sale">
                 {{ p.discount }}% OFF
@@ -138,8 +138,8 @@
     </div>
     <div class="row">
       <div class="row">
-        <div class="col-3 mt-2" *ngFor="let p of specialProducts">
-          <div class="card">
+        <div class="col-3 mt-2 card-wrapper" *ngFor="let p of specialProducts">
+          <div class="card ">
             <div class="card-body">
               <div class="sale">{{ p.discount }}% OFF</div>
               <div class="card-img-actions">
@@ -212,3 +212,6 @@
     </div>
   </div>
 </section>
+<!-- test************************************** -->
+
+

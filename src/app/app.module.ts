@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -172,6 +173,7 @@ import { WishlistComponent } from './components/User Profile/wishlist/wishlist.c
     MatTableModule,
     NgxSpinnerModule,
     NgxPaginationModule,
+    SlickCarouselModule
   ],
 
   providers: [
