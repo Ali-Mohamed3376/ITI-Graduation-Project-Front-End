@@ -1,18 +1,36 @@
 <!---------------------------------------------------------- New Nav  ------------------------------------------------------------------------------------->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around fixed-top">
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around fixed-top"
+>
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">
       <img src="../../../assets/images/Logo.png" width="220px" />
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+    <div
+      class="collapse navbar-collapse justify-content-around"
+      id="navbarSupportedContent"
+    >
       <form class="d-flex col-sm-12 col-md-12 col-lg-4" role="search">
-        <input type="text" class="form-control" placeholder="Search..." aria-label="Search" #searchQuery
-          (keyup.enter)="onEnterKey(searchQuery.value)" />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search..."
+          aria-label="Search"
+          #searchQuery
+          (keyup.enter)="onEnterKey(searchQuery.value)"
+        />
       </form>
 
       <ul class="navbar-nav mb-2 mb-lg-0">
@@ -26,63 +44,79 @@
           <a routerLink="/Products" class="nav-link text-black"> Products</a>
         </li>
         <li class="nav-item">
-          <a routerLink="/Sidebar" class="nav-link text-black" *ngIf="isUserLoggedIn">
+          <a
+            routerLink="/Sidebar"
+            class="nav-link text-black"
+            *ngIf="isUserLoggedIn"
+          >
             Profile
           </a>
         </li>
 
-        <li>
-          <button class="d-flex flex-row-reverse angular-btn" *ngIf="isUserLoggedIn && isAdmin" mat-button
-            [matMenuTriggerFor]="menu">
-            <span>Dashboard</span>
-            <mat-icon class="arrow-icon arrow">arrow_drop_down</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu" class="zindex">
-            <button mat-menu-item routerLink="dashboard">Home</button>
-            <button mat-menu-item routerLink="dashboard/users">Users</button>
-            <button mat-menu-item routerLink="dashboard/categories">
-              Categories
-            </button>
-            <button mat-menu-item routerLink="dashboard/products">
-              Products
-            </button>
-            <button mat-menu-item routerLink="dashboard/orders">Orders</button>
-            <button mat-menu-item routerLink="dashboard/reviews">
-              Reviews
-            </button>
-          </mat-menu>
+        <li class="nav-item">
+          <a
+            routerLink="/dashboard/home"
+            class="nav-link text-black"
+            *ngIf="isUserLoggedIn && isAdmin"
+          >
+            Dashboard
+          </a>
         </li>
         <li class="nav-item">
           <a routerLink="/contact-us" class="nav-link text-black">
-            Contact Us</a>
+            Contact Us</a
+          >
         </li>
 
         <li class="nav-item me-3 mb-2 mt-2">
-          <a routerLink="cart" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+          <a
+            routerLink="cart"
+            class="cart position-relative d-inline-flex"
+            aria-label="View your shopping cart"
+          >
             <i class="fas fa fa-shopping-cart fa-lg"></i>
-            <span class="cart-basket d-flex align-items-center justify-content-center">
+            <span
+              class="cart-basket d-flex align-items-center justify-content-center"
+            >
               {{ cartCouter }}
             </span>
           </a>
         </li>
         <li class="nav-item mt-2 me-4">
-          <a routerLink="/wishList" class="cart position-relative d-inline-flex" aria-label="View your wishList cart">
+          <a
+            routerLink="/wishList"
+            class="cart position-relative d-inline-flex"
+            aria-label="View your wishList cart"
+          >
             <i class="fa-regular fa-heart fa-beat fa-lg"></i>
-            <span class="cart-basket d-flex align-items-center justify-content-center">
+            <span
+              class="cart-basket d-flex align-items-center justify-content-center"
+            >
               {{ whishListCouter }}
             </span>
           </a>
         </li>
         <li class="nav-item me-1" *ngIf="!isUserLoggedIn">
-          <a id="loginBtn" class="nav-link btn btn-primary hoverWhite" routerLink="/Authentication/login"
-            routerLinkActive="active">Login</a>
+          <a
+            id="loginBtn"
+            class="nav-link btn btn-primary hoverWhite"
+            routerLink="/Authentication/login"
+            routerLinkActive="active"
+            >Login</a
+          >
         </li>
         <li class="nav-item" *ngIf="!isUserLoggedIn">
-          <a class="nav-link btn btn-success hoverWhite" routerLink="/Authentication/register"
-            routerLinkActive="active">Register</a>
+          <a
+            class="nav-link btn btn-success hoverWhite"
+            routerLink="/Authentication/register"
+            routerLinkActive="active"
+            >Register</a
+          >
         </li>
         <li class="nav-item" *ngIf="isUserLoggedIn">
-          <a class="nav-link btn btn-danger hoverWhite" (click)="LogOut()">Logout</a>
+          <a class="nav-link btn btn-danger hoverWhite" (click)="LogOut()"
+            >Logout</a
+          >
         </li>
       </ul>
     </div>
