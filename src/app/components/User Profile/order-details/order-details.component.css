@@ -1,0 +1,18 @@
+*{
+    margin:0;
+    padding: 0;
+}
+.zoom {
+    transition: transform 0.2s;
+    margin: 0 auto;
+  }
+  
+  .zoom:hover {
+        transform: scale(1.2);
+  }
+  section{
+    background-color: #eee;
+  }
+  .divv{
+    width: 100%;
+  }

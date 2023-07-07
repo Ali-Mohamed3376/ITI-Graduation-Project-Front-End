@@ -3,14 +3,11 @@
   padding: 0;
 }
 .background {
-  background-color: #164e63;
+  background-color:#cbcdce;
   border-radius: 5%;
-  color: white;
+  color:  #083a4c;
 }
 
-.general-back {
-  background-color: #0e7490;
-}
 form {
   display: flex;
   flex-direction: row;
@@ -21,7 +18,7 @@ form {
 input {
   width: 50%;
 }
-button {
+.button {
   background-color: #083a4c;
   color: aliceblue;
   padding: 2%;
@@ -33,4 +30,9 @@ button {
 }
 .push-downwards {
   margin-top: 10;
+}
+.colour{
+  color:
+    #083a4c
+  
 }

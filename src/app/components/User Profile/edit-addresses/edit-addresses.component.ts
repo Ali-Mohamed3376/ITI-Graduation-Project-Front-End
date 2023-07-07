@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Inject} from '@angular/core';
 import { UserProfileService } from 'src/app/services/User Profile/user-profile.service';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-edit-addresses',
   templateUrl: './edit-addresses.component.html',
@@ -10,7 +11,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditAddressesComponent {
   address:any;
   id:any;
-  constructor(public service:UserProfileService, public auth:AuthenticationService,myRoute:ActivatedRoute){
+  defaultt:any;
+  constructor(
+    public service:UserProfileService, 
+    public auth:AuthenticationService,myRoute:ActivatedRoute, 
+    private dialogRef: MatDialogRef<EditAddressesComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { Id : any }
+    ) 
+    {
     this.service.getUserAddress().subscribe({
       next: (data) => {
         console.log(data);
@@ -20,7 +28,7 @@ export class EditAddressesComponent {
         console.log(err);
       },
     });
-    this.id = myRoute.snapshot.params['id'];
+    this.id = data.Id;
   }
   ngOnInit(): void {
     this.service.GetAddressById (this.id).subscribe(
@@ -40,10 +48,24 @@ export class EditAddressesComponent {
   this.service.EditUserAddress(updatedData).subscribe({
     next:()=>{
       this.address[this.id]=updatedData;
+      this.dialogRef.close();
       // this.router.navigateByUrl('/Address');
     },
     error:(err)=>{console.log(err)}
   })
  } 
+ default(id: any) {
+  this.service.setAddressDefault(id).subscribe({
+    //defaultAddress:this.form.controls.defaultAddress.value;
+    next: (data) => {
+      if (this.address.defaultAddress.value == 'true') {
+        this.defaultt="default"
+      }
+    },
+    error: (err) => {
+      console.log(err);
+    },
+  });
+}
   
 }

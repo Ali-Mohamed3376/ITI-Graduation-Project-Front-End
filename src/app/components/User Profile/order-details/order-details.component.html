@@ -11,9 +11,18 @@
     </div>
     <p>{{totalp}}</p>
 </div>-->
-<div class="card" style="width: 18rem;" *ngIf="details">
-    <img src="/src/assets/images/logooooo.png" >
-    <div class="card-body" *ngFor="let p of details.orderProducts">
+<!---<div class="container d-flex justify-content-center">
+    <div class="col-lg-4 mx-0 px-0">
+        <app-profile></app-profile>
+    </div>
+   <div><h5> Total price : ${{totalp}}</h5></div> 
+
+<div class="card d-grid " style="width: 18rem;" *ngIf="details">
+    <div class="row">
+        <div class="col-lg-8">
+    <div *ngFor="let p of details.orderProducts" class="container d-grid">
+    <img src="https://m.media-amazon.com/images/I/81VBQJoT5JL.__AC_SY300_SX300_QL70_ML2_.jpg" class="zoom">
+    <div class="card-body" >
         <p>Product Name: {{p.title}}</p>
         <p>Quantity : {{p.quantity}}</p>
         <p>Price : ${{p.price}}</p>
@@ -23,4 +32,70 @@
         <p>Phone:{{details.orderAdress.phone}}</p>
     </div>
   </div>
-  <p> Total price : ${{totalp}}</p>
+</div>
+</div>
+</div>
+
+</div>-->
+<div class="container d-flex justify-content-space-between m-0 p-0 ">
+    <div class="col-lg-4">
+        <app-profile></app-profile>
+    </div>
+    <section style="background-color: #eee;"*ngIf="details" class="divv">
+        <div class="card-group d-grid">
+            <div class="row ms-3">
+        <div class="col-lg-5 col-md-4 col-sm-6" *ngFor="let item of details.orderProducts">
+            <div class="card">
+                <p>{{item.image}}</p>
+                <img class="card-img-top mt-2" src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/3.webp" height="200px" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+                    <p class="card-text">Quantity : {{item.quantity}}</p>
+    
+                    <p class="card-text">Price : ${{item.price}}</p>
+    
+                    <a class="btn btn-primary lightcolor" routerLink="/Products/{{item.product_Id}}">Product
+                        Details</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+      </section>
+
+</div>
+
+<!--<section style="background-color: #eee;"*ngIf="details">
+    <div class="card-group ms-5 my-3 d-grid p-3">
+        <div class=" row">
+    <div class="col-lg-3 col-md-4 col-sm-6 mt-3" *ngFor="let item of details.orderProducts">
+        <div class="card">
+            <img class="card-img-top mt-2" src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/3.webp" height="200px" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">Price : ${{item.quantity}}</p>
+
+                <p class="card-text">Price : ${{item.price}}</p>
+
+                <a class="btn btn-primary lightcolor" routerLink="/products/{{item.productId}}">Product
+                    Details</a>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+ <div *ngFor="let i of details"  class="d-flex flex-column">
+        <ul *ngIf="details.orderAddress">
+                Address : {{<details></details>.orderAddress.street}},{{i.orderAddress.city}}
+                Phone : {{i.orderAddress.phone}}
+                Total Price : {{totalp}}
+                <h1>hi</h1>
+        </ul>
+
+    </div>
+  </section>
+
+
+</div>-->
+
