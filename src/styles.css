@@ -114,3 +114,11 @@ body {
   border-radius: 50%;
   padding: 5px 8px;
 }
+.nameColor {
+  color: #164e63;
+  text-decoration: none; 
+}
+
+.nameColor:hover {
+  text-decoration: underline;
+}
