@@ -5,11 +5,13 @@
   <div class="col-lg-8" *ngIf="products">
     <section class="products Top-products section">
       <div class="container">
-        <div class="row justify-content-center">
+        <div class="row">
           <div class="col-lg-3">
             <div class="title text-center m-5">
               <h2>wishList</h2>
-              <h5 *ngIf="products.length==0">no product in wishlist</h5>
+            </div>
+            <div *ngIf="products.length == 0" class="alert alert-danger">
+              <h3>Wishlist is Empty</h3>
             </div>
           </div>
         </div>
@@ -79,7 +81,7 @@
                     type="button"
                     class="btn bg-cart whishlistBtn"
                   >
-                    <i class="fa-regular fa-heart wishlist "></i>
+                    <i class="fa-regular fa-heart wishlist"></i>
                     Remove
                   </button>
                 </div>

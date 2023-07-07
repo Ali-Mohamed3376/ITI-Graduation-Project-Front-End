@@ -32,6 +32,7 @@ import { AddProductComponent } from './components/Dashboard/Ahmed/add-product/ad
 import { SidebarComponent } from './components/Dashboard/Ahmed/sidebar/sidebar.component';
 import { ProductsComponent } from './components/Dashboard/Ahmed/products/products.component';
 import { EditProductComponent } from './components/Dashboard/Ahmed/edit-product/edit-product.component';
+import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashboard.component';
 const routes: Routes = [
   // Abdo
   { path: '', component: HomeComponent },
@@ -70,6 +71,7 @@ const routes: Routes = [
   { path: 'dashboard/add/category', component: AddCategoryComponent },
   { path: 'dashboard/categories/:id', component: EditCategoryComponent },
   { path: 'dashboard/reviews', component: ReviewsDashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
   // Reham Abdelrhman
   { path: 'Home', component: HomeComponent },
   { path: 'Products', component: ProductComponent },
