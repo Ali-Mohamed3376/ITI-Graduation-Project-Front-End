@@ -10,3 +10,9 @@
   .zoom:hover {
         transform: scale(1.2);
   }
+  section{
+    background-color: #eee;
+  }
+  .divv{
+    width: 100%;
+  }
