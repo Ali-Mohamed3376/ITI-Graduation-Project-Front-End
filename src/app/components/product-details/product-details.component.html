@@ -11,7 +11,7 @@
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <div *ngIf="product.price != product.priceAfter" class="sale">{{ product.discount }}% OFF</div>
-                <img src="{{ product.image }}" alt="" class="img-fluid" />
+                <img *ngIf="product.images" src="{{ product.images[0] }}" alt="" class="img-fluid" />
               </div>
             </div>
           </div>
