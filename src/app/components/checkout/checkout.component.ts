@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CartProduct } from 'src/app/Dtos/Cart/cart';
 import { orderAddress } from 'src/app/Dtos/OrderCheckout/OrderCheckout';
 import { CartService } from 'src/app/services/Cart/cart.service';
@@ -15,7 +16,7 @@ export class CheckoutComponent implements OnInit {
   userAddresses:orderAddress[]=[];
   choosenAddressId:number=0;
   totalPrice:number=0;
-  constructor(
+  constructor(private toastr: ToastrService,
     private router:Router,
     private orderService:OrderService,
     private cartService:CartService
@@ -73,7 +74,8 @@ export class CheckoutComponent implements OnInit {
         error:(error)=>{  // why he enter the error path?
           console.log(error);
           console.log("error");
-          alert("order Added Successfull ... redirect to Home Page");
+          this.toastr.success("order Added Successfull ... redirect to Home Page", 'Success',{
+            timeOut: 2000,} );
           this.cartService.getCartProductsCounter();
 
           this.router.navigate(["/"]);
@@ -89,9 +91,8 @@ export class CheckoutComponent implements OnInit {
     //check user choose address or not
     else if ( !(this.choosenAddressId>0) )
     {
-      alert("choose address");
+      this.toastr.error("choose address");
     }
     
-
   }
 }

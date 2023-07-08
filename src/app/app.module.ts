@@ -39,6 +39,7 @@ import { OrdersDashboardComponent } from './components/Dashboard/Adel/orders-das
 import { OrderDetailsDashboardComponent } from './components/Dashboard/Adel/order-details-dashboard/order-details-dashboard.component';
 import { ReviewsDashboardComponent } from './components/Dashboard/Adel/reviews-dashboard/reviews-dashboard.component';
 import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashboard.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationInterceptor } from './Interceptors/authentication.interceptor';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -87,7 +88,7 @@ import { WishlistComponent } from './components/User Profile/wishlist/wishlist.c
 import { EditImagePopUpComponent } from './components/Dashboard/Ahmed/edit-image-pop-up/edit-image-pop-up.component';
 import { SideBarComponent } from './components/Dashboard/Adel/side-bar/side-bar.component';
 import { MainDashboardComponent } from './components/Dashboard/Adel/main-dashboard/main-dashboard.component';
-
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -181,7 +182,9 @@ import { MainDashboardComponent } from './components/Dashboard/Adel/main-dashboa
     NgxSpinnerModule,
     NgxPaginationModule,
     SlickCarouselModule,
-    NgxPaginationModule 
+    NgxPaginationModule ,
+    ToastrModule.forRoot(), // ToastrModule added
+
   ],
 
   providers: [

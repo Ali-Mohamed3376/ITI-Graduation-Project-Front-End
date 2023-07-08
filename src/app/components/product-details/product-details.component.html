@@ -10,7 +10,7 @@
                 <!-- <img src="{{ product.image }}" alt="" class="img-fluid" /> -->
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">
-                    <div *ngFor="let i of product.image" class="carousel-item active">
+                    <div *ngFor="let i of product.images" class="carousel-item active">
                       <img src="{{i}}" class="d-block w-100" alt="...">
                     </div>
                     
@@ -28,11 +28,7 @@
             </div>
             
           </div>
-         <!--  <div class="small-images">
-            <img src="{{ product.image }}" alt="" class="img-fluid">
-            <img src="{{ product.image }}" alt="" class="img-fluid">
-            <img src="{{ product.image }}" alt="" class="img-fluid">
-          </div> -->
+     
         </div>
       </div>
     

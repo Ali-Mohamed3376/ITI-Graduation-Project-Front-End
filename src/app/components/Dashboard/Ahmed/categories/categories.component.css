@@ -18559,4 +18559,14 @@
       display: block
     }
   }
+  .custom-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+  }
   
+  .custom-button:hover {
+    background-color: #0062cc;
+    border-color: #005cbf;
+    color: #fff;
+  }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/Product/product.service';
-import { FormsModule } from '@angular/forms';
 import { ProductChildDto } from 'src/app/Dtos/Product/ProductChildDto';
 import { ActivatedRoute } from '@angular/router';
 import { WishListService } from 'src/app/services/WishList/wish-list.service';
@@ -35,7 +34,7 @@ export class ProductComponent implements OnInit {
     private productService: ProductService,
     private routeLink: ActivatedRoute,
     private wishlistService: WishListService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
   ) {}
 
   ngOnInit(): void {

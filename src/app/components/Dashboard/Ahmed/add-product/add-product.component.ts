@@ -5,11 +5,8 @@ import { productOperation} from 'src/app/services/Dashboard/productOperation.ser
 import{CategoryService} from 'src/app/services/Dashboard/category.service'
 import{AddProductDto} from 'src/app/Dtos/Dashboard/AddProductDto';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { Router } from '@angular/router'; 
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -20,11 +17,10 @@ ImageUrls:string[]=[];
 categories:any;
 selectedCategory:number=0;
 
-constructor(private productService:productOperation,private snackBar : MatSnackBar,
-  private categoriesService:CategoryService,private router:Router,private _snackBar: MatSnackBar){}
+constructor(private toastr: ToastrService,private productService:productOperation,
+  private categoriesService:CategoryService,private router:Router,private snackBar: MatSnackBar){}
   
 product: AddProductDto=new AddProductDto();
-res="add successfully";
 addProduct(productForm:NgForm):void{
   if(productForm.invalid)return;
   this.product.Name=this.product.Name.trim(),
@@ -43,11 +39,7 @@ addProduct(productForm:NgForm):void{
     }
     }
   )
-  this.snackBar.open('Product added successfully', 'OK', {
-    duration: 4000, // duration in milliseconds
-    // verticalPosition:'top'
-  });
-  
+   this.toastr.success("product adding success");
 }
 
 
@@ -76,37 +68,4 @@ uploadPhotos(e:Event){
   }
 }
 
-// this.snackBar.open(error.error.message,"Close",{
-//   duration:4000,
-//   verticalposition:"top",
-// snackBarRef.afterDismissed().subscribe(() => {
-//   console.log('The snackbar was dismissed');
-// });
-
-// openImagePopup():void{
-//   const dialogRef=this.dialog.open(ImagePopupComponent,{
-//     data:{imageUrls:this.ImageUrls},
-//   });
-//   dialogRef.afterClosed().subscribe((result)=>{
-//     console.log('Dialog result :${result}');
-  // })
-
-
-
-  // AddProduct(){
-  //   var credentials = new AddProductDto();
-
-  //   credentials.Name = this.form.controls.productName.value ?? '';
-  //   credentials.Description = this.form.controls.description.value ?? '';
-  //   credentials.Image = this.ImageUrls?? '';
-  //   credentials.Model = this.form.controls.model.value ?? '';
-  //   credentials.Price = this.form.controls.price.value ?? 0;
-  //   credentials.Discount = this.form.controls.discount.value ?? 0 ;
-  //   credentials.CategoryID = this.form.controls.categories.value ?? 0 ;
-
-  //   console.log(credentials)
-  //   this.productService.AddProduct(credentials).subscribe({
-  //     next(){
-  //       console.log("done")
-  //     }
 

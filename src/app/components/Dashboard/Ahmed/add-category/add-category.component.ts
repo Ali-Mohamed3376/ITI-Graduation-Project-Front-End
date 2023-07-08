@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastRef, ToastrService } from 'ngx-toastr';
 import { CategoryAddDto } from 'src/app/Dtos/Dashboard/CategoryAddDto';
 import { CategoryService } from 'src/app/services/Dashboard/category.service';
 
@@ -10,7 +11,7 @@ import { CategoryService } from 'src/app/services/Dashboard/category.service';
   styleUrls: ['./add-category.component.css']
 })
 export class AddCategoryComponent {
-  constructor(
+  constructor(private toastr: ToastrService,
     private categoryService: CategoryService, 
     private dialogRef: MatDialogRef<AddCategoryComponent>,
     ) {
@@ -28,6 +29,8 @@ export class AddCategoryComponent {
     this.categoryService.AddCategory(credentials).subscribe({
       next: () => {
         this.dialogRef.close();
+        this.toastr.success("category adding success");
+
       },
       error: (error) => {
         console.log(error)
