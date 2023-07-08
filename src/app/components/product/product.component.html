@@ -121,6 +121,7 @@
                 'mt-2': true
               }"
               type="submit"
+              class="applyButton"
             >
               Apply
             </button>
@@ -133,6 +134,7 @@
               }"
               type="button"
               (click)="resetFilters()"
+              class="resetButton"
             >
               Reset
             </button>
@@ -164,14 +166,22 @@
               </div>
               <div class="card-img-actions">
                 <button
-                *ngIf="isLoggedIn"
-                (click)="AddOrRemoveFromwishList(p.id)"
-                type="button"
-                class="btn bg-cart py-0 heartWishList"
-              >
-                <i *ngIf="!p.isInWishList" class="fa-regular fa-heart" style="color: black;"></i>
-                <i *ngIf="p.isInWishList" class="fa-solid fa-heart" style="color: #ff1414;"></i> 
-              </button>
+                  *ngIf="isLoggedIn"
+                  (click)="AddOrRemoveFromwishList(p.id)"
+                  type="button"
+                  class="btn bg-cart py-0 heartWishList"
+                >
+                  <i
+                    *ngIf="!p.isInWishList"
+                    class="fa-regular fa-heart"
+                    style="color: black"
+                  ></i>
+                  <i
+                    *ngIf="p.isInWishList"
+                    class="fa-solid fa-heart"
+                    style="color: #ff1414"
+                  ></i>
+                </button>
                 <img
                   src="{{ p.image }}"
                   class="card-img rounded-0"
@@ -181,7 +191,6 @@
               </div>
             </div>
             <div class="card-body text-center bg-light">
-
               <div class="mb-2 tryfix">
                 <h4 class="font-weight-semibold mb-2 text-white">
                   <a
@@ -229,7 +238,6 @@
                 </p>
               </div>
               <div class="text-muted mb-1">{{ p.reviewCount }} reviews</div>
-              
             </div>
           </div>
         </div>
