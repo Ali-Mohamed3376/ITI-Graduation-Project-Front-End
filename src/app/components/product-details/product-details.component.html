@@ -20,11 +20,8 @@
                   data-bs-ride="carousel"
                 >
                   <div class="carousel-inner">
-                    <div
-                      *ngFor="let i of product.image"
-                      class="carousel-item active"
-                    >
-                      <img src="{{ i }}" class="d-block w-100" alt="..." />
+                    <div *ngFor="let i of product.images" class="carousel-item active">
+                      <img src="{{i}}" class="d-block w-100" alt="...">
                     </div>
                   </div>
                   <button

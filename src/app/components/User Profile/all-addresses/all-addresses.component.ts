@@ -12,7 +12,6 @@ import { EditAddressesComponent } from '../edit-addresses/edit-addresses.compone
 export class AllAddressesComponent {
   address: any;
   id: any;
-  defaultt:any;
   constructor(
     myRoute: ActivatedRoute,
     public service: UserProfileService,
@@ -30,7 +29,6 @@ export class AllAddressesComponent {
     });
     this.id = myRoute.snapshot.params['id'];
   }
-
 
   delete(id: any) {
     let msg = `Do yow want to delete this address?`;
@@ -54,9 +52,12 @@ export class AllAddressesComponent {
   default(id: any) {
     this.service.setAddressDefault(id).subscribe({
       //defaultAddress:this.form.controls.defaultAddress.value;
+
       next: (data) => {
-        if (this.address.defaultAddress== 'true') {
-          this.defaultt="default"
+        let d  = document.getElementById('Default');
+
+        if (this.address.defaultAddress== true) {
+          d?.focus();
         }
       },
       error: (err) => {
