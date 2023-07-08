@@ -89,6 +89,7 @@ import { EditImagePopUpComponent } from './components/Dashboard/Ahmed/edit-image
 import { SideBarComponent } from './components/Dashboard/Adel/side-bar/side-bar.component';
 import { MainDashboardComponent } from './components/Dashboard/Adel/main-dashboard/main-dashboard.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ContactusComponent } from './components/Dashboard/Adel/contactus/contactus.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -133,6 +134,7 @@ import { ToastrModule } from 'ngx-toastr';
     AboutUsComponent,
     SideBarComponent,
     MainDashboardComponent,
+    ContactusComponent,
   ],
   imports: [
     BrowserModule,

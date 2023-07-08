@@ -39,8 +39,12 @@ export class EditCategoryComponent {
 
     this.categoryService.EditCategory(credentials).subscribe({
       next: () => {
-        this.route.navigateByUrl("/dashboard/categories")
         this.dialogRef.close();
+        this.categoryService.GetAllCategories().subscribe({
+          next: (data)=>{
+            this.categoryService.Categories$.next(data)
+          }
+        })
       },
       error: (error) => {
         console.log(error)
