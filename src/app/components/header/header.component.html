@@ -1,6 +1,8 @@
 <!---------------------------------------------------------- New Nav  ------------------------------------------------------------------------------------->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around fixed-top zindex">
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around fixed-top zindex"
+>
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">
       <img src="../../../assets/images/Logo.png" width="220px" />
@@ -36,13 +38,14 @@
           <a routerLink="/" class="nav-link text-black"> Home </a>
         </li>
         <li class="nav-item">
-          <a routerLink="/about-us" class="nav-link text-black"> About Us</a>
-        </li>
-        <li class="nav-item">
           <a routerLink="/Products" class="nav-link text-black"> Products</a>
         </li>
         <li class="nav-item">
-          <a routerLink="/Profile" class="nav-link text-black" *ngIf="isUserLoggedIn">
+          <a
+            routerLink="/Profile"
+            class="nav-link text-black"
+            *ngIf="isUserLoggedIn"
+          >
             Profile
           </a>
         </li>
@@ -68,7 +71,7 @@
             class="cart position-relative d-inline-flex"
             aria-label="View your shopping cart"
           >
-            <i class="fas fa fa-shopping-cart fa-lg " id="testelcart"></i>
+            <i class="fas fa fa-shopping-cart fa-lg" id="testelcart"></i>
             <span
               class="cart-basket d-flex align-items-center justify-content-center"
             >
@@ -82,7 +85,10 @@
             class="cart position-relative d-inline-flex"
             aria-label="View your wishList cart"
           >
-            <i class="fa-regular fa-heart fa-beat fa-lg" id="testelwishlist"></i>
+            <i
+              class="fa-regular fa-heart fa-beat fa-lg"
+              id="testelwishlist"
+            ></i>
             <span
               class="cart-basket d-flex align-items-center justify-content-center"
             >
@@ -91,8 +97,13 @@
           </a>
         </li>
         <li class="nav-item me-1" *ngIf="!isUserLoggedIn">
-          <a id="loginBtn" class="nav-link btn btn-primary hoverWhite" routerLink="/Authentication/login"
-            routerLinkActive="active">Login</a>
+          <a
+            id="loginBtn"
+            class="nav-link btn btn-primary hoverWhite"
+            routerLink="/Authentication/login"
+            routerLinkActive="active"
+            >Login</a
+          >
         </li>
         <li class="nav-item" *ngIf="!isUserLoggedIn">
           <a
