@@ -43,12 +43,23 @@ export class HeaderComponent implements OnInit {
     }
     this.cartService.cartCounter$.subscribe((data) => {
       this.cartCouter = data;
+      var cart = document.getElementById("testelcart");
+      cart?.classList.add("fa-shake")
+      setTimeout(() => {
+        cart?.classList.remove("fa-shake")
+      }, 3000);
+
     });
     if (this.isUserLoggedIn) {
       this.whishListService.GetWishListCount();
     }
     this.whishListService.wishListCounter$.subscribe((data) => {
       this.whishListCouter = data;
+      var wishList = document.getElementById("testelwishlist");
+      wishList?.classList.add("fa-flip");
+      setTimeout(() => {
+        wishList?.classList.remove("fa-flip")
+      }, 3000);
     });
   }
 

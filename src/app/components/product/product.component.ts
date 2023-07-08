@@ -22,6 +22,7 @@ export class ProductComponent implements OnInit {
   ratingOptions = [1, 2, 3, 4, 5];
   noProductsMessage: any;
   filterWork: boolean = false;
+  wishListProductsId:any;
 
   // Selected filter options
   selectedBrandId!: any;
@@ -64,6 +65,7 @@ export class ProductComponent implements OnInit {
             {
               console.log(product)
             }
+            this.GetUserWishListProductsId();
         },
         error: (error) => {
           console.log(error);
@@ -117,6 +119,7 @@ export class ProductComponent implements OnInit {
           (this.totalCount = data.totalCount), (this.page = page);
           this.filterWork = true;
           console.log(data);
+          this.GetUserWishListProductsId();
           if (data.totalCount === 0) {
             this.noProductsMessage =
               'No products found that match your requirements.';
@@ -145,11 +148,33 @@ export class ProductComponent implements OnInit {
         console.log('next');
         console.log(data);
         this.wishlistService.GetWishListCount();
+        this.GetUserWishListProductsId();
+
       },
       error: (error) => {
         console.log('error');
         console.log(error);
       },
     });
+  }
+
+  GetUserWishListProductsId()
+  {
+    this.wishlistService.GetUserWishListProductsId().subscribe({
+      next:(data)=>{
+        console.log("next of wishLList Ids");
+        this.wishListProductsId=data;
+        this.wishListProductsId=this.wishListProductsId.map((product:any) => product.id);
+        console.log(this.wishListProductsId);
+
+        console.log("lets try to add wishList true");
+        for ( let product of this.products)
+        {
+          console.log(this.wishListProductsId.includes(product.id));
+          var status = this.wishListProductsId.includes(product.id);
+          product.isInWishList=status;
+        }
+      }
+    })
   }
 }

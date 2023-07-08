@@ -65,6 +65,19 @@
   /* Add any other custom styles you desire */
 }
 
+.heartWishList{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: whitesmoke;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
 
 @media(min-width:500px)
 {
