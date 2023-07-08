@@ -31,7 +31,7 @@ export class ForgetPasswordComponent {
       },
       (e) => {
         // handle error
-        this.respomseError = e.error;
+        this.respomseError = 'Cannot Send Email';
         // console.log(e.error);
       }
     );
