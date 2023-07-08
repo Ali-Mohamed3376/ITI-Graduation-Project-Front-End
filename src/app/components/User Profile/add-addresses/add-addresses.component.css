@@ -40,6 +40,10 @@ button{
   color: #e8e8e8;
 
 }
+.btn-background{
+  background-color:#0a2630 !important;
+  color: #e8e8e8;
+}
 .roundedd{
   border-radius: 5%;
 }

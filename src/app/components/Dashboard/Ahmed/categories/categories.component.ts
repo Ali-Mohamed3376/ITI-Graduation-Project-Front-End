@@ -16,6 +16,11 @@ export class CategoriesComponent {
 
   constructor(private toastr: ToastrService,private readonly CategoryService: CategoryService, private dialog : MatDialog) {
     this.fetchCategory()
+    this.CategoryService.Categories$.subscribe({
+      next: (data)=>{
+        this.Categories = data
+      }
+    })
   }
 
   public fetchCategory() {

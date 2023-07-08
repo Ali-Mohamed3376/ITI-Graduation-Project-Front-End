@@ -35,6 +35,7 @@ import { EditProductComponent } from './components/Dashboard/Ahmed/edit-product/
 import { DashboardComponent } from './components/Dashboard/Adel/dashboard/dashboard.component';
 import { AdminAuthenticationGuard } from './Guards/admin-authentication.guard';
 import { MainDashboardComponent } from './components/Dashboard/Adel/main-dashboard/main-dashboard.component';
+import { ContactusComponent } from './components/Dashboard/Adel/contactus/contactus.component';
 const routes: Routes = [
   // Abdo
   { path: '', component: HomeComponent },
@@ -83,6 +84,7 @@ const routes: Routes = [
       { path: 'addProduct', canActivate: [AdminAuthenticationGuard], component: AddProductComponent },
       { path: 'products', canActivate: [AdminAuthenticationGuard], component: ProductsComponent },
       { path: 'products/:id', canActivate: [AdminAuthenticationGuard], component: EditProductComponent },
+      { path: 'contacts', canActivate: [AdminAuthenticationGuard], component: ContactusComponent },
     ]
   },
   // Reham Abdelrhman

@@ -14,7 +14,6 @@
                                 <th scope="col">City</th>
                                 <th scope="col">Street</th>
                                 <th scope="col">Phone</th>
-                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -23,11 +22,6 @@
                                 <td>{{item.city}}</td>
                                 <td>{{item.street}}</td>
                                 <td>{{item.phone}}</td>
-                                <td *ngIf="item.defaultAddress">
-                                    <div class="flex items-center justify-center text-success">
-                                        <i>Default Address</i>
-                                    </div>
-                                </td>
                             </tr>
                         </tbody>
                     </table>

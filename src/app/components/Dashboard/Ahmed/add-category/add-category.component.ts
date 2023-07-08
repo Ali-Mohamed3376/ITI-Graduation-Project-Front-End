@@ -29,8 +29,12 @@ export class AddCategoryComponent {
     this.categoryService.AddCategory(credentials).subscribe({
       next: () => {
         this.dialogRef.close();
-        this.toastr.success("category adding success");
-
+        this.toastr.success("Category added successfully");
+        this.categoryService.GetAllCategories().subscribe({
+          next: (data)=>{
+            this.categoryService.Categories$.next(data)
+          }
+        })
       },
       error: (error) => {
         console.log(error)

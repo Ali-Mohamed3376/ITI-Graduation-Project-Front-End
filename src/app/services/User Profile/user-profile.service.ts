@@ -80,4 +80,6 @@ export class UserProfileService {
   public EditDefaultAddress(addressId : any){
     return this.myClient.put('https://localhost:7064/api/UserAddresses/SetDefault/' + addressId, addressId)
   }
+
+  public Address$ = new BehaviorSubject<any>(null)
 }
