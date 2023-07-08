@@ -98,11 +98,11 @@ const routes: Routes = [
   },
   { path: 'Order/Details/:id', component: OrderDetailsComponent },
   {
-    path: 'Profile',
+    path: 'General',
     canActivate: [AuthenticationGuardGuard],
     component: MainProfileComponent,
   },
-  { path: 'Sidebar', component: ProfileComponent },
+  { path: 'Profile', component: ProfileComponent },
   {
     path: 'Address',
     canActivate: [AuthenticationGuardGuard],

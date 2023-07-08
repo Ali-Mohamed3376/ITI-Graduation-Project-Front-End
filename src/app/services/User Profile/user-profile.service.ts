@@ -76,4 +76,8 @@ export class UserProfileService {
       'https://localhost:7064/api/UserAddresses/address/' + id
     );
   }
+
+  public EditDefaultAddress(addressId : any){
+    return this.myClient.put('https://localhost:7064/api/UserAddresses/SetDefault/' + addressId, addressId)
+  }
 }

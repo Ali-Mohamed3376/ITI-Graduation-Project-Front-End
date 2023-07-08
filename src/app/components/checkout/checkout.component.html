@@ -1,7 +1,6 @@
 <form (ngSubmit)="AddnewOrder()">
   <!-- addresses -->
-  <h2>Chossd Address</h2>
-  <table class="table">
+  <!-- <table class="table">
     <thead>
       <tr>
         <th scope="col">City</th>
@@ -11,20 +10,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let address of userAddresses"></tr>
-      <tr appHoverClass *ngFor="let address of userAddresses">
-        <td>{{ address.city }}</td>
-        <td>{{ address.street }}</td>
-        <td>{{ address.phone }}</td>
-        <td>
-          <input
-            [(ngModel)]="choosenAddressId"
-            value="{{ address.id }}"
-            type="radio"
-            name="address"
-          />
-        </td>
+      <tr *ngFor="let address of userAddresses">
+        <tr appHoverClass *ngFor="let address of userAddresses">
+        <td>{{address.city}}</td>
+        <td>{{address.street}}</td>
+        <td>{{address.phone}}</td>
+        <td><input [(ngModel)]="choosenAddressId" value="{{address.id}}" type="radio" name="address"></td>
       </tr>
+
     </tbody>
   </table>
 
@@ -54,8 +47,9 @@
       </tr>
     </tbody>
   </table> -->
+  
 
-  <section class="h-100 gradient-custom">
+<section class="h-100 gradient-custom">
     <div class="container py-5">
       <div class="row d-flex justify-content-center my-4">
         <div class="col-md-8">

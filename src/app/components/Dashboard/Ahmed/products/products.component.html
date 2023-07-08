@@ -23,7 +23,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="intro-x" *ngFor="let item of products; let i = index">
+                    <tr class="intro-x" *ngFor="let item of products | paginate
+                    : {
+                        id: 'product-pagination',
+                        itemsPerPage: countPerPage,
+                        currentPage: page,
+                        totalItems: totalCount
+                      }; let i = index">
                         <td class="w-40">
                             {{i + 1}}
                         </td>
@@ -56,3 +62,12 @@
         </div>
     </div>
 </div>
+
+
+
+<pagination-controls
+  
+  (pageChange)="getProductsInPagination($event)"
+  id="product-pagination"
+  class="text-center"
+></pagination-controls>

@@ -36,13 +36,13 @@
   </div>
   </div>
 -->
-<table class="table ">
+<!--<table class="table ">
     <thead>
       <tr>
         <th scope="col" class="colour-general">Order Id</th>
         <th scope="col" class="colour-general">Status</th>
         <th scope="col" class="colour-general">Delivered Date</th>
-       <!--- <th scope="col" class="colour-general">Product Title</th>-->
+       - <th scope="col" class="colour-general">Product Title</th>--
         <th scope="col" class="colour-general">Details</th>
       </tr>
     </thead>
@@ -53,18 +53,60 @@
         <td class="colour-general">{{o.deliverdDate}}</td>
        <td> <button type="button" class="btn btn-primary mt-3"routerLink="/Order/Details/{{o.id}}">Details</button></td>
         
-            <!--<select>
+            -<select>
                 <optgroup *ngFor="let p of o.products" class="d-flex colour-general dropdown">
                     <option>
                         <p class="colour-general">{{p.title}}</p>
                     </option>
                 </optgroup>
             </select>-->
-           <!--<li>{{p.title}}</li> -->
+           <!--<li>{{p.title}}</li> --
        
 
       </tr>
 
     </tbody>
-  </table>
-  
+  </table>-->
+  <div class="container-fluid my-3">
+    <div class="grid grid-cols-12 gap-6 mt-5 ">
+        <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+            <table class="table table-report -mt-2">
+                <thead>
+                    <tr>
+                        <th class="whitespace-nowrap">Order Id</th>
+                        <th class="whitespace-nowrap">Status</th>
+                        <th class="whitespace-nowrap">Delivered Date</th>
+                        <th class="whitespace-nowrap">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="intro-x" *ngFor="let item of orders; let i = index">
+                        
+                        <td>
+                            <a href="" class="font-medium whitespace-nowrap">{{item.id}}</a>
+                        </td>
+                        <td>
+                            <a class="text-slate-500 flex items-center mr-3" href="javascript:;">
+                                {{item.orderStatus}}
+                            </a>
+                        </td>
+                        <td>
+                            <a class="text-slate-500 flex items-center mr-3" href="javascript:;">
+                                {{item.deliverdDate}}
+                            </a>
+                        </td>
+                        
+                       
+                        <td >
+                            <div>
+                                <a class="flex items-center mr-3 logocolortxt" routerLink="/Order/Details/{{item.id}}">
+                                     Details
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

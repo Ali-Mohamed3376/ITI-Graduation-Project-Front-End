@@ -1,4 +1,4 @@
-import { Component, OnInit , Inject} from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { UserProfileService } from 'src/app/services/User Profile/user-profile.service';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,16 +9,15 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./edit-addresses.component.css'],
 })
 export class EditAddressesComponent {
-  address:any;
-  id:any;
-  defaultt:any;
+  address: any;
+  id: any;
+  defaultt: any;
   constructor(
-    public service:UserProfileService, 
-    public auth:AuthenticationService,myRoute:ActivatedRoute, 
+    public service: UserProfileService,
+    public auth: AuthenticationService, myRoute: ActivatedRoute,
     private dialogRef: MatDialogRef<EditAddressesComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { Id : any }
-    ) 
-    {
+    @Inject(MAT_DIALOG_DATA) public data: { Id: any }
+  ) {
     this.service.getUserAddress().subscribe({
       next: (data) => {
         console.log(data);
@@ -31,41 +30,36 @@ export class EditAddressesComponent {
     this.id = data.Id;
   }
   ngOnInit(): void {
-    this.service.GetAddressById (this.id).subscribe(
+    this.service.GetAddressById(this.id).subscribe(
       {
-        next:(data)=>{
-            
+        next: (data) => {
+
           this.address = data;
+          console.log(data)
 
         },
-        error:(err)=>{console.log(err)}
+        error: (err) => { console.log(err) }
       }
     )
-}
- update(id:any,city:any,street:any,phone:any){
-  this.service.GetAddressById(this.id).subscribe();
-  let updatedData={id,city,street,phone}
-  this.service.EditUserAddress(updatedData).subscribe({
-    next:()=>{
-      this.address[this.id]=updatedData;
-      this.dialogRef.close();
-      // this.router.navigateByUrl('/Address');
-    },
-    error:(err)=>{console.log(err)}
-  })
- } 
- default(id: any) {
-  this.service.setAddressDefault(id).subscribe({
-    //defaultAddress:this.form.controls.defaultAddress.value;
-    next: (data) => {
-      if (this.address.defaultAddress.value == 'true') {
-        this.defaultt="default"
-      }
-    },
-    error: (err) => {
-      console.log(err);
-    },
-  });
-}
-  
+  }
+  update(id: any, city: any, street: any, phone: any) {
+    this.service.GetAddressById(this.id).subscribe();
+    let updatedData = { id, city, street, phone }
+    this.service.EditUserAddress(updatedData).subscribe({
+      next: () => {
+        this.address[this.id] = updatedData;
+        this.dialogRef.close();
+        location.reload();
+      },
+      error: (err) => { console.log(err) }
+    })
+
+    // console.log(addressId)
+    // this.service.EditDefaultAddress(addressId).subscribe({
+    //   next: () => {
+    //     this.dialogRef.close()
+    //   }
+    // })
+  }
+
 }
