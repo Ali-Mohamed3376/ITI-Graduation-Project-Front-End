@@ -1,8 +1,8 @@
-<div class="container d-flex justify-content-space-between m-0 p-0">
+<div class="container d-flex justify-content-space-between col-lg-12 col-md-8 col-sm-3 m-0 p-0">
   <div class="col-lg-4 m-0 p-0 ">
     <app-profile></app-profile>
   </div>
-  <div class="col-lg-8 bg-light mt-3 roundedd width ms-5" *ngIf="user">
+  <div class="col-lg-8 col-md-8 col-sm-5 bg-light mt-3 roundedd width ms-5" *ngIf="user">
     <!--- <thead><h1 class="text-center blue">Welcome {{user.fname}}!</h1></thead>
 
     <table class="col-lg-6">
@@ -32,7 +32,7 @@
     >
       <p>{{ respomseError }}</p>
     </div>
-    <form [formGroup]="form" class="bg-light">
+    <form [formGroup]="form" class="bg-light col-lg-12 col-md-12 col-sm-6">
       <div class="text-center mb-sm-3 bg-light coolinput mx-5 adjust">
         <label for="input" class="text bg-light">E-mail:</label>
         <input
@@ -64,15 +64,15 @@
       </div>
       <div class="ms-5 bg-light justify-content-center mt-5 d-flex">
         <button
-          class="btn btn-primary px-5 py-2  colour fs-5 fw-bold"(click)="update()"[disabled]="!form.valid"
+          class="btn btn-primary px-5 py-2  colour  fw-bold"(click)="update()"[disabled]="!form.valid"
         >
           Update
         </button>
         <div class="d-flex flex-end">
-        <button class="btn btn-primary mx-3 py-2 px-2  fs-5 fw-bold colourb" routerLink="/Change-password">
+        <button class="btn btn-primary mx-3 py-2 px-2  fw-bold colourb" routerLink="/Change-password">
           Change Password
         </button>
-        <button class="btn btn-danger mx-3 py-2  fs-5 fw-bold" (click)="delete()">
+        <button class="btn btn-danger mx-3 py-2   fw-bold" (click)="delete()">
           Delete Account
         </button>
       </div>
