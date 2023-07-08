@@ -35,60 +35,17 @@ export class CategoriesComponent {
   }
 
   public del(id: any) {
-    // if (confirm("Are you sure you want to delete this Category?")) {
-    //   this.CategoryService.DeleteCategory(id).subscribe({
-    //     next: () => {
-    //       this.fetchCategory()
+    if (confirm("Are you sure you want to delete this Category?")) {
+      this.CategoryService.DeleteCategory(id).subscribe({
+        next: () => {
+          this.fetchCategory()
        
-    //     },
-    //     error: (error) => {
-    //       console.log(error);
-    //     }
-    //   })
-    // }
-
-    const confirmed = this.toastr.show(
-      `
-        <div>
-          <div>Are you sure you want to delete this Category?</div>
-          <div>
-            <button type="button" class="btn btn-danger" id="toastr-yes-button">Yes</button>
-            <button type="button" class="btn btn-secondary" id="toastr-no-button">No</button>
-          </div>
-        </div>
-      `,
-      'Confirm',
-      {
-        enableHtml: true, // enable HTML in the message
-        closeButton: true, // show the close button
-        positionClass: 'toast-top-right', // set the position
-        tapToDismiss: false, // disable tapping to dismiss
-        onActivateTick: true, // enable the onActivateTick event
-      },
-      'confirm'
-    );
-
-    const yesButton = document.getElementById('toastr-yes-button');
-    if (yesButton) {
-      yesButton.addEventListener('click', () => {
-        this.toastr.clear(confirmed.toastId);
-        this.CategoryService.DeleteCategory(id).subscribe({
-          next: () => {
-            this.fetchCategory();
-          },
-          error: (error) => {
-            console.log(error);
-          }
-        });
-      });
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      })
     }
-    
-    const noButton = document.getElementById('toastr-no-button');
-    if (noButton) {
-      noButton.addEventListener('click', () => {
-        this.toastr.clear(confirmed.toastId);
-      });
-  }
   }
 
 

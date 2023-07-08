@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { OrderEditDto } from 'src/app/Dtos/Dashboard/OrderEditDto';
 
 @Injectable({
@@ -23,4 +24,6 @@ export class OrderService {
   public EditOrder(credentials : OrderEditDto){
     return this.myClient.put("https://localhost:7064/api/Orders/Dashboard/EditOrder", credentials);
   }
+
+  public Order$ = new BehaviorSubject<any>(null)
 }

@@ -9,9 +9,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-addresses.component.css']
 })
 export class AddAddressesComponent {
-  address:any;
-  defaultt="true";
-  form=new FormGroup({
+  address: any;
+  defaultt = "true";
+  form = new FormGroup({
     city: new FormControl<string>('', [
       Validators.required,
       Validators.maxLength(20),
@@ -27,25 +27,28 @@ export class AddAddressesComponent {
 
     ]),
   })
-  constructor(public service:UserProfileService, public auth:AuthenticationService,private router: Router){
-   this.service.getUserAddress().subscribe({
-     next:(data)=>{
-       this.address=data;
-     },
-           error:(err)=>{console.log(err)}
- })
+  constructor(public service: UserProfileService, public auth: AuthenticationService, private router: Router) {
+    this.service.getUserAddress().subscribe({
+      next: (data) => {
+        this.address = data;
+      },
+      error: (err) => { console.log(err) }
+    })
   }
-  add(){
+  add() {
 
-    var city = this.form.controls.city.value??''; 
-    var street = this.form.controls.street.value??''; 
-    var phone = this.form.controls.phone.value??''; 
+    var city = this.form.controls.city.value ?? '';
+    var street = this.form.controls.street.value ?? '';
+    var phone = this.form.controls.phone.value ?? '';
 
-    let newad={city,street,phone};
-     this.service.addAddress(newad).subscribe();
-     this.router.navigateByUrl('/Address');
-   }
-   default(id: any) {
+    let newad = { city, street, phone };
+    this.service.addAddress(newad).subscribe({
+      next: () => {
+        this.router.navigateByUrl('/Address');
+      }
+    });
+  }
+  default(id: any) {
     this.service.setAddressDefault(id).subscribe({
       //defaultAddress:this.form.controls.defaultAddress.value;
       next: (data) => {

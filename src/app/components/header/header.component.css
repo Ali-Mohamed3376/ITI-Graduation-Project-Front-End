@@ -1,6 +1,6 @@
 /* CSS Code for Nav:- */
 
-.header{
+.header {
   z-index: 9999999999999999;
 }
 
@@ -11,13 +11,16 @@
 .navbar .container .collapse .navbar-nav .nav-link {
   color: rgb(149, 8, 8);
 }
+
 .navbar .container .collapse .navbar-nav .nav-link:hover {
   color: #fa0;
 }
+
 .navbar button[aria-expanded="true"] {
   border-color: #fa0;
   box-shadow: none;
 }
+
 .navbar button[aria-expanded="false"] {
   box-shadow: none;
 }
@@ -31,6 +34,7 @@ mat-toolbar {
 .fill-remaining-space {
   flex: 1 1 auto;
 }
+
 /* abdo cart */
 ul li a.cart {
   font-size: 1rem;
@@ -60,9 +64,11 @@ ul li a.cart .cart-basket {
     display: none;
   }
 }
+
 .general-color {
   color: #164e63;
 }
+
 .general-background {
   background-color: #164e63;
 }
@@ -83,8 +89,12 @@ ul li a.cart .cart-basket {
   color: #fff !important;
 }
 
-.nav-link.btn.btn-success.hoverWhite.active:active {
-  color: #fff;
+.nav-link.btn.btn-success.hoverWhite.active {
+  color: #FFF !important;
+}
+
+#loginBtn:active {
+  border-bottom: none !important;
 }
 
 .zindex {
@@ -93,4 +103,16 @@ ul li a.cart .cart-basket {
 
 .nav-link.btn.hoverWhite.active {
   color: #fff;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #16536a;
+  border-bottom: 2px solid #16536a;
+}
+
+.nav-link:hover {
+  font-weight: bold;
+  color: #16536a;
+  border-bottom: 2px solid #16536a;
 }

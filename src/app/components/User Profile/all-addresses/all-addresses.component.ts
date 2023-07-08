@@ -9,28 +9,28 @@ import { EditAddressesComponent } from '../edit-addresses/edit-addresses.compone
   templateUrl: './all-addresses.component.html',
   styleUrls: ['./all-addresses.component.css'],
 })
-export class AllAddressesComponent implements OnInit{
+export class AllAddressesComponent implements OnInit {
   address: any;
   id: any;
   constructor(
     myRoute: ActivatedRoute,
     public service: UserProfileService,
     public auth: AuthenticationService,
-    private dialog : MatDialog
+    private dialog: MatDialog
   ) {
-  
+
   }
 
   ngOnInit(): void {
     this.fetchData()
     this.service.Address$.subscribe({
-      next: (data)=>{
+      next: (data) => {
         this.address = data
       }
     })
   }
 
-  fetchData(){
+  fetchData() {
     this.service.getUserAddress().subscribe({
       next: (data) => {
         this.address = data;
@@ -39,36 +39,37 @@ export class AllAddressesComponent implements OnInit{
         console.log(err);
       },
     });
-    // this.id = this.myRoute.snapshot.params['id'];
   }
 
   delete(id: any) {
     let msg = `Do yow want to delete this address?`;
     if (confirm(msg) == true) {
       this.service.deleteAddress(id).subscribe({
-        next: () =>{
+        next: () => {
+          console.log("deleted")
           this.fetchData()
         }
       })
     }
   }
-  update(id:any,city:any,street:any,phone:any){
+
+  update(id: any, city: any, street: any, phone: any) {
     this.service.GetAddressById(this.id).subscribe();
-    let updatedData={id,city,street,phone}
+    let updatedData = { id, city, street, phone }
     this.service.EditUserAddress(updatedData).subscribe({
-      next:()=>{
-        this.address[this.id]=updatedData;
+      next: () => {
+        this.address[this.id] = updatedData;
       },
-      error:(err)=>{console.log(err)}
+      error: (err) => { console.log(err) }
     })
-   } 
- 
+  }
+
   default(id: any) {
     this.service.setAddressDefault(id).subscribe({
       next: (data) => {
-        let d  = document.getElementById('Default');
+        let d = document.getElementById('Default');
 
-        if (this.address.defaultAddress== true) {
+        if (this.address.defaultAddress == true) {
           d?.focus();
         }
       },
@@ -78,7 +79,7 @@ export class AllAddressesComponent implements OnInit{
     });
   }
 
-  openAddPopup(id:any) {
-    this.dialog.open(EditAddressesComponent, {data:{Id : id}}).addPanelClass("bigpopupComponent");
+  openAddPopup(id: any) {
+    this.dialog.open(EditAddressesComponent, { data: { Id: id } }).addPanelClass("bigpopupComponent");
   }
 }
