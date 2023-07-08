@@ -23,6 +23,11 @@ export class AllAddressesComponent implements OnInit{
 
   ngOnInit(): void {
     this.fetchData()
+    this.service.Address$.subscribe({
+      next: (data)=>{
+        this.address = data
+      }
+    })
   }
 
   fetchData(){

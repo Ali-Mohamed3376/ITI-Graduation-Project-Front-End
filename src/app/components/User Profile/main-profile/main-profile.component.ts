@@ -23,6 +23,10 @@ export class MainProfileComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.fetchData()
+  }
+
+  public fetchData(){
     this.service.getUser().subscribe({
       next: (data) => {
         this.user = data;
@@ -44,13 +48,14 @@ export class MainProfileComponent implements OnInit {
     this.service.EditUser(updatedU).subscribe({
       next: () => {
         this.user = updatedU;
-        // console.log(updatedU)
+        this.fetchData()
+        console.log(updatedU)
       },
       error: (err) => {
-        // console.log(err)
+        console.log(err)
       },
     });
-    window.location.reload();
+    // window.location.reload();
   }
 
   delete() {

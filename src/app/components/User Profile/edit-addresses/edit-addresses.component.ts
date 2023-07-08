@@ -49,7 +49,11 @@ export class EditAddressesComponent {
       next: () => {
         this.address[this.id] = updatedData;
         this.dialogRef.close();
-        location.reload();
+        this.service.getUserAddress().subscribe({
+          next: (data)=>{
+            this.service.Address$.next(data)
+          }
+        })
       },
       error: (err) => { console.log(err) }
     })

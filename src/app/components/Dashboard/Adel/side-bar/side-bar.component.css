@@ -1,15 +1,5 @@
 @charset "UTF-8";
-/*
-* Start Bootstrap - SB Admin v7.0.7 (https://startbootstrap.com/template/sb-admin)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
-*/
-/*
- * Bootstrap  v5.2.3 (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -10866,7 +10856,7 @@ body {
   flex-basis: 225px;
   flex-shrink: 0;
   transition: transform 0.15s ease-in-out;
-  z-index: 1038;
+  /* z-index: 1038; */
   transform: translateX(-225px);
 }
 #layoutSidenav #layoutSidenav_content {
@@ -11244,4 +11234,18 @@ body {
 
 .sb-sidenav-light{
   padding: 20px !important;
+}
+
+.active {
+  background-color: #164e63;
+  color: #FFF !important;
+}
+
+.nav-link.p-3:hover {
+  background-color: #164e63;
+  color: #FFF !important;
+}
+
+.nav-link.p-3.active i {
+  color: #FFF !important;
 }
