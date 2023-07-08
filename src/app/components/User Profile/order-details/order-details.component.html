@@ -98,6 +98,17 @@
                             <button class="btn btn-primary lightcolor m-3 me-2 px-2 py-2"
                                 routerLink="/Products/{{item.product_Id}}">Product
                                 Details</button>
+                                <form  *ngIf="!item.isReviewed && orderStatus">
+                                    <input type="text" #comment>
+                                    <select name="rating" id="" #rating>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    <button (click)="AddReview(comment.value,rating.value,item.product_Id)">submit</button>
+                                </form>
                         </div>
                     </div>
                 </div>
