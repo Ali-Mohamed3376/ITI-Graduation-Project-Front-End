@@ -40,9 +40,12 @@ export class AllAddressesComponent implements OnInit{
   delete(id: any) {
     let msg = `Do yow want to delete this address?`;
     if (confirm(msg) == true) {
-      this.service.deleteAddress(id).subscribe();
+      this.service.deleteAddress(id).subscribe({
+        next: () =>{
+          this.fetchData()
+        }
+      })
     }
-    window.location.reload();
   }
   update(id:any,city:any,street:any,phone:any){
     this.service.GetAddressById(this.id).subscribe();

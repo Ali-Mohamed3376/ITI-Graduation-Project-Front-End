@@ -58,6 +58,7 @@ export class MainProfileComponent implements OnInit {
     if (confirm(msg) == true) {
       this.service.deleteUser().subscribe();
       localStorage.clear();
+      this.auth.isLoggedIn$.next(false);
       this.routeService.navigateByUrl('');
     }
   }
