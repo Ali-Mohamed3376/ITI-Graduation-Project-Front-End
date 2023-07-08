@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
       }
     }
   };
+
   constructor(
     private HomeService: HomeService,
     private cartService: CartService,

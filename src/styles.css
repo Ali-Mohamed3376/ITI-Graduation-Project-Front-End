@@ -42,6 +42,11 @@ body {
   border-radius: 35px;
 }
 
+.bigpopupComponent{
+  width: 700px;
+  border-radius: 35px;
+}
+
 .lightcolor {
   background-color: #0e7490 !important;
   border-color: #0e7490 !important;
