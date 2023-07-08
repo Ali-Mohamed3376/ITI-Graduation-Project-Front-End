@@ -163,6 +163,15 @@
                 {{ p.discount }}% OFF
               </div>
               <div class="card-img-actions">
+                <button
+                *ngIf="isLoggedIn"
+                (click)="AddOrRemoveFromwishList(p.id)"
+                type="button"
+                class="btn bg-cart py-0 heartWishList"
+              >
+                <i *ngIf="!p.isInWishList" class="fa-regular fa-heart" style="color: black;"></i>
+                <i *ngIf="p.isInWishList" class="fa-solid fa-heart" style="color: #ff1414;"></i> 
+              </button>
                 <img
                   src="{{ p.image }}"
                   class="card-img rounded-0"
@@ -220,15 +229,7 @@
                 </p>
               </div>
               <div class="text-muted mb-1">{{ p.reviewCount }} reviews</div>
-              <button
-                *ngIf="isLoggedIn"
-                (click)="AddOrRemoveFromwishList(p.id)"
-                type="button"
-                class="btn bg-cart py-0"
-              >
-                <i class="fa-regular fa-heart"></i>
-                wishlist
-              </button>
+              
             </div>
           </div>
         </div>

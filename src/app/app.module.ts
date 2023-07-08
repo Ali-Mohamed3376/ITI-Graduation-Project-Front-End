@@ -183,7 +183,12 @@ import { ToastrModule } from 'ngx-toastr';
     NgxPaginationModule,
     SlickCarouselModule,
     NgxPaginationModule ,
-    ToastrModule.forRoot(), // ToastrModule added
+    // ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toasterStyle',
+      preventDuplicates: true,
+    }),
 
   ],
 

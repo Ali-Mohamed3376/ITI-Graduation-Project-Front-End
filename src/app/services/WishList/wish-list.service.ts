@@ -10,6 +10,11 @@ export class WishListService {
 
   constructor(private myClient:HttpClient) { }
 
+  GetUserWishListProductsId()
+  {
+    return this.myClient.get("https://localhost:7064/api/WishList/ProductsId");
+  }
+
   GetUserWishListProducts()
   {
     return this.myClient.get("https://localhost:7064/api/WishList");
@@ -28,6 +33,7 @@ export class WishListService {
         console.log("next");
         console.log(data);
         this.wishListCounter$.next(data as number);
+        
       },
       error:(error)=>{
         console.log("error");
