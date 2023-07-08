@@ -50,3 +50,17 @@
 .btnShoping:hover {
   opacity: 0.9;
 }
+
+.removeAllButton {
+  width: 100%;
+  color: #000;
+  border: 1px solid #2e6e85;
+}
+
+.removeAllButton:hover {
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: rgb(219, 36, 36);
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
