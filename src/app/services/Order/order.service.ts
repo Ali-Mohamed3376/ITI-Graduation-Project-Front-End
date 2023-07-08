@@ -24,4 +24,6 @@ export class OrderService {
   {
     return this.myClient.get("https://localhost:7064/api/Orders/MakeNewOrder/"+addressId);
   }
+
+
 }

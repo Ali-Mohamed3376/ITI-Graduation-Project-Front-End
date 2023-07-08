@@ -8,4 +8,6 @@ export interface ProductFilterationResultDto {
     avgRating: number;
     avgRatingRounded: number;
     reviewCount: number;
+    isInWishList:boolean
+
 }

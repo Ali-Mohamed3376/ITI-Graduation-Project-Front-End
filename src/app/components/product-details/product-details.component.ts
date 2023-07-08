@@ -47,8 +47,7 @@ export class ProductDetailsComponent implements OnInit {
       next:(data)=>{
         this.isLogged=data;
       }
-    }
-    )
+    });
   }
 
 
@@ -98,6 +97,7 @@ export class ProductDetailsComponent implements OnInit {
       next: (data) => {
         this.product = data;
         this.fetchRelatedProducts(this.product.categoryName) ;
+        window.scrollTo({ top: 0, behavior: 'auto' });
       },
       error: (error) => { console.log(error) }
     });
