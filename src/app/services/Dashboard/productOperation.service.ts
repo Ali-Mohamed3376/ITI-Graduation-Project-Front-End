@@ -5,6 +5,7 @@ import{Observable} from 'rxjs'
 import { productEditDto } from 'src/app/Dtos/Dashboard/productEditDto';
 import {AddProductDto } from 'src/app/Dtos/Dashboard/AddProductDto';
 import { basmagaedit } from 'src/app/Dtos/Dashboard/basmagaedit';
+import { ProductReadPaginationDto } from 'src/app/Dtos/Dashboard/ProductReadPaginationDto';
 @Injectable({
   providedIn: 'root'
 })
@@ -39,4 +40,9 @@ export class productOperation {
     return this.myClient.get("https://localhost:7064/api/Products/"+productId);
   }
   
+  GetAllProductsInPagination(
+    page: number,
+    countPerPage: number): Observable<ProductReadPaginationDto> {
+    return this.myClient.get<ProductReadPaginationDto>(`https://localhost:7064/api/Products/${page}/${countPerPage}`);
+  }
 }

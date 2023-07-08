@@ -4,6 +4,8 @@ import { API, AddProductToCart } from 'src/app/Dtos/Cart/cart';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { CartService } from 'src/app/services/Cart/cart.service';
 import { ProductService } from 'src/app/services/Product/product.service';
+import { WishListService } from 'src/app/services/WishList/wish-list.service';
+
 
 @Component({
   selector: 'app-product-details',
@@ -20,8 +22,12 @@ export class ProductDetailsComponent implements OnInit {
   ProductQuantity:number=1;
   isLogged:boolean=false;
 
-  constructor(myRoute: ActivatedRoute, public ProductDetailsService: ProductService , public cartService:CartService,private AuthService:AuthenticationService,private router:Router) {
+  isLoggedIn: boolean = false;
+
+  constructor(myRoute: ActivatedRoute, public ProductDetailsService: ProductService , public cartService:CartService,private AuthService:AuthenticationService,private router:Router,    private wishlistService: WishListService,
+    ) {
     this.ID = myRoute.snapshot.params["id"];
+    
   }
 
 
@@ -180,7 +186,19 @@ getReviewStars(rating: number): number[] {
 
 
 
-
+AddOrRemoveFromwishList(productId: number) {
+  this.wishlistService.AddOrDeleteWishList(productId).subscribe({
+    next: (data) => {
+      console.log('next');
+      console.log(data);
+      this.wishlistService.GetWishListCount();
+    },
+    error: (error) => {
+      console.log('error');
+      console.log(error);
+    },
+  });
+}
 
 
 
