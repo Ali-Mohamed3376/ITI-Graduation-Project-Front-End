@@ -150,6 +150,13 @@ body {
   border: none;
   padding: 10px;}
 
+  .toasterStyle{
+
+    position: fixed;
+    top: 100px;
+    right: 50px;
+  }
+
 
 
 
