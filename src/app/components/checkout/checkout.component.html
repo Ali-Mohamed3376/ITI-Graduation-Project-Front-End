@@ -10,46 +10,56 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let address of userAddresses">
-        <tr appHoverClass *ngFor="let address of userAddresses">
-        <td>{{address.city}}</td>
-        <td>{{address.street}}</td>
-        <td>{{address.phone}}</td>
-        <td><input [(ngModel)]="choosenAddressId" value="{{address.id}}" type="radio" name="address"></td>
-      </tr>
-
-    </tbody>
-  </table>
-
-  <!-- <table class="table table-hover table-primary">
-    <thead>
-      <tr>
-        <th>Column 1</th>
-        <th>Column 2</th>
-        <th>Column 3</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr appHoverClass appClickClass>
-        <td>Row 1, Column 1</td>
-        <td>Row 1, Column 2</td>
-        <td>Row 1, Column 3</td>
-      </tr>
-      <tr appHoverClass appClickClass>
-        <td>Row 2, Column 1</td>
-        <td>Row 2, Column 2</td>
-        <td>Row 2, Column 3</td>
-      </tr>
-      <tr appHoverClass appClickClass>
-        <td>Row 3, Column 1</td>
-        <td>Row 3, Column 2</td>
-        <td>Row 3, Column 3</td>
+      <tr *ngFor="let address of userAddresses"></tr>
+      <tr appHoverClass *ngFor="let address of userAddresses">
+        <td>{{ address.city }}</td>
+        <td>{{ address.street }}</td>
+        <td>{{ address.phone }}</td>
+        <td>
+          <input
+            [(ngModel)]="choosenAddressId"
+            value="{{ address.id }}"
+            type="radio"
+            name="address"
+          />
+        </td>
       </tr>
     </tbody>
   </table> -->
-  
 
-<section class="h-100 gradient-custom">
+  <div class="container mt-5 text-center">
+    <button
+      routerLink="/Address/Add"
+      type="submit"
+      class="confirmOrderButton btn"
+    >
+      Add Address
+    </button>
+    <h2 class="choosAddresH2 p-2 rounded">Chossd Address</h2>
+    <div class="col-10" class="m-3">
+      <div class="card mb-2" *ngFor="let a of userAddresses">
+        <div class="card-header" *ngIf="a.DefaultAddress">
+          <strong>Default Address</strong>
+        </div>
+        <div
+          (click)="consolData(a.id)"
+          class="card-body cardAddress d-flex flex-row justify-content-between align-items-center"
+        >
+          <div>
+            <p class="card-text">
+              <span class="fs-6 fw-bold">Address:</span> {{ a.street }} /
+              {{ a.city }}
+            </p>
+            <p class="card-text">
+              <span class="fs-6 fw-bold">Phone:</span> {{ a.phone }}
+            </p>
+          </div>
+          <div class="d-flex flex-row"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="h-100 gradient-custom">
     <div class="container py-5">
       <div class="row d-flex justify-content-center my-4">
         <div class="col-md-8">
