@@ -24,8 +24,6 @@ export class ChangePasswordComponent {
     private routerService: Router
   ) {}
 
-  pass = new LoginDto();
-  checkk = this.pass.password;
   form = new FormGroup({
     oldPassword: new FormControl<string>(''),
     newPassword: new FormControl<string>('', [Validators.required]),
