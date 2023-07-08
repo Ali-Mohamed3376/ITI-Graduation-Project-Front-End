@@ -19,8 +19,8 @@ export class LoginComponent {
   constructor(
     private authService: AuthenticationService,
     private routeService: Router,
-    private cartService:CartService,
-    private wishListService:WishListService
+    private cartService: CartService,
+    private wishListService: WishListService
   ) {}
 
   form = new FormGroup({
@@ -31,10 +31,10 @@ export class LoginComponent {
     password: new FormControl<string>('', Validators.required),
   });
 
-  handelSubmit(e: Event) {
+  handelSubmit() {
     var credentials = new LoginDto();
-    credentials.userName = this.form.controls.username.value ?? '';
-    credentials.password = this.form.controls.password.value ?? '';
+    credentials.Email = this.form.controls.username.value ?? '';
+    credentials.Password = this.form.controls.password.value ?? '';
 
     this.authService.Login(credentials).subscribe(
       (TokenDto) => {
@@ -42,13 +42,13 @@ export class LoginComponent {
         this.cartService.getCartProductsCounter();
         this.wishListService.GetWishListCount();
 
-
         // Make Any Logic Like Redirect user to any page like home
         this.routeService.navigateByUrl('/');
       },
       (e) => {
         // handle error
         this.respomseError = e.error;
+        console.log(e.error);
       }
     );
   }

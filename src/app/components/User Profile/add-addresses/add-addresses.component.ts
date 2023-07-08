@@ -50,7 +50,6 @@ export class AddAddressesComponent {
       //defaultAddress:this.form.controls.defaultAddress.value;
       next: (data) => {
         if (this.address.defaultAddress.value == 'true') {
-          this.defaultt="default"
         }
       },
       error: (err) => {

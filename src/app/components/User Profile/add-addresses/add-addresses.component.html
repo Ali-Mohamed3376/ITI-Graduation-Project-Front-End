@@ -2,10 +2,12 @@
   <div class="col-lg-4 m-0">
     <app-profile></app-profile>
   </div>
-<div class="col-lg-8 general-background"*ngIf="address" >
-    <form [formGroup]="form" class="d-flex justify-content-space-between flex-column adjust">
-        <div>
-            <input formControlName="city"  class="form-control p-3 m-3" type="text" placeholder="city" >
+<div class="col-lg-8 general-background bg-light mt-5 roundedd"*ngIf="address" >
+    <form [formGroup]="form" class="d-flex justify-content-space-between flex-column adjust mt-5 roundedd">
+        
+          <div class="text-center mb-sm-5 bg-light coolinput mx-5 ">
+            <label for="input" class="text bg-light">City</label>
+            <input formControlName="city"  class="form-control p-3" type="text" placeholder="city" >
             <div
               *ngIf="
               form.get('city')?.invalid &&
@@ -28,8 +30,9 @@
         </div>
 
 
-        <div>
-            <input formControlName="street"  class="form-control p-3 m-3" type="text" placeholder="street" >
+        <div class="text-center mb-sm-5 bg-light coolinput mx-5 ">
+          <label for="input" class="text bg-light">Street</label>
+            <input formControlName="street"  class="form-control p-3 " type="text" placeholder="street" >
             <div
             *ngIf="
               form.get('street')?.invalid &&
@@ -52,8 +55,9 @@
         </div>
 
 
-        <div>
-            <input formControlName="phone"  class="form-control p-3 m-3" type="text" placeholder="phone" >
+        <div class="text-center mb-sm-5 bg-light coolinput mx-5 ">
+          <label for="input" class="text bg-light">Phone</label>
+            <input formControlName="phone"  class="form-control p-3" type="text" placeholder="phone" >
             <div
           *ngIf="
             form.get('phone')?.invalid &&
@@ -78,9 +82,11 @@
           >
             enter valid phone number
           </div>
+          
             </div>
+            
         </div>
-        <button (click)="add()" class="btn" [disabled]="!form.valid">add</button>
+        <button (click)="add()" class="btn " [disabled]="!form.valid">add</button>
 
     </form>
 </div>

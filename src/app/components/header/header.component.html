@@ -1,8 +1,6 @@
 <!---------------------------------------------------------- New Nav  ------------------------------------------------------------------------------------->
 
-<nav
-  class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around fixed-top"
->
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around fixed-top zindex">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">
       <img src="../../../assets/images/Logo.png" width="220px" />
@@ -44,11 +42,7 @@
           <a routerLink="/Products" class="nav-link text-black"> Products</a>
         </li>
         <li class="nav-item">
-          <a
-            routerLink="/Sidebar"
-            class="nav-link text-black"
-            *ngIf="isUserLoggedIn"
-          >
+          <a routerLink="/Profile" class="nav-link text-black" *ngIf="isUserLoggedIn">
             Profile
           </a>
         </li>
@@ -97,13 +91,8 @@
           </a>
         </li>
         <li class="nav-item me-1" *ngIf="!isUserLoggedIn">
-          <a
-            id="loginBtn"
-            class="nav-link btn btn-primary hoverWhite"
-            routerLink="/Authentication/login"
-            routerLinkActive="active"
-            >Login</a
-          >
+          <a id="loginBtn" class="nav-link btn btn-primary hoverWhite" routerLink="/Authentication/login"
+            routerLinkActive="active">Login</a>
         </li>
         <li class="nav-item" *ngIf="!isUserLoggedIn">
           <a
