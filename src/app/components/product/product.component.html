@@ -144,105 +144,120 @@
     </div>
     <!--  *********************************************************************************** -->
 
-    <div class="col-md-9">
-      <div class="row">
-        <div
-          class="col-md-4 mt-2 card-wrapper"
-          *ngFor="
-            let p of products
-              | paginate
-                : {
-                    id: 'product-pagination',
-                    itemsPerPage: countPerPage,
-                    currentPage: page,
-                    totalItems: totalCount
-                  }
-          "
-        >
-          <div class="card mb-3">
-            <div class="card-body p-0 pb-3" style="max-height: 200px">
-              <div *ngIf="p.price != p.priceAfter" class="sale">
-                {{ p.discount }}% OFF
-              </div>
-              <div class="card-img-actions">
-                <button
-                  *ngIf="isLoggedIn"
-                  (click)="AddOrRemoveFromwishList(p.id)"
-                  type="button"
-                  class="btn bg-cart py-0 heartWishList"
+    <section class="products col-md-9 New-products section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="row">
+            <div class="">
+              <div class="row">
+                <!-- card -->
+                <div
+                  class="col-md-6 col-lg-4 mt-2 card-wrapper col-sm-8"
+                  *ngFor="
+                    let p of products
+                      | paginate
+                        : {
+                            id: 'product-pagination',
+                            itemsPerPage: countPerPage,
+                            currentPage: page,
+                            totalItems: totalCount
+                          }
+                  "
                 >
-                  <i
-                    *ngIf="!p.isInWishList"
-                    class="fa-regular fa-heart"
-                    style="color: black"
-                  ></i>
-                  <i
-                    *ngIf="p.isInWishList"
-                    class="fa-solid fa-heart"
-                    style="color: #ff1414"
-                  ></i>
-                </button>
-                <img
-                  src="{{ p.image }}"
-                  class="card-img rounded-0"
-                  height="200px"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div class="card-body text-center bg-light">
-              <div class="mb-2 tryfix">
-                <h4 class="font-weight-semibold mb-2 text-white">
-                  <a
-                    routerLink="/Products/{{ p.id }}"
-                    class="text-default mb-2 nameColor"
-                    data-abc="true"
-                  >
-                    {{ p.name }}
-                  </a>
-                </h4>
-              </div>
-              <div class="tryfix">
-                <h4 class="mb-0 font-weight-semibold text-success">
-                  ${{ p.priceAfter }}
-                </h4>
-                <h5 *ngIf="p.price != p.priceAfter" class="oldPrice">
-                  ${{ p.price }}
-                </h5>
-              </div>
-              <div>
-                <p>
-                  Rating :
-                  <svg
-                    *ngFor="let star of generateStars(p.avgRatingRounded)"
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      class="star-rating"
-                      *ngIf="star === 'full'"
-                      d="M12 2 L15.09 8.18 L22 9 L16.5 13.39 L18.36 20 L12 17.77 L5.64 20 L7.5 13.39 L2 9 L8.91 8.18 L12 2"
-                    ></path>
-                    <path
-                      class="star-rating"
-                      *ngIf="star === 'half'"
-                      d="M11.5 2 L14.59 8.18 L22 9 L16.5 13.39 L18.36 20 L12 17.77 L5.64 20 L7.5 13.39 L2 9 L8.91 8.18 L11.5 2Z"
-                    ></path>
-                    <path
-                      *ngIf="star === 'empty'"
-                      d="M12 2 L15.09 8.18 L22 9 L16.5 13.39 L18.36 20 L12 17.77 L5.64 20 L7.5 13.39 L2 9 L8.91 8.18 L12 2"
-                      class="empty-star"
-                    ></path>
-                  </svg>
-                </p>
+                  <div class="card mb-3">
+                    <div class="card-body p-0 pb-3" style="max-height: 200px">
+                      <div *ngIf="p.price != p.priceAfter" class="sale">
+                        {{ p.discount }}% OFF
+                      </div>
+                      <button
+                        *ngIf="isLoggedIn"
+                        (click)="AddOrRemoveFromwishList(p.id)"
+                        type="button"
+                        class="btn bg-cart py-0 heartWishList"
+                      >
+                        <i
+                          *ngIf="!p.isInWishList"
+                          class="fa-regular fa-heart"
+                          style="color: black"
+                        ></i>
+                        <i
+                          *ngIf="p.isInWishList"
+                          class="fa-solid fa-heart"
+                          style="color: #ff1414"
+                        ></i>
+                      </button>
+
+                      <div class="card-img-actions">
+                        <img
+                          src="{{ p.image }}"
+                          class="card-img rounded-0"
+                          height="200px"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="card-body text-center bg-light">
+                      <div class="mb-2 h-25">
+                        <h5 class="font-weight-semibold mb-2 text-white">
+                          <a
+                            routerLink="/Products/{{ p.id }}"
+                            class="text-default mb-2 nameColor"
+                            data-abc="true"
+                          >
+                            {{ p.name }}
+                          </a>
+                        </h5>
+                      </div>
+                      <div class="h-25">
+                        <h4 class="mb-0 font-weight-semibold text-success">
+                          ${{ p.priceAfter }}
+                        </h4>
+                        <h5 *ngIf="p.price != p.priceAfter" class="oldPrice">
+                          ${{ p.price }}
+                        </h5>
+                      </div>
+                      <div class="mt-2 d-flex justify-content-center">
+                        <span> Rating : </span>
+
+                        <ul class="list-unstyled d-flex justify-content-center">
+                          <ng-container
+                            *ngIf="p.avgRatingRounded > 0; else emptyStars"
+                          >
+                            <li
+                              *ngFor="
+                                let star of generateStars(p.avgRatingRounded)
+                              "
+                            >
+                              <i
+                                class="fas fa-star fa-sm text-warning"
+                                [ngClass]="{
+                                  'fa-star': star === 'full',
+                                  'fa-star-half-alt': star === 'half',
+                                  'fa-star-o': star === 'empty'
+                                }"
+                              ></i>
+                            </li>
+                          </ng-container>
+                          <ng-template #emptyStars>
+                            <li *ngFor="let _ of [1, 2, 3, 4, 5]">
+                              <i class="fas fa-star fa-sm fa-star-o"></i>
+                            </li>
+                          </ng-template>
+                        </ul>
+                      </div>
+                      <div class="text-muted mb-1">
+                        {{ p.reviewCount }} reviews
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="text-muted mb-1">{{ p.reviewCount }} reviews</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 <!-- *********************Message card************************ -->

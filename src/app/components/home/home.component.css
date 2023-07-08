@@ -32,16 +32,18 @@
 }
 
 .badge-new {
-  position: absolute;
-  top: 10px;
-  left: 250px;
   font-size: 12px;
   padding: 4px 8px;
   background-color: #00aaff;
   color: #fff;
 }
+.addposition{
+  position: absolute;
+  top: 10px;
+  right: 5px;
+}
 
-.NewArrival {
+/* .NewArrival {
   
     font-size: 36px;
     color: #164e63;
@@ -50,4 +52,19 @@
     letter-spacing: 2px;
     margin-bottom: 30px;
   }
+
+  .testposition{
+    position: relative;
+  }
+  .addposition{
+    position: absolute;
+  top: 10px;
+  left: 250px;
+  } */
+
+@media (min-width:500px) {
   
+  .card-wrapper{
+    max-width: 50%;
+  }
+}

@@ -29,7 +29,7 @@ export class ReviewsDashboardComponent {
   }
 
   public del(productId: any, userId :string) {
-    if (confirm("Are you sure you want to delete this User?")) {
+    if (confirm("Are you sure you want to delete this Review?")) {
       this.credentials.ProductId = productId
       this.credentials.UserId = userId
       this.reviewService.DeleteReview(this.credentials).subscribe({

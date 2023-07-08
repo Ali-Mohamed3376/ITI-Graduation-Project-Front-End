@@ -25,6 +25,11 @@ export class OrderEditDashboardComponent {
     this.orderService.EditOrder(credentials).subscribe({
       next: () => {
         this.dialogRef.close();
+        this.orderService.GetOrderDetails(this.data.Id).subscribe({
+          next: (data)=>{
+            this.orderService.Order$.next(data)
+          }
+        })
       },
       error: (error) => {
         console.log(error);

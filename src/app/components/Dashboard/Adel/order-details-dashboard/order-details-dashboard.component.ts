@@ -17,7 +17,11 @@ export class OrderDetailsDashboardComponent {
 
   constructor(private readonly route: ActivatedRoute, private readonly OrderService: OrderService, private dialog : MatDialog) {
     this.getOrder()
-    
+    this.OrderService.Order$.subscribe({
+      next: (data)=>{
+        this.Order = data
+      }
+    })
   }
 
   public getOrder() {
