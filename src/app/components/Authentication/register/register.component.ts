@@ -11,7 +11,7 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
 })
 export class RegisterComponent {
   hide = true;
-  respomseError = '';
+  respomseError: any = [];
   constructor(
     private authService: AuthenticationService,
     private routerService: Router
@@ -43,8 +43,17 @@ export class RegisterComponent {
         this.routerService.navigateByUrl('/');
       },
       (r) => {
-        this.respomseError = r.error;
-        console.log();
+        console.log(r.error);
+        this.respomseError = [];
+        // let test: any = r.error;
+        for (let i of r.error) {
+          if (i.code == 'DuplicateUserName') {
+            continue;
+          }
+          this.respomseError.push(i.description);
+          console.log(i);
+        }
+        console.log(this.respomseError);
       }
     );
   }

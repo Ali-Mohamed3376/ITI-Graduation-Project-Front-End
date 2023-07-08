@@ -12,7 +12,6 @@ import { EditAddressesComponent } from '../edit-addresses/edit-addresses.compone
 export class AllAddressesComponent implements OnInit{
   address: any;
   id: any;
-  defaultt:any;
   constructor(
     myRoute: ActivatedRoute,
     public service: UserProfileService,
@@ -59,8 +58,10 @@ export class AllAddressesComponent implements OnInit{
   default(id: any) {
     this.service.setAddressDefault(id).subscribe({
       next: (data) => {
-        if (this.address.defaultAddress== 'true') {
-          this.defaultt="default"
+        let d  = document.getElementById('Default');
+
+        if (this.address.defaultAddress== true) {
+          d?.focus();
         }
       },
       error: (err) => {
