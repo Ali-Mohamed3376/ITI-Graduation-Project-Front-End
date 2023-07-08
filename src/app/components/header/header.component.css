@@ -56,35 +56,37 @@ ul li a.cart .cart-basket {
     display: none;
   }
 }
-.general-color{
+.general-color {
   color: #164e63;
 }
-.general-background{
+.general-background {
   background-color: #164e63;
-
 }
 
 .arrow-icon {
   margin-left: 8px;
 }
 
-.arrow{
+.arrow {
   margin-right: 0px !important;
 }
 
-.angular-btn{
+.angular-btn {
   margin-top: 1px;
 }
 
-.hoverWhite:hover{
+.hoverWhite:hover {
   color: #fff !important;
 }
 
 .nav-link.btn.btn-success.hoverWhite.active:active {
-  color: #FFF;
+  color: #fff;
 }
 
-.zindex{
+.zindex {
   z-index: 9999999999999999999999999999;
-  position: absolute;
+}
+
+.nav-link.btn.hoverWhite.active {
+  color: #fff;
 }

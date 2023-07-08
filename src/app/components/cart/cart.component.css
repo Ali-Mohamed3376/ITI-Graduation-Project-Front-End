@@ -11,3 +11,42 @@
   letter-spacing: 1px;
   transition: 0.5s;
 }
+
+.centered-message {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-msg {
+  background-color: #164e63;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.card-body-msg {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-title-msg {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text-msg {
+  font-size: 16px;
+}
+
+.btnShoping {
+  background-color: #fff;
+  color: #164e63 !important;
+}
+
+.btnShoping:hover {
+  opacity: 0.9;
+}

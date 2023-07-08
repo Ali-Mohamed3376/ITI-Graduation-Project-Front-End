@@ -7,91 +7,87 @@ import { OrderService } from 'src/app/services/Order/order.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit {
-
-  cartProducts:CartProduct[]=[];
-  userAddresses:orderAddress[]=[];
-  choosenAddressId:number=0;
-  totalPrice:number=0;
+  cartProducts: CartProduct[] = [];
+  userAddresses: orderAddress[] = [];
+  choosenAddressId: number = 0;
+  totalPrice: number = 0;
+  defaultUserAddress: boolean = false;
   constructor(
-    private router:Router,
-    private orderService:OrderService,
-    private cartService:CartService
-
-    ){}
+    private router: Router,
+    private orderService: OrderService,
+    private cartService: CartService
+  ) {}
   ngOnInit(): void {
-   this.getAllProductsInCart();
-  //  if (  !(this.cartProducts.length>0))  //( not working?? )check cart has products or not 
-  //   {
-  //     this.router.navigate(["/cart"]);
-  //   }
-   this.getAllUserAddresess(); 
+    this.getAllProductsInCart();
+    //  if (  !(this.cartProducts.length>0))  //( not working?? )check cart has products or not
+    //   {
+    //     this.router.navigate(["/cart"]);
+    //   }
+    this.getAllUserAddresess();
   }
 
-  getAllUserAddresess()
-  {
+  getAllUserAddresess() {
     this.orderService.GetAllUserAddresses().subscribe({
-      next:(data)=>{
-        this.userAddresses=data;
+      next: (data) => {
+        this.userAddresses = data;
         console.log(this.userAddresses);
       },
-      error:(error)=>{console.log(error)}
+      error: (error) => {
+        console.log(error);
+      },
     });
   }
-  
-  getAllProductsInCart()
-  {
+
+  getAllProductsInCart() {
     this.orderService.GetAllProductsInCart().subscribe({
-      next:(data)=>{
-        this.cartProducts=data;
+      next: (data) => {
+        this.cartProducts = data;
         console.log(this.cartProducts);
-        for(let product of this.cartProducts)
-        {
-          this.totalPrice+=product.price*product.quantity;
+        for (let product of this.cartProducts) {
+          this.totalPrice += product.price * product.quantity;
         }
       },
-      error:(error)=>{console.log(error)}
+      error: (error) => {
+        console.log(error);
+      },
     });
   }
-  
 
-  AddnewOrder()
-  {
+  AddnewOrder() {
     console.log(`choosenAddress id = ${this.choosenAddressId}`);
     //check user choose address and cart has items
-    if(this.choosenAddressId>0 && this.cartProducts.length>0)
-    {
+    if (this.choosenAddressId > 0 && this.cartProducts.length > 0) {
       this.orderService.AddnewOrder(this.choosenAddressId).subscribe({
-        next:(data)=>{
+        next: (data) => {
           console.log(data);
-          console.log("next");
+          console.log('next');
           this.cartService.getCartProductsCounter();
-
         },
-        error:(error)=>{  // why he enter the error path?
+        error: (error) => {
+          // why he enter the error path?
           console.log(error);
-          console.log("error");
-          alert("order Added Successfull ... redirect to Home Page");
+          console.log('error');
+          alert('order Added Successfull ... redirect to Home Page');
           this.cartService.getCartProductsCounter();
 
-          this.router.navigate(["/"]);
-
-        }
-      });     
+          this.router.navigate(['/']);
+        },
+      });
     }
-    //check cart has products or not 
-    else if (!(this.cartProducts.length>0))
-    {
-      this.router.navigate(["/cart"]);
+    //check cart has products or not
+    else if (!(this.cartProducts.length > 0)) {
+      this.router.navigate(['/cart']);
     }
     //check user choose address or not
-    else if ( !(this.choosenAddressId>0) )
-    {
-      alert("choose address");
+    else if (!(this.choosenAddressId > 0)) {
+      alert('choose address');
     }
-    
+  }
 
+  consolData(id: number) {
+    this.choosenAddressId = id;
   }
 }

@@ -11,3 +11,22 @@
   letter-spacing: 1px;
   transition: 0.5s;
 }
+
+.card-header {
+  color: #fff;
+  background-color: #2e6e85;
+}
+
+.choosAddresH2 {
+  color: #fff;
+  background-color: #2e6e85;
+}
+
+.cardAddress:hover {
+  outline: none;
+  border: none;
+  border: 1px solid #2e6e85;
+
+  border-radius: 5px;
+  cursor: pointer;
+}
