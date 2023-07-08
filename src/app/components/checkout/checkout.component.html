@@ -28,14 +28,16 @@
   </table> -->
 
   <div class="container mt-5 text-center">
-    <button
-      routerLink="/Address/Add"
-      type="submit"
-      class="confirmOrderButton btn"
-    >
-      Add Address
-    </button>
-    <h2 class="choosAddresH2 p-2 rounded">Chossd Address</h2>
+    <div class="d-flex flex-column-reverse">
+      <button
+        routerLink="/Address/Add"
+        type="submit"
+        class="confirmOrderButton btn"
+      >
+        Add Address
+      </button>
+    </div>
+    <h2 class="choosAddresH2 p-2 rounded">Chossed Address</h2>
     <div class="col-10" class="m-3">
       <div class="card mb-2" *ngFor="let a of userAddresses">
         <div class="card-header" *ngIf="a.DefaultAddress">
