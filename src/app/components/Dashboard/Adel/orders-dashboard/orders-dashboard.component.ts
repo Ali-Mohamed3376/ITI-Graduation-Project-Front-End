@@ -16,6 +16,7 @@ export class OrdersDashboardComponent {
     this.OrderService.GetAllOrders().subscribe({
       next: (data) => {
         this.Orders = data
+        console.log(this.Orders)
       },
       error: (error) => {
         console.log(error);
