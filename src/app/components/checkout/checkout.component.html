@@ -31,14 +31,14 @@
     <h2 class="choosAddresH2 p-2 rounded">Your Addresses</h2>
 
     <div class="col-10" class="m-3">
-      <div class="card mb-2" *ngFor="let a of userAddresses">
+      <div class="card mb-2" 
+        *ngFor="let a of userAddresses; let i = index"
+        [ngClass]="{'border border-success border-3': selectedIndex === i}"
+        (click)="selectedIndex = i; consolData(a.id)">
         <div class="card-header" *ngIf="a.DefaultAddress">
           <strong>Default Address</strong>
         </div>
-        <div
-          (click)="consolData(a.id)"
-          class="card-body cardAddress d-flex flex-row justify-content-between align-items-center"
-        >
+        <div class="card-body cardAddress d-flex flex-row justify-content-between align-items-center">
           <div>
             <p class="card-text">
               <span class="fs-6 fw-bold">Address:</span> {{ a.street }} /

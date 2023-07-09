@@ -16,6 +16,7 @@ export class CheckoutComponent implements OnInit {
   choosenAddressId: number = 0;
   totalPrice: number = 0;
   defaultUserAddress: boolean = false;
+  selectedIndex: number = -1;
   constructor(private toastr: ToastrService,
     private router: Router,
     private orderService: OrderService,
