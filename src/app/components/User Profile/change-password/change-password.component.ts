@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { LoginDto } from 'src/app/Dtos/user/LoginDto';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -21,7 +22,8 @@ export class ChangePasswordComponent {
   constructor(
     public service: UserProfileService,
     public auth: AuthenticationService,
-    private routerService: Router
+    private routerService: Router,
+    private toastr: ToastrService,
   ) {}
 
   form = new FormGroup({
@@ -42,11 +44,14 @@ export class ChangePasswordComponent {
       this.service.changePassword(credentials).subscribe(
         (result) => {
           console.log(result);
-          this.routerService.navigateByUrl('Sidebar');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          this.toastr.success("Password Changed Successfully", 'Success' );
+  
+          this.routerService.navigateByUrl('General');
         },
         (e) => {
           console.log(e.error);
-          this.respomseError = 'User ' + e.error.title;
+          this.respomseError = e.error.message;
         }
       );
     } else {

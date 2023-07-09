@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Toast, ToastrService } from 'ngx-toastr';
 import { ContactUs } from 'src/app/Dtos/ContactUs/ContactUs';
 import { ContactUsService } from 'src/app/services/ContactUs/contact-us.service';
 @Component({
@@ -13,7 +14,7 @@ import { ContactUsService } from 'src/app/services/ContactUs/contact-us.service'
   styleUrls: ['./contact-us.component.css'],
 })
 export class ContactUsComponent {
-  constructor( private contactUs:ContactUsService) {}
+  constructor( private contactUs:ContactUsService,private toastr: ToastrService) {}
 
   form = new FormGroup({
     name: new FormControl<string>('', Validators.required),
@@ -31,6 +32,10 @@ export class ContactUsComponent {
       {
         next:(data)=>{
             console.log(data);
+            var test:any = data
+            this.toastr.success(test.message , 'Success',{
+              timeOut: 2000,} );
+  
         }
       }
     )

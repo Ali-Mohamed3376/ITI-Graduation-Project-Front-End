@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AddReviewDto } from 'src/app/Dtos/Review/ReviewDto';
 import { ReviewService } from 'src/app/services/Review/review.service';
 import { UserProfileService } from 'src/app/services/User Profile/user-profile.service';
@@ -13,7 +14,7 @@ export class OrderDetailsComponent implements OnInit {
   details:any;
   totalp=0;
   orderStatus:boolean=false;
-constructor(myRoute:ActivatedRoute,public service:UserProfileService,private reviewServic:ReviewService){
+constructor(myRoute:ActivatedRoute,public service:UserProfileService,private reviewServic:ReviewService,private toastr: ToastrService){
   this.id = myRoute.snapshot.params["id"];
 }
 ngOnInit(): void {
@@ -52,6 +53,10 @@ AddReview(comment:string,rating:string,productId:number)
     next:(data)=>{
       console.log(data);
       this.GetOrderDetails();
+      this.toastr.success("Review Added Successfully", 'Success' );
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+
 
     },
     error:(error)=>{

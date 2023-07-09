@@ -54,7 +54,7 @@ const routes: Routes = [
     canActivate: [AuthenticationGuardGuard],
     component: WishlistComponent
   },
-  { path: 'about-us', component: AboutUsComponent },
+  { path: '', component: HomeComponent },
   { path: 'contact-us', component: ContactUsComponent },
   // Ali
 
@@ -98,13 +98,16 @@ const routes: Routes = [
     canActivate: [AuthenticationGuardGuard],
     component: OrdersComponent,
   },
-  { path: 'Order/Details/:id', component: OrderDetailsComponent },
+  { path: 'Order/Details/:id',
+      canActivate: [AuthenticationGuardGuard],
+  component: OrderDetailsComponent },
   {
     path: 'General',
     canActivate: [AuthenticationGuardGuard],
     component: MainProfileComponent,
   },
-  { path: 'Profile', component: ProfileComponent },
+  { path: 'Profile',    canActivate: [AuthenticationGuardGuard],
+  component: ProfileComponent },
   {
     path: 'Address',
     canActivate: [AuthenticationGuardGuard],
@@ -120,7 +123,7 @@ const routes: Routes = [
     canActivate: [AuthenticationGuardGuard],
     component: AddAddressesComponent,
   },
-  { path: 'Review', component: ReviewComponent },
+  // { path: 'Review', component: ReviewComponent },
   {
     path: 'Change-password',
     canActivate: [AuthenticationGuardGuard],
@@ -128,7 +131,9 @@ const routes: Routes = [
   },
 
   // Ahmed Hamdi
-  { path: 'dashboard', canActivate: [AdminAuthenticationGuard], component: SidebarComponent }
+  { path: 'dashboard', canActivate: [AdminAuthenticationGuard], component: SidebarComponent },
+  { path: '**',  component: HomeComponent }
+
 
 
 ];

@@ -66,6 +66,8 @@ export class CheckoutComponent implements OnInit {
           console.log(data);
           console.log('next');
           this.cartService.getCartProductsCounter();
+          this.toastr.success("order Added Successfull ... redirect to Home Page", 'Success' );
+
         },
         error: (error) => {
           // why he enter the error path?

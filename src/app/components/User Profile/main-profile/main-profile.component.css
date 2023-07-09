@@ -72,3 +72,50 @@ background-color: #1d6d8a;
 /* .width{
   width: 55%;
 } */
+
+
+.card-wrapper {
+  display: flex;
+}
+
+/* .card {
+  flex: 1;
+} */
+
+.badge-new {
+  font-size: 12px;
+  padding: 4px 8px;
+  background-color: #00aaff;
+  color: #fff;
+}
+.addposition{
+  position: absolute;
+  top: 10px;
+  right: 5px;
+}
+
+/* .NewArrival {
+  
+    font-size: 36px;
+    color: #164e63;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+  }
+
+  .testposition{
+    position: relative;
+  }
+  .addposition{
+    position: absolute;
+  top: 10px;
+  left: 250px;
+  } */
+
+@media (min-width:500px) {
+  
+  .card-wrapper{
+    max-width: 50%;
+  }
+}

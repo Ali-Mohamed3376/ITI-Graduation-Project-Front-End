@@ -47,6 +47,8 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     this.HomeService.GetSpecialOffers().subscribe({
       next: (data) => { this.specialProducts = data; },
       error: (error) => { console.log(error); }

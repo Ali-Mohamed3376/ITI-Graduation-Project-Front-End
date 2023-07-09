@@ -187,7 +187,7 @@ import { ContactusComponent } from './components/Dashboard/Adel/contactus/contac
     NgxPaginationModule ,
     // ToastrModule.forRoot(), // ToastrModule added
     ToastrModule.forRoot({
-      timeOut: 4000,
+      timeOut: 5000,
       positionClass: 'toasterStyle',
       preventDuplicates: true,
     }),
