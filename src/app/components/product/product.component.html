@@ -9,24 +9,14 @@
           <form (ngSubmit)="applyFilters(1)" #filterForm="ngForm">
             <article class="filter-group mt-2">
               <header class="card-header">
-                <a
-                  href="#"
-                  class="title FilterElements"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse_aside_brands"
-                  >Brands</a
-                >
+                <a href="#" class="title FilterElements" data-bs-toggle="collapse"
+                  data-bs-target="#collapse_aside_brands">Brands</a>
               </header>
               <div class="collapse show" id="collapse_aside_brands">
                 <div class="card-body">
                   <label class="form-check mb-2" *ngFor="let brand of brands">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="brand"
-                      [value]="brand.id"
-                      [(ngModel)]="selectedBrandId"
-                    />
+                    <input class="form-check-input" type="radio" name="brand" [value]="brand.id"
+                      [(ngModel)]="selectedBrandId" />
                     <span class="form-check-label"> {{ brand.name }} </span>
                   </label>
                 </div>
@@ -35,38 +25,21 @@
 
             <article class="filter-group mt-2">
               <header class="card-header">
-                <a
-                  href="#"
-                  class="title FilterElements"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse_aside2"
-                  >Price</a
-                >
+                <a href="#" class="title FilterElements" data-bs-toggle="collapse"
+                  data-bs-target="#collapse_aside2">Price</a>
               </header>
               <div class="collapse show" id="collapse_aside2">
                 <div class="card-body">
                   <div class="row mb-3">
                     <div class="col-6">
                       <label for="min" class="form-label">Min</label>
-                      <input
-                        class="form-control"
-                        id="min"
-                        placeholder="$1000"
-                        type="number"
-                        name="min"
-                        [(ngModel)]="selectedMinPrice"
-                      />
+                      <input class="form-control" id="min" placeholder="$1000" type="number" name="min"
+                        [(ngModel)]="selectedMinPrice" />
                     </div>
                     <div class="col-6">
                       <label for="max" class="form-label">Max</label>
-                      <input
-                        class="form-control"
-                        id="max"
-                        placeholder="$100,0000"
-                        type="number"
-                        name="max"
-                        [(ngModel)]="selectedMaxPrice"
-                      />
+                      <input class="form-control" id="max" placeholder="$100,0000" type="number" name="max"
+                        [(ngModel)]="selectedMaxPrice" />
                     </div>
                   </div>
                 </div>
@@ -75,30 +48,16 @@
 
             <article class="filter-group mt-2">
               <header class="card-header">
-                <a
-                  href="#"
-                  class="title FilterElements"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse_aside_rating"
-                  >Rating
+                <a href="#" class="title FilterElements" data-bs-toggle="collapse"
+                  data-bs-target="#collapse_aside_rating">Rating
                 </a>
               </header>
               <div class="collapse show" id="collapse_aside_rating">
                 <div class="card-body">
-                  <label
-                    class="form-check mb-2"
-                    *ngFor="let ratingOption of ratingOptions"
-                  >
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="ratingOption"
-                      [value]="ratingOption"
-                      [(ngModel)]="selectedRating"
-                    />
-                    <span class="form-check-label"
-                      >{{ ratingOption }} stars</span
-                    >
+                  <label class="form-check mb-2" *ngFor="let ratingOption of ratingOptions">
+                    <input class="form-check-input" type="radio" name="ratingOption" [value]="ratingOption"
+                      [(ngModel)]="selectedRating" />
+                    <span class="form-check-label">{{ ratingOption }} stars</span>
                   </label>
                 </div>
               </div>
@@ -112,30 +71,21 @@
             >
               Reset
             </button> -->
-            <button
-              [ngClass]="{
+            <button [ngClass]="{
                 'custom-button': true,
                 'w-100': true,
                 rounded: true,
                 'mb-2': true,
                 'mt-2': true
-              }"
-              type="submit"
-              class="applyButton"
-            >
+              }" type="submit" class="applyButton">
               Apply
             </button>
-            <button
-              [ngClass]="{
+            <button [ngClass]="{
                 'custom-button': true,
                 'w-100': true,
                 rounded: true,
                 'mb-2': true
-              }"
-              type="button"
-              (click)="resetFilters()"
-              class="resetButton"
-            >
+              }" type="button" (click)="resetFilters()" class="resetButton">
               Reset
             </button>
           </form>
@@ -151,9 +101,7 @@
             <div class="">
               <div class="row">
                 <!-- card -->
-                <div
-                  class="col-md-6 col-lg-4 mt-2 card-wrapper col-sm-8"
-                  *ngFor="
+                <div class="col-md-6 col-lg-4 mt-2 card-wrapper col-sm-8" *ngFor="
                     let p of products
                       | paginate
                         : {
@@ -162,48 +110,26 @@
                             currentPage: page,
                             totalItems: totalCount
                           }
-                  "
-                >
+                  ">
                   <div class="card mb-3">
                     <div class="card-body p-0 pb-3" style="max-height: 200px">
                       <div *ngIf="p.price != p.priceAfter" class="sale">
                         {{ p.discount }}% OFF
                       </div>
-                      <button
-                        *ngIf="isLoggedIn"
-                        (click)="AddOrRemoveFromwishList(p.id)"
-                        type="button"
-                        class="btn bg-cart py-0 heartWishList"
-                      >
-                        <i
-                          *ngIf="!p.isInWishList"
-                          class="fa-regular fa-heart"
-                          style="color: black"
-                        ></i>
-                        <i
-                          *ngIf="p.isInWishList"
-                          class="fa-solid fa-heart"
-                          style="color: #ff1414"
-                        ></i>
+                      <button *ngIf="isLoggedIn" (click)="AddOrRemoveFromwishList(p.id)" type="button"
+                        class="btn bg-cart py-0 heartWishList">
+                        <i *ngIf="!p.isInWishList" class="fa-regular fa-heart" style="color: black"></i>
+                        <i *ngIf="p.isInWishList" class="fa-solid fa-heart" style="color: #ff1414"></i>
                       </button>
 
                       <div class="card-img-actions">
-                        <img
-                          src="{{ p.image }}"
-                          class="card-img rounded-0"
-                          height="200px"
-                          alt=""
-                        />
+                        <img src="{{ p.image }}" class="card-img rounded-0" height="200px" alt="" />
                       </div>
                     </div>
                     <div class="card-body text-center bg-light">
                       <div class="mb-2 h-25">
                         <h5 class="font-weight-semibold mb-2 text-white">
-                          <a
-                            routerLink="/Products/{{ p.id }}"
-                            class="text-default mb-2 nameColor"
-                            data-abc="true"
-                          >
+                          <a routerLink="/Products/{{ p.id }}" class="text-default mb-2 nameColor" data-abc="true">
                             {{ p.name }}
                           </a>
                         </h5>
@@ -220,22 +146,15 @@
                         <span> Rating : </span>
 
                         <ul class="list-unstyled d-flex justify-content-center">
-                          <ng-container
-                            *ngIf="p.avgRatingRounded > 0; else emptyStars"
-                          >
-                            <li
-                              *ngFor="
+                          <ng-container *ngIf="p.avgRatingRounded > 0; else emptyStars">
+                            <li *ngFor="
                                 let star of generateStars(p.avgRatingRounded)
-                              "
-                            >
-                              <i
-                                class="fas fa-star fa-sm text-warning"
-                                [ngClass]="{
+                              ">
+                              <i class="fas fa-star fa-sm text-warning" [ngClass]="{
                                   'fa-star': star === 'full',
                                   'fa-star-half-alt': star === 'half',
                                   'fa-star-o': star === 'empty'
-                                }"
-                              ></i>
+                                }"></i>
                             </li>
                           </ng-container>
                           <ng-template #emptyStars>
@@ -250,6 +169,7 @@
                       </div>
                     </div>
                   </div>
+                  <!-- <div class="text-muted mb-1">{{ p.reviewCount }} reviews</div> -->
                 </div>
               </div>
             </div>
@@ -270,15 +190,7 @@
   </div>
 </div>
 
-<pagination-controls
-  *ngIf="!filterWork"
-  (pageChange)="loadProductsInPagination($event)"
-  id="product-pagination"
-  class="text-center"
-></pagination-controls>
-<pagination-controls
-  *ngIf="filterWork"
-  (pageChange)="applyFilters($event)"
-  id="product-pagination"
-  class="text-center"
-></pagination-controls>
+<pagination-controls *ngIf="!filterWork" (pageChange)="loadProductsInPagination($event)" id="product-pagination"
+  class="text-center"></pagination-controls>
+<pagination-controls *ngIf="filterWork" (pageChange)="applyFilters($event)" id="product-pagination"
+  class="text-center"></pagination-controls>
