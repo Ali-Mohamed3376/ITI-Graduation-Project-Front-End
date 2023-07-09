@@ -50,3 +50,7 @@ li p {
 .ml-3{
   margin-left: 10px;
 }
+#title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

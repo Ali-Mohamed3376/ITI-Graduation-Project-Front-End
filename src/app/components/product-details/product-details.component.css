@@ -80,6 +80,10 @@
     border-radius: 40px;
     transition-duration: 3s;
   }
+
+  .CartBtn:hover .text.mb-0 {
+    display: none;
+  }
   
   
   .CartBtn:active {
