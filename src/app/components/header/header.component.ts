@@ -69,6 +69,7 @@ export class HeaderComponent implements OnInit {
     this.authService.isLoggedIn$.next(false);
     this.whishListCouter=0;
     this.cartCouter=0;
+    this.authService.isAdmin$.next(false);
     this.routerService.navigateByUrl('/');
   }
 

@@ -121,7 +121,7 @@
                                 <div class="card-body p-4">
                                     <h5 class="card-title" id="title" routerLink="/Products/{{item.product_Id}}">
                                         {{item.title}}</h5>
-                                    <p class="card-text">Price: $ {{item.price}}</p>
+                                    <p class="card-text">Price: $ {{item.priceAfter}}</p>
                                     <p class="card-text">Quantity: {{item.quantity}}</p>
                                     <hr class="my-3">
                                     <form *ngIf="!item.isReviewed && orderStatus">

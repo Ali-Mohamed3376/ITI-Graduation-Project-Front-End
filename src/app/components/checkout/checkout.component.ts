@@ -49,7 +49,7 @@ export class CheckoutComponent implements OnInit {
         this.cartProducts = data;
         console.log(this.cartProducts);
         for (let product of this.cartProducts) {
-          this.totalPrice += product.price * product.quantity;
+          this.totalPrice += product.priceAfter * product.quantity;
         }
       },
       error: (error) => {
