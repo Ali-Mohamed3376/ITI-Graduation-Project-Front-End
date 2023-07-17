@@ -6,6 +6,8 @@ import { productEditDto } from 'src/app/Dtos/Dashboard/productEditDto';
 import {AddProductDto } from 'src/app/Dtos/Dashboard/AddProductDto';
 import { basmagaedit } from 'src/app/Dtos/Dashboard/basmagaedit';
 import { ProductReadPaginationDto } from 'src/app/Dtos/Dashboard/ProductReadPaginationDto';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { ListRange } from '@angular/cdk/collections';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +21,21 @@ export class productOperation {
     console.log(file);
     return this.myClient.post<UploadFileDto>("https://localhost:7064/api/Products/Dashboard/uploadImages",form)
   }
+
+  
+
+  Upload2(files :File[])
+  {
+    console.log("inside service");
+    console.log(files);
+
+     const form=new FormData();
+     files.forEach(file => {
+      form.append("files",file);
+     });
+    return this.myClient.post("https://localhost:7064/api/Products/Dashboard/uploadImages",form)
+  }
+
   AllProducts(){
     return this.myClient.get("https://localhost:7064/api/Products/Dashboard/GetAllProducts");
   }

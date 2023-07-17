@@ -33,7 +33,7 @@ GetOrderDetails()
         console.log(data);
        for(let i of this.details.orderProducts)
           {
-          this.totalp=this.totalp+(i.quantity*i.priceAfter);
+          this.totalp=this.totalp+(i.quantity*i.productPriceAtThisTime);
         }
         console.log(this.totalp);
       },

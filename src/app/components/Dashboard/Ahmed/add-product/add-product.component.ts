@@ -16,13 +16,29 @@ export class AddProductComponent implements OnInit{
 ImageUrls:string[]=[];
 categories:any;
 selectedCategory:number=0;
+selectedImages:File[]=[];
+
+product: AddProductDto=new AddProductDto();
+
 
 constructor(private toastr: ToastrService,private productService:productOperation,
-  private categoriesService:CategoryService,private router:Router,private snackBar: MatSnackBar){}
+  private categoriesService:CategoryService,private router:Router,private snackBar: MatSnackBar)
+  {}
   
-product: AddProductDto=new AddProductDto();
+  ngOnInit(): void {
+    this.categoriesService.GetAllCategories().subscribe({
+      next:(data)=>{this.categories=data},
+      error:(err)=>{console.log(err)}
+    })
+}
+
 addProduct(productForm:NgForm):void{
   if(productForm.invalid)return;
+  this.productService.Upload2(this.selectedImages).subscribe((responses :any)=>{
+    console.log(responses);
+    this.ImageUrls=responses;
+
+
   this.product.Name=this.product.Name.trim(),
   this.product.Price=+this.product.Price;
   this.product.Description=this.product.Description;
@@ -40,32 +56,41 @@ addProduct(productForm:NgForm):void{
     }
   )
    this.toastr.success("product adding success");
+
+    },
+    (error)=>{console.log("error uploading photos:",error);
+   
+      } )  
+  
 }
 
+ uploadPhotos(e:Event){
+    const input= e.target as HTMLInputElement  ;
+   this.selectedImages=Array.prototype.slice.call(input.files) as File[]; 
+   console.log(this.selectedImages);
+    
+    }
 
-ngOnInit(): void {
-    this.categoriesService.GetAllCategories().subscribe({
-      next:(data)=>{this.categories=data},
-      error:(err)=>{console.log(err)}
-    })
-}
-
-uploadPhotos(e:Event){
-  const input= e.target as HTMLInputElement  ;
-  const files=Array.prototype.slice.call(input.files) as File[];
-   if(files.length===0)return;
-  const uploadObservables=files.map((file)=>{
-    return this.productService.Upload(file);
-  });
- forkJoin(uploadObservables).subscribe((responses :any)=>{
-  console.log(responses);
-  this.ImageUrls=responses.map((response: any)=>response.url);
-  console.log(this.ImageUrls);
-  },
-  (error)=>{console.log("error uploading photos:",error);
+// uploadPhotos(e:Event){
+//   const input= e.target as HTMLInputElement  ;
+//   const files=Array.prototype.slice.call(input.files) as File[];
+//    if(files.length===0)return;
+//   const uploadObservables=files.map((file)=>{
+//     return this.productService.Upload(file);
+//   });
+//  forkJoin(uploadObservables).subscribe((responses :any)=>{
+//   console.log(responses);
+//   this.ImageUrls=responses.map((response: any)=>response.url);
+//   //console.log(this.ImageUrls);
+//   },
+//   (error)=>{console.log("error uploading photos:",error);
  
-    } )  
-  }
+//     } )  
+//   }
+
+
+ 
+  
 }
 
 
