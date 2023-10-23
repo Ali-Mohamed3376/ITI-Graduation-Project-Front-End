@@ -11,7 +11,7 @@ import { EmailService } from 'src/app/services/Authentication/email.service';
   styleUrls: ['./new-password.component.css'],
 })
 export class NewPasswordComponent implements OnInit {
-  email: string = '';
+  email: any = '';
   respomseError: String = '';
   constructor(
     private emailService: EmailService,
@@ -19,7 +19,7 @@ export class NewPasswordComponent implements OnInit {
     private routerService: Router
   ) {}
   ngOnInit(): void {
-    this.email = this.emailService.getEmail();
+    this.email = localStorage.getItem('userEmail');
   }
 
   form = new FormGroup({
@@ -40,7 +40,7 @@ export class NewPasswordComponent implements OnInit {
         this.routerService.navigateByUrl('Authentication/login');
       },
       (e) => {
-        this.respomseError = e.error;
+        this.respomseError = e.error.message;
       }
     );
   }

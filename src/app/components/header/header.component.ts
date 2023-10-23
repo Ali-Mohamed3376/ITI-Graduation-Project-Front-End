@@ -9,6 +9,7 @@ import { WishListService } from 'src/app/services/WishList/wish-list.service';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit {
   whishListCouter: number = 0;
 
   constructor(
+    private toastr: ToastrService,
     private authService: AuthenticationService,
     private productServic: ProductService,
     private routerService: Router,
@@ -71,6 +73,7 @@ export class HeaderComponent implements OnInit {
     this.cartCouter=0;
     this.authService.isAdmin$.next(false);
     this.routerService.navigateByUrl('/');
+    this.toastr.success(`Logout Sccessfully!`, 'Success' );
   }
 
   // search field

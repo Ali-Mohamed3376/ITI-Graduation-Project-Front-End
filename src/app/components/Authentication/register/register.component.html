@@ -1,7 +1,7 @@
 <!-- bootstrap version -->
 <div class="container mt-sm-5 mb-sm-5 w-50">
-  <div *ngIf="respomseError" class="text-center text-danger fs-2">
-    <p *ngFor="let e of respomseError">{{ e }}</p>
+  <div *ngIf="uniqueErrorMessages" class="text-center text-danger fs-2">
+    <p *ngFor="let e of uniqueErrorMessages">{{ e }}</p>
   </div>
   <form [formGroup]="form">
     <div class="form-group mt-sm-3">

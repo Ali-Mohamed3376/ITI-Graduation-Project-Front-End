@@ -24,15 +24,15 @@ export class ForgetPasswordComponent {
   ConfirmEmail(e: Event) {
     const email = this.form.controls.email.value ?? '';
     this.emailService.setEmail(email);
+    localStorage.setItem('userEmail', email);
     this.authService.Forget_Password(email).subscribe(
-      (result: any) => {
-        // console.log(result);
+      (result) => {
+         console.log(result);
         this.routerService.navigateByUrl('/Authentication/verify-code');
       },
       (e) => {
         // handle error
-        this.respomseError = 'Cannot Send Email';
-        // console.log(e.error);
+        this.respomseError = e.error.message;
       }
     );
   }

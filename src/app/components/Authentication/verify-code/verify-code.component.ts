@@ -11,15 +11,14 @@ import { EmailService } from 'src/app/services/Authentication/email.service';
   styleUrls: ['./verify-code.component.css'],
 })
 export class VerifyCodeComponent implements OnInit {
-  email: string = '';
+  email: any = '';
   respomseError: string = '';
   constructor(
     private authService: AuthenticationService,
     private routerService: Router,
-    private emailService: EmailService
   ) {}
   ngOnInit(): void {
-    this.email = this.emailService.getEmail();
+    this.email = localStorage.getItem('userEmail');
   }
 
   form = new FormGroup({
@@ -42,7 +41,7 @@ export class VerifyCodeComponent implements OnInit {
 
     credentials.email = this.email;
     credentials.code = code;
-    console.log(credentials);
+    // console.log(credentials);
     this.authService.Verify_Code(credentials).subscribe(
       (result: any) => {
         console.log(result);
@@ -50,7 +49,7 @@ export class VerifyCodeComponent implements OnInit {
       },
       (e) => {
         // handel error
-        this.respomseError = e.error;
+        this.respomseError = e.error.message;
       }
     );
   }

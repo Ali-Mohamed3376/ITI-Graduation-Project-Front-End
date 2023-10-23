@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { RegisterDto } from 'src/app/Dtos/user/RegisterDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 
@@ -11,8 +12,9 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
 })
 export class RegisterComponent {
   hide = true;
+  uniqueErrorMessages = new Set();
   respomseError: any = [];
-  constructor(
+  constructor(private toastr: ToastrService,
     private authService: AuthenticationService,
     private routerService: Router
   ) {}
@@ -36,24 +38,30 @@ export class RegisterComponent {
     credentials.lname = this.form.controls.lname.value ?? '';
     credentials.email = this.form.controls.email.value ?? '';
     credentials.password = this.form.controls.password.value ?? '';
-
+    this.uniqueErrorMessages.clear();
     this.authService.Register(credentials).subscribe(
-      (result: any) => {
+      (result) => {
         console.log(result);
         this.routerService.navigateByUrl('/');
+        this.toastr.success(`${result.message}`, 'Success' );
       },
       (r) => {
-        console.log(r.error);
+        
         this.respomseError = [];
         // let test: any = r.error;
-        for (let i of r.error) {
-          if (i.code == 'DuplicateUserName') {
-            continue;
+        for (let i of r.error.errors) {
+          console.log(r.error.errors)
+          if (i.code == 'DuplicateUserName' || i.code == 'DuplicateEmail' ) {
+            this.toastr.error(`Email '${credentials.email}' is already taken.`, 'Error' );
+            var errorMessage = `Email '${credentials.email}' is already taken.`;
+            if (!this.uniqueErrorMessages.has(errorMessage)) {
+              this.uniqueErrorMessages.add(errorMessage); // Add it to the Set to mark it as seen
+            }
+          }else{
+            this.uniqueErrorMessages.add(i.description);
+            this.toastr.error(`${i.description}`, 'Error' );
           }
-          this.respomseError.push(i.description);
-          console.log(i);
         }
-        console.log(this.respomseError);
       }
     );
   }

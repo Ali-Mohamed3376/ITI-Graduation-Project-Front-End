@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { LoginDto } from 'src/app/Dtos/user/LoginDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { CartService } from 'src/app/services/Cart/cart.service';
@@ -16,7 +17,7 @@ export class LoginComponent {
   respomseError: string = '';
   showComponent = false;
 
-  constructor(
+  constructor(private toastr: ToastrService,
     private authService: AuthenticationService,
     private routeService: Router,
     private cartService: CartService,
@@ -37,18 +38,19 @@ export class LoginComponent {
     credentials.Password = this.form.controls.password.value ?? '';
 
     this.authService.Login(credentials).subscribe(
-      (TokenDto) => {
-        console.log(TokenDto);
+      (Response) => {
+        console.log(Response);
         this.cartService.getCartProductsCounter();
         this.wishListService.GetWishListCount();
-
         // Make Any Logic Like Redirect user to any page like home
         this.routeService.navigateByUrl('/');
+        this.toastr.success(`${Response.message}`, 'Success' );
       },
       (e) => {
         // handle error
-        this.respomseError = e.error;
-        console.log(e.error);
+        this.toastr.error(`${e.error.message}`, 'Error' );
+        this.respomseError = e.error.message;
+        console.log(e.error)
       }
     );
   }
