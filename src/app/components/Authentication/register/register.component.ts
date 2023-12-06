@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { identifierName } from '@angular/compiler';
+import { Component, ElementRef, NgZone, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CredentialResponse } from 'google-one-tap';
+import{accounts} from 'google-one-tap'
 import { RegisterDto } from 'src/app/Dtos/user/RegisterDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
+import { GoogleSigninService } from 'src/app/services/Authentication/google-signin.service';
 
 @Component({
   selector: 'app-register',
@@ -10,11 +14,17 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  @ViewChild('buttonContainer', { static: true }) buttonContainer!: ElementRef;
+
   hide = true;
   respomseError: any = [];
   constructor(
     private authService: AuthenticationService,
-    private routerService: Router
+    private routerService: Router,
+    private _ngZone: NgZone,
+    private googleSignInService: GoogleSigninService,
+    
+
   ) {}
 
   form = new FormGroup({
@@ -56,5 +66,20 @@ export class RegisterComponent {
         console.log(this.respomseError);
       }
     );
+  }
+
+
+  ngOnInit(): void {
+
+    this.googleSignInService.initialize();
+    // Render the Google Sign-In button in this component
+    this.googleSignInService.renderRegisterButton(document.getElementById('GoogleRegisterBtn')!);
+    this.googleSignInService.setActionType('register');
+
+  } 
+
+  onRegisterButtonClicked()
+  {
+    this.googleSignInService.setActionType('register');
   }
 }

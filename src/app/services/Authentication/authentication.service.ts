@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ConfirmCodeDto } from 'src/app/Dtos/user/ConfirmCodeDto';
@@ -21,6 +21,42 @@ export class AuthenticationService {
   public Login(credentials: LoginDto): Observable<TokenDto> {
     return this.client
       .post<TokenDto>('https://localhost:7064/api/User/Login', credentials)
+      .pipe(
+        tap((TokenDto) => {
+          this.isLoggedIn$.next(true);
+          if (TokenDto.role === 'Admin') {
+            this.isAdmin$.next(true);
+          }
+          localStorage.setItem('token', TokenDto.token);
+          localStorage.setItem('role', TokenDto.role);
+        })
+      );
+  }
+
+  //loginwith google
+
+  LoginWithGoogle(credential: string): Observable<TokenDto> {
+    console.log("inside service and this is the credentials");
+    console.log(credential);
+   
+    return this.client
+    .post<TokenDto>('https://localhost:7064/api/User/LoginWithGoogle',{credential:credential})
+    .pipe(
+      tap((TokenDto) => {
+        this.isLoggedIn$.next(true);
+        if (TokenDto.role === 'Admin') {
+          this.isAdmin$.next(true);
+        }
+        localStorage.setItem('token', TokenDto.token);
+        localStorage.setItem('role', TokenDto.role);
+      })
+    );
+  }
+
+  //// RegisterwithGoogle
+  public RegisterWithGoogle(credential: string): Observable<TokenDto> {
+    return this.client
+    .post<TokenDto>('https://localhost:7064/api/User/RegisterWithGoogle',{credential:credential})
       .pipe(
         tap((TokenDto) => {
           this.isLoggedIn$.next(true);

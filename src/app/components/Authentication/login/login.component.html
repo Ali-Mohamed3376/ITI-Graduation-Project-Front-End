@@ -41,11 +41,17 @@
   </form>
 </div> -->
 
+
+
+
 <div class="container mt-5">
   <div *ngIf="respomseError" class="text-center text-danger fs-2">
     <p>{{ respomseError }}</p>
   </div>
   <div class="row">
+    <div class="cardStyle">
+      <div id="GoogleLoginBtn" ></div> 
+    </div>
     <form [formGroup]="form">
       <div class="form-floating mb-5">
         <input
@@ -115,6 +121,8 @@
           Login
         </button>
       </div>
+     
+   
     </form>
   </div>
 </div>

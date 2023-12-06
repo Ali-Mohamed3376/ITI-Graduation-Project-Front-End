@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { CredentialResponse, PromptMomentNotification } from 'google-one-tap';
+import { Component, NgZone } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginDto } from 'src/app/Dtos/user/LoginDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { CartService } from 'src/app/services/Cart/cart.service';
 import { WishListService } from 'src/app/services/WishList/wish-list.service';
+import { ToastrService } from 'ngx-toastr';
+import { Title } from 'chart.js';
+import { GoogleSigninService } from 'src/app/services/Authentication/google-signin.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +24,11 @@ export class LoginComponent {
     private authService: AuthenticationService,
     private routeService: Router,
     private cartService: CartService,
-    private wishListService: WishListService
+    private wishListService: WishListService,
+    private _ngZone: NgZone,
+    private toastr: ToastrService,
+    private googleSignInService: GoogleSigninService,
+
   ) {}
 
   form = new FormGroup({
@@ -46,10 +54,64 @@ export class LoginComponent {
         this.routeService.navigateByUrl('/');
       },
       (e) => {
+        
         // handle error
         this.respomseError = e.error;
         console.log(e.error);
       }
     );
   }
-}
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    ngOnInit(): void {
+
+    this.googleSignInService.initialize();
+    // Render the Google Sign-In button in this component
+    this.googleSignInService.renderLoginButton(document.getElementById('GoogleLoginBtn')!);
+    this.googleSignInService.setActionType('login');
+
+    }
+
+    onLoginButtonClicked()
+  {
+    console.log("onLoginButtonClicked")
+    this.googleSignInService.setActionType('login');
+  }
+
+  // async onSubmit() {
+  //   //this.formSubmitAttempt = false;
+  //   if (this.form.valid) {
+  //     try {
+  //       this.service.login(this.form.value).subscribe((x: any) => {
+  //         this.routeService.navigateByUrl('/');
+  //                   console.log("Login Successful");         
+  //       },
+  //         (error: any) => {
+  //           console.error(error);
+  //           console.log("Error with Username or Password");
+  //         });
+  //     } catch (err) {
+  //       console.log("Error with Username or Password");
+        
+  //     }
+  //   } else {
+  //     //this.formSubmitAttempt = true;
+  //   }
+  // }
+
+
+  
+    
+  }
+

@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { productOperation } from 'src/app/services/Dashboard/productOperation.service';
+import { ProductService } from 'src/app/services/Product/product.service';
 
 
 @Component({
@@ -9,6 +11,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class EditImagePopUpComponent {
   constructor(
+    public productService:productOperation,
     public dialogRef: MatDialogRef<EditImagePopUpComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
@@ -31,7 +34,21 @@ export class EditImagePopUpComponent {
     console.log('Modified oldPropertyImages:', this.data.oldPropertyImages);
   }
 
-  uploadPhotos(e: Event): void {
+
+  uploadPhotosV2(e:Event){
+    const input= e.target as HTMLInputElement  ;
+   const newImages=Array.prototype.slice.call(input.files) as File[]; 
+   console.log(newImages);
+   this.productService.Upload2(newImages).subscribe((responses :any)=>{
+    console.log(responses);
+    this.data.storedImages=responses;
+    })}
+  
+
+
+    //old version that encode the image as base64 it convert image to string and save that string in the database 
+    //it doesnt send it to backend to save it in images file like V2 above
+  uploadPhotosV1(e: Event): void {
     const input = e.target as HTMLInputElement;
     const files = Array.from(input.files || []);
 
@@ -40,13 +57,18 @@ export class EditImagePopUpComponent {
     }
 
     const filesToUpload = files;
+    console.log('filesToUpload',filesToUpload);
 
     filesToUpload.forEach((file) => {
       // Perform the necessary image upload logic and add the image URL to the storedImages array
       // Example code (replace with your actual logic):
       const reader = new FileReader();
       reader.onload = (event: any) => {
+        console.log(event.target.result);
+        console.log('before',this.data.storedImages)
         this.data.storedImages.push(event.target.result);
+        console.log('after',this.data.storedImages)
+
       };
       reader.readAsDataURL(file);
     });
