@@ -2,7 +2,6 @@ import { CredentialResponse, PromptMomentNotification } from 'google-one-tap';
 import { Component, NgZone } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { LoginDto } from 'src/app/Dtos/user/LoginDto';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { CartService } from 'src/app/services/Cart/cart.service';
@@ -27,7 +26,6 @@ export class LoginComponent {
     private cartService: CartService,
     private wishListService: WishListService,
     private _ngZone: NgZone,
-    private toastr: ToastrService,
     private googleSignInService: GoogleSigninService,
 
   ) {}

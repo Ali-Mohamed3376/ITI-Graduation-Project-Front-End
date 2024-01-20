@@ -76,22 +76,6 @@ export class RegisterComponent {
     );
   }
 
-
-  ngOnInit(): void {
-
-    this.googleSignInService.initialize();
-    // Render the Google Sign-In button in this component
-    this.googleSignInService.renderRegisterButton(document.getElementById('GoogleRegisterBtn')!);
-    this.googleSignInService.setActionType('register');
-
-  } 
-
-  onRegisterButtonClicked()
-  {
-    this.googleSignInService.setActionType('register');
-  }
-
-
   ngOnInit(): void {
 
     this.googleSignInService.initialize();
